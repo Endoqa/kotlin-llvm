@@ -10,10 +10,10 @@ import java.lang.foreign.SegmentAllocator
 class TranslationUnit(
     val tu: CXTranslationUnit,
     private val owner: Arena = Arena.ofAuto()
-) : SegmentAllocator by owner {
+) {
 
 
-    val cursor get() = Cursor(clang_getTranslationUnitCursor(tu))
+    val cursor get() = isolateOwner { Cursor(clang_getTranslationUnitCursor(tu)) }
 
 
     val diagnostics: List<Diagnostic>
