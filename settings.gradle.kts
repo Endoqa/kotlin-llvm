@@ -15,3 +15,5 @@ plugins {
 
 include(":libLLVM")
 include(":llvm")
+
+include(":llvm-examples")

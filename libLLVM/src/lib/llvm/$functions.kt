@@ -776,35 +776,6 @@ public fun LLVMInstructionSetDebugLoc(Inst: LLVMValueRef, Loc: LLVMMetadataRef):
 public fun LLVMGetMetadataKind(Metadata: LLVMMetadataRef): LLVMMetadataKind =
     (`LLVMGetMetadataKind$mh`.invokeExact(Metadata,) as Int).toUInt()
 
-public fun LLVMInitializeAllTargetInfos(): Unit = `LLVMInitializeAllTargetInfos$mh`.invokeExact() as
-    Unit
-
-public fun LLVMInitializeAllTargets(): Unit = `LLVMInitializeAllTargets$mh`.invokeExact() as Unit
-
-public fun LLVMInitializeAllTargetMCs(): Unit = `LLVMInitializeAllTargetMCs$mh`.invokeExact() as
-    Unit
-
-public fun LLVMInitializeAllAsmPrinters(): Unit = `LLVMInitializeAllAsmPrinters$mh`.invokeExact() as
-    Unit
-
-public fun LLVMInitializeAllAsmParsers(): Unit = `LLVMInitializeAllAsmParsers$mh`.invokeExact() as
-    Unit
-
-public fun LLVMInitializeAllDisassemblers(): Unit =
-    `LLVMInitializeAllDisassemblers$mh`.invokeExact() as Unit
-
-public fun LLVMInitializeNativeTarget(): LLVMBool = `LLVMInitializeNativeTarget$mh`.invokeExact() as
-    Int
-
-public fun LLVMInitializeNativeAsmParser(): LLVMBool =
-    `LLVMInitializeNativeAsmParser$mh`.invokeExact() as Int
-
-public fun LLVMInitializeNativeAsmPrinter(): LLVMBool =
-    `LLVMInitializeNativeAsmPrinter$mh`.invokeExact() as Int
-
-public fun LLVMInitializeNativeDisassembler(): LLVMBool =
-    `LLVMInitializeNativeDisassembler$mh`.invokeExact() as Int
-
 public fun LLVMGetModuleDataLayout(M: LLVMModuleRef): LLVMTargetDataRef =
     `LLVMGetModuleDataLayout$mh`.invokeExact(M,) as MemorySegment
 
@@ -1291,14 +1262,14 @@ public fun LLVMOrcCreateDynamicLibrarySearchGeneratorForPath(
     `LLVMOrcCreateDynamicLibrarySearchGeneratorForPath$mh`.invokeExact(Result,FileName,GlobalPrefix,Filter,FilterCtx,)
     as MemorySegment
 
-public fun LLVMOrcCreateStaticLibrarySearchGeneratorForPath(
-  Result: Pointer<LLVMOrcDefinitionGeneratorRef>,
-  ObjLayer: LLVMOrcObjectLayerRef,
-  FileName: Pointer<Byte>,
-  TargetTriple: Pointer<Byte>,
-): LLVMErrorRef =
-    `LLVMOrcCreateStaticLibrarySearchGeneratorForPath$mh`.invokeExact(Result,ObjLayer,FileName,TargetTriple,)
-    as MemorySegment
+//public fun LLVMOrcCreateStaticLibrarySearchGeneratorForPath(
+//  Result: Pointer<LLVMOrcDefinitionGeneratorRef>,
+//  ObjLayer: LLVMOrcObjectLayerRef,
+//  FileName: Pointer<Byte>,
+//  TargetTriple: Pointer<Byte>,
+//): LLVMErrorRef =
+//    `LLVMOrcCreateStaticLibrarySearchGeneratorForPath$mh`.invokeExact(Result,ObjLayer,FileName,TargetTriple,)
+//    as MemorySegment
 
 public fun LLVMOrcCreateNewThreadSafeContext(): LLVMOrcThreadSafeContextRef =
     `LLVMOrcCreateNewThreadSafeContext$mh`.invokeExact() as MemorySegment

@@ -3,10 +3,8 @@ package lib.llvm
 
 import java.lang.foreign.FunctionDescriptor
 import java.lang.foreign.Linker
-import java.lang.foreign.MemoryLayout
 import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandle
-import kotlin.Long
 
 internal val `LLVMDebugMetadataVersion$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
 `$RuntimeHelper`.findSymbol("LLVMDebugMetadataVersion"),
@@ -1031,64 +1029,6 @@ FunctionDescriptor.of(
   `$RuntimeHelper`.POINTER,
 ))
 
-internal val `LLVMInitializeAllTargetInfos$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeAllTargetInfos"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMInitializeAllTargets$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeAllTargets"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMInitializeAllTargetMCs$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeAllTargetMCs"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMInitializeAllAsmPrinters$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeAllAsmPrinters"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMInitializeAllAsmParsers$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeAllAsmParsers"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMInitializeAllDisassemblers$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeAllDisassemblers"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMInitializeNativeTarget$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeNativeTarget"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMInitializeNativeAsmParser$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeNativeAsmParser"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMInitializeNativeAsmPrinter$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeNativeAsmPrinter"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMInitializeNativeDisassembler$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeNativeDisassembler"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
 internal val `LLVMGetModuleDataLayout$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
 `$RuntimeHelper`.findSymbol("LLVMGetModuleDataLayout"),
 FunctionDescriptor.of(
@@ -2000,16 +1940,16 @@ FunctionDescriptor.of(
   `$RuntimeHelper`.POINTER,
 ))
 
-internal val `LLVMOrcCreateStaticLibrarySearchGeneratorForPath$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateStaticLibrarySearchGeneratorForPath"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
+//internal val `LLVMOrcCreateStaticLibrarySearchGeneratorForPath$mh`: MethodHandle =
+//    Linker.nativeLinker().downcallHandle(
+//`$RuntimeHelper`.findSymbol("LLVMOrcCreateStaticLibrarySearchGeneratorForPath"),
+//FunctionDescriptor.of(
+//  `$RuntimeHelper`.POINTER,
+//  `$RuntimeHelper`.POINTER,
+//  `$RuntimeHelper`.POINTER,
+//  `$RuntimeHelper`.POINTER,
+//  `$RuntimeHelper`.POINTER,
+//))
 
 internal val `LLVMOrcCreateNewThreadSafeContext$mh`: MethodHandle =
     Linker.nativeLinker().downcallHandle(
@@ -3254,7 +3194,7 @@ internal val `llvm_blake3_hasher_init_keyed$mh`: MethodHandle =
 `$RuntimeHelper`.findSymbol("llvm_blake3_hasher_init_keyed"),
 FunctionDescriptor.ofVoid(
   `$RuntimeHelper`.POINTER,
-  MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_BYTE),
+  `$RuntimeHelper`.POINTER,
 ))
 
 internal val `llvm_blake3_hasher_init_derive_key$mh`: MethodHandle =
@@ -5667,7 +5607,7 @@ FunctionDescriptor.of(
   `$RuntimeHelper`.POINTER,
   `$RuntimeHelper`.POINTER,
   ValueLayout.JAVA_INT,
-  MemoryLayout.sequenceLayout(Long.MAX_VALUE, ValueLayout.JAVA_BYTE),
+  `$RuntimeHelper`.POINTER,
 ))
 
 internal val `LLVMConstIntOfString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
