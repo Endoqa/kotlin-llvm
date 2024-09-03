@@ -7,8 +7,8 @@ import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 
 val desc = FunctionDescriptor.of(
-    ValueLayout.JAVA_LONG,
-    ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT,
 )
 
 data class CodeGen(
@@ -23,8 +23,8 @@ fun CodeGen.compileSum(): MemorySegment {
     val types = context.types
 
     val fn = FunctionType(
-        types.i64,
-        listOf(types.i64, types.i64, types.i64),
+        types.i32,
+        listOf(types.i32, types.i32, types.i32),
     )
 
     val function = module.addFunction("sum", fn)
@@ -51,21 +51,22 @@ fun CodeGen.compileSum(): MemorySegment {
 }
 
 fun main() {
-
     loadLLVM()
 
     val context = Context()
-    val module = context.createModule("test")
-    val ee = module.createJITExecutionEngine(LLVMCodeGenOptLevel.Default)
+    val module = context.createModule("sum")
+    val ee = module.createJITExecutionEngine(LLVMCodeGenOptLevel.None)
     val codegen = CodeGen(context, module, context.createBuilder(), ee)
-
 
     val jitFunc = codegen.compileSum()
 
     val handle = Linker.nativeLinker().downcallHandle(jitFunc, desc)
 
-    val result = handle.invokeExact(1L, 2L, 3L) as Long
 
-    println(result)
+    repeat(100) {
+        val result = handle.invokeExact(it, it + 1, it + 2) as Int
+        println(result)
+    }
+
 
 }

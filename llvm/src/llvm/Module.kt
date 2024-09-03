@@ -1,10 +1,7 @@
 package llvm
 
 
-import lib.llvm.LLVMAddFunction
-import lib.llvm.LLVMCodeGenOptLevel
-import lib.llvm.LLVMCreateJITCompilerForModule
-import lib.llvm.LLVMModuleRef
+import lib.llvm.*
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
@@ -24,17 +21,21 @@ class Module(
     }
 
     fun createJITExecutionEngine(optLvl: LLVMCodeGenOptLevel = LLVMCodeGenOptLevel.Default): ExecutionEngine {
+
+        Target.initialize()
+
+
         val e = confined { temp ->
             val out = Arena.global().allocate(ValueLayout.ADDRESS) // todo
             val outErr = temp.allocate(ValueLayout.ADDRESS)
 
-            LLVMCreateJITCompilerForModule(
+            val rst = LLVMCreateJITCompilerForModule(
                 out,
                 M,
                 optLvl.value.toUInt(),
                 outErr
             )
-            ExecutionEngine(out.getAtIndex(ValueLayout.ADDRESS, 0)) //todo, deref or not?
+            ExecutionEngine(out.getAtIndex(ValueLayout.ADDRESS, 0))
         }
 
         return e

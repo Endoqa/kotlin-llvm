@@ -1,7 +1,6 @@
 package llvm
 
-import lib.llvm.LLVMExecutionEngineRef
-import lib.llvm.LLVMGetFunctionAddress
+import lib.llvm.*
 import java.lang.foreign.MemorySegment
 
 class ExecutionEngine(
@@ -10,6 +9,8 @@ class ExecutionEngine(
 
 
     fun getFunction(name: String): MemorySegment {
+
+
         val addr = confined { temp ->
             LLVMGetFunctionAddress(EE, temp.allocateFrom(name))
         }

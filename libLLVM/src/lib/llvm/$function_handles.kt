@@ -6,9584 +6,11230 @@ import java.lang.foreign.Linker
 import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandle
 
-internal val `LLVMDebugMetadataVersion$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDebugMetadataVersion"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetModuleDebugMetadataVersion$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetModuleDebugMetadataVersion"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMStripModuleDebugInfo$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMStripModuleDebugInfo"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateDIBuilderDisallowUnresolved$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateDIBuilderDisallowUnresolved"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateDIBuilder$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateDIBuilder"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeDIBuilder$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeDIBuilder"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderFinalize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderFinalize"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderFinalizeSubprogram$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderFinalizeSubprogram"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateCompileUnit$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateCompileUnit"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateFile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateFile"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateModule$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateModule"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateNameSpace$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateNameSpace"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateLexicalBlock$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateLexicalBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateLexicalBlockFile$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateLexicalBlockFile"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateImportedModuleFromNamespace$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateImportedModuleFromNamespace"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateImportedModuleFromAlias$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateImportedModuleFromAlias"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateImportedModuleFromModule$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateImportedModuleFromModule"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateImportedDeclaration$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateImportedDeclaration"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateDebugLocation$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateDebugLocation"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDILocationGetLine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDILocationGetLine"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDILocationGetColumn$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDILocationGetColumn"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDILocationGetScope$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDILocationGetScope"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDILocationGetInlinedAt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDILocationGetInlinedAt"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIScopeGetFile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIScopeGetFile"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIFileGetDirectory$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIFileGetDirectory"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIFileGetFilename$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIFileGetFilename"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIFileGetSource$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIFileGetSource"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderGetOrCreateTypeArray$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderGetOrCreateTypeArray"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateSubroutineType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateSubroutineType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateMacro$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateMacro"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateTempMacroFile$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateTempMacroFile"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateEnumerator$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateEnumerator"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateEnumerationType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateEnumerationType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateUnionType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateUnionType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateArrayType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateArrayType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateVectorType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateVectorType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateUnspecifiedType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateUnspecifiedType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateBasicType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateBasicType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreatePointerType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreatePointerType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateStructType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateStructType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateMemberType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateMemberType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateStaticMemberType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateStaticMemberType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateMemberPointerType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateMemberPointerType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateObjCIVar$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateObjCIVar"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateObjCProperty$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateObjCProperty"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateObjectPointerType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateObjectPointerType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateQualifiedType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateQualifiedType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateReferenceType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateReferenceType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateNullPtrType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateNullPtrType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateTypedef$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateTypedef"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateInheritance$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateInheritance"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateForwardDecl$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateForwardDecl"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateReplaceableCompositeType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateReplaceableCompositeType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateBitFieldMemberType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateBitFieldMemberType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateClassType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateClassType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateArtificialType$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateArtificialType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDITypeGetName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDITypeGetName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDITypeGetSizeInBits$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDITypeGetSizeInBits"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDITypeGetOffsetInBits$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDITypeGetOffsetInBits"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDITypeGetAlignInBits$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDITypeGetAlignInBits"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDITypeGetLine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDITypeGetLine"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDITypeGetFlags$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDITypeGetFlags"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderGetOrCreateSubrange$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderGetOrCreateSubrange"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderGetOrCreateArray$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderGetOrCreateArray"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateExpression$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateExpression"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateConstantValueExpression$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateConstantValueExpression"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDIBuilderCreateGlobalVariableExpression$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateGlobalVariableExpression"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetDINodeTag$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDINodeTag"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_SHORT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIGlobalVariableExpressionGetVariable$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIGlobalVariableExpressionGetVariable"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIGlobalVariableExpressionGetExpression$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIGlobalVariableExpressionGetExpression"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIVariableGetFile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIVariableGetFile"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIVariableGetScope$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIVariableGetScope"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIVariableGetLine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIVariableGetLine"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTemporaryMDNode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTemporaryMDNode"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDisposeTemporaryMDNode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeTemporaryMDNode"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMetadataReplaceAllUsesWith$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMetadataReplaceAllUsesWith"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateTempGlobalVariableFwdDecl$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateTempGlobalVariableFwdDecl"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderInsertDeclareBefore$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderInsertDeclareBefore"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderInsertDeclareAtEnd$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderInsertDeclareAtEnd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderInsertDbgValueBefore$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderInsertDbgValueBefore"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderInsertDbgValueAtEnd$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderInsertDbgValueAtEnd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDIBuilderCreateAutoVariable$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateAutoVariable"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDIBuilderCreateParameterVariable$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateParameterVariable"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetSubprogram$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSubprogram"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetSubprogram$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetSubprogram"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDISubprogramGetLine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDISubprogramGetLine"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInstructionGetDebugLoc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInstructionGetDebugLoc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInstructionSetDebugLoc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInstructionSetDebugLoc"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetMetadataKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetMetadataKind"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetModuleDataLayout$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetModuleDataLayout"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetModuleDataLayout$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetModuleDataLayout"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateTargetData$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateTargetData"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeTargetData$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeTargetData"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddTargetLibraryInfo$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddTargetLibraryInfo"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCopyStringRepOfTargetData$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCopyStringRepOfTargetData"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMByteOrder$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMByteOrder"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPointerSize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPointerSize"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPointerSizeForAS$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPointerSizeForAS"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMIntPtrType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntPtrType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIntPtrTypeForAS$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntPtrTypeForAS"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMIntPtrTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntPtrTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIntPtrTypeForASInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntPtrTypeForASInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMSizeOfTypeInBits$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSizeOfTypeInBits"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMStoreSizeOfType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMStoreSizeOfType"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMABISizeOfType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMABISizeOfType"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMABIAlignmentOfType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMABIAlignmentOfType"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCallFrameAlignmentOfType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCallFrameAlignmentOfType"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPreferredAlignmentOfType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPreferredAlignmentOfType"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPreferredAlignmentOfGlobal$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPreferredAlignmentOfGlobal"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMElementAtOffset$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMElementAtOffset"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMOffsetOfElement$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOffsetOfElement"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetFirstTarget$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstTarget"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextTarget$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextTarget"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTargetFromName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTargetFromName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTargetFromTriple$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTargetFromTriple"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTargetName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTargetName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTargetDescription$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTargetDescription"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTargetHasJIT$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetHasJIT"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTargetHasTargetMachine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetHasTargetMachine"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTargetHasAsmBackend$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetHasAsmBackend"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateTargetMachineOptions$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateTargetMachineOptions"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeTargetMachineOptions$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeTargetMachineOptions"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTargetMachineOptionsSetCPU$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetCPU"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTargetMachineOptionsSetFeatures$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetFeatures"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTargetMachineOptionsSetABI$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetABI"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTargetMachineOptionsSetCodeGenOptLevel$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetCodeGenOptLevel"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMTargetMachineOptionsSetRelocMode$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetRelocMode"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMTargetMachineOptionsSetCodeModel$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetCodeModel"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMCreateTargetMachineWithOptions$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateTargetMachineWithOptions"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateTargetMachine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateTargetMachine"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDisposeTargetMachine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeTargetMachine"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTargetMachineTarget$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTargetMachineTarget"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTargetMachineTriple$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTargetMachineTriple"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTargetMachineCPU$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTargetMachineCPU"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTargetMachineFeatureString$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTargetMachineFeatureString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateTargetDataLayout$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateTargetDataLayout"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetTargetMachineAsmVerbosity$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetTargetMachineAsmVerbosity"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMSetTargetMachineFastISel$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetTargetMachineFastISel"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMSetTargetMachineGlobalISel$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetTargetMachineGlobalISel"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMSetTargetMachineGlobalISelAbort$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetTargetMachineGlobalISelAbort"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMSetTargetMachineMachineOutliner$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetTargetMachineMachineOutliner"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMTargetMachineEmitToFile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetMachineEmitToFile"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTargetMachineEmitToMemoryBuffer$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetMachineEmitToMemoryBuffer"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetDefaultTargetTriple$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDefaultTargetTriple"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMNormalizeTargetTriple$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMNormalizeTargetTriple"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetHostCPUName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetHostCPUName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetHostCPUFeatures$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetHostCPUFeatures"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddAnalysisPasses$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddAnalysisPasses"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMWriteBitcodeToFile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMWriteBitcodeToFile"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMWriteBitcodeToFD$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMWriteBitcodeToFD"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMWriteBitcodeToFileHandle$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMWriteBitcodeToFileHandle"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMWriteBitcodeToMemoryBuffer$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMWriteBitcodeToMemoryBuffer"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetErrorTypeId$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetErrorTypeId"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConsumeError$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConsumeError"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetErrorMessage$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetErrorMessage"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeErrorMessage$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeErrorMessage"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetStringErrorTypeId$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetStringErrorTypeId"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateStringError$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateStringError"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcExecutionSessionSetErrorReporter$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionSetErrorReporter"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcExecutionSessionGetSymbolStringPool$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionGetSymbolStringPool"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcSymbolStringPoolClearDeadEntries$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcSymbolStringPoolClearDeadEntries"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcExecutionSessionIntern$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionIntern"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcExecutionSessionLookup$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionLookup"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcRetainSymbolStringPoolEntry$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcRetainSymbolStringPoolEntry"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcReleaseSymbolStringPoolEntry$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcReleaseSymbolStringPoolEntry"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcSymbolStringPoolEntryStr$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcSymbolStringPoolEntryStr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcReleaseResourceTracker$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcReleaseResourceTracker"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcResourceTrackerTransferTo$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcResourceTrackerTransferTo"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcResourceTrackerRemove$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcResourceTrackerRemove"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeDefinitionGenerator$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeDefinitionGenerator"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeMaterializationUnit$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeMaterializationUnit"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateCustomMaterializationUnit$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateCustomMaterializationUnit"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcAbsoluteSymbols$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcAbsoluteSymbols"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMOrcLazyReexports$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLazyReexports"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMOrcDisposeMaterializationResponsibility$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeMaterializationResponsibility"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityGetTargetDylib$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetTargetDylib"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityGetExecutionSession$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetExecutionSession"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityGetSymbols$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetSymbols"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeCSymbolFlagsMap$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeCSymbolFlagsMap"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityGetInitializerSymbol$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetInitializerSymbol"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityGetRequestedSymbols$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetRequestedSymbols"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeSymbols$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeSymbols"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityNotifyResolved$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityNotifyResolved"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityNotifyEmitted$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityNotifyEmitted"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityDefineMaterializing$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityDefineMaterializing"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityFailMaterialization$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityFailMaterialization"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityReplace$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityReplace"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityDelegate$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityDelegate"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityAddDependencies$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityAddDependencies"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMOrcMaterializationResponsibilityAddDependenciesForAll$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityAddDependenciesForAll"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMOrcExecutionSessionCreateBareJITDylib$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionCreateBareJITDylib"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcExecutionSessionCreateJITDylib$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionCreateJITDylib"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcExecutionSessionGetJITDylibByName$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionGetJITDylibByName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcJITDylibCreateResourceTracker$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcJITDylibCreateResourceTracker"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcJITDylibGetDefaultResourceTracker$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcJITDylibGetDefaultResourceTracker"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcJITDylibDefine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcJITDylibDefine"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcJITDylibClear$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcJITDylibClear"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcJITDylibAddGenerator$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcJITDylibAddGenerator"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateCustomCAPIDefinitionGenerator$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateCustomCAPIDefinitionGenerator"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLookupStateContinueLookup$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLookupStateContinueLookup"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateDynamicLibrarySearchGeneratorForProcess$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateDynamicLibrarySearchGeneratorForProcess"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_BYTE,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateDynamicLibrarySearchGeneratorForPath$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateDynamicLibrarySearchGeneratorForPath"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_BYTE,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-//internal val `LLVMOrcCreateStaticLibrarySearchGeneratorForPath$mh`: MethodHandle =
-//    Linker.nativeLinker().downcallHandle(
-//`$RuntimeHelper`.findSymbol("LLVMOrcCreateStaticLibrarySearchGeneratorForPath"),
-//FunctionDescriptor.of(
-//  `$RuntimeHelper`.POINTER,
-//  `$RuntimeHelper`.POINTER,
-//  `$RuntimeHelper`.POINTER,
-//  `$RuntimeHelper`.POINTER,
-//  `$RuntimeHelper`.POINTER,
-//))
-
-internal val `LLVMOrcCreateNewThreadSafeContext$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateNewThreadSafeContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcThreadSafeContextGetContext$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcThreadSafeContextGetContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeThreadSafeContext$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeThreadSafeContext"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateNewThreadSafeModule$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateNewThreadSafeModule"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeThreadSafeModule$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeThreadSafeModule"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcThreadSafeModuleWithModuleDo$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcThreadSafeModuleWithModuleDo"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcJITTargetMachineBuilderDetectHost$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcJITTargetMachineBuilderDetectHost"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcJITTargetMachineBuilderCreateFromTargetMachine$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcJITTargetMachineBuilderCreateFromTargetMachine"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeJITTargetMachineBuilder$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeJITTargetMachineBuilder"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcJITTargetMachineBuilderGetTargetTriple$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcJITTargetMachineBuilderGetTargetTriple"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcJITTargetMachineBuilderSetTargetTriple$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcJITTargetMachineBuilderSetTargetTriple"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcObjectLayerAddObjectFile$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcObjectLayerAddObjectFile"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcObjectLayerAddObjectFileWithRT$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcObjectLayerAddObjectFileWithRT"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcObjectLayerEmit$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcObjectLayerEmit"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeObjectLayer$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeObjectLayer"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcIRTransformLayerEmit$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcIRTransformLayerEmit"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcIRTransformLayerSetTransform$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcIRTransformLayerSetTransform"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcObjectTransformLayerSetTransform$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcObjectTransformLayerSetTransform"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateLocalIndirectStubsManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateLocalIndirectStubsManager"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeIndirectStubsManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeIndirectStubsManager"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateLocalLazyCallThroughManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateLocalLazyCallThroughManager"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeLazyCallThroughManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeLazyCallThroughManager"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateDumpObjects$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateDumpObjects"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeDumpObjects$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeDumpObjects"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDumpObjects_CallOperator$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDumpObjects_CallOperator"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMLinkInMCJIT$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMLinkInMCJIT"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMLinkInInterpreter$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMLinkInInterpreter"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMCreateGenericValueOfInt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateGenericValueOfInt"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMCreateGenericValueOfPointer$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateGenericValueOfPointer"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateGenericValueOfFloat$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateGenericValueOfFloat"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_DOUBLE,
-))
-
-internal val `LLVMGenericValueIntWidth$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGenericValueIntWidth"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGenericValueToInt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGenericValueToInt"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGenericValueToPointer$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGenericValueToPointer"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGenericValueToFloat$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGenericValueToFloat"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_DOUBLE,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeGenericValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeGenericValue"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateExecutionEngineForModule$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateExecutionEngineForModule"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateInterpreterForModule$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateInterpreterForModule"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateJITCompilerForModule$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateJITCompilerForModule"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInitializeMCJITCompilerOptions$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeMCJITCompilerOptions"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMCreateMCJITCompilerForModule$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateMCJITCompilerForModule"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeExecutionEngine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeExecutionEngine"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRunStaticConstructors$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRunStaticConstructors"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRunStaticDestructors$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRunStaticDestructors"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRunFunctionAsMain$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRunFunctionAsMain"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRunFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRunFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMFreeMachineCodeForFunction$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMFreeMachineCodeForFunction"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddModule$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddModule"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemoveModule$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemoveModule"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMFindFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMFindFunction"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRecompileAndRelinkFunction$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRecompileAndRelinkFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetExecutionEngineTargetData$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetExecutionEngineTargetData"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetExecutionEngineTargetMachine$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetExecutionEngineTargetMachine"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddGlobalMapping$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddGlobalMapping"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPointerToGlobal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPointerToGlobal"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetGlobalValueAddress$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetGlobalValueAddress"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetFunctionAddress$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFunctionAddress"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMExecutionEngineGetErrMsg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMExecutionEngineGetErrMsg"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateSimpleMCJITMemoryManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateSimpleMCJITMemoryManager"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeMCJITMemoryManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeMCJITMemoryManager"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateGDBRegistrationListener$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateGDBRegistrationListener"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateIntelJITEventListener$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateIntelJITEventListener"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateOProfileJITEventListener$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateOProfileJITEventListener"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreatePerfJITEventListener$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreatePerfJITEventListener"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateRTDyldObjectLinkingLayerWithSectionMemoryManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateRTDyldObjectLinkingLayerWithSectionMemoryManager"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
+internal val `LLVMDebugMetadataVersion$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDebugMetadataVersion"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetModuleDebugMetadataVersion$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetModuleDebugMetadataVersion"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMStripModuleDebugInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMStripModuleDebugInfo"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateDIBuilderDisallowUnresolved$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateDIBuilderDisallowUnresolved"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateDIBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateDIBuilder"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeDIBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeDIBuilder"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderFinalize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderFinalize"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderFinalizeSubprogram$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderFinalizeSubprogram"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateCompileUnit$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateCompileUnit"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateFile"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateModule"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateNameSpace$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateNameSpace"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateLexicalBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateLexicalBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateLexicalBlockFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateLexicalBlockFile"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateImportedModuleFromNamespace$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateImportedModuleFromNamespace"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateImportedModuleFromAlias$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateImportedModuleFromAlias"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateImportedModuleFromModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateImportedModuleFromModule"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateImportedDeclaration$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateImportedDeclaration"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateDebugLocation$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateDebugLocation"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDILocationGetLine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDILocationGetLine"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDILocationGetColumn$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDILocationGetColumn"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDILocationGetScope$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDILocationGetScope"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDILocationGetInlinedAt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDILocationGetInlinedAt"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIScopeGetFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIScopeGetFile"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIFileGetDirectory$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIFileGetDirectory"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIFileGetFilename$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIFileGetFilename"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIFileGetSource$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIFileGetSource"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderGetOrCreateTypeArray$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderGetOrCreateTypeArray"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateSubroutineType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateSubroutineType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateMacro$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateMacro"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateTempMacroFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateTempMacroFile"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateEnumerator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateEnumerator"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateEnumerationType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateEnumerationType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateUnionType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateUnionType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateArrayType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateArrayType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateVectorType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateVectorType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateUnspecifiedType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateUnspecifiedType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateBasicType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateBasicType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreatePointerType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreatePointerType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateStructType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateStructType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateMemberType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateMemberType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateStaticMemberType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateStaticMemberType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateMemberPointerType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateMemberPointerType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateObjCIVar$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateObjCIVar"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateObjCProperty$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateObjCProperty"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateObjectPointerType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateObjectPointerType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateQualifiedType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateQualifiedType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateReferenceType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateReferenceType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateNullPtrType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateNullPtrType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateTypedef$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateTypedef"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateInheritance$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateInheritance"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateForwardDecl$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateForwardDecl"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateReplaceableCompositeType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateReplaceableCompositeType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateBitFieldMemberType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateBitFieldMemberType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateClassType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateClassType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateArtificialType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateArtificialType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDITypeGetName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDITypeGetName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDITypeGetSizeInBits$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDITypeGetSizeInBits"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDITypeGetOffsetInBits$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDITypeGetOffsetInBits"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDITypeGetAlignInBits$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDITypeGetAlignInBits"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDITypeGetLine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDITypeGetLine"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDITypeGetFlags$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDITypeGetFlags"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderGetOrCreateSubrange$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderGetOrCreateSubrange"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderGetOrCreateArray$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderGetOrCreateArray"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateExpression$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateExpression"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateConstantValueExpression$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateConstantValueExpression"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDIBuilderCreateGlobalVariableExpression$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateGlobalVariableExpression"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetDINodeTag$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDINodeTag"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_SHORT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIGlobalVariableExpressionGetVariable$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIGlobalVariableExpressionGetVariable"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIGlobalVariableExpressionGetExpression$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIGlobalVariableExpressionGetExpression"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIVariableGetFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIVariableGetFile"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIVariableGetScope$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIVariableGetScope"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIVariableGetLine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIVariableGetLine"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTemporaryMDNode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTemporaryMDNode"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDisposeTemporaryMDNode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeTemporaryMDNode"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMetadataReplaceAllUsesWith$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMetadataReplaceAllUsesWith"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateTempGlobalVariableFwdDecl$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateTempGlobalVariableFwdDecl"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderInsertDeclareBefore$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderInsertDeclareBefore"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderInsertDeclareAtEnd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderInsertDeclareAtEnd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderInsertDbgValueBefore$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderInsertDbgValueBefore"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderInsertDbgValueAtEnd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderInsertDbgValueAtEnd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDIBuilderCreateAutoVariable$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateAutoVariable"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDIBuilderCreateParameterVariable$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDIBuilderCreateParameterVariable"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetSubprogram$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSubprogram"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetSubprogram$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetSubprogram"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDISubprogramGetLine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDISubprogramGetLine"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInstructionGetDebugLoc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInstructionGetDebugLoc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInstructionSetDebugLoc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInstructionSetDebugLoc"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetMetadataKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetMetadataKind"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInitializeAArch64TargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAArch64TargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAMDGPUTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAMDGPUTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeARMTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeARMTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAVRTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAVRTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeBPFTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeBPFTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeHexagonTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeHexagonTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLanaiTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLanaiTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLoongArchTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLoongArchTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMipsTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMipsTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMSP430TargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMSP430TargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeNVPTXTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeNVPTXTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializePowerPCTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializePowerPCTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeRISCVTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeRISCVTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSparcTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSparcTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSystemZTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSystemZTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeVETargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeVETargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeWebAssemblyTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeWebAssemblyTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeX86TargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeX86TargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeXCoreTargetInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeXCoreTargetInfo"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAArch64Target$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAArch64Target"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAMDGPUTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAMDGPUTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeARMTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeARMTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAVRTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAVRTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeBPFTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeBPFTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeHexagonTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeHexagonTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLanaiTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLanaiTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLoongArchTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLoongArchTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMipsTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMipsTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMSP430Target$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMSP430Target"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeNVPTXTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeNVPTXTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializePowerPCTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializePowerPCTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeRISCVTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeRISCVTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSparcTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSparcTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSystemZTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSystemZTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeVETarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeVETarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeWebAssemblyTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeWebAssemblyTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeX86Target$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeX86Target"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeXCoreTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeXCoreTarget"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAArch64TargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAArch64TargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAMDGPUTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAMDGPUTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeARMTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeARMTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAVRTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAVRTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeBPFTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeBPFTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeHexagonTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeHexagonTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLanaiTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLanaiTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLoongArchTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLoongArchTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMipsTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMipsTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMSP430TargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMSP430TargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeNVPTXTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeNVPTXTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializePowerPCTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializePowerPCTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeRISCVTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeRISCVTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSparcTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSparcTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSystemZTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSystemZTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeVETargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeVETargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeWebAssemblyTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeWebAssemblyTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeX86TargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeX86TargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeXCoreTargetMC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeXCoreTargetMC"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAArch64AsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAArch64AsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAMDGPUAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAMDGPUAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeARMAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeARMAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAVRAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAVRAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeBPFAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeBPFAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeHexagonAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeHexagonAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLanaiAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLanaiAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLoongArchAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLoongArchAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMipsAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMipsAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMSP430AsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMSP430AsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeNVPTXAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeNVPTXAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializePowerPCAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializePowerPCAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeRISCVAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeRISCVAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSparcAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSparcAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSystemZAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSystemZAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeVEAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeVEAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeWebAssemblyAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeWebAssemblyAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeX86AsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeX86AsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeXCoreAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeXCoreAsmPrinter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAArch64AsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAArch64AsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAMDGPUAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAMDGPUAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeARMAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeARMAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAVRAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAVRAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeBPFAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeBPFAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeHexagonAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeHexagonAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLanaiAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLanaiAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLoongArchAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLoongArchAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMipsAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMipsAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMSP430AsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMSP430AsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializePowerPCAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializePowerPCAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeRISCVAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeRISCVAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSparcAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSparcAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSystemZAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSystemZAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeVEAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeVEAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeWebAssemblyAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeWebAssemblyAsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeX86AsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeX86AsmParser"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAArch64Disassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAArch64Disassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAMDGPUDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAMDGPUDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeARMDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeARMDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAVRDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAVRDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeBPFDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeBPFDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeHexagonDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeHexagonDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLanaiDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLanaiDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeLoongArchDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeLoongArchDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMipsDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMipsDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeMSP430Disassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMSP430Disassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializePowerPCDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializePowerPCDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeRISCVDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeRISCVDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSparcDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSparcDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeSystemZDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeSystemZDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeVEDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeVEDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeWebAssemblyDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeWebAssemblyDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeX86Disassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeX86Disassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeXCoreDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeXCoreDisassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAllTargetInfos$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAllTargetInfos"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAllTargets$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAllTargets"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAllTargetMCs$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAllTargetMCs"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAllAsmPrinters$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAllAsmPrinters"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAllAsmParsers$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAllAsmParsers"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeAllDisassemblers$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeAllDisassemblers"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMInitializeNativeTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeNativeTarget"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMInitializeNativeAsmParser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeNativeAsmParser"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMInitializeNativeAsmPrinter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeNativeAsmPrinter"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMInitializeNativeDisassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeNativeDisassembler"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetModuleDataLayout$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetModuleDataLayout"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetModuleDataLayout$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetModuleDataLayout"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateTargetData$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateTargetData"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeTargetData$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeTargetData"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddTargetLibraryInfo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddTargetLibraryInfo"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCopyStringRepOfTargetData$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCopyStringRepOfTargetData"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMByteOrder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMByteOrder"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPointerSize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPointerSize"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPointerSizeForAS$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPointerSizeForAS"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMIntPtrType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntPtrType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIntPtrTypeForAS$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntPtrTypeForAS"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMIntPtrTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntPtrTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIntPtrTypeForASInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntPtrTypeForASInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMSizeOfTypeInBits$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSizeOfTypeInBits"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMStoreSizeOfType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMStoreSizeOfType"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMABISizeOfType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMABISizeOfType"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMABIAlignmentOfType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMABIAlignmentOfType"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCallFrameAlignmentOfType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCallFrameAlignmentOfType"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPreferredAlignmentOfType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPreferredAlignmentOfType"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPreferredAlignmentOfGlobal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPreferredAlignmentOfGlobal"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMElementAtOffset$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMElementAtOffset"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMOffsetOfElement$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOffsetOfElement"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetFirstTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstTarget"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextTarget"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTargetFromName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTargetFromName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTargetFromTriple$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTargetFromTriple"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTargetName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTargetName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTargetDescription$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTargetDescription"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTargetHasJIT$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetHasJIT"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTargetHasTargetMachine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetHasTargetMachine"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTargetHasAsmBackend$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetHasAsmBackend"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateTargetMachineOptions$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateTargetMachineOptions"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeTargetMachineOptions$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeTargetMachineOptions"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTargetMachineOptionsSetCPU$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetCPU"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTargetMachineOptionsSetFeatures$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetFeatures"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTargetMachineOptionsSetABI$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetABI"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTargetMachineOptionsSetCodeGenOptLevel$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetCodeGenOptLevel"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMTargetMachineOptionsSetRelocMode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetRelocMode"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMTargetMachineOptionsSetCodeModel$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetMachineOptionsSetCodeModel"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMCreateTargetMachineWithOptions$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateTargetMachineWithOptions"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateTargetMachine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateTargetMachine"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDisposeTargetMachine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeTargetMachine"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTargetMachineTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTargetMachineTarget"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTargetMachineTriple$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTargetMachineTriple"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTargetMachineCPU$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTargetMachineCPU"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTargetMachineFeatureString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTargetMachineFeatureString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateTargetDataLayout$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateTargetDataLayout"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetTargetMachineAsmVerbosity$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetTargetMachineAsmVerbosity"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMSetTargetMachineFastISel$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetTargetMachineFastISel"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMSetTargetMachineGlobalISel$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetTargetMachineGlobalISel"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMSetTargetMachineGlobalISelAbort$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetTargetMachineGlobalISelAbort"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMSetTargetMachineMachineOutliner$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetTargetMachineMachineOutliner"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMTargetMachineEmitToFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetMachineEmitToFile"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTargetMachineEmitToMemoryBuffer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetMachineEmitToMemoryBuffer"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetDefaultTargetTriple$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDefaultTargetTriple"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMNormalizeTargetTriple$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMNormalizeTargetTriple"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetHostCPUName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetHostCPUName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetHostCPUFeatures$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetHostCPUFeatures"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddAnalysisPasses$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddAnalysisPasses"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMWriteBitcodeToFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMWriteBitcodeToFile"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMWriteBitcodeToFD$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMWriteBitcodeToFD"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMWriteBitcodeToFileHandle$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMWriteBitcodeToFileHandle"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMWriteBitcodeToMemoryBuffer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMWriteBitcodeToMemoryBuffer"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetErrorTypeId$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetErrorTypeId"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConsumeError$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConsumeError"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetErrorMessage$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetErrorMessage"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeErrorMessage$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeErrorMessage"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetStringErrorTypeId$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetStringErrorTypeId"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateStringError$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateStringError"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcExecutionSessionSetErrorReporter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionSetErrorReporter"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcExecutionSessionGetSymbolStringPool$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionGetSymbolStringPool"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcSymbolStringPoolClearDeadEntries$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcSymbolStringPoolClearDeadEntries"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcExecutionSessionIntern$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionIntern"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcExecutionSessionLookup$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionLookup"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcRetainSymbolStringPoolEntry$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcRetainSymbolStringPoolEntry"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcReleaseSymbolStringPoolEntry$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcReleaseSymbolStringPoolEntry"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcSymbolStringPoolEntryStr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcSymbolStringPoolEntryStr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcReleaseResourceTracker$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcReleaseResourceTracker"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcResourceTrackerTransferTo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcResourceTrackerTransferTo"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcResourceTrackerRemove$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcResourceTrackerRemove"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeDefinitionGenerator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeDefinitionGenerator"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeMaterializationUnit$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeMaterializationUnit"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateCustomMaterializationUnit$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateCustomMaterializationUnit"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcAbsoluteSymbols$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcAbsoluteSymbols"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMOrcLazyReexports$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLazyReexports"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMOrcDisposeMaterializationResponsibility$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeMaterializationResponsibility"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityGetTargetDylib$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetTargetDylib"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityGetExecutionSession$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetExecutionSession"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityGetSymbols$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetSymbols"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeCSymbolFlagsMap$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeCSymbolFlagsMap"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityGetInitializerSymbol$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetInitializerSymbol"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityGetRequestedSymbols$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityGetRequestedSymbols"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeSymbols$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeSymbols"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityNotifyResolved$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityNotifyResolved"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityNotifyEmitted$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityNotifyEmitted"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityDefineMaterializing$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityDefineMaterializing"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityFailMaterialization$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityFailMaterialization"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityReplace$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityReplace"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityDelegate$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityDelegate"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityAddDependencies$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityAddDependencies"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMOrcMaterializationResponsibilityAddDependenciesForAll$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcMaterializationResponsibilityAddDependenciesForAll"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMOrcExecutionSessionCreateBareJITDylib$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionCreateBareJITDylib"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcExecutionSessionCreateJITDylib$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionCreateJITDylib"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcExecutionSessionGetJITDylibByName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcExecutionSessionGetJITDylibByName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcJITDylibCreateResourceTracker$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcJITDylibCreateResourceTracker"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcJITDylibGetDefaultResourceTracker$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcJITDylibGetDefaultResourceTracker"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcJITDylibDefine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcJITDylibDefine"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcJITDylibClear$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcJITDylibClear"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcJITDylibAddGenerator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcJITDylibAddGenerator"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateCustomCAPIDefinitionGenerator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateCustomCAPIDefinitionGenerator"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLookupStateContinueLookup$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLookupStateContinueLookup"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateDynamicLibrarySearchGeneratorForProcess$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateDynamicLibrarySearchGeneratorForProcess"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_BYTE,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateDynamicLibrarySearchGeneratorForPath$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateDynamicLibrarySearchGeneratorForPath"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_BYTE,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateStaticLibrarySearchGeneratorForPath$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateStaticLibrarySearchGeneratorForPath"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateNewThreadSafeContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateNewThreadSafeContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcThreadSafeContextGetContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcThreadSafeContextGetContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeThreadSafeContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeThreadSafeContext"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateNewThreadSafeModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateNewThreadSafeModule"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeThreadSafeModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeThreadSafeModule"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcThreadSafeModuleWithModuleDo$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcThreadSafeModuleWithModuleDo"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcJITTargetMachineBuilderDetectHost$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcJITTargetMachineBuilderDetectHost"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcJITTargetMachineBuilderCreateFromTargetMachine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcJITTargetMachineBuilderCreateFromTargetMachine"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeJITTargetMachineBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeJITTargetMachineBuilder"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcJITTargetMachineBuilderGetTargetTriple$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcJITTargetMachineBuilderGetTargetTriple"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcJITTargetMachineBuilderSetTargetTriple$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcJITTargetMachineBuilderSetTargetTriple"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcObjectLayerAddObjectFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcObjectLayerAddObjectFile"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcObjectLayerAddObjectFileWithRT$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcObjectLayerAddObjectFileWithRT"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcObjectLayerEmit$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcObjectLayerEmit"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeObjectLayer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeObjectLayer"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcIRTransformLayerEmit$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcIRTransformLayerEmit"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcIRTransformLayerSetTransform$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcIRTransformLayerSetTransform"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcObjectTransformLayerSetTransform$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcObjectTransformLayerSetTransform"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateLocalIndirectStubsManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateLocalIndirectStubsManager"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeIndirectStubsManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeIndirectStubsManager"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateLocalLazyCallThroughManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateLocalLazyCallThroughManager"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeLazyCallThroughManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeLazyCallThroughManager"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateDumpObjects$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateDumpObjects"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeDumpObjects$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeDumpObjects"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDumpObjects_CallOperator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDumpObjects_CallOperator"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMLinkInMCJIT$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMLinkInMCJIT"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMLinkInInterpreter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMLinkInInterpreter"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMCreateGenericValueOfInt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateGenericValueOfInt"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMCreateGenericValueOfPointer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateGenericValueOfPointer"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateGenericValueOfFloat$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateGenericValueOfFloat"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_DOUBLE,
+  ))}
+
+internal val `LLVMGenericValueIntWidth$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGenericValueIntWidth"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGenericValueToInt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGenericValueToInt"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGenericValueToPointer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGenericValueToPointer"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGenericValueToFloat$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGenericValueToFloat"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_DOUBLE,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeGenericValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeGenericValue"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateExecutionEngineForModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateExecutionEngineForModule"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateInterpreterForModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateInterpreterForModule"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateJITCompilerForModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateJITCompilerForModule"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInitializeMCJITCompilerOptions$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeMCJITCompilerOptions"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMCreateMCJITCompilerForModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateMCJITCompilerForModule"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeExecutionEngine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeExecutionEngine"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRunStaticConstructors$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRunStaticConstructors"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRunStaticDestructors$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRunStaticDestructors"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRunFunctionAsMain$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRunFunctionAsMain"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRunFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRunFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMFreeMachineCodeForFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMFreeMachineCodeForFunction"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddModule"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemoveModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemoveModule"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMFindFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMFindFunction"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRecompileAndRelinkFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRecompileAndRelinkFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetExecutionEngineTargetData$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetExecutionEngineTargetData"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetExecutionEngineTargetMachine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetExecutionEngineTargetMachine"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddGlobalMapping$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddGlobalMapping"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPointerToGlobal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPointerToGlobal"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetGlobalValueAddress$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetGlobalValueAddress"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetFunctionAddress$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFunctionAddress"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMExecutionEngineGetErrMsg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMExecutionEngineGetErrMsg"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateSimpleMCJITMemoryManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateSimpleMCJITMemoryManager"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeMCJITMemoryManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeMCJITMemoryManager"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateGDBRegistrationListener$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateGDBRegistrationListener"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateIntelJITEventListener$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateIntelJITEventListener"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateOProfileJITEventListener$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateOProfileJITEventListener"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreatePerfJITEventListener$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreatePerfJITEventListener"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateRTDyldObjectLinkingLayerWithSectionMemoryManager$mh`: MethodHandle by
+    lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateRTDyldObjectLinkingLayerWithSectionMemoryManager"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
 
 internal val `LLVMOrcCreateRTDyldObjectLinkingLayerWithMCJITMemoryManagerLikeCallbacks$mh`:
-    MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateRTDyldObjectLinkingLayerWithMCJITMemoryManagerLikeCallbacks"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcRTDyldObjectLinkingLayerRegisterJITEventListener$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcRTDyldObjectLinkingLayerRegisterJITEventListener"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInstallFatalErrorHandler$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInstallFatalErrorHandler"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMResetFatalErrorHandler$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMResetFatalErrorHandler"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMEnablePrettyStackTrace$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMEnablePrettyStackTrace"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMRunPasses$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRunPasses"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreatePassBuilderOptions$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreatePassBuilderOptions"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPassBuilderOptionsSetVerifyEach$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetVerifyEach"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetDebugLogging$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetDebugLogging"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetLoopInterleaving$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLoopInterleaving"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetLoopVectorization$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLoopVectorization"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetSLPVectorization$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetSLPVectorization"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetLoopUnrolling$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLoopUnrolling"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetForgetAllSCEVInLoopUnroll$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetForgetAllSCEVInLoopUnroll"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetLicmMssaOptCap$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLicmMssaOptCap"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetLicmMssaNoAccForPromotionCap$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLicmMssaNoAccForPromotionCap"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetCallGraphProfile$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetCallGraphProfile"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetMergeFunctions$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetMergeFunctions"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPassBuilderOptionsSetInlinerThreshold$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetInlinerThreshold"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDisposePassBuilderOptions$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposePassBuilderOptions"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateLLJITBuilder$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateLLJITBuilder"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeLLJITBuilder$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeLLJITBuilder"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITBuilderSetJITTargetMachineBuilder$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITBuilderSetJITTargetMachineBuilder"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITBuilderSetObjectLinkingLayerCreator$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITBuilderSetObjectLinkingLayerCreator"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcCreateLLJIT$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcCreateLLJIT"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcDisposeLLJIT$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcDisposeLLJIT"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITGetExecutionSession$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetExecutionSession"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITGetMainJITDylib$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetMainJITDylib"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITGetTripleString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetTripleString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITGetGlobalPrefix$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetGlobalPrefix"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BYTE,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITMangleAndIntern$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITMangleAndIntern"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITAddObjectFile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITAddObjectFile"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITAddObjectFileWithRT$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITAddObjectFileWithRT"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITAddLLVMIRModule$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITAddLLVMIRModule"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITAddLLVMIRModuleWithRT$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITAddLLVMIRModuleWithRT"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITLookup$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITLookup"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITGetObjLinkingLayer$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetObjLinkingLayer"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITGetObjTransformLayer$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetObjTransformLayer"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITGetIRTransformLayer$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetIRTransformLayer"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITGetDataLayoutStr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetDataLayoutStr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMOrcLLJITEnableDebugSupport$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMOrcLLJITEnableDebugSupport"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMVerifyModule$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMVerifyModule"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMVerifyFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMVerifyFunction"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMViewFunctionCFG$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMViewFunctionCFG"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMViewFunctionCFGOnly$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMViewFunctionCFGOnly"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateDisasm$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateDisasm"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateDisasmCPU$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateDisasmCPU"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateDisasmCPUFeatures$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateDisasmCPUFeatures"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetDisasmOptions$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetDisasmOptions"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDisasmDispose$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisasmDispose"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisasmInstruction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisasmInstruction"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMParseBitcode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMParseBitcode"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMParseBitcode2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMParseBitcode2"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMParseBitcodeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMParseBitcodeInContext"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMParseBitcodeInContext2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMParseBitcodeInContext2"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBitcodeModuleInContext$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBitcodeModuleInContext"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBitcodeModuleInContext2$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBitcodeModuleInContext2"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBitcodeModule$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBitcodeModule"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBitcodeModule2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBitcodeModule2"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkStringGetData$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkStringGetData"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkStringGetLen$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkStringGetLen"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkDebugLocGetSourceFilePath$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkDebugLocGetSourceFilePath"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkDebugLocGetSourceLine$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkDebugLocGetSourceLine"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkDebugLocGetSourceColumn$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkDebugLocGetSourceColumn"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkArgGetKey$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkArgGetKey"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkArgGetValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkArgGetValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkArgGetDebugLoc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkArgGetDebugLoc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryDispose$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryDispose"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryGetType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetType"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryGetPassName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetPassName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryGetRemarkName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetRemarkName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryGetFunctionName$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetFunctionName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryGetDebugLoc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetDebugLoc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryGetHotness$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetHotness"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryGetNumArgs$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetNumArgs"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryGetFirstArg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetFirstArg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkEntryGetNextArg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetNextArg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkParserCreateYAML$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkParserCreateYAML"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMRemarkParserCreateBitstream$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkParserCreateBitstream"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMRemarkParserGetNext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkParserGetNext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkParserHasError$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkParserHasError"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkParserGetErrorMessage$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkParserGetErrorMessage"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkParserDispose$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkParserDispose"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemarkVersion$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemarkVersion"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetOrInsertComdat$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetOrInsertComdat"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetComdat$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetComdat"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetComdat$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetComdat"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetComdatSelectionKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetComdatSelectionKind"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetComdatSelectionKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetComdatSelectionKind"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `llvm_blake3_version$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("llvm_blake3_version"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `llvm_blake3_hasher_init$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("llvm_blake3_hasher_init"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `llvm_blake3_hasher_init_keyed$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("llvm_blake3_hasher_init_keyed"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `llvm_blake3_hasher_init_derive_key$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("llvm_blake3_hasher_init_derive_key"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `llvm_blake3_hasher_init_derive_key_raw$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("llvm_blake3_hasher_init_derive_key_raw"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `llvm_blake3_hasher_update$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("llvm_blake3_hasher_update"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `llvm_blake3_hasher_finalize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("llvm_blake3_hasher_finalize"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `llvm_blake3_hasher_finalize_seek$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("llvm_blake3_hasher_finalize_seek"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `llvm_blake3_hasher_reset$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("llvm_blake3_hasher_reset"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMParseIRInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMParseIRInContext"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMLoadLibraryPermanently$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMLoadLibraryPermanently"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMParseCommandLineOptions$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMParseCommandLineOptions"),
-FunctionDescriptor.ofVoid(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSearchForAddressOfSymbol$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSearchForAddressOfSymbol"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddSymbol$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddSymbol"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateBinary$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateBinary"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeBinary$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeBinary"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBinaryCopyMemoryBuffer$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBinaryCopyMemoryBuffer"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBinaryGetType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBinaryGetType"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMachOUniversalBinaryCopyObjectForArch$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMachOUniversalBinaryCopyObjectForArch"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMObjectFileCopySectionIterator$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMObjectFileCopySectionIterator"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMObjectFileIsSectionIteratorAtEnd$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMObjectFileIsSectionIteratorAtEnd"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMObjectFileCopySymbolIterator$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMObjectFileCopySymbolIterator"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMObjectFileIsSymbolIteratorAtEnd$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMObjectFileIsSymbolIteratorAtEnd"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeSectionIterator$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeSectionIterator"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMoveToNextSection$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMoveToNextSection"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMoveToContainingSection$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMoveToContainingSection"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeSymbolIterator$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeSymbolIterator"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMoveToNextSymbol$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMoveToNextSymbol"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSectionName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSectionName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSectionSize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSectionSize"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSectionContents$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSectionContents"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSectionAddress$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSectionAddress"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSectionContainsSymbol$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSectionContainsSymbol"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetRelocations$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetRelocations"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeRelocationIterator$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeRelocationIterator"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsRelocationIteratorAtEnd$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsRelocationIteratorAtEnd"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMoveToNextRelocation$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMoveToNextRelocation"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSymbolName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSymbolName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSymbolAddress$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSymbolAddress"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSymbolSize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSymbolSize"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetRelocationOffset$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetRelocationOffset"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetRelocationSymbol$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetRelocationSymbol"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetRelocationType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetRelocationType"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetRelocationTypeName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetRelocationTypeName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetRelocationValueString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetRelocationValueString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateObjectFile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateObjectFile"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeObjectFile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeObjectFile"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSections$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSections"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsSectionIteratorAtEnd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsSectionIteratorAtEnd"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSymbols$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSymbols"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsSymbolIteratorAtEnd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsSymbolIteratorAtEnd"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMShutdown$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMShutdown"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMGetVersion$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetVersion"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateMessage$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateMessage"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeMessage$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeMessage"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMContextCreate$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMContextCreate"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetGlobalContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetGlobalContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMContextSetDiagnosticHandler$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMContextSetDiagnosticHandler"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMContextGetDiagnosticHandler$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMContextGetDiagnosticHandler"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMContextGetDiagnosticContext$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMContextGetDiagnosticContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMContextSetYieldCallback$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMContextSetYieldCallback"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMContextShouldDiscardValueNames$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMContextShouldDiscardValueNames"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMContextSetDiscardValueNames$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMContextSetDiscardValueNames"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMContextDispose$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMContextDispose"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetDiagInfoDescription$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDiagInfoDescription"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetDiagInfoSeverity$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDiagInfoSeverity"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetMDKindIDInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetMDKindIDInContext"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetMDKindID$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetMDKindID"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetEnumAttributeKindForName$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetEnumAttributeKindForName"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetLastEnumAttributeKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLastEnumAttributeKind"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMCreateEnumAttribute$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateEnumAttribute"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetEnumAttributeKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetEnumAttributeKind"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetEnumAttributeValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetEnumAttributeValue"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateTypeAttribute$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateTypeAttribute"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTypeAttributeValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTypeAttributeValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateStringAttribute$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateStringAttribute"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetStringAttributeKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetStringAttributeKind"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetStringAttributeValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetStringAttributeValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsEnumAttribute$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsEnumAttribute"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsStringAttribute$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsStringAttribute"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsTypeAttribute$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsTypeAttribute"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTypeByName2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTypeByName2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMModuleCreateWithName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMModuleCreateWithName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMModuleCreateWithNameInContext$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMModuleCreateWithNameInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCloneModule$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCloneModule"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeModule$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeModule"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetModuleIdentifier$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetModuleIdentifier"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetModuleIdentifier$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetModuleIdentifier"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetSourceFileName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSourceFileName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetSourceFileName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetSourceFileName"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetDataLayoutStr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDataLayoutStr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetDataLayout$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDataLayout"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetDataLayout$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetDataLayout"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTarget$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTarget"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetTarget$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetTarget"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCopyModuleFlagsMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCopyModuleFlagsMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeModuleFlagsMetadata$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeModuleFlagsMetadata"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMModuleFlagEntriesGetFlagBehavior$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMModuleFlagEntriesGetFlagBehavior"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMModuleFlagEntriesGetKey$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMModuleFlagEntriesGetKey"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMModuleFlagEntriesGetMetadata$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMModuleFlagEntriesGetMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetModuleFlag$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetModuleFlag"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMAddModuleFlag$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddModuleFlag"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDumpModule$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDumpModule"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPrintModuleToFile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPrintModuleToFile"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPrintModuleToString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPrintModuleToString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetModuleInlineAsm$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetModuleInlineAsm"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetModuleInlineAsm2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetModuleInlineAsm2"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMAppendModuleInlineAsm$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAppendModuleInlineAsm"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetInlineAsm$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInlineAsm"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetInlineAsmAsmString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInlineAsmAsmString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInlineAsmConstraintString$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInlineAsmConstraintString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInlineAsmDialect$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInlineAsmDialect"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInlineAsmFunctionType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInlineAsmFunctionType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInlineAsmHasSideEffects$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInlineAsmHasSideEffects"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInlineAsmNeedsAlignedStack$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInlineAsmNeedsAlignedStack"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInlineAsmCanUnwind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInlineAsmCanUnwind"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetModuleContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetModuleContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTypeByName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTypeByName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetFirstNamedMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstNamedMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetLastNamedMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLastNamedMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextNamedMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextNamedMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPreviousNamedMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPreviousNamedMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNamedMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNamedMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetOrInsertNamedMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetOrInsertNamedMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetNamedMetadataName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNamedMetadataName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNamedMetadataNumOperands$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNamedMetadataNumOperands"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNamedMetadataOperands$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNamedMetadataOperands"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddNamedMetadataOperand$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddNamedMetadataOperand"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetDebugLocDirectory$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDebugLocDirectory"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetDebugLocFilename$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDebugLocFilename"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetDebugLocLine$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDebugLocLine"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetDebugLocColumn$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDebugLocColumn"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNamedFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNamedFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetFirstFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetLastFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLastFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPreviousFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPreviousFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetModuleInlineAsm$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetModuleInlineAsm"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTypeKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTypeKind"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTypeIsSized$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTypeIsSized"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetTypeContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTypeContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDumpType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDumpType"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPrintTypeToString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPrintTypeToString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt1TypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt1TypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt8TypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt8TypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt16TypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt16TypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt32TypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt32TypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt64TypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt64TypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt128TypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt128TypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIntTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMInt1Type$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt1Type"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt8Type$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt8Type"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt16Type$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt16Type"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt32Type$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt32Type"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt64Type$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt64Type"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInt128Type$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInt128Type"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIntType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetIntTypeWidth$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetIntTypeWidth"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMHalfTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMHalfTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBFloatTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBFloatTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMFloatTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMFloatTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDoubleTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDoubleTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMX86FP80TypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMX86FP80TypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMFP128TypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMFP128TypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPPCFP128TypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPPCFP128TypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMHalfType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMHalfType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBFloatType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBFloatType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMFloatType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMFloatType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDoubleType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDoubleType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMX86FP80Type$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMX86FP80Type"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMFP128Type$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMFP128Type"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPPCFP128Type$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPPCFP128Type"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMFunctionType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMFunctionType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMIsFunctionVarArg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsFunctionVarArg"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetReturnType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetReturnType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCountParamTypes$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCountParamTypes"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetParamTypes$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetParamTypes"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMStructTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMStructTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMStructType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMStructType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMStructCreateNamed$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMStructCreateNamed"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetStructName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetStructName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMStructSetBody$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMStructSetBody"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMCountStructElementTypes$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCountStructElementTypes"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetStructElementTypes$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetStructElementTypes"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMStructGetTypeAtIndex$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMStructGetTypeAtIndex"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMIsPackedStruct$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsPackedStruct"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsOpaqueStruct$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsOpaqueStruct"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsLiteralStruct$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsLiteralStruct"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetElementType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetElementType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSubtypes$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSubtypes"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNumContainedTypes$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumContainedTypes"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMArrayType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMArrayType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMArrayType2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMArrayType2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetArrayLength$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetArrayLength"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetArrayLength2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetArrayLength2"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPointerType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPointerType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMPointerTypeIsOpaque$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPointerTypeIsOpaque"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPointerTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPointerTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetPointerAddressSpace$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPointerAddressSpace"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMVectorType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMVectorType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMScalableVectorType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMScalableVectorType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetVectorSize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetVectorSize"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMVoidTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMVoidTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMLabelTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMLabelTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMX86MMXTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMX86MMXTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMX86AMXTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMX86AMXTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTokenTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTokenTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMetadataTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMetadataTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMVoidType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMVoidType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMLabelType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMLabelType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMX86MMXType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMX86MMXType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMX86AMXType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMX86AMXType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMTargetExtTypeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTargetExtTypeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMTypeOf$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMTypeOf"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetValueKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetValueKind"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetValueName2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetValueName2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetValueName2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetValueName2"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMDumpValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDumpValue"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPrintValueToString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPrintValueToString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMReplaceAllUsesWith$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMReplaceAllUsesWith"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsConstant$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsConstant"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsUndef$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsUndef"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsPoison$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsPoison"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAArgument$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAArgument"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsABasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsABasicBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAInlineAsm$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAInlineAsm"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAUser$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAUser"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstant$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstant"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsABlockAddress$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsABlockAddress"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantAggregateZero$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantAggregateZero"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantArray$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantArray"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantDataSequential$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantDataSequential"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantDataArray$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantDataArray"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantDataVector$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantDataVector"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantExpr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantExpr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantFP$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantFP"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantInt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantInt"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantPointerNull$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantPointerNull"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantStruct$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantStruct"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantTokenNone$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantTokenNone"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAConstantVector$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAConstantVector"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAGlobalValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAGlobalValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAGlobalAlias$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAGlobalAlias"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAGlobalObject$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAGlobalObject"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAFunction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAGlobalVariable$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAGlobalVariable"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAGlobalIFunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAGlobalIFunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAUndefValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAUndefValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAPoisonValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAPoisonValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAInstruction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAInstruction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAUnaryOperator$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAUnaryOperator"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsABinaryOperator$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsABinaryOperator"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsACallInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsACallInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAIntrinsicInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAIntrinsicInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsADbgInfoIntrinsic$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsADbgInfoIntrinsic"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsADbgVariableIntrinsic$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsADbgVariableIntrinsic"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsADbgDeclareInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsADbgDeclareInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsADbgLabelInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsADbgLabelInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAMemIntrinsic$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAMemIntrinsic"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAMemCpyInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAMemCpyInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAMemMoveInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAMemMoveInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAMemSetInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAMemSetInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsACmpInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsACmpInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAFCmpInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAFCmpInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAICmpInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAICmpInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAExtractElementInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAExtractElementInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAGetElementPtrInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAGetElementPtrInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAInsertElementInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAInsertElementInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAInsertValueInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAInsertValueInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsALandingPadInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsALandingPadInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAPHINode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAPHINode"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsASelectInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsASelectInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAShuffleVectorInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAShuffleVectorInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAStoreInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAStoreInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsABranchInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsABranchInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAIndirectBrInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAIndirectBrInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAInvokeInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAInvokeInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAReturnInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAReturnInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsASwitchInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsASwitchInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAUnreachableInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAUnreachableInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAResumeInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAResumeInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsACleanupReturnInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsACleanupReturnInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsACatchReturnInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsACatchReturnInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsACatchSwitchInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsACatchSwitchInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsACallBrInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsACallBrInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAFuncletPadInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAFuncletPadInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsACatchPadInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsACatchPadInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsACleanupPadInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsACleanupPadInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAUnaryInstruction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAUnaryInstruction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAAllocaInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAAllocaInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsACastInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsACastInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAAddrSpaceCastInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAAddrSpaceCastInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsABitCastInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsABitCastInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAFPExtInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAFPExtInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAFPToSIInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAFPToSIInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAFPToUIInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAFPToUIInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAFPTruncInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAFPTruncInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAIntToPtrInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAIntToPtrInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAPtrToIntInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAPtrToIntInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsASExtInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsASExtInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsASIToFPInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsASIToFPInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsATruncInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsATruncInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAUIToFPInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAUIToFPInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAZExtInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAZExtInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAExtractValueInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAExtractValueInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsALoadInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsALoadInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAVAArgInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAVAArgInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAFreezeInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAFreezeInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAAtomicCmpXchgInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAAtomicCmpXchgInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAAtomicRMWInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAAtomicRMWInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAFenceInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAFenceInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAMDNode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAMDNode"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAValueAsMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAValueAsMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsAMDString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAMDString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetValueName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetValueName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetValueName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetValueName"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetFirstUse$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstUse"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextUse$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextUse"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetUser$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetUser"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetUsedValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetUsedValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetOperand$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetOperand"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetOperandUse$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetOperandUse"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMSetOperand$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetOperand"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNumOperands$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumOperands"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNull$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNull"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstAllOnes$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstAllOnes"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetUndef$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetUndef"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPoison$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPoison"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsNull$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsNull"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstPointerNull$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstPointerNull"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstInt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstInt"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMConstIntOfArbitraryPrecision$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstIntOfArbitraryPrecision"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstIntOfString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstIntOfString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_BYTE,
-))
-
-internal val `LLVMConstIntOfStringAndSize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstIntOfStringAndSize"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_BYTE,
-))
-
-internal val `LLVMConstReal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstReal"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_DOUBLE,
-))
-
-internal val `LLVMConstRealOfString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstRealOfString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstRealOfStringAndSize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstRealOfStringAndSize"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMConstIntGetZExtValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstIntGetZExtValue"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstIntGetSExtValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstIntGetSExtValue"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstRealGetDouble$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstRealGetDouble"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_DOUBLE,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstStringInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstStringInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMConstString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMIsConstantString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsConstantString"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetAsString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetAsString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstStructInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstStructInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMConstStruct$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstStruct"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMConstArray$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstArray"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMConstArray2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstArray2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMConstNamedStruct$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNamedStruct"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetAggregateElement$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetAggregateElement"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetElementAsConstant$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetElementAsConstant"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMConstVector$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstVector"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetConstOpcode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetConstOpcode"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAlignOf$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAlignOf"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSizeOf$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSizeOf"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNeg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNeg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNSWNeg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNSWNeg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNUWNeg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNUWNeg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNot$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNot"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstAdd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstAdd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNSWAdd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNSWAdd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNUWAdd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNUWAdd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstSub$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstSub"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNSWSub$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNSWSub"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNUWSub$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNUWSub"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstMul$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstMul"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNSWMul$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNSWMul"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstNUWMul$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstNUWMul"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstXor$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstXor"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstICmp$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstICmp"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstFCmp$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstFCmp"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstShl$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstShl"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstGEP2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstGEP2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMConstInBoundsGEP2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstInBoundsGEP2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMConstTrunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstTrunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstPtrToInt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstPtrToInt"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstIntToPtr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstIntToPtr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstBitCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstBitCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstAddrSpaceCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstAddrSpaceCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstTruncOrBitCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstTruncOrBitCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstPointerCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstPointerCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstExtractElement$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstExtractElement"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstInsertElement$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstInsertElement"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstShuffleVector$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstShuffleVector"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBlockAddress$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBlockAddress"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMConstInlineAsm$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMConstInlineAsm"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetGlobalParent$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetGlobalParent"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsDeclaration$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsDeclaration"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetLinkage$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLinkage"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetLinkage$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetLinkage"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetSection$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSection"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetSection$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetSection"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetVisibility$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetVisibility"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetVisibility$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetVisibility"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetDLLStorageClass$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetDLLStorageClass"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetDLLStorageClass$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetDLLStorageClass"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetUnnamedAddress$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetUnnamedAddress"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetUnnamedAddress$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetUnnamedAddress"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGlobalGetValueType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGlobalGetValueType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMHasUnnamedAddr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMHasUnnamedAddr"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetUnnamedAddr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetUnnamedAddr"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetAlignment$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetAlignment"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetAlignment$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetAlignment"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGlobalSetMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGlobalSetMetadata"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGlobalEraseMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGlobalEraseMetadata"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGlobalClearMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGlobalClearMetadata"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGlobalCopyAllMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGlobalCopyAllMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeValueMetadataEntries$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeValueMetadataEntries"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMValueMetadataEntriesGetKind$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMValueMetadataEntriesGetKind"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMValueMetadataEntriesGetMetadata$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMValueMetadataEntriesGetMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMAddGlobal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddGlobal"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddGlobalInAddressSpace$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddGlobalInAddressSpace"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetNamedGlobal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNamedGlobal"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetFirstGlobal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstGlobal"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetLastGlobal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLastGlobal"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextGlobal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextGlobal"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPreviousGlobal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPreviousGlobal"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDeleteGlobal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDeleteGlobal"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInitializer$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInitializer"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetInitializer$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetInitializer"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsThreadLocal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsThreadLocal"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetThreadLocal$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetThreadLocal"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMIsGlobalConstant$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsGlobalConstant"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetGlobalConstant$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetGlobalConstant"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetThreadLocalMode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetThreadLocalMode"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetThreadLocalMode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetThreadLocalMode"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMIsExternallyInitialized$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsExternallyInitialized"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetExternallyInitialized$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetExternallyInitialized"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMAddAlias2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddAlias2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNamedGlobalAlias$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNamedGlobalAlias"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetFirstGlobalAlias$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstGlobalAlias"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetLastGlobalAlias$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLastGlobalAlias"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextGlobalAlias$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextGlobalAlias"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPreviousGlobalAlias$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPreviousGlobalAlias"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAliasGetAliasee$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAliasGetAliasee"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAliasSetAliasee$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAliasSetAliasee"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDeleteFunction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDeleteFunction"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMHasPersonalityFn$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMHasPersonalityFn"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPersonalityFn$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPersonalityFn"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetPersonalityFn$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetPersonalityFn"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMLookupIntrinsicID$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMLookupIntrinsicID"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetIntrinsicID$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetIntrinsicID"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetIntrinsicDeclaration$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetIntrinsicDeclaration"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMIntrinsicGetType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntrinsicGetType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMIntrinsicGetName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntrinsicGetName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIntrinsicCopyOverloadedName$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntrinsicCopyOverloadedName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIntrinsicCopyOverloadedName2$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntrinsicCopyOverloadedName2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIntrinsicIsOverloaded$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIntrinsicIsOverloaded"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetFunctionCallConv$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFunctionCallConv"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetFunctionCallConv$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetFunctionCallConv"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetGC$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetGC"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetGC$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetGC"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddAttributeAtIndex$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddAttributeAtIndex"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetAttributeCountAtIndex$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetAttributeCountAtIndex"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetAttributesAtIndex$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetAttributesAtIndex"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetEnumAttributeAtIndex$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetEnumAttributeAtIndex"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetStringAttributeAtIndex$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetStringAttributeAtIndex"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMRemoveEnumAttributeAtIndex$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemoveEnumAttributeAtIndex"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMRemoveStringAttributeAtIndex$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemoveStringAttributeAtIndex"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMAddTargetDependentFunctionAttr$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddTargetDependentFunctionAttr"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCountParams$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCountParams"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetParams$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetParams"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetParam$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetParam"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetParamParent$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetParamParent"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetFirstParam$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstParam"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetLastParam$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLastParam"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextParam$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextParam"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPreviousParam$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPreviousParam"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetParamAlignment$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetParamAlignment"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMAddGlobalIFunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddGlobalIFunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNamedGlobalIFunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNamedGlobalIFunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMGetFirstGlobalIFunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstGlobalIFunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetLastGlobalIFunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLastGlobalIFunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextGlobalIFunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextGlobalIFunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPreviousGlobalIFunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPreviousGlobalIFunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetGlobalIFuncResolver$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetGlobalIFuncResolver"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetGlobalIFuncResolver$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetGlobalIFuncResolver"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMEraseGlobalIFunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMEraseGlobalIFunc"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemoveGlobalIFunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemoveGlobalIFunc"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMDStringInContext2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMDStringInContext2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMMDNodeInContext2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMDNodeInContext2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `LLVMMetadataAsValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMetadataAsValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMValueAsMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMValueAsMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetMDString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetMDString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetMDNodeNumOperands$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetMDNodeNumOperands"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetMDNodeOperands$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetMDNodeOperands"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMReplaceMDNodeOperandWith$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMReplaceMDNodeOperandWith"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMDStringInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMDStringInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMMDString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMDString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMMDNodeInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMDNodeInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMMDNode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMDNode"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMCreateOperandBundle$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateOperandBundle"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMDisposeOperandBundle$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeOperandBundle"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetOperandBundleTag$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetOperandBundleTag"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNumOperandBundleArgs$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumOperandBundleArgs"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetOperandBundleArgAtIndex$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetOperandBundleArgAtIndex"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMBasicBlockAsValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBasicBlockAsValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMValueIsBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMValueIsBasicBlock"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMValueAsBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMValueAsBasicBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBasicBlockName$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBasicBlockName"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBasicBlockParent$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBasicBlockParent"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBasicBlockTerminator$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBasicBlockTerminator"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCountBasicBlocks$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCountBasicBlocks"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBasicBlocks$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBasicBlocks"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetFirstBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstBasicBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetLastBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLastBasicBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextBasicBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPreviousBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPreviousBasicBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetEntryBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetEntryBasicBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInsertExistingBasicBlockAfterInsertBlock$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInsertExistingBasicBlockAfterInsertBlock"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAppendExistingBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAppendExistingBasicBlock"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateBasicBlockInContext$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateBasicBlockInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAppendBasicBlockInContext$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAppendBasicBlockInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAppendBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAppendBasicBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInsertBasicBlockInContext$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInsertBasicBlockInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInsertBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInsertBasicBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDeleteBasicBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDeleteBasicBlock"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRemoveBasicBlockFromParent$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemoveBasicBlockFromParent"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMoveBasicBlockBefore$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMoveBasicBlockBefore"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMMoveBasicBlockAfter$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMMoveBasicBlockAfter"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetFirstInstruction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFirstInstruction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetLastInstruction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetLastInstruction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMHasMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMHasMetadata"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetMetadata"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMSetMetadata$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetMetadata"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInstructionGetAllMetadataOtherThanDebugLoc$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInstructionGetAllMetadataOtherThanDebugLoc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInstructionParent$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInstructionParent"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNextInstruction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNextInstruction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetPreviousInstruction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetPreviousInstruction"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInstructionRemoveFromParent$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInstructionRemoveFromParent"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInstructionEraseFromParent$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInstructionEraseFromParent"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDeleteInstruction$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDeleteInstruction"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInstructionOpcode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInstructionOpcode"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetICmpPredicate$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetICmpPredicate"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetFCmpPredicate$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFCmpPredicate"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInstructionClone$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInstructionClone"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsATerminatorInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsATerminatorInst"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNumArgOperands$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumArgOperands"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetInstructionCallConv$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetInstructionCallConv"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetInstructionCallConv$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInstructionCallConv"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetInstrParamAlignment$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetInstrParamAlignment"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMAddCallSiteAttribute$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddCallSiteAttribute"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetCallSiteAttributeCount$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCallSiteAttributeCount"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetCallSiteAttributes$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCallSiteAttributes"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetCallSiteEnumAttribute$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCallSiteEnumAttribute"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetCallSiteStringAttribute$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCallSiteStringAttribute"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMRemoveCallSiteEnumAttribute$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemoveCallSiteEnumAttribute"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMRemoveCallSiteStringAttribute$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRemoveCallSiteStringAttribute"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetCalledFunctionType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCalledFunctionType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetCalledValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCalledValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNumOperandBundles$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumOperandBundles"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetOperandBundleAtIndex$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetOperandBundleAtIndex"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMIsTailCall$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsTailCall"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetTailCall$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetTailCall"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetTailCallKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetTailCallKind"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetTailCallKind$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetTailCallKind"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetNormalDest$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNormalDest"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetUnwindDest$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetUnwindDest"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetNormalDest$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetNormalDest"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetUnwindDest$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetUnwindDest"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNumSuccessors$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumSuccessors"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSuccessor$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSuccessor"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMSetSuccessor$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetSuccessor"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsConditional$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsConditional"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetCondition$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCondition"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetCondition$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetCondition"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetSwitchDefaultDest$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetSwitchDefaultDest"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetAllocatedType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetAllocatedType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsInBounds$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsInBounds"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetIsInBounds$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetIsInBounds"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetGEPSourceElementType$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetGEPSourceElementType"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddIncoming$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddIncoming"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMCountIncoming$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCountIncoming"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetIncomingValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetIncomingValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetIncomingBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetIncomingBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetNumIndices$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumIndices"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetIndices$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetIndices"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateBuilderInContext$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateBuilderInContext"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateBuilder$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateBuilder"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPositionBuilder$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPositionBuilder"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPositionBuilderBefore$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPositionBuilderBefore"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMPositionBuilderAtEnd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMPositionBuilderAtEnd"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetInsertBlock$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetInsertBlock"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMClearInsertionPosition$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMClearInsertionPosition"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInsertIntoBuilder$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInsertIntoBuilder"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInsertIntoBuilderWithName$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInsertIntoBuilderWithName"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeBuilder$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeBuilder"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetCurrentDebugLocation2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCurrentDebugLocation2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetCurrentDebugLocation2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetCurrentDebugLocation2"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetInstDebugLocation$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetInstDebugLocation"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddMetadataToInst$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddMetadataToInst"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuilderGetDefaultFPMathTag$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuilderGetDefaultFPMathTag"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuilderSetDefaultFPMathTag$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuilderSetDefaultFPMathTag"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetCurrentDebugLocation$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetCurrentDebugLocation"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetCurrentDebugLocation$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCurrentDebugLocation"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildRetVoid$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildRetVoid"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildRet$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildRet"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildAggregateRet$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildAggregateRet"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMBuildBr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildBr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildCondBr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildCondBr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildSwitch$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildSwitch"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMBuildIndirectBr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildIndirectBr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMBuildInvoke2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildInvoke2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildInvokeWithOperandBundles$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildInvokeWithOperandBundles"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildUnreachable$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildUnreachable"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildResume$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildResume"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildLandingPad$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildLandingPad"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildCleanupRet$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildCleanupRet"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildCatchRet$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildCatchRet"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildCatchPad$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildCatchPad"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildCleanupPad$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildCleanupPad"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildCatchSwitch$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildCatchSwitch"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddCase$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddCase"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMAddDestination$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddDestination"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNumClauses$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumClauses"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetClause$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetClause"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMAddClause$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddClause"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMIsCleanup$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsCleanup"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetCleanup$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetCleanup"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMAddHandler$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMAddHandler"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNumHandlers$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumHandlers"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetHandlers$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetHandlers"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetArgOperand$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetArgOperand"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMSetArgOperand$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetArgOperand"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetParentCatchSwitch$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetParentCatchSwitch"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetParentCatchSwitch$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetParentCatchSwitch"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildAdd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildAdd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNSWAdd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNSWAdd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNUWAdd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNUWAdd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFAdd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFAdd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildSub$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildSub"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNSWSub$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNSWSub"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNUWSub$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNUWSub"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFSub$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFSub"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildMul$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildMul"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNSWMul$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNSWMul"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNUWMul$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNUWMul"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFMul$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFMul"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildUDiv$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildUDiv"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildExactUDiv$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildExactUDiv"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildSDiv$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildSDiv"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildExactSDiv$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildExactSDiv"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFDiv$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFDiv"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildURem$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildURem"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildSRem$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildSRem"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFRem$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFRem"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildShl$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildShl"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildLShr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildLShr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildAShr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildAShr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildAnd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildAnd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildOr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildOr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildXor$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildXor"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildBinOp$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildBinOp"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNeg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNeg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNSWNeg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNSWNeg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNUWNeg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNUWNeg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFNeg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFNeg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildNot$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildNot"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetNUW$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNUW"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetNUW$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetNUW"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetNSW$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNSW"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetNSW$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetNSW"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetExact$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetExact"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetExact$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetExact"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetNNeg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNNeg"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetNNeg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetNNeg"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetFastMathFlags$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetFastMathFlags"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetFastMathFlags$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetFastMathFlags"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMCanValueUseFastMathFlags$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCanValueUseFastMathFlags"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetIsDisjoint$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetIsDisjoint"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetIsDisjoint$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetIsDisjoint"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMBuildMalloc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildMalloc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildArrayMalloc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildArrayMalloc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildMemSet$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildMemSet"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMBuildMemCpy$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildMemCpy"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildMemMove$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildMemMove"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildAlloca$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildAlloca"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildArrayAlloca$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildArrayAlloca"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFree$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFree"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildLoad2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildLoad2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildStore$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildStore"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildGEP2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildGEP2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildInBoundsGEP2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildInBoundsGEP2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildStructGEP2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildStructGEP2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildGlobalString$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildGlobalString"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildGlobalStringPtr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildGlobalStringPtr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetVolatile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetVolatile"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetVolatile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetVolatile"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetWeak$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetWeak"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetWeak$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetWeak"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetOrdering$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetOrdering"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetOrdering$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetOrdering"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetAtomicRMWBinOp$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetAtomicRMWBinOp"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetAtomicRMWBinOp$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetAtomicRMWBinOp"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMBuildTrunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildTrunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildZExt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildZExt"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildSExt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildSExt"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFPToUI$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFPToUI"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFPToSI$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFPToSI"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildUIToFP$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildUIToFP"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildSIToFP$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildSIToFP"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFPTrunc$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFPTrunc"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFPExt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFPExt"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildPtrToInt$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildPtrToInt"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildIntToPtr$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildIntToPtr"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildBitCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildBitCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildAddrSpaceCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildAddrSpaceCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildZExtOrBitCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildZExtOrBitCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildSExtOrBitCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildSExtOrBitCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildTruncOrBitCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildTruncOrBitCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildPointerCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildPointerCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildIntCast2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildIntCast2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFPCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFPCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildIntCast$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildIntCast"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetCastOpcode$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCastOpcode"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMBuildICmp$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildICmp"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFCmp$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFCmp"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildPhi$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildPhi"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildCall2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildCall2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildCallWithOperandBundles$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildCallWithOperandBundles"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildSelect$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildSelect"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildVAArg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildVAArg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildExtractElement$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildExtractElement"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildInsertElement$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildInsertElement"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildShuffleVector$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildShuffleVector"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildExtractValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildExtractValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildInsertValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildInsertValue"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFreeze$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFreeze"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildIsNull$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildIsNull"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildIsNotNull$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildIsNotNull"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildPtrDiff2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildPtrDiff2"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildFence$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildFence"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMBuildAtomicRMW$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildAtomicRMW"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMBuildAtomicCmpXchg$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMBuildAtomicCmpXchg"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetNumMaskElements$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetNumMaskElements"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetUndefMaskElem$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetUndefMaskElem"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetMaskValue$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetMaskValue"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMIsAtomicSingleThread$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsAtomicSingleThread"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetAtomicSingleThread$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetAtomicSingleThread"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetCmpXchgSuccessOrdering$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCmpXchgSuccessOrdering"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetCmpXchgSuccessOrdering$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetCmpXchgSuccessOrdering"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMGetCmpXchgFailureOrdering$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetCmpXchgFailureOrdering"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMSetCmpXchgFailureOrdering$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMSetCmpXchgFailureOrdering"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMCreateModuleProviderForExistingModule$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateModuleProviderForExistingModule"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeModuleProvider$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeModuleProvider"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateMemoryBufferWithContentsOfFile$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateMemoryBufferWithContentsOfFile"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateMemoryBufferWithSTDIN$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateMemoryBufferWithSTDIN"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateMemoryBufferWithMemoryRange$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateMemoryBufferWithMemoryRange"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMCreateMemoryBufferWithMemoryRangeCopy$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateMemoryBufferWithMemoryRangeCopy"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBufferStart$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBufferStart"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMGetBufferSize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMGetBufferSize"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposeMemoryBuffer$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposeMemoryBuffer"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreatePassManager$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreatePassManager"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateFunctionPassManagerForModule$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateFunctionPassManagerForModule"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMCreateFunctionPassManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMCreateFunctionPassManager"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRunPassManager$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRunPassManager"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMInitializeFunctionPassManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMInitializeFunctionPassManager"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMRunFunctionPassManager$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMRunFunctionPassManager"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMFinalizeFunctionPassManager$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMFinalizeFunctionPassManager"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMDisposePassManager$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMDisposePassManager"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMStartMultithreaded$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMStartMultithreaded"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `LLVMStopMultithreaded$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMStopMultithreaded"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `LLVMIsMultithreaded$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMIsMultithreaded"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `lto_get_version$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_get_version"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_get_error_message$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_get_error_message"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_is_object_file$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_is_object_file"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_is_object_file_for_target$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_is_object_file_for_target"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_has_objc_category$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_has_objc_category"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `lto_module_is_object_file_in_memory$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_is_object_file_in_memory"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `lto_module_is_object_file_in_memory_for_target$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_is_object_file_in_memory_for_target"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_create$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_create"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_create_from_memory$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_create_from_memory"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `lto_module_create_from_memory_with_path$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_create_from_memory_with_path"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_create_in_local_context$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_create_in_local_context"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_create_in_codegen_context$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_create_in_codegen_context"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_create_from_fd$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_create_from_fd"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `lto_module_create_from_fd_at_offset$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_create_from_fd_at_offset"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_LONG,
-  ValueLayout.JAVA_LONG,
-))
-
-internal val `lto_module_dispose$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_dispose"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_get_target_triple$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_get_target_triple"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_set_target_triple$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_set_target_triple"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_get_num_symbols$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_get_num_symbols"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_get_symbol_name$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_get_symbol_name"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `lto_module_get_symbol_attribute$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_get_symbol_attribute"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `lto_module_get_linkeropts$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_get_linkeropts"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_get_macho_cputype$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_get_macho_cputype"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_has_ctor_dtor$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_has_ctor_dtor"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_set_diagnostic_handler$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_set_diagnostic_handler"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_create$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_create"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_create_in_local_context$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_create_in_local_context"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_dispose$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_dispose"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_add_module$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_add_module"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_set_module$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_set_module"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_set_debug_model$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_set_debug_model"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `lto_codegen_set_pic_model$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_set_pic_model"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `lto_codegen_set_cpu$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_set_cpu"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_set_assembler_path$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_set_assembler_path"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_set_assembler_args$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_set_assembler_args"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `lto_codegen_add_must_preserve_symbol$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_add_must_preserve_symbol"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_write_merged_modules$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_write_merged_modules"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_compile$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_compile"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_compile_to_file$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_compile_to_file"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_optimize$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_optimize"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_compile_optimized$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_compile_optimized"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_api_version$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_api_version"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-))
-
-internal val `lto_set_debug_options$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_set_debug_options"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `lto_codegen_debug_options$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_debug_options"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_codegen_debug_options_array$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_debug_options_array"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_INT,
-))
-
-internal val `lto_initialize_disassembler$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_initialize_disassembler"),
-FunctionDescriptor.ofVoid(
-))
-
-internal val `lto_codegen_set_should_internalize$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_set_should_internalize"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_BOOLEAN,
-))
-
-internal val `lto_codegen_set_should_embed_uselists$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_codegen_set_should_embed_uselists"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_BOOLEAN,
-))
-
-internal val `lto_input_create$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_input_create"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_input_dispose$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_input_dispose"),
-FunctionDescriptor.ofVoid(
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_input_get_num_dependent_libraries$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_input_get_num_dependent_libraries"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_input_get_dependent_library$mh`: MethodHandle =
-    Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_input_get_dependent_library"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-  ValueLayout.JAVA_LONG,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_runtime_lib_symbols_list$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_runtime_lib_symbols_list"),
-FunctionDescriptor.of(
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `lto_module_is_thinlto$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("lto_module_is_thinlto"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_BOOLEAN,
-  `$RuntimeHelper`.POINTER,
-))
-
-internal val `LLVMLinkModules2$mh`: MethodHandle = Linker.nativeLinker().downcallHandle(
-`$RuntimeHelper`.findSymbol("LLVMLinkModules2"),
-FunctionDescriptor.of(
-  ValueLayout.JAVA_INT,
-  `$RuntimeHelper`.POINTER,
-  `$RuntimeHelper`.POINTER,
-))
+    MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateRTDyldObjectLinkingLayerWithMCJITMemoryManagerLikeCallbacks"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcRTDyldObjectLinkingLayerRegisterJITEventListener$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcRTDyldObjectLinkingLayerRegisterJITEventListener"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInstallFatalErrorHandler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInstallFatalErrorHandler"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMResetFatalErrorHandler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMResetFatalErrorHandler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMEnablePrettyStackTrace$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMEnablePrettyStackTrace"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMRunPasses$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRunPasses"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreatePassBuilderOptions$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreatePassBuilderOptions"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetVerifyEach$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetVerifyEach"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetDebugLogging$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetDebugLogging"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetLoopInterleaving$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLoopInterleaving"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetLoopVectorization$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLoopVectorization"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetSLPVectorization$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetSLPVectorization"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetLoopUnrolling$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLoopUnrolling"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetForgetAllSCEVInLoopUnroll$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetForgetAllSCEVInLoopUnroll"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetLicmMssaOptCap$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLicmMssaOptCap"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetLicmMssaNoAccForPromotionCap$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetLicmMssaNoAccForPromotionCap"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetCallGraphProfile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetCallGraphProfile"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetMergeFunctions$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetMergeFunctions"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPassBuilderOptionsSetInlinerThreshold$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPassBuilderOptionsSetInlinerThreshold"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDisposePassBuilderOptions$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposePassBuilderOptions"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateLLJITBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateLLJITBuilder"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeLLJITBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeLLJITBuilder"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITBuilderSetJITTargetMachineBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITBuilderSetJITTargetMachineBuilder"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITBuilderSetObjectLinkingLayerCreator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITBuilderSetObjectLinkingLayerCreator"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcCreateLLJIT$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcCreateLLJIT"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcDisposeLLJIT$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcDisposeLLJIT"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITGetExecutionSession$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetExecutionSession"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITGetMainJITDylib$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetMainJITDylib"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITGetTripleString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetTripleString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITGetGlobalPrefix$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetGlobalPrefix"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BYTE,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITMangleAndIntern$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITMangleAndIntern"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITAddObjectFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITAddObjectFile"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITAddObjectFileWithRT$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITAddObjectFileWithRT"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITAddLLVMIRModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITAddLLVMIRModule"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITAddLLVMIRModuleWithRT$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITAddLLVMIRModuleWithRT"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITLookup$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITLookup"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITGetObjLinkingLayer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetObjLinkingLayer"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITGetObjTransformLayer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetObjTransformLayer"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITGetIRTransformLayer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetIRTransformLayer"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITGetDataLayoutStr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITGetDataLayoutStr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMOrcLLJITEnableDebugSupport$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMOrcLLJITEnableDebugSupport"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMVerifyModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMVerifyModule"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMVerifyFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMVerifyFunction"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMViewFunctionCFG$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMViewFunctionCFG"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMViewFunctionCFGOnly$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMViewFunctionCFGOnly"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateDisasm$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateDisasm"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateDisasmCPU$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateDisasmCPU"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateDisasmCPUFeatures$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateDisasmCPUFeatures"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetDisasmOptions$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetDisasmOptions"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDisasmDispose$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisasmDispose"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisasmInstruction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisasmInstruction"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMParseBitcode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMParseBitcode"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMParseBitcode2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMParseBitcode2"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMParseBitcodeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMParseBitcodeInContext"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMParseBitcodeInContext2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMParseBitcodeInContext2"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBitcodeModuleInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBitcodeModuleInContext"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBitcodeModuleInContext2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBitcodeModuleInContext2"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBitcodeModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBitcodeModule"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBitcodeModule2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBitcodeModule2"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkStringGetData$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkStringGetData"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkStringGetLen$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkStringGetLen"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkDebugLocGetSourceFilePath$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkDebugLocGetSourceFilePath"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkDebugLocGetSourceLine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkDebugLocGetSourceLine"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkDebugLocGetSourceColumn$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkDebugLocGetSourceColumn"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkArgGetKey$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkArgGetKey"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkArgGetValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkArgGetValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkArgGetDebugLoc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkArgGetDebugLoc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryDispose$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryDispose"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryGetType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetType"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryGetPassName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetPassName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryGetRemarkName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetRemarkName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryGetFunctionName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetFunctionName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryGetDebugLoc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetDebugLoc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryGetHotness$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetHotness"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryGetNumArgs$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetNumArgs"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryGetFirstArg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetFirstArg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkEntryGetNextArg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkEntryGetNextArg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkParserCreateYAML$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkParserCreateYAML"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMRemarkParserCreateBitstream$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkParserCreateBitstream"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMRemarkParserGetNext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkParserGetNext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkParserHasError$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkParserHasError"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkParserGetErrorMessage$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkParserGetErrorMessage"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkParserDispose$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkParserDispose"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemarkVersion$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemarkVersion"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetOrInsertComdat$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetOrInsertComdat"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetComdat$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetComdat"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetComdat$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetComdat"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetComdatSelectionKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetComdatSelectionKind"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetComdatSelectionKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetComdatSelectionKind"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `llvm_blake3_version$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("llvm_blake3_version"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `llvm_blake3_hasher_init$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("llvm_blake3_hasher_init"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `llvm_blake3_hasher_init_keyed$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("llvm_blake3_hasher_init_keyed"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `llvm_blake3_hasher_init_derive_key$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("llvm_blake3_hasher_init_derive_key"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `llvm_blake3_hasher_init_derive_key_raw$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("llvm_blake3_hasher_init_derive_key_raw"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `llvm_blake3_hasher_update$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("llvm_blake3_hasher_update"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `llvm_blake3_hasher_finalize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("llvm_blake3_hasher_finalize"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `llvm_blake3_hasher_finalize_seek$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("llvm_blake3_hasher_finalize_seek"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `llvm_blake3_hasher_reset$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("llvm_blake3_hasher_reset"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMParseIRInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMParseIRInContext"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMLoadLibraryPermanently$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMLoadLibraryPermanently"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMParseCommandLineOptions$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMParseCommandLineOptions"),
+  FunctionDescriptor.ofVoid(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSearchForAddressOfSymbol$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSearchForAddressOfSymbol"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddSymbol$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddSymbol"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateBinary$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateBinary"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeBinary$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeBinary"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBinaryCopyMemoryBuffer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBinaryCopyMemoryBuffer"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBinaryGetType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBinaryGetType"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMachOUniversalBinaryCopyObjectForArch$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMachOUniversalBinaryCopyObjectForArch"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMObjectFileCopySectionIterator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMObjectFileCopySectionIterator"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMObjectFileIsSectionIteratorAtEnd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMObjectFileIsSectionIteratorAtEnd"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMObjectFileCopySymbolIterator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMObjectFileCopySymbolIterator"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMObjectFileIsSymbolIteratorAtEnd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMObjectFileIsSymbolIteratorAtEnd"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeSectionIterator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeSectionIterator"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMoveToNextSection$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMoveToNextSection"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMoveToContainingSection$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMoveToContainingSection"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeSymbolIterator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeSymbolIterator"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMoveToNextSymbol$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMoveToNextSymbol"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSectionName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSectionName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSectionSize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSectionSize"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSectionContents$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSectionContents"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSectionAddress$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSectionAddress"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSectionContainsSymbol$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSectionContainsSymbol"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetRelocations$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetRelocations"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeRelocationIterator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeRelocationIterator"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsRelocationIteratorAtEnd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsRelocationIteratorAtEnd"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMoveToNextRelocation$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMoveToNextRelocation"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSymbolName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSymbolName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSymbolAddress$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSymbolAddress"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSymbolSize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSymbolSize"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetRelocationOffset$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetRelocationOffset"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetRelocationSymbol$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetRelocationSymbol"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetRelocationType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetRelocationType"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetRelocationTypeName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetRelocationTypeName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetRelocationValueString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetRelocationValueString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateObjectFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateObjectFile"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeObjectFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeObjectFile"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSections$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSections"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsSectionIteratorAtEnd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsSectionIteratorAtEnd"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSymbols$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSymbols"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsSymbolIteratorAtEnd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsSymbolIteratorAtEnd"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMShutdown$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMShutdown"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMGetVersion$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetVersion"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateMessage$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateMessage"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeMessage$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeMessage"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMContextCreate$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMContextCreate"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetGlobalContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetGlobalContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMContextSetDiagnosticHandler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMContextSetDiagnosticHandler"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMContextGetDiagnosticHandler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMContextGetDiagnosticHandler"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMContextGetDiagnosticContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMContextGetDiagnosticContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMContextSetYieldCallback$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMContextSetYieldCallback"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMContextShouldDiscardValueNames$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMContextShouldDiscardValueNames"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMContextSetDiscardValueNames$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMContextSetDiscardValueNames"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMContextDispose$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMContextDispose"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetDiagInfoDescription$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDiagInfoDescription"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetDiagInfoSeverity$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDiagInfoSeverity"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetMDKindIDInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetMDKindIDInContext"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetMDKindID$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetMDKindID"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetEnumAttributeKindForName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetEnumAttributeKindForName"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetLastEnumAttributeKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLastEnumAttributeKind"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMCreateEnumAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateEnumAttribute"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetEnumAttributeKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetEnumAttributeKind"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetEnumAttributeValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetEnumAttributeValue"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateTypeAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateTypeAttribute"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTypeAttributeValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTypeAttributeValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateStringAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateStringAttribute"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetStringAttributeKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetStringAttributeKind"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetStringAttributeValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetStringAttributeValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsEnumAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsEnumAttribute"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsStringAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsStringAttribute"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsTypeAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsTypeAttribute"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTypeByName2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTypeByName2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMModuleCreateWithName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMModuleCreateWithName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMModuleCreateWithNameInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMModuleCreateWithNameInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCloneModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCloneModule"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeModule"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetModuleIdentifier$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetModuleIdentifier"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetModuleIdentifier$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetModuleIdentifier"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetSourceFileName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSourceFileName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetSourceFileName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetSourceFileName"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetDataLayoutStr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDataLayoutStr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetDataLayout$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDataLayout"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetDataLayout$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetDataLayout"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTarget"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetTarget$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetTarget"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCopyModuleFlagsMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCopyModuleFlagsMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeModuleFlagsMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeModuleFlagsMetadata"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMModuleFlagEntriesGetFlagBehavior$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMModuleFlagEntriesGetFlagBehavior"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMModuleFlagEntriesGetKey$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMModuleFlagEntriesGetKey"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMModuleFlagEntriesGetMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMModuleFlagEntriesGetMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetModuleFlag$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetModuleFlag"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMAddModuleFlag$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddModuleFlag"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDumpModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDumpModule"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPrintModuleToFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPrintModuleToFile"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPrintModuleToString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPrintModuleToString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetModuleInlineAsm$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetModuleInlineAsm"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetModuleInlineAsm2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetModuleInlineAsm2"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMAppendModuleInlineAsm$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAppendModuleInlineAsm"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetInlineAsm$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInlineAsm"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetInlineAsmAsmString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInlineAsmAsmString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInlineAsmConstraintString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInlineAsmConstraintString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInlineAsmDialect$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInlineAsmDialect"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInlineAsmFunctionType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInlineAsmFunctionType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInlineAsmHasSideEffects$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInlineAsmHasSideEffects"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInlineAsmNeedsAlignedStack$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInlineAsmNeedsAlignedStack"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInlineAsmCanUnwind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInlineAsmCanUnwind"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetModuleContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetModuleContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTypeByName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTypeByName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetFirstNamedMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstNamedMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetLastNamedMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLastNamedMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextNamedMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextNamedMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPreviousNamedMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPreviousNamedMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNamedMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNamedMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetOrInsertNamedMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetOrInsertNamedMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetNamedMetadataName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNamedMetadataName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNamedMetadataNumOperands$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNamedMetadataNumOperands"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNamedMetadataOperands$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNamedMetadataOperands"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddNamedMetadataOperand$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddNamedMetadataOperand"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetDebugLocDirectory$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDebugLocDirectory"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetDebugLocFilename$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDebugLocFilename"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetDebugLocLine$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDebugLocLine"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetDebugLocColumn$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDebugLocColumn"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNamedFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNamedFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetFirstFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetLastFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLastFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPreviousFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPreviousFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetModuleInlineAsm$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetModuleInlineAsm"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTypeKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTypeKind"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTypeIsSized$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTypeIsSized"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetTypeContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTypeContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDumpType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDumpType"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPrintTypeToString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPrintTypeToString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt1TypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt1TypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt8TypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt8TypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt16TypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt16TypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt32TypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt32TypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt64TypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt64TypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt128TypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt128TypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIntTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMInt1Type$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt1Type"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt8Type$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt8Type"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt16Type$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt16Type"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt32Type$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt32Type"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt64Type$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt64Type"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInt128Type$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInt128Type"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIntType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetIntTypeWidth$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetIntTypeWidth"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMHalfTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMHalfTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBFloatTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBFloatTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMFloatTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMFloatTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDoubleTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDoubleTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMX86FP80TypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMX86FP80TypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMFP128TypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMFP128TypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPPCFP128TypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPPCFP128TypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMHalfType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMHalfType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBFloatType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBFloatType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMFloatType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMFloatType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDoubleType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDoubleType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMX86FP80Type$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMX86FP80Type"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMFP128Type$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMFP128Type"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPPCFP128Type$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPPCFP128Type"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMFunctionType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMFunctionType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMIsFunctionVarArg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsFunctionVarArg"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetReturnType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetReturnType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCountParamTypes$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCountParamTypes"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetParamTypes$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetParamTypes"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMStructTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMStructTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMStructType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMStructType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMStructCreateNamed$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMStructCreateNamed"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetStructName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetStructName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMStructSetBody$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMStructSetBody"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMCountStructElementTypes$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCountStructElementTypes"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetStructElementTypes$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetStructElementTypes"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMStructGetTypeAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMStructGetTypeAtIndex"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMIsPackedStruct$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsPackedStruct"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsOpaqueStruct$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsOpaqueStruct"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsLiteralStruct$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsLiteralStruct"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetElementType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetElementType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSubtypes$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSubtypes"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNumContainedTypes$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumContainedTypes"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMArrayType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMArrayType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMArrayType2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMArrayType2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetArrayLength$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetArrayLength"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetArrayLength2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetArrayLength2"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPointerType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPointerType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMPointerTypeIsOpaque$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPointerTypeIsOpaque"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPointerTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPointerTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetPointerAddressSpace$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPointerAddressSpace"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMVectorType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMVectorType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMScalableVectorType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMScalableVectorType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetVectorSize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetVectorSize"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMVoidTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMVoidTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMLabelTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMLabelTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMX86MMXTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMX86MMXTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMX86AMXTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMX86AMXTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTokenTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTokenTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMetadataTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMetadataTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMVoidType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMVoidType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMLabelType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMLabelType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMX86MMXType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMX86MMXType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMX86AMXType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMX86AMXType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMTargetExtTypeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTargetExtTypeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMTypeOf$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMTypeOf"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetValueKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetValueKind"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetValueName2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetValueName2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetValueName2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetValueName2"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMDumpValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDumpValue"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPrintValueToString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPrintValueToString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMReplaceAllUsesWith$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMReplaceAllUsesWith"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsConstant$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsConstant"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsUndef$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsUndef"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsPoison$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsPoison"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAArgument$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAArgument"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsABasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsABasicBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAInlineAsm$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAInlineAsm"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAUser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAUser"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstant$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstant"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsABlockAddress$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsABlockAddress"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantAggregateZero$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantAggregateZero"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantArray$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantArray"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantDataSequential$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantDataSequential"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantDataArray$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantDataArray"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantDataVector$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantDataVector"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantExpr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantExpr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantFP$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantFP"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantInt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantInt"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantPointerNull$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantPointerNull"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantStruct$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantStruct"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantTokenNone$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantTokenNone"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAConstantVector$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAConstantVector"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAGlobalValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAGlobalValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAGlobalAlias$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAGlobalAlias"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAGlobalObject$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAGlobalObject"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAFunction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAGlobalVariable$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAGlobalVariable"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAGlobalIFunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAGlobalIFunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAUndefValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAUndefValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAPoisonValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAPoisonValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAInstruction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAInstruction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAUnaryOperator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAUnaryOperator"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsABinaryOperator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsABinaryOperator"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsACallInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsACallInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAIntrinsicInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAIntrinsicInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsADbgInfoIntrinsic$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsADbgInfoIntrinsic"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsADbgVariableIntrinsic$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsADbgVariableIntrinsic"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsADbgDeclareInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsADbgDeclareInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsADbgLabelInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsADbgLabelInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAMemIntrinsic$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAMemIntrinsic"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAMemCpyInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAMemCpyInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAMemMoveInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAMemMoveInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAMemSetInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAMemSetInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsACmpInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsACmpInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAFCmpInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAFCmpInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAICmpInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAICmpInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAExtractElementInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAExtractElementInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAGetElementPtrInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAGetElementPtrInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAInsertElementInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAInsertElementInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAInsertValueInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAInsertValueInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsALandingPadInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsALandingPadInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAPHINode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAPHINode"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsASelectInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsASelectInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAShuffleVectorInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAShuffleVectorInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAStoreInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAStoreInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsABranchInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsABranchInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAIndirectBrInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAIndirectBrInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAInvokeInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAInvokeInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAReturnInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAReturnInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsASwitchInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsASwitchInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAUnreachableInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAUnreachableInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAResumeInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAResumeInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsACleanupReturnInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsACleanupReturnInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsACatchReturnInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsACatchReturnInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsACatchSwitchInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsACatchSwitchInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsACallBrInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsACallBrInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAFuncletPadInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAFuncletPadInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsACatchPadInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsACatchPadInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsACleanupPadInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsACleanupPadInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAUnaryInstruction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAUnaryInstruction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAAllocaInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAAllocaInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsACastInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsACastInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAAddrSpaceCastInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAAddrSpaceCastInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsABitCastInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsABitCastInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAFPExtInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAFPExtInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAFPToSIInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAFPToSIInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAFPToUIInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAFPToUIInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAFPTruncInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAFPTruncInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAIntToPtrInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAIntToPtrInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAPtrToIntInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAPtrToIntInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsASExtInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsASExtInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsASIToFPInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsASIToFPInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsATruncInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsATruncInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAUIToFPInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAUIToFPInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAZExtInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAZExtInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAExtractValueInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAExtractValueInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsALoadInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsALoadInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAVAArgInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAVAArgInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAFreezeInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAFreezeInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAAtomicCmpXchgInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAAtomicCmpXchgInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAAtomicRMWInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAAtomicRMWInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAFenceInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAFenceInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAMDNode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAMDNode"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAValueAsMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAValueAsMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsAMDString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAMDString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetValueName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetValueName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetValueName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetValueName"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetFirstUse$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstUse"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextUse$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextUse"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetUser$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetUser"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetUsedValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetUsedValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetOperand$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetOperand"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetOperandUse$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetOperandUse"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMSetOperand$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetOperand"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNumOperands$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumOperands"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNull$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNull"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstAllOnes$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstAllOnes"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetUndef$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetUndef"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPoison$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPoison"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsNull$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsNull"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstPointerNull$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstPointerNull"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstInt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstInt"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMConstIntOfArbitraryPrecision$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstIntOfArbitraryPrecision"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstIntOfString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstIntOfString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_BYTE,
+  ))}
+
+internal val `LLVMConstIntOfStringAndSize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstIntOfStringAndSize"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_BYTE,
+  ))}
+
+internal val `LLVMConstReal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstReal"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_DOUBLE,
+  ))}
+
+internal val `LLVMConstRealOfString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstRealOfString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstRealOfStringAndSize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstRealOfStringAndSize"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMConstIntGetZExtValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstIntGetZExtValue"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstIntGetSExtValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstIntGetSExtValue"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstRealGetDouble$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstRealGetDouble"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_DOUBLE,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstStringInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstStringInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMConstString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMIsConstantString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsConstantString"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetAsString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetAsString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstStructInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstStructInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMConstStruct$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstStruct"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMConstArray$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstArray"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMConstArray2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstArray2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMConstNamedStruct$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNamedStruct"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetAggregateElement$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetAggregateElement"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetElementAsConstant$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetElementAsConstant"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMConstVector$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstVector"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetConstOpcode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetConstOpcode"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAlignOf$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAlignOf"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSizeOf$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSizeOf"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNeg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNeg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNSWNeg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNSWNeg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNUWNeg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNUWNeg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNot$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNot"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstAdd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstAdd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNSWAdd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNSWAdd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNUWAdd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNUWAdd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstSub$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstSub"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNSWSub$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNSWSub"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNUWSub$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNUWSub"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstMul$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstMul"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNSWMul$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNSWMul"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstNUWMul$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstNUWMul"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstXor$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstXor"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstICmp$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstICmp"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstFCmp$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstFCmp"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstShl$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstShl"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstGEP2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstGEP2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMConstInBoundsGEP2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstInBoundsGEP2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMConstTrunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstTrunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstPtrToInt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstPtrToInt"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstIntToPtr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstIntToPtr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstBitCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstBitCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstAddrSpaceCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstAddrSpaceCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstTruncOrBitCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstTruncOrBitCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstPointerCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstPointerCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstExtractElement$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstExtractElement"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstInsertElement$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstInsertElement"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstShuffleVector$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstShuffleVector"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBlockAddress$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBlockAddress"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMConstInlineAsm$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMConstInlineAsm"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetGlobalParent$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetGlobalParent"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsDeclaration$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsDeclaration"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetLinkage$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLinkage"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetLinkage$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetLinkage"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetSection$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSection"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetSection$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetSection"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetVisibility$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetVisibility"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetVisibility$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetVisibility"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetDLLStorageClass$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetDLLStorageClass"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetDLLStorageClass$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetDLLStorageClass"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetUnnamedAddress$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetUnnamedAddress"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetUnnamedAddress$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetUnnamedAddress"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGlobalGetValueType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGlobalGetValueType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMHasUnnamedAddr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMHasUnnamedAddr"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetUnnamedAddr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetUnnamedAddr"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetAlignment$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetAlignment"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetAlignment$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetAlignment"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGlobalSetMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGlobalSetMetadata"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGlobalEraseMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGlobalEraseMetadata"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGlobalClearMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGlobalClearMetadata"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGlobalCopyAllMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGlobalCopyAllMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeValueMetadataEntries$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeValueMetadataEntries"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMValueMetadataEntriesGetKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMValueMetadataEntriesGetKind"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMValueMetadataEntriesGetMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMValueMetadataEntriesGetMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMAddGlobal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddGlobal"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddGlobalInAddressSpace$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddGlobalInAddressSpace"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetNamedGlobal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNamedGlobal"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetFirstGlobal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstGlobal"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetLastGlobal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLastGlobal"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextGlobal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextGlobal"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPreviousGlobal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPreviousGlobal"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDeleteGlobal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDeleteGlobal"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInitializer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInitializer"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetInitializer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetInitializer"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsThreadLocal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsThreadLocal"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetThreadLocal$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetThreadLocal"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMIsGlobalConstant$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsGlobalConstant"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetGlobalConstant$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetGlobalConstant"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetThreadLocalMode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetThreadLocalMode"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetThreadLocalMode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetThreadLocalMode"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMIsExternallyInitialized$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsExternallyInitialized"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetExternallyInitialized$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetExternallyInitialized"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMAddAlias2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddAlias2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNamedGlobalAlias$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNamedGlobalAlias"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetFirstGlobalAlias$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstGlobalAlias"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetLastGlobalAlias$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLastGlobalAlias"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextGlobalAlias$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextGlobalAlias"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPreviousGlobalAlias$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPreviousGlobalAlias"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAliasGetAliasee$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAliasGetAliasee"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAliasSetAliasee$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAliasSetAliasee"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDeleteFunction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDeleteFunction"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMHasPersonalityFn$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMHasPersonalityFn"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPersonalityFn$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPersonalityFn"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetPersonalityFn$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetPersonalityFn"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMLookupIntrinsicID$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMLookupIntrinsicID"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetIntrinsicID$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetIntrinsicID"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetIntrinsicDeclaration$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetIntrinsicDeclaration"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMIntrinsicGetType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntrinsicGetType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMIntrinsicGetName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntrinsicGetName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIntrinsicCopyOverloadedName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntrinsicCopyOverloadedName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIntrinsicCopyOverloadedName2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntrinsicCopyOverloadedName2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIntrinsicIsOverloaded$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIntrinsicIsOverloaded"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetFunctionCallConv$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFunctionCallConv"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetFunctionCallConv$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetFunctionCallConv"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetGC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetGC"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetGC$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetGC"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddAttributeAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddAttributeAtIndex"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetAttributeCountAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetAttributeCountAtIndex"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetAttributesAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetAttributesAtIndex"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetEnumAttributeAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetEnumAttributeAtIndex"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetStringAttributeAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetStringAttributeAtIndex"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMRemoveEnumAttributeAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemoveEnumAttributeAtIndex"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMRemoveStringAttributeAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemoveStringAttributeAtIndex"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMAddTargetDependentFunctionAttr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddTargetDependentFunctionAttr"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCountParams$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCountParams"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetParams$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetParams"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetParam$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetParam"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetParamParent$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetParamParent"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetFirstParam$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstParam"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetLastParam$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLastParam"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextParam$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextParam"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPreviousParam$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPreviousParam"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetParamAlignment$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetParamAlignment"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMAddGlobalIFunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddGlobalIFunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNamedGlobalIFunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNamedGlobalIFunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMGetFirstGlobalIFunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstGlobalIFunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetLastGlobalIFunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLastGlobalIFunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextGlobalIFunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextGlobalIFunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPreviousGlobalIFunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPreviousGlobalIFunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetGlobalIFuncResolver$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetGlobalIFuncResolver"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetGlobalIFuncResolver$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetGlobalIFuncResolver"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMEraseGlobalIFunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMEraseGlobalIFunc"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemoveGlobalIFunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemoveGlobalIFunc"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMDStringInContext2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMDStringInContext2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMMDNodeInContext2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMDNodeInContext2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `LLVMMetadataAsValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMetadataAsValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMValueAsMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMValueAsMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetMDString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetMDString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetMDNodeNumOperands$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetMDNodeNumOperands"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetMDNodeOperands$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetMDNodeOperands"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMReplaceMDNodeOperandWith$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMReplaceMDNodeOperandWith"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMDStringInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMDStringInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMMDString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMDString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMMDNodeInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMDNodeInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMMDNode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMDNode"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMCreateOperandBundle$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateOperandBundle"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMDisposeOperandBundle$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeOperandBundle"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetOperandBundleTag$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetOperandBundleTag"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNumOperandBundleArgs$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumOperandBundleArgs"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetOperandBundleArgAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetOperandBundleArgAtIndex"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMBasicBlockAsValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBasicBlockAsValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMValueIsBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMValueIsBasicBlock"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMValueAsBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMValueAsBasicBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBasicBlockName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBasicBlockName"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBasicBlockParent$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBasicBlockParent"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBasicBlockTerminator$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBasicBlockTerminator"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCountBasicBlocks$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCountBasicBlocks"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBasicBlocks$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBasicBlocks"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetFirstBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstBasicBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetLastBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLastBasicBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextBasicBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPreviousBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPreviousBasicBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetEntryBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetEntryBasicBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInsertExistingBasicBlockAfterInsertBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInsertExistingBasicBlockAfterInsertBlock"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAppendExistingBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAppendExistingBasicBlock"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateBasicBlockInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateBasicBlockInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAppendBasicBlockInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAppendBasicBlockInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAppendBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAppendBasicBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInsertBasicBlockInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInsertBasicBlockInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInsertBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInsertBasicBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDeleteBasicBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDeleteBasicBlock"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRemoveBasicBlockFromParent$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemoveBasicBlockFromParent"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMoveBasicBlockBefore$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMoveBasicBlockBefore"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMMoveBasicBlockAfter$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMMoveBasicBlockAfter"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetFirstInstruction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFirstInstruction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetLastInstruction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetLastInstruction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMHasMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMHasMetadata"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetMetadata"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMSetMetadata$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetMetadata"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInstructionGetAllMetadataOtherThanDebugLoc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInstructionGetAllMetadataOtherThanDebugLoc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInstructionParent$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInstructionParent"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNextInstruction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNextInstruction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetPreviousInstruction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetPreviousInstruction"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInstructionRemoveFromParent$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInstructionRemoveFromParent"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInstructionEraseFromParent$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInstructionEraseFromParent"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDeleteInstruction$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDeleteInstruction"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInstructionOpcode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInstructionOpcode"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetICmpPredicate$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetICmpPredicate"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetFCmpPredicate$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFCmpPredicate"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInstructionClone$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInstructionClone"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsATerminatorInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsATerminatorInst"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNumArgOperands$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumArgOperands"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetInstructionCallConv$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetInstructionCallConv"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetInstructionCallConv$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInstructionCallConv"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetInstrParamAlignment$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetInstrParamAlignment"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMAddCallSiteAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddCallSiteAttribute"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetCallSiteAttributeCount$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCallSiteAttributeCount"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetCallSiteAttributes$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCallSiteAttributes"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetCallSiteEnumAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCallSiteEnumAttribute"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetCallSiteStringAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCallSiteStringAttribute"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMRemoveCallSiteEnumAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemoveCallSiteEnumAttribute"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMRemoveCallSiteStringAttribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRemoveCallSiteStringAttribute"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetCalledFunctionType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCalledFunctionType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetCalledValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCalledValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNumOperandBundles$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumOperandBundles"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetOperandBundleAtIndex$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetOperandBundleAtIndex"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMIsTailCall$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsTailCall"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetTailCall$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetTailCall"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetTailCallKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetTailCallKind"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetTailCallKind$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetTailCallKind"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetNormalDest$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNormalDest"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetUnwindDest$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetUnwindDest"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetNormalDest$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetNormalDest"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetUnwindDest$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetUnwindDest"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNumSuccessors$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumSuccessors"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSuccessor$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSuccessor"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMSetSuccessor$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetSuccessor"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsConditional$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsConditional"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetCondition$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCondition"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetCondition$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetCondition"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetSwitchDefaultDest$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetSwitchDefaultDest"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetAllocatedType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetAllocatedType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsInBounds$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsInBounds"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetIsInBounds$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetIsInBounds"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetGEPSourceElementType$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetGEPSourceElementType"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddIncoming$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddIncoming"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMCountIncoming$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCountIncoming"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetIncomingValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetIncomingValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetIncomingBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetIncomingBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetNumIndices$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumIndices"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetIndices$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetIndices"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateBuilderInContext$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateBuilderInContext"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateBuilder"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPositionBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPositionBuilder"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPositionBuilderBefore$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPositionBuilderBefore"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMPositionBuilderAtEnd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMPositionBuilderAtEnd"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetInsertBlock$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetInsertBlock"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMClearInsertionPosition$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMClearInsertionPosition"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInsertIntoBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInsertIntoBuilder"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInsertIntoBuilderWithName$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInsertIntoBuilderWithName"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeBuilder$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeBuilder"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetCurrentDebugLocation2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCurrentDebugLocation2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetCurrentDebugLocation2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetCurrentDebugLocation2"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetInstDebugLocation$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetInstDebugLocation"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddMetadataToInst$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddMetadataToInst"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuilderGetDefaultFPMathTag$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuilderGetDefaultFPMathTag"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuilderSetDefaultFPMathTag$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuilderSetDefaultFPMathTag"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetCurrentDebugLocation$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetCurrentDebugLocation"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetCurrentDebugLocation$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCurrentDebugLocation"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildRetVoid$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildRetVoid"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildRet$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildRet"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildAggregateRet$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildAggregateRet"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMBuildBr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildBr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildCondBr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildCondBr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildSwitch$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildSwitch"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMBuildIndirectBr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildIndirectBr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMBuildInvoke2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildInvoke2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildInvokeWithOperandBundles$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildInvokeWithOperandBundles"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildUnreachable$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildUnreachable"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildResume$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildResume"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildLandingPad$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildLandingPad"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildCleanupRet$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildCleanupRet"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildCatchRet$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildCatchRet"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildCatchPad$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildCatchPad"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildCleanupPad$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildCleanupPad"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildCatchSwitch$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildCatchSwitch"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddCase$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddCase"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMAddDestination$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddDestination"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNumClauses$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumClauses"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetClause$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetClause"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMAddClause$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddClause"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMIsCleanup$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsCleanup"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetCleanup$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetCleanup"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMAddHandler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMAddHandler"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNumHandlers$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumHandlers"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetHandlers$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetHandlers"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetArgOperand$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetArgOperand"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMSetArgOperand$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetArgOperand"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetParentCatchSwitch$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetParentCatchSwitch"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetParentCatchSwitch$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetParentCatchSwitch"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildAdd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildAdd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNSWAdd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNSWAdd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNUWAdd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNUWAdd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFAdd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFAdd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildSub$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildSub"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNSWSub$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNSWSub"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNUWSub$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNUWSub"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFSub$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFSub"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildMul$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildMul"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNSWMul$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNSWMul"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNUWMul$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNUWMul"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFMul$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFMul"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildUDiv$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildUDiv"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildExactUDiv$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildExactUDiv"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildSDiv$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildSDiv"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildExactSDiv$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildExactSDiv"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFDiv$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFDiv"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildURem$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildURem"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildSRem$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildSRem"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFRem$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFRem"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildShl$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildShl"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildLShr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildLShr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildAShr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildAShr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildAnd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildAnd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildOr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildOr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildXor$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildXor"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildBinOp$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildBinOp"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNeg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNeg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNSWNeg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNSWNeg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNUWNeg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNUWNeg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFNeg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFNeg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildNot$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildNot"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetNUW$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNUW"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetNUW$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetNUW"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetNSW$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNSW"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetNSW$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetNSW"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetExact$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetExact"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetExact$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetExact"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetNNeg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNNeg"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetNNeg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetNNeg"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetFastMathFlags$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetFastMathFlags"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetFastMathFlags$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetFastMathFlags"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMCanValueUseFastMathFlags$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCanValueUseFastMathFlags"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetIsDisjoint$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetIsDisjoint"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetIsDisjoint$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetIsDisjoint"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMBuildMalloc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildMalloc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildArrayMalloc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildArrayMalloc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildMemSet$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildMemSet"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMBuildMemCpy$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildMemCpy"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildMemMove$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildMemMove"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildAlloca$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildAlloca"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildArrayAlloca$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildArrayAlloca"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFree$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFree"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildLoad2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildLoad2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildStore$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildStore"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildGEP2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildGEP2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildInBoundsGEP2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildInBoundsGEP2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildStructGEP2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildStructGEP2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildGlobalString$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildGlobalString"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildGlobalStringPtr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildGlobalStringPtr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetVolatile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetVolatile"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetVolatile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetVolatile"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetWeak$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetWeak"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetWeak$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetWeak"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetOrdering$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetOrdering"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetOrdering$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetOrdering"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetAtomicRMWBinOp$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetAtomicRMWBinOp"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetAtomicRMWBinOp$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetAtomicRMWBinOp"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMBuildTrunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildTrunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildZExt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildZExt"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildSExt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildSExt"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFPToUI$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFPToUI"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFPToSI$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFPToSI"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildUIToFP$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildUIToFP"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildSIToFP$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildSIToFP"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFPTrunc$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFPTrunc"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFPExt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFPExt"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildPtrToInt$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildPtrToInt"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildIntToPtr$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildIntToPtr"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildBitCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildBitCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildAddrSpaceCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildAddrSpaceCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildZExtOrBitCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildZExtOrBitCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildSExtOrBitCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildSExtOrBitCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildTruncOrBitCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildTruncOrBitCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildPointerCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildPointerCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildIntCast2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildIntCast2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFPCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFPCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildIntCast$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildIntCast"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetCastOpcode$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCastOpcode"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMBuildICmp$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildICmp"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFCmp$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFCmp"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildPhi$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildPhi"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildCall2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildCall2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildCallWithOperandBundles$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildCallWithOperandBundles"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildSelect$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildSelect"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildVAArg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildVAArg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildExtractElement$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildExtractElement"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildInsertElement$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildInsertElement"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildShuffleVector$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildShuffleVector"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildExtractValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildExtractValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildInsertValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildInsertValue"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFreeze$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFreeze"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildIsNull$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildIsNull"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildIsNotNull$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildIsNotNull"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildPtrDiff2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildPtrDiff2"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildFence$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildFence"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMBuildAtomicRMW$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildAtomicRMW"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMBuildAtomicCmpXchg$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMBuildAtomicCmpXchg"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetNumMaskElements$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetNumMaskElements"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetUndefMaskElem$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetUndefMaskElem"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetMaskValue$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetMaskValue"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMIsAtomicSingleThread$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsAtomicSingleThread"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetAtomicSingleThread$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetAtomicSingleThread"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetCmpXchgSuccessOrdering$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCmpXchgSuccessOrdering"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetCmpXchgSuccessOrdering$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetCmpXchgSuccessOrdering"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMGetCmpXchgFailureOrdering$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetCmpXchgFailureOrdering"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMSetCmpXchgFailureOrdering$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMSetCmpXchgFailureOrdering"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMCreateModuleProviderForExistingModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateModuleProviderForExistingModule"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeModuleProvider$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeModuleProvider"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateMemoryBufferWithContentsOfFile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateMemoryBufferWithContentsOfFile"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateMemoryBufferWithSTDIN$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateMemoryBufferWithSTDIN"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateMemoryBufferWithMemoryRange$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateMemoryBufferWithMemoryRange"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMCreateMemoryBufferWithMemoryRangeCopy$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateMemoryBufferWithMemoryRangeCopy"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBufferStart$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBufferStart"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMGetBufferSize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMGetBufferSize"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposeMemoryBuffer$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposeMemoryBuffer"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreatePassManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreatePassManager"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateFunctionPassManagerForModule$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateFunctionPassManagerForModule"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMCreateFunctionPassManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMCreateFunctionPassManager"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRunPassManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRunPassManager"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMInitializeFunctionPassManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMInitializeFunctionPassManager"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMRunFunctionPassManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMRunFunctionPassManager"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMFinalizeFunctionPassManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMFinalizeFunctionPassManager"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMDisposePassManager$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMDisposePassManager"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMStartMultithreaded$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMStartMultithreaded"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `LLVMStopMultithreaded$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMStopMultithreaded"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `LLVMIsMultithreaded$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMIsMultithreaded"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `lto_get_version$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_get_version"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_get_error_message$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_get_error_message"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_is_object_file$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_is_object_file"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_is_object_file_for_target$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_is_object_file_for_target"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_has_objc_category$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_has_objc_category"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `lto_module_is_object_file_in_memory$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_is_object_file_in_memory"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `lto_module_is_object_file_in_memory_for_target$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_is_object_file_in_memory_for_target"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_create$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_create"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_create_from_memory$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_create_from_memory"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `lto_module_create_from_memory_with_path$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_create_from_memory_with_path"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_create_in_local_context$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_create_in_local_context"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_create_in_codegen_context$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_create_in_codegen_context"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_create_from_fd$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_create_from_fd"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `lto_module_create_from_fd_at_offset$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_create_from_fd_at_offset"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_LONG,
+    ValueLayout.JAVA_LONG,
+  ))}
+
+internal val `lto_module_dispose$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_dispose"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_get_target_triple$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_get_target_triple"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_set_target_triple$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_set_target_triple"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_get_num_symbols$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_get_num_symbols"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_get_symbol_name$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_get_symbol_name"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `lto_module_get_symbol_attribute$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_get_symbol_attribute"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `lto_module_get_linkeropts$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_get_linkeropts"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_get_macho_cputype$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_get_macho_cputype"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_has_ctor_dtor$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_has_ctor_dtor"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_set_diagnostic_handler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_set_diagnostic_handler"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_create$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_create"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_create_in_local_context$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_create_in_local_context"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_dispose$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_dispose"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_add_module$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_add_module"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_set_module$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_set_module"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_set_debug_model$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_set_debug_model"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `lto_codegen_set_pic_model$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_set_pic_model"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `lto_codegen_set_cpu$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_set_cpu"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_set_assembler_path$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_set_assembler_path"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_set_assembler_args$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_set_assembler_args"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `lto_codegen_add_must_preserve_symbol$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_add_must_preserve_symbol"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_write_merged_modules$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_write_merged_modules"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_compile$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_compile"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_compile_to_file$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_compile_to_file"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_optimize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_optimize"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_compile_optimized$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_compile_optimized"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_api_version$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_api_version"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `lto_set_debug_options$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_set_debug_options"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `lto_codegen_debug_options$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_debug_options"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_codegen_debug_options_array$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_debug_options_array"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_INT,
+  ))}
+
+internal val `lto_initialize_disassembler$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_initialize_disassembler"),
+  FunctionDescriptor.ofVoid(
+  ))}
+
+internal val `lto_codegen_set_should_internalize$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_set_should_internalize"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_BOOLEAN,
+  ))}
+
+internal val `lto_codegen_set_should_embed_uselists$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_codegen_set_should_embed_uselists"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_BOOLEAN,
+  ))}
+
+internal val `lto_input_create$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_input_create"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_input_dispose$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_input_dispose"),
+  FunctionDescriptor.ofVoid(
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_input_get_num_dependent_libraries$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_input_get_num_dependent_libraries"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_input_get_dependent_library$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_input_get_dependent_library"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+    ValueLayout.JAVA_LONG,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_runtime_lib_symbols_list$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_runtime_lib_symbols_list"),
+  FunctionDescriptor.of(
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `lto_module_is_thinlto$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("lto_module_is_thinlto"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_BOOLEAN,
+    `$RuntimeHelper`.POINTER,
+  ))}
+
+internal val `LLVMLinkModules2$mh`: MethodHandle by lazy {
+  Linker.nativeLinker().downcallHandle(
+  `$RuntimeHelper`.findSymbol("LLVMLinkModules2"),
+  FunctionDescriptor.of(
+    ValueLayout.JAVA_INT,
+    `$RuntimeHelper`.POINTER,
+    `$RuntimeHelper`.POINTER,
+  ))}

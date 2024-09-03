@@ -776,6 +776,351 @@ public fun LLVMInstructionSetDebugLoc(Inst: LLVMValueRef, Loc: LLVMMetadataRef):
 public fun LLVMGetMetadataKind(Metadata: LLVMMetadataRef): LLVMMetadataKind =
     (`LLVMGetMetadataKind$mh`.invokeExact(Metadata,) as Int).toUInt()
 
+public fun LLVMInitializeAArch64TargetInfo(): Unit =
+    `LLVMInitializeAArch64TargetInfo$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeAMDGPUTargetInfo(): Unit =
+    `LLVMInitializeAMDGPUTargetInfo$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeARMTargetInfo(): Unit = `LLVMInitializeARMTargetInfo$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAVRTargetInfo(): Unit = `LLVMInitializeAVRTargetInfo$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeBPFTargetInfo(): Unit = `LLVMInitializeBPFTargetInfo$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeHexagonTargetInfo(): Unit =
+    `LLVMInitializeHexagonTargetInfo$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeLanaiTargetInfo(): Unit = `LLVMInitializeLanaiTargetInfo$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeLoongArchTargetInfo(): Unit =
+    `LLVMInitializeLoongArchTargetInfo$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeMipsTargetInfo(): Unit = `LLVMInitializeMipsTargetInfo$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeMSP430TargetInfo(): Unit =
+    `LLVMInitializeMSP430TargetInfo$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeNVPTXTargetInfo(): Unit = `LLVMInitializeNVPTXTargetInfo$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializePowerPCTargetInfo(): Unit =
+    `LLVMInitializePowerPCTargetInfo$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeRISCVTargetInfo(): Unit = `LLVMInitializeRISCVTargetInfo$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeSparcTargetInfo(): Unit = `LLVMInitializeSparcTargetInfo$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeSystemZTargetInfo(): Unit =
+    `LLVMInitializeSystemZTargetInfo$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeVETargetInfo(): Unit = `LLVMInitializeVETargetInfo$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeWebAssemblyTargetInfo(): Unit =
+    `LLVMInitializeWebAssemblyTargetInfo$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeX86TargetInfo(): Unit = `LLVMInitializeX86TargetInfo$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeXCoreTargetInfo(): Unit = `LLVMInitializeXCoreTargetInfo$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeAArch64Target(): Unit = `LLVMInitializeAArch64Target$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAMDGPUTarget(): Unit = `LLVMInitializeAMDGPUTarget$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeARMTarget(): Unit = `LLVMInitializeARMTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeAVRTarget(): Unit = `LLVMInitializeAVRTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeBPFTarget(): Unit = `LLVMInitializeBPFTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeHexagonTarget(): Unit = `LLVMInitializeHexagonTarget$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeLanaiTarget(): Unit = `LLVMInitializeLanaiTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeLoongArchTarget(): Unit = `LLVMInitializeLoongArchTarget$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeMipsTarget(): Unit = `LLVMInitializeMipsTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeMSP430Target(): Unit = `LLVMInitializeMSP430Target$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeNVPTXTarget(): Unit = `LLVMInitializeNVPTXTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializePowerPCTarget(): Unit = `LLVMInitializePowerPCTarget$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeRISCVTarget(): Unit = `LLVMInitializeRISCVTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeSparcTarget(): Unit = `LLVMInitializeSparcTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeSystemZTarget(): Unit = `LLVMInitializeSystemZTarget$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeVETarget(): Unit = `LLVMInitializeVETarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeWebAssemblyTarget(): Unit =
+    `LLVMInitializeWebAssemblyTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeX86Target(): Unit = `LLVMInitializeX86Target$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeXCoreTarget(): Unit = `LLVMInitializeXCoreTarget$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeAArch64TargetMC(): Unit = `LLVMInitializeAArch64TargetMC$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeAMDGPUTargetMC(): Unit = `LLVMInitializeAMDGPUTargetMC$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeARMTargetMC(): Unit = `LLVMInitializeARMTargetMC$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeAVRTargetMC(): Unit = `LLVMInitializeAVRTargetMC$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeBPFTargetMC(): Unit = `LLVMInitializeBPFTargetMC$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeHexagonTargetMC(): Unit = `LLVMInitializeHexagonTargetMC$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeLanaiTargetMC(): Unit = `LLVMInitializeLanaiTargetMC$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeLoongArchTargetMC(): Unit =
+    `LLVMInitializeLoongArchTargetMC$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeMipsTargetMC(): Unit = `LLVMInitializeMipsTargetMC$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeMSP430TargetMC(): Unit = `LLVMInitializeMSP430TargetMC$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeNVPTXTargetMC(): Unit = `LLVMInitializeNVPTXTargetMC$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializePowerPCTargetMC(): Unit = `LLVMInitializePowerPCTargetMC$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeRISCVTargetMC(): Unit = `LLVMInitializeRISCVTargetMC$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeSparcTargetMC(): Unit = `LLVMInitializeSparcTargetMC$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeSystemZTargetMC(): Unit = `LLVMInitializeSystemZTargetMC$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeVETargetMC(): Unit = `LLVMInitializeVETargetMC$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeWebAssemblyTargetMC(): Unit =
+    `LLVMInitializeWebAssemblyTargetMC$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeX86TargetMC(): Unit = `LLVMInitializeX86TargetMC$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeXCoreTargetMC(): Unit = `LLVMInitializeXCoreTargetMC$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAArch64AsmPrinter(): Unit =
+    `LLVMInitializeAArch64AsmPrinter$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeAMDGPUAsmPrinter(): Unit =
+    `LLVMInitializeAMDGPUAsmPrinter$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeARMAsmPrinter(): Unit = `LLVMInitializeARMAsmPrinter$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAVRAsmPrinter(): Unit = `LLVMInitializeAVRAsmPrinter$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeBPFAsmPrinter(): Unit = `LLVMInitializeBPFAsmPrinter$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeHexagonAsmPrinter(): Unit =
+    `LLVMInitializeHexagonAsmPrinter$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeLanaiAsmPrinter(): Unit = `LLVMInitializeLanaiAsmPrinter$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeLoongArchAsmPrinter(): Unit =
+    `LLVMInitializeLoongArchAsmPrinter$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeMipsAsmPrinter(): Unit = `LLVMInitializeMipsAsmPrinter$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeMSP430AsmPrinter(): Unit =
+    `LLVMInitializeMSP430AsmPrinter$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeNVPTXAsmPrinter(): Unit = `LLVMInitializeNVPTXAsmPrinter$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializePowerPCAsmPrinter(): Unit =
+    `LLVMInitializePowerPCAsmPrinter$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeRISCVAsmPrinter(): Unit = `LLVMInitializeRISCVAsmPrinter$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeSparcAsmPrinter(): Unit = `LLVMInitializeSparcAsmPrinter$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeSystemZAsmPrinter(): Unit =
+    `LLVMInitializeSystemZAsmPrinter$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeVEAsmPrinter(): Unit = `LLVMInitializeVEAsmPrinter$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeWebAssemblyAsmPrinter(): Unit =
+    `LLVMInitializeWebAssemblyAsmPrinter$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeX86AsmPrinter(): Unit = `LLVMInitializeX86AsmPrinter$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeXCoreAsmPrinter(): Unit = `LLVMInitializeXCoreAsmPrinter$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeAArch64AsmParser(): Unit =
+    `LLVMInitializeAArch64AsmParser$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeAMDGPUAsmParser(): Unit = `LLVMInitializeAMDGPUAsmParser$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeARMAsmParser(): Unit = `LLVMInitializeARMAsmParser$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAVRAsmParser(): Unit = `LLVMInitializeAVRAsmParser$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeBPFAsmParser(): Unit = `LLVMInitializeBPFAsmParser$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeHexagonAsmParser(): Unit =
+    `LLVMInitializeHexagonAsmParser$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeLanaiAsmParser(): Unit = `LLVMInitializeLanaiAsmParser$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeLoongArchAsmParser(): Unit =
+    `LLVMInitializeLoongArchAsmParser$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeMipsAsmParser(): Unit = `LLVMInitializeMipsAsmParser$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeMSP430AsmParser(): Unit = `LLVMInitializeMSP430AsmParser$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializePowerPCAsmParser(): Unit =
+    `LLVMInitializePowerPCAsmParser$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeRISCVAsmParser(): Unit = `LLVMInitializeRISCVAsmParser$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeSparcAsmParser(): Unit = `LLVMInitializeSparcAsmParser$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeSystemZAsmParser(): Unit =
+    `LLVMInitializeSystemZAsmParser$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeVEAsmParser(): Unit = `LLVMInitializeVEAsmParser$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeWebAssemblyAsmParser(): Unit =
+    `LLVMInitializeWebAssemblyAsmParser$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeX86AsmParser(): Unit = `LLVMInitializeX86AsmParser$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAArch64Disassembler(): Unit =
+    `LLVMInitializeAArch64Disassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeAMDGPUDisassembler(): Unit =
+    `LLVMInitializeAMDGPUDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeARMDisassembler(): Unit = `LLVMInitializeARMDisassembler$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeAVRDisassembler(): Unit = `LLVMInitializeAVRDisassembler$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeBPFDisassembler(): Unit = `LLVMInitializeBPFDisassembler$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeHexagonDisassembler(): Unit =
+    `LLVMInitializeHexagonDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeLanaiDisassembler(): Unit =
+    `LLVMInitializeLanaiDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeLoongArchDisassembler(): Unit =
+    `LLVMInitializeLoongArchDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeMipsDisassembler(): Unit =
+    `LLVMInitializeMipsDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeMSP430Disassembler(): Unit =
+    `LLVMInitializeMSP430Disassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializePowerPCDisassembler(): Unit =
+    `LLVMInitializePowerPCDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeRISCVDisassembler(): Unit =
+    `LLVMInitializeRISCVDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeSparcDisassembler(): Unit =
+    `LLVMInitializeSparcDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeSystemZDisassembler(): Unit =
+    `LLVMInitializeSystemZDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeVEDisassembler(): Unit = `LLVMInitializeVEDisassembler$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeWebAssemblyDisassembler(): Unit =
+    `LLVMInitializeWebAssemblyDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeX86Disassembler(): Unit = `LLVMInitializeX86Disassembler$mh`.invokeExact()
+    as Unit
+
+public fun LLVMInitializeXCoreDisassembler(): Unit =
+    `LLVMInitializeXCoreDisassembler$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeAllTargetInfos(): Unit = `LLVMInitializeAllTargetInfos$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAllTargets(): Unit = `LLVMInitializeAllTargets$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeAllTargetMCs(): Unit = `LLVMInitializeAllTargetMCs$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAllAsmPrinters(): Unit = `LLVMInitializeAllAsmPrinters$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAllAsmParsers(): Unit = `LLVMInitializeAllAsmParsers$mh`.invokeExact() as
+    Unit
+
+public fun LLVMInitializeAllDisassemblers(): Unit =
+    `LLVMInitializeAllDisassemblers$mh`.invokeExact() as Unit
+
+public fun LLVMInitializeNativeTarget(): LLVMBool = `LLVMInitializeNativeTarget$mh`.invokeExact() as
+    Int
+
+public fun LLVMInitializeNativeAsmParser(): LLVMBool =
+    `LLVMInitializeNativeAsmParser$mh`.invokeExact() as Int
+
+public fun LLVMInitializeNativeAsmPrinter(): LLVMBool =
+    `LLVMInitializeNativeAsmPrinter$mh`.invokeExact() as Int
+
+public fun LLVMInitializeNativeDisassembler(): LLVMBool =
+    `LLVMInitializeNativeDisassembler$mh`.invokeExact() as Int
+
 public fun LLVMGetModuleDataLayout(M: LLVMModuleRef): LLVMTargetDataRef =
     `LLVMGetModuleDataLayout$mh`.invokeExact(M,) as MemorySegment
 
@@ -1262,14 +1607,14 @@ public fun LLVMOrcCreateDynamicLibrarySearchGeneratorForPath(
     `LLVMOrcCreateDynamicLibrarySearchGeneratorForPath$mh`.invokeExact(Result,FileName,GlobalPrefix,Filter,FilterCtx,)
     as MemorySegment
 
-//public fun LLVMOrcCreateStaticLibrarySearchGeneratorForPath(
-//  Result: Pointer<LLVMOrcDefinitionGeneratorRef>,
-//  ObjLayer: LLVMOrcObjectLayerRef,
-//  FileName: Pointer<Byte>,
-//  TargetTriple: Pointer<Byte>,
-//): LLVMErrorRef =
-//    `LLVMOrcCreateStaticLibrarySearchGeneratorForPath$mh`.invokeExact(Result,ObjLayer,FileName,TargetTriple,)
-//    as MemorySegment
+public fun LLVMOrcCreateStaticLibrarySearchGeneratorForPath(
+  Result: Pointer<LLVMOrcDefinitionGeneratorRef>,
+  ObjLayer: LLVMOrcObjectLayerRef,
+  FileName: Pointer<Byte>,
+  TargetTriple: Pointer<Byte>,
+): LLVMErrorRef =
+    `LLVMOrcCreateStaticLibrarySearchGeneratorForPath$mh`.invokeExact(Result,ObjLayer,FileName,TargetTriple,)
+    as MemorySegment
 
 public fun LLVMOrcCreateNewThreadSafeContext(): LLVMOrcThreadSafeContextRef =
     `LLVMOrcCreateNewThreadSafeContext$mh`.invokeExact() as MemorySegment
