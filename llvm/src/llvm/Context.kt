@@ -1,6 +1,7 @@
 package llvm
 
 import lib.llvm.*
+import llvm.builder.BuilderDSL
 
 class Context(
     val C: LLVMContextRef = LLVMContextCreate()
@@ -23,8 +24,16 @@ class Context(
             M = confined { temp -> LLVMModuleCreateWithNameInContext(temp.allocateFrom(name), C) }
         )
     }
-    
+
+
     fun createBuilder() = Builder(LLVMCreateBuilderInContext(C))
+
+    fun builder(block: BasicBlock, action: BuilderDSL.() -> Unit) {
+        createBuilder().use {
+            it.positionAtEnd(block)
+            it.invoke(action)
+        }
+    }
 }
 
 
@@ -44,6 +53,15 @@ class ContextTypes internal constructor(val C: LLVMContextRef) {
     val f64 = FloatType(LLVMDoubleTypeInContext(C))
 
     val ptr = PointerType(LLVMPointerTypeInContext(C, 0u))
+
+
+    fun struct(elements: List<Type>): StructType {
+        return StructType(C, elements)
+    }
+
+    fun struct(name: String, elements: List<Type>): StructType {
+        return StructType(C, name, elements)
+    }
 
 
 }

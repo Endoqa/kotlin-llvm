@@ -11,6 +11,9 @@ class Module(
     val M: LLVMModuleRef
 ) {
 
+    fun setDataLayout(str: String) {
+        confined { temp -> LLVMSetDataLayout(M, temp.allocateFrom(str)) }
+    }
 
     fun addFunction(name: String, type: FunctionType): FunctionValue {
         val f = confined { temp ->
@@ -39,6 +42,17 @@ class Module(
         }
 
         return e
+    }
+
+
+    fun printToString(): String? {
+        val s = LLVMPrintModuleToString(M)
+
+        val str = s.getString(0)
+
+        LLVMDisposeMessage(s)
+
+        return str
     }
 
 }

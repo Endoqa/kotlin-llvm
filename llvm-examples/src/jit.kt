@@ -68,5 +68,6 @@ fun main() {
         println(result)
     }
 
+    println(module.printToString())
 
 }
