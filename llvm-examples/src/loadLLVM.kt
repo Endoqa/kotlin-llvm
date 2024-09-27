@@ -1,7 +1,36 @@
 import java.io.File
 
+
+private enum class Os(
+    val libPrefix: String,
+    val libExtension: String,
+    val binPath: String
+) {
+    Linux("lib", ".so", "lib"),
+    Win("", ".dll", "bin");
+
+
+    fun libName(name: String) = "${libPrefix}${name}${libExtension}"
+}
+
 fun loadLLVM() {
-    System.load(File("C:\\Users\\Jeff\\scoop\\apps\\llvm\\18.1.8\\bin\\LLVM-C.dll").absolutePath)
-    System.load(File("C:\\Users\\Jeff\\scoop\\apps\\llvm\\18.1.8\\bin\\Remarks.dll").absolutePath)
-    System.load(File("C:\\Users\\Jeff\\scoop\\apps\\llvm\\18.1.8\\bin\\LTO.dll").absolutePath)
+    val os = getOS()
+
+    val llvmPath = System.getenv("LLVM_DEV_PATH") + "/" + os.binPath
+
+
+    System.load(File("${llvmPath}/${os.libName("LLVM")}").absolutePath)
+    System.load(File("${llvmPath}/${os.libName("Remarks")}").absolutePath)
+    System.load(File("${llvmPath}/${os.libName("LTO")}").absolutePath)
+}
+
+private fun getOS(): Os {
+
+    val osName = System.getProperty("os.name")
+
+    return when {
+        osName.startsWith("Win") -> Os.Win
+        osName.contains("Linux") -> Os.Linux
+        else -> error("Unknown OS")
+    }
 }
