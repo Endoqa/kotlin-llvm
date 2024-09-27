@@ -83,6 +83,10 @@ class Builder(
         return build<Value> { LLVMBuildCondBr(B, cond.V, then.B, not.B) }
     }
 
+    fun or(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildOr(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
 
     fun icmp(op: IntPredicate, lhs: IntValue, rhs: IntValue, name: String): Value {
         return buildAsWith<Value> { LLVMBuildICmp(B, op, lhs.V, rhs.V, allocateFrom(name)) }
@@ -173,7 +177,17 @@ class Builder(
         return buildAsWith { LLVMBuildNSWNeg(B, value.V, allocateFrom(name)) }
     }
 
+
     fun call(functionType: Type, function: FunctionValue, params: List<Value>, name: String): Value {
+        return buildCall(functionType, function, params, name)
+    }
+
+    fun call(functionType: Type, function: PointerValue, params: List<Value>, name: String): Value {
+        return buildCall(functionType, function, params, name)
+    }
+
+
+    private fun buildCall(functionType: Type, function: Value, params: List<Value>, name: String): Value {
         return buildAsWith<Value> {
             val paramArray = allocate(ValueLayout.ADDRESS, params.size.toLong())
             params.forEachIndexed { index, value ->
@@ -198,6 +212,11 @@ class Builder(
 
     // utility
     fun <T : Value> setAlignment(value: T, bytes: UInt): T {
+
+        if (bytes == 0u) {
+            return value
+        }
+
         LLVMSetAlignment(value.V, bytes)
         return value
     }

@@ -83,6 +83,7 @@ private fun createArrayType(type: Type, count: UInt): LLVMTypeRef {
 }
 
 class PointerType(T: LLVMTypeRef) : Type(T) {
+    constructor() : this(LLVMPointerTypeInContext(LLVMGetGlobalContext(), 0u))
     constructor(type: Type) : this(LLVMPointerType(type.T, 0u))
 }
 

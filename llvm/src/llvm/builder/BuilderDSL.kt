@@ -14,8 +14,13 @@ class BuilderDSL(
 
     // invoke
     operator fun <T : Value> IR<T>.getValue(thisRef: Any?, property: KProperty<*>): T {
+
+        if (this.name != "") {
+            this.name = property.name
+        }
+
         with(this@BuilderDSL) {
-            return this.build(property.name)
+            return buildIR()
         }
     }
 
@@ -27,6 +32,15 @@ class BuilderDSL(
 
     operator fun IntValue.plus(rhs: IntValue): IntAddIR {
         return IntAddIR(this, rhs)
+    }
+
+
+    infix fun IntValue.or(rhs: IntValue): OrIR {
+        return OrIR(this, rhs)
+    }
+
+    fun load(type: Type, value: PointerValue): LoadIR {
+        return LoadIR(value, type)
     }
 
     fun alloca(type: Type): AllocaIR {
@@ -45,6 +59,32 @@ class BuilderDSL(
 
     fun store(value: Value, ptr: PointerValue): Value {
         return builder.store(value, ptr)
+    }
+
+    fun call(fn: FunctionValue, type: FunctionType, vararg params: Value): CallIR {
+        return callIR(type, fn, params.toList())
+    }
+
+    fun call(fn: PointerValue, type: FunctionType, vararg params: Value): CallIR {
+        return callIR(type, fn, params.toList())
+    }
+
+    fun br(dest: BasicBlock): Value {
+        return builder.br(dest)
+    }
+
+
+    fun dest(then: BasicBlock, not: BasicBlock): CondBrDestPair {
+        return CondBrDestPair(then, not)
+    }
+
+    infix fun IntValue.br(destPair: CondBrDestPair): Value {
+        return builder.condBr(this, destPair.then, destPair.not)
+    }
+
+
+    private fun callIR(type: FunctionType, value: Value, params: List<Value>): CallIR {
+        return CallIR(type, value, params)
     }
 
     infix fun <T : Value> T.align(bytes: UInt): T {

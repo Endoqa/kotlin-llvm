@@ -18,6 +18,14 @@ class Context(
         return BasicBlock(ref)
     }
 
+    fun createBasicBlock(name: String): BasicBlock {
+        val ref = confined { temp ->
+            LLVMCreateBasicBlockInContext(C, temp.allocateFrom(name))
+        }
+
+        return BasicBlock(ref)
+    }
+
 
     fun createModule(name: String): Module {
         return Module(
