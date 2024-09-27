@@ -1,7 +1,6 @@
 package llvm.builder
 
 import lib.llvm.LLVMBuilderRef
-import lib.llvm.LLVMValueRef
 import llvm.*
 import kotlin.reflect.KProperty
 
@@ -61,6 +60,46 @@ class BuilderDSL(
         return builder.store(value, ptr)
     }
 
+    fun sub(lhs: IntValue, rhs: IntValue): SubIR {
+        return subIR(lhs, rhs)
+    }
+
+    fun sub(lhs: FloatValue, rhs: FloatValue): SubIR {
+        return subIR(lhs, rhs)
+    }
+
+    fun mul(lhs: IntValue, rhs: IntValue): MulIR {
+        return mulIR(lhs, rhs)
+    }
+
+    fun mul(lhs: FloatValue, rhs: FloatValue): MulIR {
+        return mulIR(lhs, rhs)
+    }
+
+    fun uDiv(lhs: IntValue, rhs: IntValue): UDivIR {
+        return uDivIR(lhs, rhs)
+    }
+
+    fun sDiv(lhs: IntValue, rhs: IntValue): SDivIR {
+        return sDivIR(lhs, rhs)
+    }
+
+    fun fDiv(lhs: FloatValue, rhs: FloatValue): FDivIR {
+        return fDivIR(lhs, rhs)
+    }
+
+    fun uRem(lhs: IntValue, rhs: IntValue): URemIR {
+        return uRemIR(lhs, rhs)
+    }
+
+    fun sRem(lhs: IntValue, rhs: IntValue): SRemIR {
+        return sRemIR(lhs, rhs)
+    }
+
+    fun fRem(lhs: FloatValue, rhs: FloatValue): FRemIR {
+        return fRemIR(lhs, rhs)
+    }
+
     fun call(fn: FunctionValue, type: FunctionType, vararg params: Value): CallIR {
         return callIR(type, fn, params.toList())
     }
@@ -85,6 +124,38 @@ class BuilderDSL(
 
     private fun callIR(type: FunctionType, value: Value, params: List<Value>): CallIR {
         return CallIR(type, value, params)
+    }
+
+    private fun subIR(lhs: Value, rhs: Value): SubIR {
+        return SubIR(lhs, rhs)
+    }
+
+    private fun mulIR(lhs: Value, rhs: Value): MulIR {
+        return MulIR(lhs, rhs)
+    }
+
+    private fun uDivIR(lhs: IntValue, rhs: IntValue): UDivIR {
+        return UDivIR(lhs, rhs)
+    }
+
+    private fun sDivIR(lhs: IntValue, rhs: IntValue): SDivIR {
+        return SDivIR(lhs, rhs)
+    }
+
+    private fun fDivIR(lhs: FloatValue, rhs: FloatValue): FDivIR {
+        return fDivIR(lhs, rhs)
+    }
+
+    private fun uRemIR(lhs: IntValue, rhs: IntValue): URemIR {
+        return URemIR(lhs, rhs)
+    }
+
+    private fun sRemIR(lhs: IntValue, rhs: IntValue): SRemIR {
+        return SRemIR(lhs, rhs)
+    }
+
+    private fun fRemIR(lhs: FloatValue, rhs: FloatValue): FRemIR {
+        return FRemIR(lhs, rhs)
     }
 
     infix fun <T : Value> T.align(bytes: UInt): T {

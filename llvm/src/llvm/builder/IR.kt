@@ -1,12 +1,6 @@
 package llvm.builder
 
-import llvm.BasicBlock
-import llvm.FunctionType
-import llvm.FunctionValue
-import llvm.IntValue
-import llvm.PointerValue
-import llvm.Type
-import llvm.Value
+import llvm.*
 
 sealed class IR<R : Value>() {
 
@@ -54,6 +48,112 @@ class OrIR(
     context(BuilderDSL)
     override fun build(): IntValue {
         return builder.or(lhs, rhs, name)
+    }
+}
+
+class SubIR(
+    private val lhs: Value,
+    private val rhs: Value
+) : IR<Value>() {
+
+    context(BuilderDSL)
+    override fun build(): Value {
+        return when {
+            lhs is IntValue && rhs is IntValue -> {
+                builder.sub(lhs, rhs, name)
+            }
+            lhs is FloatValue && rhs is FloatValue -> {
+                builder.fsub(lhs, rhs, name)
+            }
+
+            else -> throw IllegalArgumentException("Values are expected to be an Int/Float")
+        }
+    }
+}
+
+class MulIR(
+    val lhs: Value,
+    val rhs: Value
+) : IR<Value>() {
+
+    context(BuilderDSL)
+    override fun build(): Value {
+        return when {
+            lhs is IntValue && rhs is IntValue -> {
+                builder.mul(lhs, rhs, name)
+            }
+            lhs is FloatValue && rhs is FloatValue -> {
+                builder.fmul(lhs, rhs, name)
+            }
+
+            else -> throw IllegalArgumentException("Values are expected to be an Int/Float")
+        }
+    }
+}
+
+class UDivIR(
+    val lhs: IntValue,
+    val rhs: IntValue
+) : IR<Value>() {
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.udiv(lhs, rhs, name)
+    }
+}
+
+class SDivIR(
+    val lhs: IntValue,
+    val rhs: IntValue
+) : IR<Value>() {
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.sdiv(lhs, rhs, name)
+    }
+}
+
+class FDivIR(
+    val lhs: FloatValue,
+    val rhs: FloatValue
+): IR<Value>() {
+
+    context(BuilderDSL)
+    override fun build(): FloatValue {
+        return builder.fdiv(lhs, rhs, name)
+    }
+}
+
+class URemIR(
+    val lhs: IntValue,
+    val rhs: IntValue
+) : IR<Value>() {
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.urem(lhs, rhs, name)
+    }
+}
+
+class SRemIR(
+    val lhs: IntValue,
+    val rhs: IntValue
+) : IR<Value>() {
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.srem(lhs, rhs, name)
+    }
+}
+
+class FRemIR(
+    val lhs: FloatValue,
+    val rhs: FloatValue
+) : IR<Value>() {
+
+    context(BuilderDSL)
+    override fun build(): FloatValue {
+        return builder.frem(lhs, rhs, name)
     }
 }
 
