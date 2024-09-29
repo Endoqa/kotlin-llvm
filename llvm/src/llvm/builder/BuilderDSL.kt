@@ -55,6 +55,14 @@ class BuilderDSL(
         return GEPIR(inbound, value, indecies.toList())
     }
 
+    fun isNull(value: Value): IsNullIR {
+        return IsNullIR(value)
+    }
+
+
+    fun isNotNull(value: Value): IsNotNullIR {
+        return IsNotNullIR(value)
+    }
 
     fun store(value: Value, ptr: PointerValue): Value {
         return builder.store(value, ptr)
@@ -121,6 +129,9 @@ class BuilderDSL(
         return builder.condBr(this, destPair.then, destPair.not)
     }
 
+    fun globalStr(str: String): GlobalStrIR {
+        return GlobalStrIR(str)
+    }
 
     private fun callIR(type: FunctionType, value: Value, params: List<Value>): CallIR {
         return CallIR(type, value, params)

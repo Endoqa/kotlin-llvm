@@ -110,12 +110,12 @@ class Builder(
     }
 
 
-    fun isNull(value: Value, name: String): Value {
-        return buildAsWith<Value> { LLVMBuildIsNull(B, value.V, allocateFrom(name)) }
+    fun isNull(value: Value, name: String): IntValue {
+        return buildAsWith<IntValue> { LLVMBuildIsNull(B, value.V, allocateFrom(name)) }
     }
 
-    fun isNotNull(value: Value, name: String): Value {
-        return buildAsWith<Value> { LLVMBuildIsNotNull(B, value.V, allocateFrom(name)) }
+    fun isNotNull(value: Value, name: String): IntValue {
+        return buildAsWith<IntValue> { LLVMBuildIsNotNull(B, value.V, allocateFrom(name)) }
     }
 
 

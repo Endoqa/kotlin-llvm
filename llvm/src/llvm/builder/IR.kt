@@ -19,6 +19,16 @@ sealed class IR<R : Value>() {
     abstract fun build(): R
 }
 
+class GlobalStrIR(
+    val str: String
+) : IR<PointerValue>() {
+    context(BuilderDSL)
+    override fun build(): PointerValue {
+        return builder.globalStr(str, name)
+    }
+
+}
+
 class AllocaIR(
     val type: Type
 ) : IR<PointerValue>() {
@@ -62,6 +72,7 @@ class SubIR(
             lhs is IntValue && rhs is IntValue -> {
                 builder.sub(lhs, rhs, name)
             }
+
             lhs is FloatValue && rhs is FloatValue -> {
                 builder.fsub(lhs, rhs, name)
             }
@@ -82,6 +93,7 @@ class MulIR(
             lhs is IntValue && rhs is IntValue -> {
                 builder.mul(lhs, rhs, name)
             }
+
             lhs is FloatValue && rhs is FloatValue -> {
                 builder.fmul(lhs, rhs, name)
             }
@@ -116,7 +128,7 @@ class SDivIR(
 class FDivIR(
     val lhs: FloatValue,
     val rhs: FloatValue
-): IR<Value>() {
+) : IR<Value>() {
 
     context(BuilderDSL)
     override fun build(): FloatValue {
@@ -196,6 +208,24 @@ class CallIR(
         }
     }
 
+}
+
+class IsNullIR(
+    val value: Value
+) : IR<IntValue>() {
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.isNull(value, name)
+    }
+}
+
+class IsNotNullIR(
+    val value: Value
+) : IR<IntValue>() {
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.isNotNull(value, name)
+    }
 }
 
 data class CondBrDestPair(
