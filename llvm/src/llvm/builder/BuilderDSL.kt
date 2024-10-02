@@ -14,12 +14,17 @@ class BuilderDSL(
     // invoke
     operator fun <T : Value> IR<T>.getValue(thisRef: Any?, property: KProperty<*>): T {
 
-        if (this.name != "") {
+        if (this.name == "") {
             this.name = property.name
         }
 
+
+
         with(this@BuilderDSL) {
-            return buildIR()
+            var v = irVal ?: buildIR()
+            irVal = v
+
+            return v
         }
     }
 

@@ -7,6 +7,11 @@ class Context(
     val C: LLVMContextRef = LLVMContextCreate()
 ) {
 
+    companion object {
+        val Global by lazy { Context(LLVMGetGlobalContext() ) }
+    }
+
+
     val types = ContextTypes(C)
 
     fun appendBasicBlock(function: FunctionValue, name: String): BasicBlock {

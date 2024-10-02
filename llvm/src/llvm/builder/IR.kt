@@ -17,6 +17,8 @@ sealed class IR<R : Value>() {
 
     context(BuilderDSL)
     abstract fun build(): R
+
+    internal var irVal: R? = null
 }
 
 class GlobalStrIR(
