@@ -71,7 +71,6 @@ class FunctionValue(val functionType: FunctionType, V: LLVMValueRef) : Value(V) 
     fun getParam(index: UInt) = Value.from(LLVMGetParam(V, index))
 
 
-
     fun appendBasicBlock(basicBlock: BasicBlock) {
         LLVMAppendExistingBasicBlock(V, basicBlock.B)
     }

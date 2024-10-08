@@ -43,7 +43,7 @@ class BuilderDSL(
         return OrIR(this, rhs)
     }
 
-    fun load(type: Type, value: PointerValue): LoadIR {
+    fun <T : Value> load(type: Type, value: PointerValue): LoadIR<T> {
         return LoadIR(value, type)
     }
 
@@ -180,6 +180,23 @@ class BuilderDSL(
 
     infix fun <T : Value> T.named(name: String): T {
         return builder.setName(this, name)
+    }
+
+    // icmp
+    infix fun IntValue.eq(rhs: IntValue): IntCmpIR {
+        return IntCmpIR(this, rhs, IntPredicate.EQ)
+    }
+
+    infix fun IntValue.ne(rhs: IntValue): IntCmpIR {
+        return IntCmpIR(this, rhs, IntPredicate.NE)
+    }
+
+    infix fun PointerValue.eq(rhs: PointerValue): IntCmpIR {
+        return IntCmpIR(this, rhs, IntPredicate.EQ)
+    }
+
+    infix fun PointerValue.ne(rhs: PointerValue): IntCmpIR {
+        return IntCmpIR(this, rhs, IntPredicate.NE)
     }
 
 

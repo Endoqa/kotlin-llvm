@@ -185,13 +185,13 @@ class GEPIR(
 
 }
 
-class LoadIR(
+class LoadIR<T : Value>(
     val value: PointerValue,
     val type: Type
-) : IR<Value>() {
+) : IR<T>() {
     context(BuilderDSL)
-    override fun build(): Value {
-        return builder.load(type, value, name)
+    override fun build(): T {
+        return builder.load(type, value, name) as T
     }
 
 }
@@ -229,6 +229,30 @@ class IsNotNullIR(
         return builder.isNotNull(value, name)
     }
 }
+
+class IntCmpIR(
+    val lhs: Value,
+    val rhs: Value,
+    val predicate: IntPredicate
+) : IR<IntValue>() {
+
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return when {
+            lhs is IntValue && rhs is IntValue -> {
+                builder.icmp(predicate, lhs, rhs, name)
+            }
+
+            lhs is PointerValue && rhs is PointerValue -> {
+                builder.icmp(predicate, lhs, rhs, name)
+            }
+
+            else -> error("Values are expected to be an Int/Pointer")
+        }
+    }
+}
+
 
 data class CondBrDestPair(
     val then: BasicBlock,

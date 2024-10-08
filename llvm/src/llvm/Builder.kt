@@ -88,8 +88,12 @@ class Builder(
     }
 
 
-    fun icmp(op: IntPredicate, lhs: IntValue, rhs: IntValue, name: String): Value {
-        return buildAsWith<Value> { LLVMBuildICmp(B, op, lhs.V, rhs.V, allocateFrom(name)) }
+    fun icmp(op: IntPredicate, lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith<IntValue> { LLVMBuildICmp(B, op, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun icmp(op: IntPredicate, lhs: PointerValue, rhs: PointerValue, name: String): IntValue {
+        return buildAsWith<IntValue> { LLVMBuildICmp(B, op, lhs.V, rhs.V, allocateFrom(name)) }
     }
 
     fun br(dest: BasicBlock): Value {

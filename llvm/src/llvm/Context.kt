@@ -8,11 +8,12 @@ class Context(
 ) {
 
     companion object {
-        val Global by lazy { Context(LLVMGetGlobalContext() ) }
+        val Global by lazy { Context(LLVMGetGlobalContext()) }
     }
 
 
-    val types = ContextTypes(C)
+    val types = ContextTypes(this)
+    val values = ContextValues(this)
 
     fun appendBasicBlock(function: FunctionValue, name: String): BasicBlock {
 
@@ -50,7 +51,9 @@ class Context(
 }
 
 
-class ContextTypes internal constructor(val C: LLVMContextRef) {
+class ContextTypes internal constructor(val c: Context) {
+
+    private val C = c.C
 
     val void = VoidType(LLVMVoidTypeInContext(C))
     val bool = IntType(LLVMInt1TypeInContext(C))
@@ -76,5 +79,15 @@ class ContextTypes internal constructor(val C: LLVMContextRef) {
         return StructType(C, name, elements)
     }
 
+
+}
+
+class ContextValues internal constructor(val c: Context) {
+    val C = c.C
+
+
+    val nullptr by lazy {
+        PointerValue(LLVMConstNull(c.types.ptr.T))
+    }
 
 }
