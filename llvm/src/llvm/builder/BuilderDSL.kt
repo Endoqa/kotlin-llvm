@@ -200,5 +200,6 @@ class BuilderDSL(
     }
 
 
+    fun returns() = builder.buildReturn()
     fun returns(value: Value) = builder.buildReturn(value)
 }
