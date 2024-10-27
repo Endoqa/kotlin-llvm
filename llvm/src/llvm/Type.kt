@@ -53,8 +53,12 @@ class VoidType(T: LLVMTypeRef) : Type(T)
 
 class IntType(T: LLVMTypeRef) : Type(T) {
 
-    operator fun invoke(value: UInt): Value {
-        return Value.from(LLVMConstInt(T, value.toULong(), 0))
+    operator fun invoke(value: UInt, signed: Boolean = false): Value {
+        return Value.from(LLVMConstInt(T, value.toULong(), if (signed) 1 else 0))
+    }
+
+    operator fun invoke(value: ULong, signed: Boolean = false): Value {
+        return Value.from(LLVMConstInt(T, value, if (signed) 1 else 0))
     }
 
 }

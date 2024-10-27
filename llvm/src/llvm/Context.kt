@@ -86,8 +86,6 @@ class ContextValues internal constructor(val c: Context) {
     val C = c.C
 
 
-    val nullptr by lazy {
-        PointerValue(LLVMConstNull(c.types.ptr.T))
-    }
+    val nullptr get() = PointerValue(LLVMConstNull(c.types.ptr.T))
 
 }
