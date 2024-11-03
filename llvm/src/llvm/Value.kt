@@ -35,6 +35,8 @@ sealed class Value(
 
 class PhiValue(V: LLVMValueRef) : Value(V) {
 
+    fun asTyped() = Value.from(V)
+
 
     fun addIncoming(phis: Map<BasicBlock, Value>) {
         confined { temp ->

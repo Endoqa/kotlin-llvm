@@ -51,17 +51,7 @@ sealed class Type(
 
 class VoidType(T: LLVMTypeRef) : Type(T)
 
-class IntType(T: LLVMTypeRef) : Type(T) {
-
-    operator fun invoke(value: UInt, signed: Boolean = false): Value {
-        return Value.from(LLVMConstInt(T, value.toULong(), if (signed) 1 else 0))
-    }
-
-    operator fun invoke(value: ULong, signed: Boolean = false): Value {
-        return Value.from(LLVMConstInt(T, value, if (signed) 1 else 0))
-    }
-
-}
+class IntType(T: LLVMTypeRef) : Type(T)
 
 class FloatType(T: LLVMTypeRef) : Type(T)
 
@@ -88,7 +78,6 @@ private fun createArrayType(type: Type, count: UInt): LLVMTypeRef {
 
 class PointerType(T: LLVMTypeRef) : Type(T) {
     constructor() : this(LLVMPointerTypeInContext(LLVMGetGlobalContext(), 0u))
-    constructor(type: Type) : this(LLVMPointerType(type.T, 0u))
 }
 
 data class FunctionType(

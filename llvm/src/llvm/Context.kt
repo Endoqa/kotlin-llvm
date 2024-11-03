@@ -88,4 +88,25 @@ class ContextValues internal constructor(val c: Context) {
 
     val nullptr get() = PointerValue(LLVMConstNull(c.types.ptr.T))
 
+    fun bool(value: Boolean) = IntValue(LLVMConstInt(c.types.bool.T, if (value) 1u else 0u, 1))
+
+    fun i8(value: Byte) = IntValue(LLVMConstInt(c.types.i8.T, value.toULong(), 1))
+    fun i8(value: UByte) = IntValue(LLVMConstInt(c.types.i8.T, value.toULong(), 0))
+
+    fun i16(value: Short) = IntValue(LLVMConstInt(c.types.i16.T, value.toULong(), 1))
+    fun i16(value: UShort) = IntValue(LLVMConstInt(c.types.i16.T, value.toULong(), 0))
+
+    fun i32(value: Int) = IntValue(LLVMConstInt(c.types.i32.T, value.toULong(), 1))
+    fun i32(value: UInt) = IntValue(LLVMConstInt(c.types.i32.T, value.toULong(), 0))
+
+    fun i64(value: Long) = IntValue(LLVMConstInt(c.types.i64.T, value.toULong(), 1))
+    fun i64(value: ULong) = IntValue(LLVMConstInt(c.types.i64.T, value.toULong(), 0))
+
+    fun i128(value: Long) = IntValue(LLVMConstInt(c.types.i128.T, value.toULong(), 1))
+    fun i128(value: ULong) = IntValue(LLVMConstInt(c.types.i128.T, value.toULong(), 0))
+
+    fun f16(value: Float) = FloatValue(LLVMConstReal(c.types.f16.T, value.toDouble()))
+    fun f32(value: Float) = FloatValue(LLVMConstReal(c.types.f32.T, value.toDouble()))
+    fun f64(value: Double) = FloatValue(LLVMConstReal(c.types.f64.T, value))
+
 }
