@@ -1,6 +1,7 @@
 package llvm.builder
 
 import lib.llvm.LLVMBuilderRef
+import lib.llvm.LLVMRealPredicate
 import llvm.*
 import kotlin.reflect.KProperty
 
@@ -38,9 +39,33 @@ class BuilderDSL(
         return IntAddIR(this, rhs)
     }
 
+    operator fun FloatValue.plus(rhs: FloatValue): FloatAddIR {
+        return FloatAddIR(this, rhs)
+    }
+
 
     infix fun IntValue.or(rhs: IntValue): OrIR {
         return OrIR(this, rhs)
+    }
+
+    infix fun IntValue.xor(rhs: IntValue): XorIR {
+        return XorIR(this, rhs)
+    }
+
+    infix fun IntValue.shl(rhs: IntValue): SHLIR {
+        return SHLIR(this, rhs)
+    }
+
+    infix fun IntValue.shr(rhs: IntValue): SHRIR {
+        return SHRIR(this, rhs)
+    }
+
+    infix fun IntValue.ushr(rhs: IntValue): USHRIR {
+        return USHRIR(this, rhs)
+    }
+
+    infix fun IntValue.and(rhs: IntValue): AndIR {
+        return AndIR(this, rhs)
     }
 
     fun <T : Value> load(type: Type, value: PointerValue): LoadIR<T> {
@@ -159,7 +184,7 @@ class BuilderDSL(
     }
 
     private fun fDivIR(lhs: FloatValue, rhs: FloatValue): FDivIR {
-        return fDivIR(lhs, rhs)
+        return FDivIR(lhs, rhs)
     }
 
     private fun uRemIR(lhs: IntValue, rhs: IntValue): URemIR {
@@ -191,12 +216,63 @@ class BuilderDSL(
         return IntCmpIR(this, rhs, IntPredicate.NE)
     }
 
+    infix fun IntValue.sgt(rhs: IntValue): IntCmpIR {
+        return IntCmpIR(this, rhs, IntPredicate.SGT)
+    }
+
+    infix fun IntValue.sge(rhs: IntValue): IntCmpIR {
+        return IntCmpIR(this, rhs, IntPredicate.SGE)
+    }
+
+    infix fun IntValue.slt(rhs: IntValue): IntCmpIR {
+        return IntCmpIR(this, rhs, IntPredicate.SLT)
+    }
+
+    infix fun IntValue.sle(rhs: IntValue): IntCmpIR {
+        return IntCmpIR(this, rhs, IntPredicate.SLE)
+    }
+
     infix fun PointerValue.eq(rhs: PointerValue): IntCmpIR {
         return IntCmpIR(this, rhs, IntPredicate.EQ)
     }
 
     infix fun PointerValue.ne(rhs: PointerValue): IntCmpIR {
         return IntCmpIR(this, rhs, IntPredicate.NE)
+    }
+
+
+    infix fun Value.trunc(type: IntType): TruncIR {
+        return TruncIR(this, type)
+    }
+
+    infix fun Value.zext(type: IntType): ZExtIR {
+        return ZExtIR(this, type)
+    }
+
+    infix fun Value.intcast(type: IntType): IntCastIR {
+        return IntCastIR(this, type)
+    }
+
+    infix fun Value.fpcast(type: FloatType): FpCastIR {
+        return FpCastIR(this, type)
+    }
+
+    infix fun Value.sitofpt(type: FloatType): SIToFPIR {
+        return SIToFPIR(this, type)
+    }
+
+    infix fun Value.fptosi(type: IntType): FPToSIIR {
+        return FPToSIIR(this, type)
+    }
+
+    fun switch(value: Value, default: BasicBlock, cases: List<SwitchCase>) = builder.switch(value, default, cases)
+
+    fun fcmp(predicate: LLVMRealPredicate, lhs: Value, rhs: Value): FcmpIR {
+        return FcmpIR(lhs, rhs, predicate)
+    }
+
+    fun select(cond: Value, ifTrue: Value, ifFalse: Value): SelectIR {
+        return SelectIR(cond, ifTrue, ifFalse)
     }
 
 

@@ -10,8 +10,9 @@ sealed class Value(
         fun from(V: LLVMValueRef): Value = when (LLVMGetTypeKind(LLVMTypeOf(V))) {
             LLVMTypeKind.VoidTypeKind -> VoidValue(V)
             LLVMTypeKind.HalfTypeKind -> TODO()
-            LLVMTypeKind.FloatTypeKind -> FloatValue(V)
-            LLVMTypeKind.DoubleTypeKind -> TODO()
+            LLVMTypeKind.FloatTypeKind,
+            LLVMTypeKind.DoubleTypeKind -> FloatValue(V)
+
             LLVMTypeKind.X86_FP80TypeKind -> TODO()
             LLVMTypeKind.FP128TypeKind -> TODO()
             LLVMTypeKind.PPC_FP128TypeKind -> TODO()
@@ -77,4 +78,18 @@ class FunctionValue(val functionType: FunctionType, V: LLVMValueRef) : Value(V) 
         LLVMAppendExistingBasicBlock(V, basicBlock.B)
     }
 
+}
+
+
+data class SwitchCase(val condition: Value, val block: BasicBlock)
+
+
+class SwitchValue(V: LLVMValueRef, val numCases: UInt) : Value(V) {
+    fun addCase(condition: Value, block: BasicBlock) {
+        LLVMAddCase(V, condition.V, block.B)
+    }
+
+    fun addCase(case: SwitchCase) {
+        addCase(case.condition, case.block)
+    }
 }

@@ -1,5 +1,6 @@
 package llvm.builder
 
+import lib.llvm.LLVMRealPredicate
 import llvm.*
 
 sealed class IR<R : Value>() {
@@ -19,6 +20,17 @@ sealed class IR<R : Value>() {
     abstract fun build(): R
 
     internal var irVal: R? = null
+}
+
+class SelectIR(
+    val cond: Value,
+    val then: Value,
+    val not: Value
+) : IR<Value>() {
+    context(BuilderDSL)
+    override fun build(): Value {
+        return builder.select(cond, then, not, name)
+    }
 }
 
 class GlobalStrIR(
@@ -52,6 +64,16 @@ class IntAddIR(
     }
 }
 
+class FloatAddIR(
+    val lhs: FloatValue,
+    val rhs: FloatValue
+) : IR<FloatValue>() {
+    context(BuilderDSL)
+    override fun build(): FloatValue {
+        return builder.fadd(lhs, rhs, name)
+    }
+}
+
 class OrIR(
     val lhs: IntValue,
     val rhs: IntValue
@@ -62,6 +84,64 @@ class OrIR(
         return builder.or(lhs, rhs, name)
     }
 }
+
+class AndIR(
+    val lhs: IntValue,
+    val rhs: IntValue
+) : IR<IntValue>() {
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.and(lhs, rhs, name)
+    }
+}
+
+class SHLIR(
+    val lhs: IntValue,
+    val rhs: IntValue
+) : IR<IntValue>() {
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.shl(lhs, rhs, name)
+    }
+}
+
+
+class SHRIR(
+    val lhs: IntValue,
+    val rhs: IntValue
+) : IR<IntValue>() {
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.ashr(lhs, rhs, name)
+    }
+}
+
+class USHRIR(
+    val lhs: IntValue,
+    val rhs: IntValue
+) : IR<IntValue>() {
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.lshr(lhs, rhs, name)
+    }
+}
+
+
+class XorIR(
+    val lhs: IntValue,
+    val rhs: IntValue
+) : IR<IntValue>() {
+
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.xor(lhs, rhs, name)
+    }
+}
+
 
 class SubIR(
     private val lhs: Value,
@@ -253,6 +333,78 @@ class IntCmpIR(
     }
 }
 
+class TruncIR(
+    val value: Value,
+    val type: IntType,
+) : IR<Value>() {
+    context(BuilderDSL)
+    override fun build(): Value {
+        return builder.trunc(value, type, name)
+    }
+}
+
+class ZExtIR(
+    val value: Value,
+    val type: IntType,
+) : IR<IntValue>() {
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.zext(value, type, name)
+    }
+}
+
+
+class IntCastIR(
+    val value: Value,
+    val type: IntType,
+) : IR<Value>() {
+    context(BuilderDSL)
+    override fun build(): Value {
+        return builder.intcast(value, type, name)
+    }
+}
+
+
+class SIToFPIR(
+    val value: Value,
+    val type: FloatType,
+) : IR<Value>() {
+    context(BuilderDSL)
+    override fun build(): Value {
+        return builder.sitofp(value, type, name)
+    }
+}
+
+class FPToSIIR(
+    val value: Value,
+    val type: IntType,
+) : IR<Value>() {
+    context(BuilderDSL)
+    override fun build(): Value {
+        return builder.fptosi(value, type, name)
+    }
+}
+
+class FpCastIR(
+    val value: Value,
+    val type: FloatType,
+) : IR<Value>() {
+    context(BuilderDSL)
+    override fun build(): Value {
+        return builder.fpcast(value, type, name)
+    }
+}
+
+class FcmpIR(
+    val lhs: Value,
+    val rhs: Value,
+    val predicate: LLVMRealPredicate
+) : IR<IntValue>() {
+    context(BuilderDSL)
+    override fun build(): IntValue {
+        return builder.fcmp(predicate, lhs, rhs, name)
+    }
+}
 
 data class CondBrDestPair(
     val then: BasicBlock,

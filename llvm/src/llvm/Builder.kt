@@ -38,6 +38,10 @@ class Builder(
         return v
     }
 
+    fun fadd(lhs: FloatValue, rhs: FloatValue, name: String): FloatValue {
+        return buildAsWith { LLVMBuildFAdd(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
 
     fun buildReturn(ret: Value): Value {
         return Value.from(LLVMBuildRet(B, ret.V))
@@ -87,6 +91,26 @@ class Builder(
         return buildAsWith { LLVMBuildOr(B, lhs.V, rhs.V, allocateFrom(name)) }
     }
 
+    fun xor(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildXor(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun shl(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildShl(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun ashr(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildAShr(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun lshr(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildLShr(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun and(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildAnd(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
 
     fun icmp(op: IntPredicate, lhs: IntValue, rhs: IntValue, name: String): IntValue {
         return buildAsWith<IntValue> { LLVMBuildICmp(B, op, lhs.V, rhs.V, allocateFrom(name)) }
@@ -94,6 +118,10 @@ class Builder(
 
     fun icmp(op: IntPredicate, lhs: PointerValue, rhs: PointerValue, name: String): IntValue {
         return buildAsWith<IntValue> { LLVMBuildICmp(B, op, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun fcmp(op: LLVMRealPredicate, lhs: Value, rhs: Value, name: String): IntValue {
+        return buildAsWith<IntValue> { LLVMBuildFCmp(B, op, lhs.V, rhs.V, allocateFrom(name)) }
     }
 
     fun br(dest: BasicBlock): Value {
@@ -181,6 +209,28 @@ class Builder(
         return buildAsWith { LLVMBuildNSWNeg(B, value.V, allocateFrom(name)) }
     }
 
+    fun sitofp(value: Value, destType: FloatType, name: String): FloatValue {
+        return buildAsWith { LLVMBuildSIToFP(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun fptosi(value: Value, destType: IntType, name: String): IntValue {
+        return buildAsWith { LLVMBuildFPToSI(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun fpcast(value: Value, destType: FloatType, name: String): FloatValue {
+        return buildAsWith { LLVMBuildFPCast(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun switch(value: Value, default: BasicBlock, cases: List<SwitchCase>): SwitchValue {
+        val numCases = cases.size.toUInt()
+        val switch = LLVMBuildSwitch(B, value.V, default.B, numCases)
+        val v = SwitchValue(switch, numCases)
+        cases.forEach {
+            v.addCase(it)
+        }
+
+        return v
+    }
 
     fun call(functionType: Type, function: FunctionValue, params: List<Value>, name: String): Value {
         return buildCall(functionType, function, params, name)
@@ -213,6 +263,17 @@ class Builder(
         }
     }
 
+    fun trunc(value: Value, destType: IntType, name: String): Value {
+        return buildAsWith { LLVMBuildTrunc(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun zext(value: Value, destType: IntType, name: String): IntValue {
+        return buildAsWith { LLVMBuildZExt(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun cast(value: Value, destType: IntType, name: String): Value {
+        return buildAsWith { LLVMBuildIntCast(B, value.V, destType.T, allocateFrom(name)) }
+    }
 
     // utility
     fun <T : Value> setAlignment(value: T, bytes: UInt): T {
