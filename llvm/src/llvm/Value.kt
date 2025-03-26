@@ -24,7 +24,6 @@ sealed class Value(
             LLVMTypeKind.PointerTypeKind -> PointerValue(V)
             LLVMTypeKind.VectorTypeKind -> TODO()
             LLVMTypeKind.MetadataTypeKind -> TODO()
-            LLVMTypeKind.X86_MMXTypeKind -> TODO()
             LLVMTypeKind.TokenTypeKind -> TODO()
             LLVMTypeKind.ScalableVectorTypeKind -> TODO()
             LLVMTypeKind.BFloatTypeKind -> TODO()
@@ -36,7 +35,7 @@ sealed class Value(
 
 class PhiValue(V: LLVMValueRef) : Value(V) {
 
-    fun asTyped() = Value.from(V)
+    fun asTyped() = from(V)
 
 
     fun addIncoming(phis: Map<BasicBlock, Value>) {
@@ -71,7 +70,7 @@ class IntValue(V: LLVMValueRef) : Value(V)
 class FloatValue(V: LLVMValueRef) : Value(V)
 
 class FunctionValue(val functionType: FunctionType, V: LLVMValueRef) : Value(V) {
-    fun getParam(index: UInt) = Value.from(LLVMGetParam(V, index))
+    fun getParam(index: UInt) = from(LLVMGetParam(V, index))
 
 
     fun appendBasicBlock(basicBlock: BasicBlock) {

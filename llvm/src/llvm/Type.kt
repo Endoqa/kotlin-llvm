@@ -18,6 +18,11 @@ sealed class Type(
      */
     val sizeOf: IntValue get() = Value.from(LLVMSizeOf(T)) as IntValue
 
+    /**
+     * Returns this type as an AnyTypeEnum, which is just the Type itself in this implementation.
+     * This method exists for API compatibility with the Rust implementation.
+     */
+    fun asAnyTypeEnum(): Type = this
 
     companion object {
         fun from(T: LLVMTypeRef): Type = when (LLVMGetTypeKind(T)) {
@@ -38,7 +43,6 @@ sealed class Type(
             LLVMTypeKind.PointerTypeKind -> TODO()
             LLVMTypeKind.VectorTypeKind -> TODO()
             LLVMTypeKind.MetadataTypeKind -> TODO()
-            LLVMTypeKind.X86_MMXTypeKind -> TODO()
             LLVMTypeKind.TokenTypeKind -> TODO()
             LLVMTypeKind.ScalableVectorTypeKind -> TODO()
             LLVMTypeKind.BFloatTypeKind -> TODO()

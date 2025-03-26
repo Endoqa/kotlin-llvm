@@ -13,6 +13,18 @@ class Builder(
         LLVMPositionBuilderAtEnd(B, block.B)
     }
 
+    fun positionBefore(instr: Value) {
+        LLVMPositionBuilderBefore(B, instr.V)
+    }
+
+    fun positionBuilder(block: BasicBlock, instr: Value) {
+        LLVMPositionBuilder(B, block.B, instr.V)
+    }
+
+    fun clearInsertionPosition() {
+        LLVMClearInsertionPosition(B)
+    }
+
     private inline fun <T : Value> buildAsWith(action: Arena.() -> LLVMValueRef): T {
         val V = confined { action(it) }
 
@@ -28,7 +40,7 @@ class Builder(
     }
 
 
-    fun buildIntAdd(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+    fun add(lhs: IntValue, rhs: IntValue, name: String): IntValue {
         val r = confined { temp ->
             LLVMBuildAdd(B, lhs.V, rhs.V, temp.allocateFrom(name))
         }
@@ -38,23 +50,65 @@ class Builder(
         return v
     }
 
+    fun nswAdd(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildNSWAdd(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun nuwAdd(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildNUWAdd(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
     fun fadd(lhs: FloatValue, rhs: FloatValue, name: String): FloatValue {
         return buildAsWith { LLVMBuildFAdd(B, lhs.V, rhs.V, allocateFrom(name)) }
     }
 
 
-    fun buildReturn(ret: Value): Value {
+    fun ret(ret: Value): Value {
         return Value.from(LLVMBuildRet(B, ret.V))
     }
 
-    fun buildReturn(): Value {
+    fun retVoid(): Value {
         return Value.from(LLVMBuildRetVoid(B))
+    }
+
+    fun aggregateRet(values: List<Value>): Value {
+        return buildAsWith {
+            val valuesArray = allocate(ValueLayout.ADDRESS, values.size.toLong())
+            values.forEachIndexed { index, value ->
+                valuesArray.setAtIndex(ValueLayout.ADDRESS, index.toLong(), value.V)
+            }
+            LLVMBuildAggregateRet(B, valuesArray, values.size.toUInt())
+        }
+    }
+
+    fun unreachable(): Value {
+        return Value.from(LLVMBuildUnreachable(B))
+    }
+
+    fun resume(value: Value): Value {
+        return Value.from(LLVMBuildResume(B, value.V))
     }
 
     fun alloca(type: Type, name: String): PointerValue {
         return Value.from(confined { temp ->
             LLVMBuildAlloca(B, type.T, temp.allocateFrom(name))
         }) as PointerValue
+    }
+
+    fun arrayAlloca(type: Type, size: Value, name: String): PointerValue {
+        return buildAsWith { LLVMBuildArrayAlloca(B, type.T, size.V, allocateFrom(name)) }
+    }
+
+    fun malloc(type: Type, name: String): PointerValue {
+        return buildAsWith { LLVMBuildMalloc(B, type.T, allocateFrom(name)) }
+    }
+
+    fun arrayMalloc(type: Type, size: Value, name: String): PointerValue {
+        return buildAsWith { LLVMBuildArrayMalloc(B, type.T, size.V, allocateFrom(name)) }
+    }
+
+    fun free(pointer: PointerValue): Value {
+        return Value.from(LLVMBuildFree(B, pointer.V))
     }
 
     fun gep(inbound: Type, value: PointerValue, indecies: List<Value> = emptyList(), name: String): PointerValue {
@@ -80,6 +134,31 @@ class Builder(
 
     fun store(value: Value, ptr: PointerValue): Value {
         return Value.from(LLVMBuildStore(B, value.V, ptr.V))
+    }
+
+    fun fence(ordering: AtomicOrdering, singleThread: Boolean, name: String): Value {
+        return buildAsWith { LLVMBuildFence(B, ordering, if (singleThread) 1 else 0, allocateFrom(name)) }
+    }
+
+    fun atomicCmpXchg(
+        ptr: PointerValue,
+        cmp: Value,
+        new: Value,
+        successOrdering: AtomicOrdering,
+        failureOrdering: AtomicOrdering,
+        singleThread: Boolean
+    ): Value {
+        return Value.from(LLVMBuildAtomicCmpXchg(B, ptr.V, cmp.V, new.V, successOrdering, failureOrdering, if (singleThread) 1 else 0))
+    }
+
+    fun atomicRmw(
+        op: AtomicRMWBinOp,
+        ptr: PointerValue,
+        val_: Value,
+        ordering: AtomicOrdering,
+        singleThread: Boolean
+    ): Value {
+        return Value.from(LLVMBuildAtomicRMW(B, op, ptr.V, val_.V, ordering, if (singleThread) 1 else 0))
     }
 
 
@@ -120,7 +199,7 @@ class Builder(
         return buildAsWith<IntValue> { LLVMBuildICmp(B, op, lhs.V, rhs.V, allocateFrom(name)) }
     }
 
-    fun fcmp(op: LLVMRealPredicate, lhs: Value, rhs: Value, name: String): IntValue {
+    fun fcmp(op: FloatPredicate, lhs: Value, rhs: Value, name: String): IntValue {
         return buildAsWith<IntValue> { LLVMBuildFCmp(B, op, lhs.V, rhs.V, allocateFrom(name)) }
     }
 
@@ -128,8 +207,32 @@ class Builder(
         return build<Value> { LLVMBuildBr(B, dest.B) }
     }
 
+    fun indirectBr(address: Value, destinations: UInt): Value {
+        return Value.from(LLVMBuildIndirectBr(B, address.V, destinations))
+    }
+
     fun select(cond: Value, then: Value, not: Value, name: String): Value {
         return buildAsWith<Value> { LLVMBuildSelect(B, cond.V, then.V, not.V, allocateFrom(name)) }
+    }
+
+    fun extractElement(vector: Value, index: Value, name: String): Value {
+        return buildAsWith { LLVMBuildExtractElement(B, vector.V, index.V, allocateFrom(name)) }
+    }
+
+    fun insertElement(vector: Value, element: Value, index: Value, name: String): Value {
+        return buildAsWith { LLVMBuildInsertElement(B, vector.V, element.V, index.V, allocateFrom(name)) }
+    }
+
+    fun shuffleVector(v1: Value, v2: Value, mask: Value, name: String): Value {
+        return buildAsWith { LLVMBuildShuffleVector(B, v1.V, v2.V, mask.V, allocateFrom(name)) }
+    }
+
+    fun extractValue(agg: Value, index: UInt, name: String): Value {
+        return buildAsWith { LLVMBuildExtractValue(B, agg.V, index, allocateFrom(name)) }
+    }
+
+    fun insertValue(agg: Value, element: Value, index: UInt, name: String): Value {
+        return buildAsWith { LLVMBuildInsertValue(B, agg.V, element.V, index, allocateFrom(name)) }
     }
 
 
@@ -155,17 +258,53 @@ class Builder(
         return buildWith { FloatValue(LLVMBuildFNeg(B, value.V, allocateFrom(name))) }
     }
 
-    fun bitcast(value: Value, destType: Type, name: String): Value {
+    fun bitCast(value: Value, destType: Type, name: String): Value {
         return buildAsWith { LLVMBuildBitCast(B, value.V, destType.T, allocateFrom(name)) }
     }
 
+    fun ptrToInt(value: Value, destType: IntType, name: String): IntValue {
+        return buildAsWith { LLVMBuildPtrToInt(B, value.V, destType.T, allocateFrom(name)) }
+    }
 
-    fun intcast(value: Value, destType: IntType, name: String): Value {
+    fun intToPtr(value: Value, destType: PointerType, name: String): PointerValue {
+        return buildAsWith { LLVMBuildIntToPtr(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun addrSpaceCast(value: Value, destType: PointerType, name: String): PointerValue {
+        return buildAsWith { LLVMBuildAddrSpaceCast(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun pointerCast(value: Value, destType: PointerType, name: String): PointerValue {
+        return buildAsWith { LLVMBuildPointerCast(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+
+    fun intCast(value: Value, destType: IntType, name: String): Value {
         return buildAsWith { LLVMBuildIntCast(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun sextOrBitCast(value: Value, destType: Type, name: String): Value {
+        return buildAsWith { LLVMBuildSExtOrBitCast(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun zextOrBitCast(value: Value, destType: Type, name: String): Value {
+        return buildAsWith { LLVMBuildZExtOrBitCast(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun truncOrBitCast(value: Value, destType: Type, name: String): Value {
+        return buildAsWith { LLVMBuildTruncOrBitCast(B, value.V, destType.T, allocateFrom(name)) }
     }
 
     fun sub(lhs: IntValue, rhs: IntValue, name: String): IntValue {
         return buildAsWith { LLVMBuildSub(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun nswSub(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildNSWSub(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun nuwSub(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildNUWSub(B, lhs.V, rhs.V, allocateFrom(name)) }
     }
 
 
@@ -175,6 +314,14 @@ class Builder(
 
     fun mul(lhs: IntValue, rhs: IntValue, name: String): IntValue {
         return buildAsWith { LLVMBuildMul(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun nswMul(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildNSWMul(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun nuwMul(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildNUWMul(B, lhs.V, rhs.V, allocateFrom(name)) }
     }
 
     fun fmul(lhs: FloatValue, rhs: FloatValue, name: String): FloatValue {
@@ -187,6 +334,10 @@ class Builder(
 
     fun sdiv(lhs: IntValue, rhs: IntValue, name: String): IntValue {
         return buildAsWith { LLVMBuildSDiv(B, lhs.V, rhs.V, allocateFrom(name)) }
+    }
+
+    fun exactSdiv(lhs: IntValue, rhs: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildExactSDiv(B, lhs.V, rhs.V, allocateFrom(name)) }
     }
 
     fun fdiv(lhs: FloatValue, rhs: FloatValue, name: String): FloatValue {
@@ -209,15 +360,23 @@ class Builder(
         return buildAsWith { LLVMBuildNSWNeg(B, value.V, allocateFrom(name)) }
     }
 
-    fun sitofp(value: Value, destType: FloatType, name: String): FloatValue {
+    fun nuwNeg(value: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildNUWNeg(B, value.V, allocateFrom(name)) }
+    }
+
+    fun neg(value: IntValue, name: String): IntValue {
+        return buildAsWith { LLVMBuildNeg(B, value.V, allocateFrom(name)) }
+    }
+
+    fun siToFp(value: Value, destType: FloatType, name: String): FloatValue {
         return buildAsWith { LLVMBuildSIToFP(B, value.V, destType.T, allocateFrom(name)) }
     }
 
-    fun fptosi(value: Value, destType: IntType, name: String): IntValue {
+    fun fpToSi(value: Value, destType: IntType, name: String): IntValue {
         return buildAsWith { LLVMBuildFPToSI(B, value.V, destType.T, allocateFrom(name)) }
     }
 
-    fun fpcast(value: Value, destType: FloatType, name: String): FloatValue {
+    fun fpCast(value: Value, destType: FloatType, name: String): FloatValue {
         return buildAsWith { LLVMBuildFPCast(B, value.V, destType.T, allocateFrom(name)) }
     }
 
@@ -257,7 +416,7 @@ class Builder(
     }
 
 
-    fun globalStr(str: String, name: String): PointerValue {
+    fun globalStringPtr(str: String, name: String): PointerValue {
         return buildWith {
             PointerValue(LLVMBuildGlobalStringPtr(B, allocateFrom(str), allocateFrom(name)))
         }
@@ -273,6 +432,14 @@ class Builder(
 
     fun cast(value: Value, destType: IntType, name: String): Value {
         return buildAsWith { LLVMBuildIntCast(B, value.V, destType.T, allocateFrom(name)) }
+    }
+
+    fun vaArg(list: Value, type: Type, name: String): Value {
+        return buildAsWith { LLVMBuildVAArg(B, list.V, type.T, allocateFrom(name)) }
+    }
+
+    fun landingPad(type: Type, personality: Value, clauses: UInt, name: String): Value {
+        return buildAsWith { LLVMBuildLandingPad(B, type.T, personality.V, clauses, allocateFrom(name)) }
     }
 
     // utility

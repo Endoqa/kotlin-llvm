@@ -16,7 +16,6 @@ class Context(
     val values = ContextValues(this)
 
     fun appendBasicBlock(function: FunctionValue, name: String): BasicBlock {
-
         val ref = confined { temp ->
             LLVMAppendBasicBlockInContext(C, function.V, temp.allocateFrom(name))
         }
@@ -32,6 +31,23 @@ class Context(
         return BasicBlock(ref)
     }
 
+    fun insertBasicBlockAfter(basicBlock: BasicBlock, name: String): BasicBlock {
+        val nextBasicBlock = basicBlock.next
+        return if (nextBasicBlock != null) {
+            prependBasicBlock(nextBasicBlock, name)
+        } else {
+            val parentFn = basicBlock.parent
+            appendBasicBlock(parentFn, name)
+        }
+    }
+
+    fun prependBasicBlock(basicBlock: BasicBlock, name: String): BasicBlock {
+        val ref = confined { temp ->
+            LLVMInsertBasicBlockInContext(C, basicBlock.B, temp.allocateFrom(name))
+        }
+
+        return BasicBlock(ref)
+    }
 
     fun createModule(name: String): Module {
         return Module(
@@ -39,6 +55,10 @@ class Context(
         )
     }
 
+    // TODO: Implement when MemoryBuffer class is available
+    // fun createModuleFromIr(memoryBuffer: MemoryBuffer): Module? {
+    //     // Implementation
+    // }
 
     fun createBuilder() = Builder(LLVMCreateBuilderInContext(C))
 
@@ -48,6 +68,84 @@ class Context(
             it.invoke(action)
         }
     }
+
+    /**
+     * Creates an enum attribute.
+     *
+     * Example:
+     * ```
+     * val context = Context()
+     * val enumAttribute = context.createEnumAttribute(0u, 10u)
+     *
+     * assert(enumAttribute.isEnum())
+     * ```
+     */
+    fun createEnumAttribute(kindId: UInt, value: ULong): Attribute {
+        return Attribute(LLVMCreateEnumAttribute(C, kindId, value))
+    }
+
+    /**
+     * Creates a string attribute.
+     *
+     * Example:
+     * ```
+     * val context = Context()
+     * val stringAttribute = context.createStringAttribute("my_key", "my_val")
+     *
+     * assert(stringAttribute.isString())
+     * ```
+     */
+    fun createStringAttribute(key: String, value: String): Attribute {
+        return confined { temp ->
+            val keyPtr = temp.allocateFrom(key)
+            val valuePtr = temp.allocateFrom(value)
+
+            Attribute(LLVMCreateStringAttribute(
+                C,
+                keyPtr,
+                key.length.toUInt(),
+                valuePtr,
+                value.length.toUInt()
+            ))
+        }
+    }
+
+    /**
+     * Creates a type attribute.
+     *
+     * Example:
+     * ```
+     * val context = Context()
+     * val kindId = Attribute.getNamedEnumKindId("sret")
+     * val typeAttribute = context.createTypeAttribute(
+     *     kindId,
+     *     context.types.i32
+     * )
+     *
+     * assert(typeAttribute.isType())
+     * ```
+     */
+    fun createTypeAttribute(kindId: UInt, typeRef: Type): Attribute {
+        return Attribute(LLVMCreateTypeAttribute(C, kindId, typeRef.T))
+    }
+
+    // TODO: Implement when ArrayValue class is available
+    // fun constString(string: ByteArray, nullTerminated: Boolean): ArrayValue {
+    //     // Implementation
+    // }
+
+    // TODO: Implement when InlineAsmDialect enum is available
+    // fun createInlineAsm(
+    //     type: FunctionType,
+    //     assembly: String,
+    //     constraints: String,
+    //     sideEffects: Boolean,
+    //     alignStack: Boolean,
+    //     dialect: InlineAsmDialect? = null,
+    //     canThrow: Boolean = false
+    // ): PointerValue {
+    //     // Implementation
+    // }
 }
 
 
