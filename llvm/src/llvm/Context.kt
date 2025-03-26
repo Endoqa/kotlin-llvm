@@ -2,6 +2,10 @@ package llvm
 
 import lib.llvm.*
 import llvm.builder.BuilderDSL
+import llvm.values.FloatValue
+import llvm.values.FunctionValue
+import llvm.values.IntValue
+import llvm.values.PointerValue
 
 class Context(
     val C: LLVMContextRef = LLVMContextCreate()

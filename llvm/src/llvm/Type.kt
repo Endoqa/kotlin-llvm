@@ -2,6 +2,8 @@ package llvm
 
 
 import lib.llvm.*
+import llvm.values.IntValue
+import llvm.values.Value
 import java.lang.foreign.ValueLayout
 
 sealed class Type(
