@@ -5,52 +5,78 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMAtomicOrdering.Acquire
-import lib.llvm.LLVMAtomicOrdering.AcquireRelease
-import lib.llvm.LLVMAtomicOrdering.Monotonic
-import lib.llvm.LLVMAtomicOrdering.NotAtomic
-import lib.llvm.LLVMAtomicOrdering.Release
-import lib.llvm.LLVMAtomicOrdering.SequentiallyConsistent
-import lib.llvm.LLVMAtomicOrdering.Unordered
 
 public enum class LLVMAtomicOrdering(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  NotAtomic(0),
-  Unordered(1),
-  Monotonic(2),
-  Acquire(4),
-  Release(5),
-  AcquireRelease(6),
-  SequentiallyConsistent(7),
-  ;
+    NotAtomic(0),
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    /**
+     * < A load or store which is not atomic
+     */
+    Unordered(1),
+
+    /**
+     * < Lowest level of atomicity, guarantees
+     * somewhat sane results, lock free.
+     */
+    Monotonic(2),
+
+    /**
+     * < guarantees that if you take all the
+     * operations affecting a specific address,
+     * a consistent ordering exists
+     */
+    Acquire(4),
+
+    /**
+     * < Acquire provides a barrier of the sort
+     * necessary to acquire a lock to access other
+     * memory with normal loads and stores.
+     */
+    Release(5),
+
+    /**
+     * < Release is similar to Acquire, but with
+     * a barrier of the sort necessary to release
+     * a lock.
+     */
+    AcquireRelease(6),
+
+    /**
+     * < provides both an Acquire and a
+     * Release barrier (for fences and
+     * operations which both read and write
+     * memory).
+     */
+    SequentiallyConsistent(7),
+    ;
+
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMAtomicOrdering::class.java,
             "fromInt",
             MethodType.methodType(LLVMAtomicOrdering::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMAtomicOrdering::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMAtomicOrdering = when (value) {
-      NotAtomic.value -> NotAtomic
-      Unordered.value -> Unordered
-      Monotonic.value -> Monotonic
-      Acquire.value -> Acquire
-      Release.value -> Release
-      AcquireRelease.value -> AcquireRelease
-      SequentiallyConsistent.value -> SequentiallyConsistent
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMAtomicOrdering = when (value) {
+            NotAtomic.value -> NotAtomic
+            Unordered.value -> Unordered
+            Monotonic.value -> Monotonic
+            Acquire.value -> Acquire
+            Release.value -> Release
+            AcquireRelease.value -> AcquireRelease
+            SequentiallyConsistent.value -> SequentiallyConsistent
+            else -> error("enum not found")
+        }
     }
-  }
 }

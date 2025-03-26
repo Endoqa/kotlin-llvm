@@ -5,37 +5,34 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMInlineAsmDialect.ATT
-import lib.llvm.LLVMInlineAsmDialect.Intel
 
 public enum class LLVMInlineAsmDialect(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  ATT(0),
-  Intel(1),
-  ;
+    ATT(0),
+    Intel(1),
+    ;
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMInlineAsmDialect::class.java,
             "fromInt",
             MethodType.methodType(LLVMInlineAsmDialect::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMInlineAsmDialect::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMInlineAsmDialect = when (value) {
-      ATT.value -> ATT
-      Intel.value -> Intel
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMInlineAsmDialect = when (value) {
+            ATT.value -> ATT
+            Intel.value -> Intel
+            else -> error("enum not found")
+        }
     }
-  }
 }

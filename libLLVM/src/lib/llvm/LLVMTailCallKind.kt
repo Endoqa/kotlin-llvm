@@ -5,43 +5,46 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMTailCallKind.MustTail
-import lib.llvm.LLVMTailCallKind.NoTail
-import lib.llvm.LLVMTailCallKind.None
-import lib.llvm.LLVMTailCallKind.Tail
 
+/**
+ *
+ * Tail call kind for LLVMSetTailCallKind and LLVMGetTailCallKind.
+ *
+ * Note that 'musttail' implies 'tail'.
+ *
+ * @see CallInst::TailCallKind
+ */
 public enum class LLVMTailCallKind(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  None(0),
-  Tail(1),
-  MustTail(2),
-  NoTail(3),
-  ;
+    None(0),
+    Tail(1),
+    MustTail(2),
+    NoTail(3),
+    ;
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMTailCallKind::class.java,
             "fromInt",
             MethodType.methodType(LLVMTailCallKind::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMTailCallKind::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMTailCallKind = when (value) {
-      None.value -> None
-      Tail.value -> Tail
-      MustTail.value -> MustTail
-      NoTail.value -> NoTail
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMTailCallKind = when (value) {
+            None.value -> None
+            Tail.value -> Tail
+            MustTail.value -> MustTail
+            NoTail.value -> NoTail
+            else -> error("enum not found")
+        }
     }
-  }
 }

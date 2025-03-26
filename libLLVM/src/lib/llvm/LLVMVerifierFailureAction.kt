@@ -5,40 +5,51 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMVerifierFailureAction.AbortProcessAction
-import lib.llvm.LLVMVerifierFailureAction.PrintMessageAction
-import lib.llvm.LLVMVerifierFailureAction.ReturnStatusAction
 
+/**
+ *
+ * @defgroup LLVMCAnalysis Analysis
+ * @ingroup LLVMC
+ *
+ * @{
+ */
 public enum class LLVMVerifierFailureAction(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  AbortProcessAction(0),
-  PrintMessageAction(1),
-  ReturnStatusAction(2),
-  ;
+    AbortProcessAction(0),
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    /**
+     * verifier will print to stderr and abort()
+     */
+    PrintMessageAction(1),
+
+    /**
+     * verifier will print to stderr and return 1
+     */
+    ReturnStatusAction(2),
+    ;
+
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMVerifierFailureAction::class.java,
             "fromInt",
             MethodType.methodType(LLVMVerifierFailureAction::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMVerifierFailureAction::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMVerifierFailureAction = when (value) {
-      AbortProcessAction.value -> AbortProcessAction
-      PrintMessageAction.value -> PrintMessageAction
-      ReturnStatusAction.value -> ReturnStatusAction
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMVerifierFailureAction = when (value) {
+            AbortProcessAction.value -> AbortProcessAction
+            PrintMessageAction.value -> PrintMessageAction
+            ReturnStatusAction.value -> ReturnStatusAction
+            else -> error("enum not found")
+        }
     }
-  }
 }

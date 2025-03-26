@@ -5,40 +5,36 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMGlobalISelAbortMode.Disable
-import lib.llvm.LLVMGlobalISelAbortMode.DisableWithDiag
-import lib.llvm.LLVMGlobalISelAbortMode.Enable
 
 public enum class LLVMGlobalISelAbortMode(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  Enable(0),
-  Disable(1),
-  DisableWithDiag(2),
-  ;
+    Enable(0),
+    Disable(1),
+    DisableWithDiag(2),
+    ;
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMGlobalISelAbortMode::class.java,
             "fromInt",
             MethodType.methodType(LLVMGlobalISelAbortMode::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMGlobalISelAbortMode::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMGlobalISelAbortMode = when (value) {
-      Enable.value -> Enable
-      Disable.value -> Disable
-      DisableWithDiag.value -> DisableWithDiag
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMGlobalISelAbortMode = when (value) {
+            Enable.value -> Enable
+            Disable.value -> Disable
+            DisableWithDiag.value -> DisableWithDiag
+            else -> error("enum not found")
+        }
     }
-  }
 }

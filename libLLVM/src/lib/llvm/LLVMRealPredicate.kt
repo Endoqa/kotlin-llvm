@@ -5,79 +5,122 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMRealPredicate.OEQ
-import lib.llvm.LLVMRealPredicate.OGE
-import lib.llvm.LLVMRealPredicate.OGT
-import lib.llvm.LLVMRealPredicate.OLE
-import lib.llvm.LLVMRealPredicate.OLT
-import lib.llvm.LLVMRealPredicate.ONE
-import lib.llvm.LLVMRealPredicate.ORD
-import lib.llvm.LLVMRealPredicate.PredicateFalse
-import lib.llvm.LLVMRealPredicate.PredicateTrue
-import lib.llvm.LLVMRealPredicate.UEQ
-import lib.llvm.LLVMRealPredicate.UGE
-import lib.llvm.LLVMRealPredicate.UGT
-import lib.llvm.LLVMRealPredicate.ULE
-import lib.llvm.LLVMRealPredicate.ULT
-import lib.llvm.LLVMRealPredicate.UNE
-import lib.llvm.LLVMRealPredicate.UNO
 
 public enum class LLVMRealPredicate(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  PredicateFalse(0),
-  OEQ(1),
-  OGT(2),
-  OGE(3),
-  OLT(4),
-  OLE(5),
-  ONE(6),
-  ORD(7),
-  UNO(8),
-  UEQ(9),
-  UGT(10),
-  UGE(11),
-  ULT(12),
-  ULE(13),
-  UNE(14),
-  PredicateTrue(15),
-  ;
+    PredicateFalse(0),
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    /**
+     * < Always false (always folded)
+     */
+    OEQ(1),
+
+    /**
+     * < True if ordered and equal
+     */
+    OGT(2),
+
+    /**
+     * < True if ordered and greater than
+     */
+    OGE(3),
+
+    /**
+     * < True if ordered and greater than or equal
+     */
+    OLT(4),
+
+    /**
+     * < True if ordered and less than
+     */
+    OLE(5),
+
+    /**
+     * < True if ordered and less than or equal
+     */
+    ONE(6),
+
+    /**
+     * < True if ordered and operands are unequal
+     */
+    ORD(7),
+
+    /**
+     * < True if ordered (no nans)
+     */
+    UNO(8),
+
+    /**
+     * < True if unordered: isnan(X) | isnan(Y)
+     */
+    UEQ(9),
+
+    /**
+     * < True if unordered or equal
+     */
+    UGT(10),
+
+    /**
+     * < True if unordered or greater than
+     */
+    UGE(11),
+
+    /**
+     * < True if unordered, greater than, or equal
+     */
+    ULT(12),
+
+    /**
+     * < True if unordered or less than
+     */
+    ULE(13),
+
+    /**
+     * < True if unordered, less than, or equal
+     */
+    UNE(14),
+
+    /**
+     * < True if unordered or not equal
+     */
+    PredicateTrue(15),
+    ;
+
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMRealPredicate::class.java,
             "fromInt",
             MethodType.methodType(LLVMRealPredicate::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMRealPredicate::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMRealPredicate = when (value) {
-      PredicateFalse.value -> PredicateFalse
-      OEQ.value -> OEQ
-      OGT.value -> OGT
-      OGE.value -> OGE
-      OLT.value -> OLT
-      OLE.value -> OLE
-      ONE.value -> ONE
-      ORD.value -> ORD
-      UNO.value -> UNO
-      UEQ.value -> UEQ
-      UGT.value -> UGT
-      UGE.value -> UGE
-      ULT.value -> ULT
-      ULE.value -> ULE
-      UNE.value -> UNE
-      PredicateTrue.value -> PredicateTrue
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMRealPredicate = when (value) {
+            PredicateFalse.value -> PredicateFalse
+            OEQ.value -> OEQ
+            OGT.value -> OGT
+            OGE.value -> OGE
+            OLT.value -> OLT
+            OLE.value -> OLE
+            ONE.value -> ONE
+            ORD.value -> ORD
+            UNO.value -> UNO
+            UEQ.value -> UEQ
+            UGT.value -> UGT
+            UGE.value -> UGE
+            ULT.value -> ULT
+            ULE.value -> ULE
+            UNE.value -> UNE
+            PredicateTrue.value -> PredicateTrue
+            else -> error("enum not found")
+        }
     }
-  }
 }

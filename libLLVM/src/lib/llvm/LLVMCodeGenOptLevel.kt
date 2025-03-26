@@ -5,43 +5,44 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMCodeGenOptLevel.Aggressive
-import lib.llvm.LLVMCodeGenOptLevel.Default
-import lib.llvm.LLVMCodeGenOptLevel.Less
-import lib.llvm.LLVMCodeGenOptLevel.None
 
+/**
+ *
+ * @addtogroup LLVMCTarget
+ *
+ * @{
+ */
 public enum class LLVMCodeGenOptLevel(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  None(0),
-  Less(1),
-  Default(2),
-  Aggressive(3),
-  ;
+    None(0),
+    Less(1),
+    Default(2),
+    Aggressive(3),
+    ;
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMCodeGenOptLevel::class.java,
             "fromInt",
             MethodType.methodType(LLVMCodeGenOptLevel::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMCodeGenOptLevel::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMCodeGenOptLevel = when (value) {
-      None.value -> None
-      Less.value -> Less
-      Default.value -> Default
-      Aggressive.value -> Aggressive
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMCodeGenOptLevel = when (value) {
+            None.value -> None
+            Less.value -> Less
+            Default.value -> Default
+            Aggressive.value -> Aggressive
+            else -> error("enum not found")
+        }
     }
-  }
 }

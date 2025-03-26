@@ -5,76 +5,157 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMAtomicRMWBinOp.Add
-import lib.llvm.LLVMAtomicRMWBinOp.And
-import lib.llvm.LLVMAtomicRMWBinOp.FAdd
-import lib.llvm.LLVMAtomicRMWBinOp.FMax
-import lib.llvm.LLVMAtomicRMWBinOp.FMin
-import lib.llvm.LLVMAtomicRMWBinOp.FSub
-import lib.llvm.LLVMAtomicRMWBinOp.Max
-import lib.llvm.LLVMAtomicRMWBinOp.Min
-import lib.llvm.LLVMAtomicRMWBinOp.Nand
-import lib.llvm.LLVMAtomicRMWBinOp.Or
-import lib.llvm.LLVMAtomicRMWBinOp.Sub
-import lib.llvm.LLVMAtomicRMWBinOp.UMax
-import lib.llvm.LLVMAtomicRMWBinOp.UMin
-import lib.llvm.LLVMAtomicRMWBinOp.Xchg
-import lib.llvm.LLVMAtomicRMWBinOp.Xor
 
 public enum class LLVMAtomicRMWBinOp(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  Xchg(0),
-  Add(1),
-  Sub(2),
-  And(3),
-  Nand(4),
-  Or(5),
-  Xor(6),
-  Max(7),
-  Min(8),
-  UMax(9),
-  UMin(10),
-  FAdd(11),
-  FSub(12),
-  FMax(13),
-  FMin(14),
-  ;
+    Xchg(0),
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    /**
+     * < Set the new value and return the one old
+     */
+    Add(1),
+
+    /**
+     * < Add a value and return the old one
+     */
+    Sub(2),
+
+    /**
+     * < Subtract a value and return the old one
+     */
+    And(3),
+
+    /**
+     * < And a value and return the old one
+     */
+    Nand(4),
+
+    /**
+     * < Not-And a value and return the old one
+     */
+    Or(5),
+
+    /**
+     * < OR a value and return the old one
+     */
+    Xor(6),
+
+    /**
+     * < Xor a value and return the old one
+     */
+    Max(7),
+
+    /**
+     * < Sets the value if it's greater than the
+     * original using a signed comparison and return
+     * the old one
+     */
+    Min(8),
+
+    /**
+     * < Sets the value if it's Smaller than the
+     * original using a signed comparison and return
+     * the old one
+     */
+    UMax(9),
+
+    /**
+     * < Sets the value if it's greater than the
+     * original using an unsigned comparison and return
+     * the old one
+     */
+    UMin(10),
+
+    /**
+     * < Sets the value if it's greater than the
+     * original using an unsigned comparison and return
+     * the old one
+     */
+    FAdd(11),
+
+    /**
+     * < Add a floating point value and return the
+     * old one
+     */
+    FSub(12),
+
+    /**
+     * < Subtract a floating point value and return the
+     * old one
+     */
+    FMax(13),
+
+    /**
+     * < Sets the value if it's greater than the
+     * original using an floating point comparison and
+     * return the old one
+     */
+    FMin(14),
+
+    /**
+     * < Sets the value if it's smaller than the
+     * original using an floating point comparison and
+     * return the old one
+     */
+    UIncWrap(15),
+
+    /**
+     * < Increments the value, wrapping back to zero
+     * when incremented above input value
+     */
+    UDecWrap(16),
+
+    /**
+     * < Decrements the value, wrapping back to
+     * the input value when decremented below zero
+     */
+    USubCond(17),
+
+    /**
+     * <Subtracts the value only if no unsigned
+     * overflow
+     */
+    USubSat(18),
+    ;
+
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMAtomicRMWBinOp::class.java,
             "fromInt",
             MethodType.methodType(LLVMAtomicRMWBinOp::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMAtomicRMWBinOp::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMAtomicRMWBinOp = when (value) {
-      Xchg.value -> Xchg
-      Add.value -> Add
-      Sub.value -> Sub
-      And.value -> And
-      Nand.value -> Nand
-      Or.value -> Or
-      Xor.value -> Xor
-      Max.value -> Max
-      Min.value -> Min
-      UMax.value -> UMax
-      UMin.value -> UMin
-      FAdd.value -> FAdd
-      FSub.value -> FSub
-      FMax.value -> FMax
-      FMin.value -> FMin
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMAtomicRMWBinOp = when (value) {
+            Xchg.value -> Xchg
+            Add.value -> Add
+            Sub.value -> Sub
+            And.value -> And
+            Nand.value -> Nand
+            Or.value -> Or
+            Xor.value -> Xor
+            Max.value -> Max
+            Min.value -> Min
+            UMax.value -> UMax
+            UMin.value -> UMin
+            FAdd.value -> FAdd
+            FSub.value -> FSub
+            FMax.value -> FMax
+            FMin.value -> FMin
+            UIncWrap.value -> UIncWrap
+            UDecWrap.value -> UDecWrap
+            USubCond.value -> USubCond
+            USubSat.value -> USubSat
+            else -> error("enum not found")
+        }
     }
-  }
 }

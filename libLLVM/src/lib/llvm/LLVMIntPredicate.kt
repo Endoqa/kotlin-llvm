@@ -5,61 +5,86 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMIntPredicate.EQ
-import lib.llvm.LLVMIntPredicate.NE
-import lib.llvm.LLVMIntPredicate.SGE
-import lib.llvm.LLVMIntPredicate.SGT
-import lib.llvm.LLVMIntPredicate.SLE
-import lib.llvm.LLVMIntPredicate.SLT
-import lib.llvm.LLVMIntPredicate.UGE
-import lib.llvm.LLVMIntPredicate.UGT
-import lib.llvm.LLVMIntPredicate.ULE
-import lib.llvm.LLVMIntPredicate.ULT
 
 public enum class LLVMIntPredicate(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  EQ(32),
-  NE(33),
-  UGT(34),
-  UGE(35),
-  ULT(36),
-  ULE(37),
-  SGT(38),
-  SGE(39),
-  SLT(40),
-  SLE(41),
-  ;
+    EQ(32),
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    /**
+     * < equal
+     */
+    NE(33),
+
+    /**
+     * < not equal
+     */
+    UGT(34),
+
+    /**
+     * < unsigned greater than
+     */
+    UGE(35),
+
+    /**
+     * < unsigned greater or equal
+     */
+    ULT(36),
+
+    /**
+     * < unsigned less than
+     */
+    ULE(37),
+
+    /**
+     * < unsigned less or equal
+     */
+    SGT(38),
+
+    /**
+     * < signed greater than
+     */
+    SGE(39),
+
+    /**
+     * < signed greater or equal
+     */
+    SLT(40),
+
+    /**
+     * < signed less than
+     */
+    SLE(41),
+    ;
+
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMIntPredicate::class.java,
             "fromInt",
             MethodType.methodType(LLVMIntPredicate::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMIntPredicate::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMIntPredicate = when (value) {
-      EQ.value -> EQ
-      NE.value -> NE
-      UGT.value -> UGT
-      UGE.value -> UGE
-      ULT.value -> ULT
-      ULE.value -> ULE
-      SGT.value -> SGT
-      SGE.value -> SGE
-      SLT.value -> SLT
-      SLE.value -> SLE
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMIntPredicate = when (value) {
+            EQ.value -> EQ
+            NE.value -> NE
+            UGT.value -> UGT
+            UGE.value -> UGE
+            ULT.value -> ULT
+            ULE.value -> ULE
+            SGT.value -> SGT
+            SGE.value -> SGE
+            SLT.value -> SLT
+            SLE.value -> SLE
+            else -> error("enum not found")
+        }
     }
-  }
 }

@@ -5,94 +5,146 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMTypeKind.ArrayTypeKind
-import lib.llvm.LLVMTypeKind.BFloatTypeKind
-import lib.llvm.LLVMTypeKind.DoubleTypeKind
-import lib.llvm.LLVMTypeKind.FP128TypeKind
-import lib.llvm.LLVMTypeKind.FloatTypeKind
-import lib.llvm.LLVMTypeKind.FunctionTypeKind
-import lib.llvm.LLVMTypeKind.HalfTypeKind
-import lib.llvm.LLVMTypeKind.IntegerTypeKind
-import lib.llvm.LLVMTypeKind.LabelTypeKind
-import lib.llvm.LLVMTypeKind.MetadataTypeKind
-import lib.llvm.LLVMTypeKind.PPC_FP128TypeKind
-import lib.llvm.LLVMTypeKind.PointerTypeKind
-import lib.llvm.LLVMTypeKind.ScalableVectorTypeKind
-import lib.llvm.LLVMTypeKind.StructTypeKind
-import lib.llvm.LLVMTypeKind.TargetExtTypeKind
-import lib.llvm.LLVMTypeKind.TokenTypeKind
-import lib.llvm.LLVMTypeKind.VectorTypeKind
-import lib.llvm.LLVMTypeKind.VoidTypeKind
-import lib.llvm.LLVMTypeKind.X86_AMXTypeKind
-import lib.llvm.LLVMTypeKind.X86_FP80TypeKind
-import lib.llvm.LLVMTypeKind.X86_MMXTypeKind
 
 public enum class LLVMTypeKind(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  VoidTypeKind(0),
-  HalfTypeKind(1),
-  FloatTypeKind(2),
-  DoubleTypeKind(3),
-  X86_FP80TypeKind(4),
-  FP128TypeKind(5),
-  PPC_FP128TypeKind(6),
-  LabelTypeKind(7),
-  IntegerTypeKind(8),
-  FunctionTypeKind(9),
-  StructTypeKind(10),
-  ArrayTypeKind(11),
-  PointerTypeKind(12),
-  VectorTypeKind(13),
-  MetadataTypeKind(14),
-  X86_MMXTypeKind(15),
-  TokenTypeKind(16),
-  ScalableVectorTypeKind(17),
-  BFloatTypeKind(18),
-  X86_AMXTypeKind(19),
-  TargetExtTypeKind(20),
-  ;
+    VoidTypeKind(0),
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    /**
+     * < type with no size
+     */
+    HalfTypeKind(1),
+
+    /**
+     * < 16 bit floating point type
+     */
+    FloatTypeKind(2),
+
+    /**
+     * < 32 bit floating point type
+     */
+    DoubleTypeKind(3),
+
+    /**
+     * < 64 bit floating point type
+     */
+    X86_FP80TypeKind(4),
+
+    /**
+     * < 80 bit floating point type (X87)
+     */
+    FP128TypeKind(5),
+
+    /**
+     * < 128 bit floating point type (112-bit mantissa)
+     */
+    PPC_FP128TypeKind(6),
+
+    /**
+     * < 128 bit floating point type (two 64-bits)
+     */
+    LabelTypeKind(7),
+
+    /**
+     * < Labels
+     */
+    IntegerTypeKind(8),
+
+    /**
+     * < Arbitrary bit width integers
+     */
+    FunctionTypeKind(9),
+
+    /**
+     * < Functions
+     */
+    StructTypeKind(10),
+
+    /**
+     * < Structures
+     */
+    ArrayTypeKind(11),
+
+    /**
+     * < Arrays
+     */
+    PointerTypeKind(12),
+
+    /**
+     * < Pointers
+     */
+    VectorTypeKind(13),
+
+    /**
+     * < Fixed width SIMD vector type
+     */
+    MetadataTypeKind(14),
+
+    /**
+     * 15 previously used by LLVMX86_MMXTypeKind
+     */
+    TokenTypeKind(16),
+
+    /**
+     * < Tokens
+     */
+    ScalableVectorTypeKind(17),
+
+    /**
+     * < Scalable SIMD vector type
+     */
+    BFloatTypeKind(18),
+
+    /**
+     * < 16 bit brain floating point type
+     */
+    X86_AMXTypeKind(19),
+
+    /**
+     * < X86 AMX
+     */
+    TargetExtTypeKind(20),
+    ;
+
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMTypeKind::class.java,
             "fromInt",
             MethodType.methodType(LLVMTypeKind::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMTypeKind::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMTypeKind = when (value) {
-      VoidTypeKind.value -> VoidTypeKind
-      HalfTypeKind.value -> HalfTypeKind
-      FloatTypeKind.value -> FloatTypeKind
-      DoubleTypeKind.value -> DoubleTypeKind
-      X86_FP80TypeKind.value -> X86_FP80TypeKind
-      FP128TypeKind.value -> FP128TypeKind
-      PPC_FP128TypeKind.value -> PPC_FP128TypeKind
-      LabelTypeKind.value -> LabelTypeKind
-      IntegerTypeKind.value -> IntegerTypeKind
-      FunctionTypeKind.value -> FunctionTypeKind
-      StructTypeKind.value -> StructTypeKind
-      ArrayTypeKind.value -> ArrayTypeKind
-      PointerTypeKind.value -> PointerTypeKind
-      VectorTypeKind.value -> VectorTypeKind
-      MetadataTypeKind.value -> MetadataTypeKind
-      X86_MMXTypeKind.value -> X86_MMXTypeKind
-      TokenTypeKind.value -> TokenTypeKind
-      ScalableVectorTypeKind.value -> ScalableVectorTypeKind
-      BFloatTypeKind.value -> BFloatTypeKind
-      X86_AMXTypeKind.value -> X86_AMXTypeKind
-      TargetExtTypeKind.value -> TargetExtTypeKind
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMTypeKind = when (value) {
+            VoidTypeKind.value -> VoidTypeKind
+            HalfTypeKind.value -> HalfTypeKind
+            FloatTypeKind.value -> FloatTypeKind
+            DoubleTypeKind.value -> DoubleTypeKind
+            X86_FP80TypeKind.value -> X86_FP80TypeKind
+            FP128TypeKind.value -> FP128TypeKind
+            PPC_FP128TypeKind.value -> PPC_FP128TypeKind
+            LabelTypeKind.value -> LabelTypeKind
+            IntegerTypeKind.value -> IntegerTypeKind
+            FunctionTypeKind.value -> FunctionTypeKind
+            StructTypeKind.value -> StructTypeKind
+            ArrayTypeKind.value -> ArrayTypeKind
+            PointerTypeKind.value -> PointerTypeKind
+            VectorTypeKind.value -> VectorTypeKind
+            MetadataTypeKind.value -> MetadataTypeKind
+            TokenTypeKind.value -> TokenTypeKind
+            ScalableVectorTypeKind.value -> ScalableVectorTypeKind
+            BFloatTypeKind.value -> BFloatTypeKind
+            X86_AMXTypeKind.value -> X86_AMXTypeKind
+            TargetExtTypeKind.value -> TargetExtTypeKind
+            else -> error("enum not found")
+        }
     }
-  }
 }

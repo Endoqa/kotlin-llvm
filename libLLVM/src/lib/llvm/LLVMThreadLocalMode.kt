@@ -5,46 +5,40 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMThreadLocalMode.GeneralDynamicTLSModel
-import lib.llvm.LLVMThreadLocalMode.InitialExecTLSModel
-import lib.llvm.LLVMThreadLocalMode.LocalDynamicTLSModel
-import lib.llvm.LLVMThreadLocalMode.LocalExecTLSModel
-import lib.llvm.LLVMThreadLocalMode.NotThreadLocal
 
 public enum class LLVMThreadLocalMode(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  NotThreadLocal(0),
-  GeneralDynamicTLSModel(1),
-  LocalDynamicTLSModel(2),
-  InitialExecTLSModel(3),
-  LocalExecTLSModel(4),
-  ;
+    NotThreadLocal(0),
+    GeneralDynamicTLSModel(1),
+    LocalDynamicTLSModel(2),
+    InitialExecTLSModel(3),
+    LocalExecTLSModel(4),
+    ;
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMThreadLocalMode::class.java,
             "fromInt",
             MethodType.methodType(LLVMThreadLocalMode::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMThreadLocalMode::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMThreadLocalMode = when (value) {
-      NotThreadLocal.value -> NotThreadLocal
-      GeneralDynamicTLSModel.value -> GeneralDynamicTLSModel
-      LocalDynamicTLSModel.value -> LocalDynamicTLSModel
-      InitialExecTLSModel.value -> InitialExecTLSModel
-      LocalExecTLSModel.value -> LocalExecTLSModel
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMThreadLocalMode = when (value) {
+            NotThreadLocal.value -> NotThreadLocal
+            GeneralDynamicTLSModel.value -> GeneralDynamicTLSModel
+            LocalDynamicTLSModel.value -> LocalDynamicTLSModel
+            InitialExecTLSModel.value -> InitialExecTLSModel
+            LocalExecTLSModel.value -> LocalExecTLSModel
+            else -> error("enum not found")
+        }
     }
-  }
 }

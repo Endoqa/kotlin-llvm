@@ -5,40 +5,44 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMVisibility.DefaultVisibility
-import lib.llvm.LLVMVisibility.HiddenVisibility
-import lib.llvm.LLVMVisibility.ProtectedVisibility
 
 public enum class LLVMVisibility(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  DefaultVisibility(0),
-  HiddenVisibility(1),
-  ProtectedVisibility(2),
-  ;
+    DefaultVisibility(0),
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    /**
+     * < The GV is visible
+     */
+    HiddenVisibility(1),
+
+    /**
+     * < The GV is hidden
+     */
+    ProtectedVisibility(2),
+    ;
+
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMVisibility::class.java,
             "fromInt",
             MethodType.methodType(LLVMVisibility::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMVisibility::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMVisibility = when (value) {
-      DefaultVisibility.value -> DefaultVisibility
-      HiddenVisibility.value -> HiddenVisibility
-      ProtectedVisibility.value -> ProtectedVisibility
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMVisibility = when (value) {
+            DefaultVisibility.value -> DefaultVisibility
+            HiddenVisibility.value -> HiddenVisibility
+            ProtectedVisibility.value -> ProtectedVisibility
+            else -> error("enum not found")
+        }
     }
-  }
 }

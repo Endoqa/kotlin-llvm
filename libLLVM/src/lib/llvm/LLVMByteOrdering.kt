@@ -5,37 +5,41 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMByteOrdering.BigEndian
-import lib.llvm.LLVMByteOrdering.LittleEndian
 
+/**
+ *
+ * @defgroup LLVMCTarget Target information
+ * @ingroup LLVMC
+ *
+ * @{
+ */
 public enum class LLVMByteOrdering(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  BigEndian(0),
-  LittleEndian(1),
-  ;
+    BigEndian(0),
+    LittleEndian(1),
+    ;
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMByteOrdering::class.java,
             "fromInt",
             MethodType.methodType(LLVMByteOrdering::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMByteOrdering::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMByteOrdering = when (value) {
-      BigEndian.value -> BigEndian
-      LittleEndian.value -> LittleEndian
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMByteOrdering = when (value) {
+            BigEndian.value -> BigEndian
+            LittleEndian.value -> LittleEndian
+            else -> error("enum not found")
+        }
     }
-  }
 }

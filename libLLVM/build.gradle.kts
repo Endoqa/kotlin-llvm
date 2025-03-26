@@ -11,3 +11,7 @@ publishing {
         mavenLocal()
     }
 }
+
+kotlin {
+    explicitApi()
+}

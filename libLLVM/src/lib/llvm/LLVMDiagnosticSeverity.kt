@@ -5,43 +5,38 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMDiagnosticSeverity.Error
-import lib.llvm.LLVMDiagnosticSeverity.Note
-import lib.llvm.LLVMDiagnosticSeverity.Remark
-import lib.llvm.LLVMDiagnosticSeverity.Warning
 
 public enum class LLVMDiagnosticSeverity(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  Error(0),
-  Warning(1),
-  Remark(2),
-  Note(3),
-  ;
+    Error(0),
+    Warning(1),
+    Remark(2),
+    Note(3),
+    ;
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMDiagnosticSeverity::class.java,
             "fromInt",
             MethodType.methodType(LLVMDiagnosticSeverity::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMDiagnosticSeverity::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMDiagnosticSeverity = when (value) {
-      Error.value -> Error
-      Warning.value -> Warning
-      Remark.value -> Remark
-      Note.value -> Note
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMDiagnosticSeverity = when (value) {
+            Error.value -> Error
+            Warning.value -> Warning
+            Remark.value -> Remark
+            Note.value -> Note
+            else -> error("enum not found")
+        }
     }
-  }
 }

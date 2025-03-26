@@ -5,82 +5,127 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMLinkage.AppendingLinkage
-import lib.llvm.LLVMLinkage.AvailableExternallyLinkage
-import lib.llvm.LLVMLinkage.CommonLinkage
-import lib.llvm.LLVMLinkage.DLLExportLinkage
-import lib.llvm.LLVMLinkage.DLLImportLinkage
-import lib.llvm.LLVMLinkage.ExternalLinkage
-import lib.llvm.LLVMLinkage.ExternalWeakLinkage
-import lib.llvm.LLVMLinkage.GhostLinkage
-import lib.llvm.LLVMLinkage.InternalLinkage
-import lib.llvm.LLVMLinkage.LinkOnceAnyLinkage
-import lib.llvm.LLVMLinkage.LinkOnceODRAutoHideLinkage
-import lib.llvm.LLVMLinkage.LinkOnceODRLinkage
-import lib.llvm.LLVMLinkage.LinkerPrivateLinkage
-import lib.llvm.LLVMLinkage.LinkerPrivateWeakLinkage
-import lib.llvm.LLVMLinkage.PrivateLinkage
-import lib.llvm.LLVMLinkage.WeakAnyLinkage
-import lib.llvm.LLVMLinkage.WeakODRLinkage
 
 public enum class LLVMLinkage(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  ExternalLinkage(0),
-  AvailableExternallyLinkage(1),
-  LinkOnceAnyLinkage(2),
-  LinkOnceODRLinkage(3),
-  LinkOnceODRAutoHideLinkage(4),
-  WeakAnyLinkage(5),
-  WeakODRLinkage(6),
-  AppendingLinkage(7),
-  InternalLinkage(8),
-  PrivateLinkage(9),
-  DLLImportLinkage(10),
-  DLLExportLinkage(11),
-  ExternalWeakLinkage(12),
-  GhostLinkage(13),
-  CommonLinkage(14),
-  LinkerPrivateLinkage(15),
-  LinkerPrivateWeakLinkage(16),
-  ;
+    ExternalLinkage(0),
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    /**
+     * < Externally visible function
+     */
+    AvailableExternallyLinkage(1),
+    LinkOnceAnyLinkage(2),
+
+    /**
+     * < Keep one copy of function when linking (inline)
+     */
+    LinkOnceODRLinkage(3),
+
+    /**
+     * < Same, but only replaced by something
+     * equivalent.
+     */
+    LinkOnceODRAutoHideLinkage(4),
+
+    /**
+     * < Obsolete
+     */
+    WeakAnyLinkage(5),
+
+    /**
+     * < Keep one copy of function when linking (weak)
+     */
+    WeakODRLinkage(6),
+
+    /**
+     * < Same, but only replaced by something
+     * equivalent.
+     */
+    AppendingLinkage(7),
+
+    /**
+     * < Special purpose, only applies to global arrays
+     */
+    InternalLinkage(8),
+
+    /**
+     * < Rename collisions when linking (static
+     * functions)
+     */
+    PrivateLinkage(9),
+
+    /**
+     * < Like Internal, but omit from symbol table
+     */
+    DLLImportLinkage(10),
+
+    /**
+     * < Obsolete
+     */
+    DLLExportLinkage(11),
+
+    /**
+     * < Obsolete
+     */
+    ExternalWeakLinkage(12),
+
+    /**
+     * < ExternalWeak linkage description
+     */
+    GhostLinkage(13),
+
+    /**
+     * < Obsolete
+     */
+    CommonLinkage(14),
+
+    /**
+     * < Tentative definitions
+     */
+    LinkerPrivateLinkage(15),
+
+    /**
+     * < Like Private, but linker removes.
+     */
+    LinkerPrivateWeakLinkage(16),
+    ;
+
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMLinkage::class.java,
             "fromInt",
             MethodType.methodType(LLVMLinkage::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMLinkage::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMLinkage = when (value) {
-      ExternalLinkage.value -> ExternalLinkage
-      AvailableExternallyLinkage.value -> AvailableExternallyLinkage
-      LinkOnceAnyLinkage.value -> LinkOnceAnyLinkage
-      LinkOnceODRLinkage.value -> LinkOnceODRLinkage
-      LinkOnceODRAutoHideLinkage.value -> LinkOnceODRAutoHideLinkage
-      WeakAnyLinkage.value -> WeakAnyLinkage
-      WeakODRLinkage.value -> WeakODRLinkage
-      AppendingLinkage.value -> AppendingLinkage
-      InternalLinkage.value -> InternalLinkage
-      PrivateLinkage.value -> PrivateLinkage
-      DLLImportLinkage.value -> DLLImportLinkage
-      DLLExportLinkage.value -> DLLExportLinkage
-      ExternalWeakLinkage.value -> ExternalWeakLinkage
-      GhostLinkage.value -> GhostLinkage
-      CommonLinkage.value -> CommonLinkage
-      LinkerPrivateLinkage.value -> LinkerPrivateLinkage
-      LinkerPrivateWeakLinkage.value -> LinkerPrivateWeakLinkage
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMLinkage = when (value) {
+            ExternalLinkage.value -> ExternalLinkage
+            AvailableExternallyLinkage.value -> AvailableExternallyLinkage
+            LinkOnceAnyLinkage.value -> LinkOnceAnyLinkage
+            LinkOnceODRLinkage.value -> LinkOnceODRLinkage
+            LinkOnceODRAutoHideLinkage.value -> LinkOnceODRAutoHideLinkage
+            WeakAnyLinkage.value -> WeakAnyLinkage
+            WeakODRLinkage.value -> WeakODRLinkage
+            AppendingLinkage.value -> AppendingLinkage
+            InternalLinkage.value -> InternalLinkage
+            PrivateLinkage.value -> PrivateLinkage
+            DLLImportLinkage.value -> DLLImportLinkage
+            DLLExportLinkage.value -> DLLExportLinkage
+            ExternalWeakLinkage.value -> ExternalWeakLinkage
+            GhostLinkage.value -> GhostLinkage
+            CommonLinkage.value -> CommonLinkage
+            LinkerPrivateLinkage.value -> LinkerPrivateLinkage
+            LinkerPrivateWeakLinkage.value -> LinkerPrivateWeakLinkage
+            else -> error("enum not found")
+        }
     }
-  }
 }

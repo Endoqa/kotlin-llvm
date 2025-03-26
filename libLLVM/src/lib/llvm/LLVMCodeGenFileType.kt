@@ -5,37 +5,34 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMCodeGenFileType.AssemblyFile
-import lib.llvm.LLVMCodeGenFileType.ObjectFile
 
 public enum class LLVMCodeGenFileType(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  AssemblyFile(0),
-  ObjectFile(1),
-  ;
+    AssemblyFile(0),
+    ObjectFile(1),
+    ;
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMCodeGenFileType::class.java,
             "fromInt",
             MethodType.methodType(LLVMCodeGenFileType::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMCodeGenFileType::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMCodeGenFileType = when (value) {
-      AssemblyFile.value -> AssemblyFile
-      ObjectFile.value -> ObjectFile
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMCodeGenFileType = when (value) {
+            AssemblyFile.value -> AssemblyFile
+            ObjectFile.value -> ObjectFile
+            else -> error("enum not found")
+        }
     }
-  }
 }

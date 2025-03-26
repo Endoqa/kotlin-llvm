@@ -5,49 +5,95 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMModuleFlagBehavior.Append
-import lib.llvm.LLVMModuleFlagBehavior.AppendUnique
-import lib.llvm.LLVMModuleFlagBehavior.Error
-import lib.llvm.LLVMModuleFlagBehavior.Override
-import lib.llvm.LLVMModuleFlagBehavior.Require
-import lib.llvm.LLVMModuleFlagBehavior.Warning
 
 public enum class LLVMModuleFlagBehavior(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  Error(0),
-  Warning(1),
-  Require(2),
-  Override(3),
-  Append(4),
-  AppendUnique(5),
-  ;
+    /**
+     *
+     * Emits an error if two values disagree, otherwise the resulting value is
+     * that of the operands.
+     *
+     * @see Module::ModFlagBehavior::Error
+     */
+    Error(0),
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    /**
+     *
+     * Emits a warning if two values disagree. The result value will be the
+     * operand for the flag from the first module being linked.
+     *
+     * @see Module::ModFlagBehavior::Warning
+     */
+    Warning(1),
+
+    /**
+     *
+     * Adds a requirement that another module flag be present and have a
+     * specified value after linking is performed. The value must be a metadata
+     * pair, where the first element of the pair is the ID of the module flag
+     * to be restricted, and the second element of the pair is the value the
+     * module flag should be restricted to. This behavior can be used to
+     * restrict the allowable results (via triggering of an error) of linking
+     * IDs with the **Override** behavior.
+     *
+     * @see Module::ModFlagBehavior::Require
+     */
+    Require(2),
+
+    /**
+     *
+     * Uses the specified value, regardless of the behavior or value of the
+     * other module. If both modules specify **Override**, but the values
+     * differ, an error will be emitted.
+     *
+     * @see Module::ModFlagBehavior::Override
+     */
+    Override(3),
+
+    /**
+     *
+     * Appends the two values, which are required to be metadata nodes.
+     *
+     * @see Module::ModFlagBehavior::Append
+     */
+    Append(4),
+
+    /**
+     *
+     * Appends the two values, which are required to be metadata
+     * nodes. However, duplicate entries in the second list are dropped
+     * during the append operation.
+     *
+     * @see Module::ModFlagBehavior::AppendUnique
+     */
+    AppendUnique(5),
+    ;
+
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMModuleFlagBehavior::class.java,
             "fromInt",
             MethodType.methodType(LLVMModuleFlagBehavior::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMModuleFlagBehavior::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMModuleFlagBehavior = when (value) {
-      Error.value -> Error
-      Warning.value -> Warning
-      Require.value -> Require
-      Override.value -> Override
-      Append.value -> Append
-      AppendUnique.value -> AppendUnique
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMModuleFlagBehavior = when (value) {
+            Error.value -> Error
+            Warning.value -> Warning
+            Require.value -> Require
+            Override.value -> Override
+            Append.value -> Append
+            AppendUnique.value -> AppendUnique
+            else -> error("enum not found")
+        }
     }
-  }
 }

@@ -5,52 +5,44 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import kotlin.Int
-import kotlin.jvm.JvmStatic
-import lib.llvm.LLVMRelocMode.Default
-import lib.llvm.LLVMRelocMode.DynamicNoPic
-import lib.llvm.LLVMRelocMode.PIC
-import lib.llvm.LLVMRelocMode.ROPI
-import lib.llvm.LLVMRelocMode.ROPI_RWPI
-import lib.llvm.LLVMRelocMode.RWPI
-import lib.llvm.LLVMRelocMode.Static
 
 public enum class LLVMRelocMode(
-  public val `value`: Int,
+    public val `value`: Int,
 ) {
-  Default(0),
-  Static(1),
-  PIC(2),
-  DynamicNoPic(3),
-  ROPI(4),
-  RWPI(5),
-  ROPI_RWPI(6),
-  ;
+    Default(0),
+    Static(1),
+    PIC(2),
+    DynamicNoPic(3),
+    ROPI(4),
+    RWPI(5),
+    ROPI_RWPI(6),
+    ;
 
-  public companion object {
-    @JvmStatic
-    public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
+    public companion object {
+        @JvmStatic
+        public val fromInt: MethodHandle = MethodHandles.lookup().findStatic(
             LLVMRelocMode::class.java,
             "fromInt",
             MethodType.methodType(LLVMRelocMode::class.java, Int::class.java)
         )
 
-    @JvmStatic
-    public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
+        @JvmStatic
+        public val toInt: MethodHandle = MethodHandles.lookup().findGetter(
             LLVMRelocMode::class.java,
             "value",
             Int::class.java
         )
 
-    @JvmStatic
-    public fun fromInt(`value`: Int): LLVMRelocMode = when (value) {
-      Default.value -> Default
-      Static.value -> Static
-      PIC.value -> PIC
-      DynamicNoPic.value -> DynamicNoPic
-      ROPI.value -> ROPI
-      RWPI.value -> RWPI
-      ROPI_RWPI.value -> ROPI_RWPI
-      else -> error("enum not found")
+        @JvmStatic
+        public fun fromInt(`value`: Int): LLVMRelocMode = when (value) {
+            Default.value -> Default
+            Static.value -> Static
+            PIC.value -> PIC
+            DynamicNoPic.value -> DynamicNoPic
+            ROPI.value -> ROPI
+            RWPI.value -> RWPI
+            ROPI_RWPI.value -> ROPI_RWPI
+            else -> error("enum not found")
+        }
     }
-  }
 }

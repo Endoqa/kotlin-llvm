@@ -4,7 +4,7 @@ package lib.llvm
 import java.lang.foreign.*
 
 @JvmInline
-public value class LLVMOpaqueModuleFlagEntry(
+public value class LLVMOpaqueDbgRecord(
     public val `$mem`: MemorySegment,
 ) {
     public constructor(gc: Boolean) : this(kotlin.run {
@@ -14,10 +14,10 @@ public value class LLVMOpaqueModuleFlagEntry(
 
     public companion object {
         public val layout: StructLayout = MemoryLayout.structLayout(
-        ).withName("LLVMOpaqueModuleFlagEntry")
+        ).withName("LLVMOpaqueDbgRecord")
 
         @JvmStatic
-        public fun allocate(alloc: SegmentAllocator): LLVMOpaqueModuleFlagEntry =
-            LLVMOpaqueModuleFlagEntry(alloc.allocate(layout))
+        public fun allocate(alloc: SegmentAllocator): LLVMOpaqueDbgRecord =
+            LLVMOpaqueDbgRecord(alloc.allocate(layout))
     }
 }
