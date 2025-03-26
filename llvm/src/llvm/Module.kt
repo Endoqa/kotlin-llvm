@@ -2,16 +2,15 @@ package llvm
 
 
 import lib.llvm.*
+import llvm.values.FunctionValue
+import llvm.values.Value
 import java.lang.foreign.Arena
-import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 
 
 class Module(
     val M: LLVMModuleRef
 ) {
-
-    val intrinsics = Intrinsics(this)
 
     fun setDataLayout(str: String) {
         confined { temp -> LLVMSetDataLayout(M, temp.allocateFrom(str)) }
@@ -59,44 +58,6 @@ class Module(
         LLVMDisposeMessage(s)
 
         return str
-    }
-
-}
-
-data class IntrinsicDeclaration(
-    val id: UInt,
-    val params: List<Type>,
-)
-
-@JvmInline
-value class Intrinsics(val module: Module) {
-    private val M get() = module.M
-
-
-    operator fun get(id: UInt, params: List<Type>): Value {
-        val V = confined { temp ->
-            val types = temp.allocate(ValueLayout.ADDRESS, params.size.toLong())
-
-            params.forEachIndexed { i, it ->
-                types.setAtIndex(ValueLayout.ADDRESS, i.toLong(), it.T)
-            }
-
-
-            LLVMGetIntrinsicDeclaration(M, id, types, params.size.toULong())
-        }
-
-        return Value.from(V)
-    }
-
-    operator fun get(decl: IntrinsicDeclaration): Value {
-        return this[decl.id, decl.params]
-    }
-
-    fun lookup(name: String): UInt {
-        return confined { temp ->
-            val str = temp.allocateFrom(name)
-            LLVMLookupIntrinsicID(str, str.byteSize().toULong())
-        }
     }
 
 }
