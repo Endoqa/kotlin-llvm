@@ -2,6 +2,8 @@ package llvm
 
 import lib.llvm.*
 import llvm.builder.BuilderDSL
+import llvm.values.*
+import llvm.types.*
 import java.lang.foreign.Arena
 import java.lang.foreign.ValueLayout
 

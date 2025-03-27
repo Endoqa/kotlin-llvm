@@ -1,10 +1,10 @@
-import llvm.ArrayType
 import llvm.Builder
 import llvm.Context
-import llvm.FunctionType
-import llvm.PointerType
-import llvm.PointerValue
 import llvm.Target
+import llvm.types.ArrayType
+import llvm.types.FunctionType
+import llvm.types.PointerType
+import llvm.values.PointerValue
 
 /**
  * An example with jni.

@@ -1,6 +1,7 @@
 import lib.llvm.LLVMCodeGenOptLevel
-import lib.llvm.LLVMDebugMetadataVersion
 import llvm.*
+import llvm.types.FunctionType
+import llvm.values.IntValue
 import java.lang.foreign.FunctionDescriptor
 import java.lang.foreign.Linker
 import java.lang.foreign.MemorySegment
@@ -55,7 +56,7 @@ fun main() {
 
     val context = Context()
     val module = context.createModule("sum")
-    val ee = module.createJITExecutionEngine(LLVMCodeGenOptLevel.None)
+    val ee = module.createJitExecutionEngine(LLVMCodeGenOptLevel.None)
     val codegen = CodeGen(context, module, context.createBuilder(), ee)
 
     val jitFunc = codegen.compileSum()

@@ -1,9 +1,15 @@
 package llvm.builder
 
 import lib.llvm.LLVMRealPredicate
-import llvm.*
+import llvm.BasicBlock
+import llvm.IntPredicate
+import llvm.types.FloatType
+import llvm.types.FunctionType
+import llvm.types.IntType
+import llvm.types.Type
+import llvm.values.*
 
-sealed class IR<R : Value>() {
+sealed class IR<R : Value> {
 
     var name: String = ""
     var alignment: UInt = 0u
@@ -38,7 +44,7 @@ class GlobalStrIR(
 ) : IR<PointerValue>() {
     context(BuilderDSL)
     override fun build(): PointerValue {
-        return builder.globalStr(str, name)
+        return builder.globalStringPtr(str, name)
     }
 
 }
@@ -60,7 +66,7 @@ class IntAddIR(
 
     context(BuilderDSL)
     override fun build(): IntValue {
-        return builder.buildIntAdd(lhs, rhs, name)
+        return builder.add(lhs, rhs, name)
     }
 }
 
@@ -360,7 +366,7 @@ class IntCastIR(
 ) : IR<Value>() {
     context(BuilderDSL)
     override fun build(): Value {
-        return builder.intcast(value, type, name)
+        return builder.intCast(value, type, name)
     }
 }
 
@@ -371,7 +377,7 @@ class SIToFPIR(
 ) : IR<Value>() {
     context(BuilderDSL)
     override fun build(): Value {
-        return builder.sitofp(value, type, name)
+        return builder.siToFp(value, type, name)
     }
 }
 
@@ -381,7 +387,7 @@ class FPToSIIR(
 ) : IR<Value>() {
     context(BuilderDSL)
     override fun build(): Value {
-        return builder.fptosi(value, type, name)
+        return builder.fpToSi(value, type, name)
     }
 }
 
@@ -391,7 +397,7 @@ class FpCastIR(
 ) : IR<Value>() {
     context(BuilderDSL)
     override fun build(): Value {
-        return builder.fpcast(value, type, name)
+        return builder.fpCast(value, type, name)
     }
 }
 

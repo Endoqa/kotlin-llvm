@@ -1,7 +1,7 @@
 package llvm.values
 
 import lib.llvm.*
-import llvm.FunctionType
+import llvm.types.FunctionType
 
 sealed class Value(
     val V: LLVMValueRef

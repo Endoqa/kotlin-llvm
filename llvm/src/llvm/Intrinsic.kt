@@ -4,6 +4,8 @@ import lib.llvm.LLVMGetIntrinsicDeclaration
 import lib.llvm.LLVMIntrinsicIsOverloaded
 import lib.llvm.LLVMLookupIntrinsicID
 import lib.llvm.LLVMTypeOf
+import llvm.types.FunctionType
+import llvm.types.Type
 import llvm.values.FunctionValue
 import java.lang.foreign.ValueLayout
 

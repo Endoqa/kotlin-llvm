@@ -1,6 +1,9 @@
 package llvm
 
 import lib.llvm.*
+import llvm.types.FunctionType
+import llvm.types.StructType
+import llvm.types.Type
 import llvm.values.FunctionValue
 import llvm.values.GlobalValue
 import llvm.values.Value

@@ -3,6 +3,11 @@ package llvm.builder
 import lib.llvm.LLVMBuilderRef
 import lib.llvm.LLVMRealPredicate
 import llvm.*
+import llvm.values.FloatValue
+import llvm.values.FunctionValue
+import llvm.values.IntValue
+import llvm.values.*
+import llvm.types.*
 import kotlin.reflect.KProperty
 
 

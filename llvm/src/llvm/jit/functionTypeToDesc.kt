@@ -1,7 +1,7 @@
 package llvm.jit
 
-import llvm.FunctionType
+import llvm.types.FunctionType
 
 fun FunctionType.toFunctionDesc() {
-    
+
 }

@@ -2,10 +2,12 @@ package llvm
 
 import lib.llvm.*
 import llvm.builder.BuilderDSL
+import llvm.types.VoidType
 import llvm.values.FloatValue
 import llvm.values.FunctionValue
 import llvm.values.IntValue
-import llvm.values.PointerValue
+import llvm.values.*
+import llvm.types.*
 import java.lang.foreign.MemorySegment
 
 class Context(

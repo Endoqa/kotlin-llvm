@@ -12,6 +12,8 @@ import lib.llvm.LLVMMoveBasicBlockAfter
 import lib.llvm.LLVMMoveBasicBlockBefore
 import lib.llvm.LLVMSetValueName
 import lib.llvm.LLVMTypeOf
+import llvm.types.FunctionType
+import llvm.values.FunctionValue
 
 class BasicBlock(
     val B: LLVMBasicBlockRef
@@ -32,7 +34,8 @@ class BasicBlock(
         }
 
 
-    val parent: FunctionValue get() {
+    val parent: FunctionValue
+        get() {
         val parentRef = LLVMGetBasicBlockParent(B)
         return FunctionValue(FunctionType.from(LLVMTypeOf(parentRef)), parentRef)
     }
