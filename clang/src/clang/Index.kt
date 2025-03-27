@@ -1,6 +1,6 @@
 package clang
 
-import clang.c.*
+import lib.clang.*
 import java.lang.foreign.Arena
 import java.lang.foreign.MemoryLayout
 import java.lang.foreign.MemorySegment

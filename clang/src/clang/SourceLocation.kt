@@ -1,12 +1,14 @@
 package clang
 
-import clang.c.*
+import lib.clang.*
+import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 import kotlin.io.path.Path
 
 class SourceLocation(
-    val sl: CXSourceLocation
+    val sl: CXSourceLocation,
+    private val owner: Arena? = null
 ) {
 
 

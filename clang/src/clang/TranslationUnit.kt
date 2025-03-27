@@ -1,11 +1,10 @@
 package clang
 
-import clang.c.CXTranslationUnit
-import clang.c.clang_getDiagnostic
-import clang.c.clang_getNumDiagnostics
-import clang.c.clang_getTranslationUnitCursor
+import lib.clang.CXTranslationUnit
+import lib.clang.clang_getDiagnostic
+import lib.clang.clang_getNumDiagnostics
+import lib.clang.clang_getTranslationUnitCursor
 import java.lang.foreign.Arena
-import java.lang.foreign.SegmentAllocator
 
 class TranslationUnit(
     val tu: CXTranslationUnit,
@@ -13,7 +12,7 @@ class TranslationUnit(
 ) {
 
 
-    val cursor get() = isolateOwner { Cursor(clang_getTranslationUnitCursor(tu)) }
+    val entity get() = isolateOwner { Entity(clang_getTranslationUnitCursor(tu), this) }
 
 
     val diagnostics: List<Diagnostic>

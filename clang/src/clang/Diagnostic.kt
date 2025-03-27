@@ -1,30 +1,35 @@
 package clang
 
-import clang.c.CXDiagnostic
-import clang.c.clang_getDiagnosticLocation
-import clang.c.clang_getDiagnosticSeverity
-import clang.c.clang_getDiagnosticSpelling
+import lib.clang.*
 import java.lang.foreign.Arena
-import java.lang.foreign.MemorySegment
-import java.lang.foreign.SegmentAllocator
 
 
 data class Diagnostic(
-    val severity: DiagnosticSeverity,
-    val location: SourceLocation,
-    val spelling: String
-) : SegmentAllocator {
+    private val ptr: CXDiagnostic,
+) {
 
-    private val owner = Arena.ofAuto()
-
-
-    constructor(diagnostic: CXDiagnostic) : this(
-        clang_getDiagnosticSeverity(diagnostic),
-        SourceLocation(clang_getDiagnosticLocation(diagnostic)),
-        clang_getDiagnosticSpelling(diagnostic).unwrap()
-    )
-
-    override fun allocate(byteSize: Long, byteAlignment: Long): MemorySegment {
-        return owner.allocate(byteSize, byteAlignment)
+    val severity get() = clang_getDiagnosticSeverity(ptr)
+    val text by lazy {
+        tempAllocate { clang_getDiagnosticSpelling(ptr).unwrap() }
     }
+
+    val sourceLocation by lazy {
+        val allocator = Arena.ofAuto()
+        val sl = with(allocator) {
+            SourceLocation(clang_getDiagnosticLocation(ptr), allocator)
+        }
+        sl
+    }
+
+
+    val ranges by lazy {
+        val numRanges = clang_getDiagnosticNumRanges(ptr)
+        List(numRanges.toInt()) {
+            isolateOwner {
+                SourceRange(clang_getDiagnosticRange(ptr, it.toUInt()), this)
+            }
+        }
+    }
+
+
 }

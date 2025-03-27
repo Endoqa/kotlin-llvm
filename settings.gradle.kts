@@ -16,4 +16,7 @@ plugins {
 include(":libLLVM")
 include(":llvm")
 
+include(":libClang")
+include(":clang")
+
 include(":llvm-examples")

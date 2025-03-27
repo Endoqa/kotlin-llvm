@@ -1,23 +1,22 @@
 package clang
 
-import clang.c.CXSourceRange
-import clang.c.clang_getRangeEnd
-import clang.c.clang_getRangeStart
+import lib.clang.CXSourceRange
+import lib.clang.clang_getRangeEnd
+import lib.clang.clang_getRangeStart
 import java.lang.foreign.Arena
-import java.lang.foreign.SegmentAllocator
 
 class SourceRange(
     val sr: CXSourceRange,
-    private val owner: Arena = Arena.ofAuto()
-) : SegmentAllocator by owner {
+    private val owner: Arena? = null
+) {
 
 
-    val begin: SourceLocation by lazy {
-        SourceLocation(clang_getRangeStart(sr))
+    val start: SourceLocation by lazy {
+        isolateOwner { SourceLocation(clang_getRangeStart(sr), this) }
     }
 
     val end: SourceLocation by lazy {
-        SourceLocation(clang_getRangeEnd(sr))
+        isolateOwner { SourceLocation(clang_getRangeEnd(sr), this) }
     }
 
 }
