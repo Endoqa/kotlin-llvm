@@ -3,7 +3,11 @@ package lib.llvm
 
 public typealias LLVMFatalErrorHandler = Pointer<(Reason: Pointer<Byte>) -> Unit>
 
+public typealias __off_t = Long
+
 public typealias uintptr_t = ULong
+
+public typealias off_t = __off_t
 
 public typealias LLVMBool = Int
 
@@ -97,3 +101,17 @@ public typealias LLVMMemoryManagerAllocateDataSectionCallback = Pointer<(
 public typealias LLVMMemoryManagerFinalizeMemoryCallback = Pointer<(Opaque: Pointer<Unit>, ErrMsg: Pointer<Pointer<Byte>>) -> LLVMBool>
 
 public typealias LLVMMemoryManagerDestroyCallback = Pointer<(Opaque: Pointer<Unit>) -> Unit>
+
+public typealias lto_bool_t = Boolean
+
+public typealias lto_module_t = Pointer<LLVMOpaqueLTOModule>
+
+public typealias lto_code_gen_t = Pointer<LLVMOpaqueLTOCodeGenerator>
+
+public typealias lto_diagnostic_handler_t = Pointer<(
+    severity: lto_codegen_diagnostic_severity_t,
+    diag: Pointer<Byte>,
+    ctxt: Pointer<Unit>,
+) -> Unit>
+
+public typealias lto_input_t = Pointer<LLVMOpaqueLTOInput>

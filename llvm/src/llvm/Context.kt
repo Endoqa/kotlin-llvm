@@ -6,6 +6,7 @@ import llvm.values.FloatValue
 import llvm.values.FunctionValue
 import llvm.values.IntValue
 import llvm.values.PointerValue
+import java.lang.foreign.MemorySegment
 
 class Context(
     val C: LLVMContextRef = LLVMContextCreate()
@@ -59,11 +60,6 @@ class Context(
         )
     }
 
-    // TODO: Implement when MemoryBuffer class is available
-    // fun createModuleFromIr(memoryBuffer: MemoryBuffer): Module? {
-    //     // Implementation
-    // }
-
     fun createBuilder() = Builder(LLVMCreateBuilderInContext(C))
 
     fun builder(block: BasicBlock, action: BuilderDSL.() -> Unit) {
@@ -104,14 +100,26 @@ class Context(
             val keyPtr = temp.allocateFrom(key)
             val valuePtr = temp.allocateFrom(value)
 
-            Attribute(LLVMCreateStringAttribute(
-                C,
-                keyPtr,
-                key.length.toUInt(),
-                valuePtr,
-                value.length.toUInt()
-            ))
+            Attribute(
+                LLVMCreateStringAttribute(
+                    C,
+                    keyPtr,
+                    key.length.toUInt(),
+                    valuePtr,
+                    value.length.toUInt()
+                )
+            )
         }
+    }
+
+    /**
+     * Gets a named StructType from this Context.
+     */
+    fun getStructType(name: String): StructType? {
+        val typeRef = confined { temp ->
+            LLVMGetTypeByName2(C, temp.allocateFrom(name))
+        }
+        return if (typeRef == MemorySegment.NULL) null else StructType(typeRef)
     }
 
     /**
@@ -132,24 +140,6 @@ class Context(
     fun createTypeAttribute(kindId: UInt, typeRef: Type): Attribute {
         return Attribute(LLVMCreateTypeAttribute(C, kindId, typeRef.T))
     }
-
-    // TODO: Implement when ArrayValue class is available
-    // fun constString(string: ByteArray, nullTerminated: Boolean): ArrayValue {
-    //     // Implementation
-    // }
-
-    // TODO: Implement when InlineAsmDialect enum is available
-    // fun createInlineAsm(
-    //     type: FunctionType,
-    //     assembly: String,
-    //     constraints: String,
-    //     sideEffects: Boolean,
-    //     alignStack: Boolean,
-    //     dialect: InlineAsmDialect? = null,
-    //     canThrow: Boolean = false
-    // ): PointerValue {
-    //     // Implementation
-    // }
 }
 
 

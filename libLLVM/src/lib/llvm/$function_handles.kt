@@ -10324,3 +10324,571 @@ internal val `LLVMWriteBitcodeToMemoryBuffer$mh`: MethodHandle by lazy {
         )
     )
 }
+
+internal val `LLVMLinkModules2$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("LLVMLinkModules2"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_get_version$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_get_version"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_get_error_message$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_get_error_message"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_is_object_file$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_is_object_file"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_is_object_file_for_target$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_is_object_file_for_target"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_has_objc_category$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_has_objc_category"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+        )
+    )
+}
+
+internal val `lto_module_is_object_file_in_memory$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_is_object_file_in_memory"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+        )
+    )
+}
+
+internal val `lto_module_is_object_file_in_memory_for_target$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_is_object_file_in_memory_for_target"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_create$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_create"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_create_from_memory$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_create_from_memory"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+        )
+    )
+}
+
+internal val `lto_module_create_from_memory_with_path$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_create_from_memory_with_path"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_create_in_local_context$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_create_in_local_context"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_create_in_codegen_context$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_create_in_codegen_context"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_create_from_fd$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_create_from_fd"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_INT,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+        )
+    )
+}
+
+internal val `lto_module_create_from_fd_at_offset$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_create_from_fd_at_offset"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_INT,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_LONG,
+            ValueLayout.JAVA_LONG,
+        )
+    )
+}
+
+internal val `lto_module_dispose$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_dispose"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_get_target_triple$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_get_target_triple"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_set_target_triple$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_set_target_triple"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_get_num_symbols$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_get_num_symbols"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_get_symbol_name$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_get_symbol_name"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_INT,
+        )
+    )
+}
+
+internal val `lto_module_get_symbol_attribute$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_get_symbol_attribute"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_INT,
+        )
+    )
+}
+
+internal val `lto_module_get_linkeropts$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_get_linkeropts"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_get_macho_cputype$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_get_macho_cputype"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_has_ctor_dtor$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_has_ctor_dtor"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_set_diagnostic_handler$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_set_diagnostic_handler"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_create$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_create"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_create_in_local_context$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_create_in_local_context"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_dispose$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_dispose"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_add_module$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_add_module"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_set_module$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_set_module"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_set_debug_model$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_set_debug_model"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_INT,
+        )
+    )
+}
+
+internal val `lto_codegen_set_pic_model$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_set_pic_model"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_INT,
+        )
+    )
+}
+
+internal val `lto_codegen_set_cpu$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_set_cpu"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_set_assembler_path$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_set_assembler_path"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_set_assembler_args$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_set_assembler_args"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_INT,
+        )
+    )
+}
+
+internal val `lto_codegen_add_must_preserve_symbol$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_add_must_preserve_symbol"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_write_merged_modules$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_write_merged_modules"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_compile$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_compile"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_compile_to_file$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_compile_to_file"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_optimize$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_optimize"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_compile_optimized$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_compile_optimized"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_api_version$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_api_version"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+        )
+    )
+}
+
+internal val `lto_set_debug_options$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_set_debug_options"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_INT,
+        )
+    )
+}
+
+internal val `lto_codegen_debug_options$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_debug_options"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_codegen_debug_options_array$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_debug_options_array"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_INT,
+        )
+    )
+}
+
+internal val `lto_initialize_disassembler$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_initialize_disassembler"),
+        FunctionDescriptor.ofVoid(
+        )
+    )
+}
+
+internal val `lto_codegen_set_should_internalize$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_set_should_internalize"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_BOOLEAN,
+        )
+    )
+}
+
+internal val `lto_codegen_set_should_embed_uselists$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_codegen_set_should_embed_uselists"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_BOOLEAN,
+        )
+    )
+}
+
+internal val `lto_input_create$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_input_create"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_input_dispose$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_input_dispose"),
+        FunctionDescriptor.ofVoid(
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_input_get_num_dependent_libraries$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_input_get_num_dependent_libraries"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_input_get_dependent_library$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_input_get_dependent_library"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+            ValueLayout.JAVA_LONG,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_runtime_lib_symbols_list$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_runtime_lib_symbols_list"),
+        FunctionDescriptor.of(
+            `$RuntimeHelper`.POINTER,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}
+
+internal val `lto_module_is_thinlto$mh`: MethodHandle by lazy {
+    Linker.nativeLinker().downcallHandle(
+        `$RuntimeHelper`.findSymbol("lto_module_is_thinlto"),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_BOOLEAN,
+            `$RuntimeHelper`.POINTER,
+        )
+    )
+}

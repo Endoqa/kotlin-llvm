@@ -70,6 +70,12 @@ class StructType(val elements: List<Type>, T: LLVMTypeRef) : Type(T) {
         elements,
         createStructTypeNamed(C, name, elements)
     )
+
+    /**
+     * Creates a StructType from an existing LLVMTypeRef.
+     * This is used when getting a struct type from a module or context.
+     */
+    constructor(T: LLVMTypeRef) : this(getStructTypeElements(T), T)
 }
 
 class ArrayType(
@@ -165,6 +171,24 @@ private fun getFunctionType(T: LLVMTypeRef): FunctionType {
     }
 
     return FunctionType(Type.from(r), prams)
+}
+
+/**
+ * Gets the elements of a struct type from an LLVMTypeRef.
+ */
+private fun getStructTypeElements(T: LLVMTypeRef): List<Type> {
+    val elemCount = LLVMCountStructElementTypes(T)
+
+    return confined { temp ->
+        val ptr = temp.allocate(ValueLayout.ADDRESS, elemCount.toLong())
+        LLVMGetStructElementTypes(T, ptr)
+
+        val elements = List(elemCount.toInt()) {
+            Type.from(ptr.getAtIndex(ValueLayout.ADDRESS, it.toLong()))
+        }
+
+        elements
+    }
 }
 
 

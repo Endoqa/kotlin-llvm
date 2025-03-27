@@ -6971,3 +6971,632 @@ public fun LLVMWriteBitcodeToFileHandle(M: LLVMModuleRef, Handle: Int): Int =
  */
 public fun LLVMWriteBitcodeToMemoryBuffer(M: LLVMModuleRef): LLVMMemoryBufferRef =
     `LLVMWriteBitcodeToMemoryBuffer$mh`.invokeExact(M) as MemorySegment
+
+/**
+ * Links the source module into the destination module. The source module is
+ * destroyed.
+ * The return value is true if an error occurred, false otherwise.
+ * Use the diagnostic handler to get any diagnostic message.
+ */
+public fun LLVMLinkModules2(Dest: LLVMModuleRef, Src: LLVMModuleRef): LLVMBool =
+    `LLVMLinkModules2$mh`.invokeExact(Dest, Src) as Int
+
+/**
+ *
+ * Returns a printable string.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_get_version(): Pointer<Byte> = `lto_get_version$mh`.invokeExact() as MemorySegment
+
+/**
+ *
+ * Returns the last error string or NULL if last operation was successful.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_get_error_message(): Pointer<Byte> = `lto_get_error_message$mh`.invokeExact() as MemorySegment
+
+/**
+ *
+ * Checks if a file is a loadable object file.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_is_object_file(path: Pointer<Byte>): lto_bool_t =
+    `lto_module_is_object_file$mh`.invokeExact(path) as Boolean
+
+/**
+ *
+ * Checks if a file is a loadable object compiled for requested target.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_is_object_file_for_target(path: Pointer<Byte>, target_triple_prefix: Pointer<Byte>): lto_bool_t =
+    `lto_module_is_object_file_for_target$mh`.invokeExact(path, target_triple_prefix) as Boolean
+
+/**
+ *
+ * Return true if \p Buffer contains a bitcode file with ObjC code (category
+ * or class) in it.
+ *
+ * \since LTO_API_VERSION=20
+ */
+public fun lto_module_has_objc_category(mem: Pointer<Unit>, length: ULong): lto_bool_t =
+    `lto_module_has_objc_category$mh`.invokeExact(mem, length.toLong()) as Boolean
+
+/**
+ *
+ * Checks if a buffer is a loadable object file.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_is_object_file_in_memory(mem: Pointer<Unit>, length: ULong): lto_bool_t =
+    `lto_module_is_object_file_in_memory$mh`.invokeExact(mem, length.toLong()) as Boolean
+
+/**
+ *
+ * Checks if a buffer is a loadable object compiled for requested target.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_is_object_file_in_memory_for_target(
+    mem: Pointer<Unit>,
+    length: ULong,
+    target_triple_prefix: Pointer<Byte>,
+): lto_bool_t = `lto_module_is_object_file_in_memory_for_target$mh`.invokeExact(
+    mem,
+    length.toLong(),
+    target_triple_prefix,
+) as Boolean
+
+/**
+ *
+ * Loads an object file from disk.
+ * Returns NULL on error (check lto_get_error_message() for details).
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_create(path: Pointer<Byte>): lto_module_t =
+    `lto_module_create$mh`.invokeExact(path) as MemorySegment
+
+/**
+ *
+ * Loads an object file from memory.
+ * Returns NULL on error (check lto_get_error_message() for details).
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_create_from_memory(mem: Pointer<Unit>, length: ULong): lto_module_t =
+    `lto_module_create_from_memory$mh`.invokeExact(mem, length.toLong()) as MemorySegment
+
+/**
+ *
+ * Loads an object file from memory with an extra path argument.
+ * Returns NULL on error (check lto_get_error_message() for details).
+ *
+ * \since LTO_API_VERSION=9
+ */
+public fun lto_module_create_from_memory_with_path(
+    mem: Pointer<Unit>,
+    length: ULong,
+    path: Pointer<Byte>,
+): lto_module_t = `lto_module_create_from_memory_with_path$mh`.invokeExact(mem, length.toLong(), path) as MemorySegment
+
+/**
+ *
+ * Loads an object file in its own context.
+ *
+ * Loads an object file in its own LLVMContext.  This function call is
+ * thread-safe.  However, modules created this way should not be merged into an
+ * lto_code_gen_t using \a lto_codegen_add_module().
+ *
+ * Returns NULL on error (check lto_get_error_message() for details).
+ *
+ * \since LTO_API_VERSION=11
+ */
+public fun lto_module_create_in_local_context(
+    mem: Pointer<Unit>,
+    length: ULong,
+    path: Pointer<Byte>,
+): lto_module_t = `lto_module_create_in_local_context$mh`.invokeExact(mem, length.toLong(), path) as MemorySegment
+
+/**
+ *
+ * Loads an object file in the codegen context.
+ *
+ * Loads an object file into the same context as \c cg.  The module is safe to
+ * add using \a lto_codegen_add_module().
+ *
+ * Returns NULL on error (check lto_get_error_message() for details).
+ *
+ * \since LTO_API_VERSION=11
+ */
+public fun lto_module_create_in_codegen_context(
+    mem: Pointer<Unit>,
+    length: ULong,
+    path: Pointer<Byte>,
+    cg: lto_code_gen_t,
+): lto_module_t =
+    `lto_module_create_in_codegen_context$mh`.invokeExact(mem, length.toLong(), path, cg) as MemorySegment
+
+/**
+ *
+ * Loads an object file from disk. The seek point of fd is not preserved.
+ * Returns NULL on error (check lto_get_error_message() for details).
+ *
+ * \since LTO_API_VERSION=5
+ */
+public fun lto_module_create_from_fd(
+    fd: Int,
+    path: Pointer<Byte>,
+    file_size: ULong,
+): lto_module_t = `lto_module_create_from_fd$mh`.invokeExact(fd, path, file_size.toLong()) as MemorySegment
+
+/**
+ *
+ * Loads an object file from disk. The seek point of fd is not preserved.
+ * Returns NULL on error (check lto_get_error_message() for details).
+ *
+ * \since LTO_API_VERSION=5
+ */
+public fun lto_module_create_from_fd_at_offset(
+    fd: Int,
+    path: Pointer<Byte>,
+    file_size: ULong,
+    map_size: ULong,
+    offset: off_t,
+): lto_module_t = `lto_module_create_from_fd_at_offset$mh`.invokeExact(
+    fd,
+    path,
+    file_size.toLong(),
+    map_size.toLong(),
+    offset,
+) as MemorySegment
+
+/**
+ *
+ * Frees all memory internally allocated by the module.
+ * Upon return the lto_module_t is no longer valid.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_dispose(mod: lto_module_t): Unit = `lto_module_dispose$mh`.invokeExact(mod) as Unit
+
+/**
+ *
+ * Returns triple string which the object module was compiled under.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_get_target_triple(mod: lto_module_t): Pointer<Byte> =
+    `lto_module_get_target_triple$mh`.invokeExact(mod) as MemorySegment
+
+/**
+ *
+ * Sets triple string with which the object will be codegened.
+ *
+ * \since LTO_API_VERSION=4
+ */
+public fun lto_module_set_target_triple(mod: lto_module_t, triple: Pointer<Byte>): Unit =
+    `lto_module_set_target_triple$mh`.invokeExact(mod, triple) as Unit
+
+/**
+ *
+ * Returns the number of symbols in the object module.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_get_num_symbols(mod: lto_module_t): UInt =
+    (`lto_module_get_num_symbols$mh`.invokeExact(mod) as Int).toUInt()
+
+/**
+ *
+ * Returns the name of the ith symbol in the object module.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_get_symbol_name(mod: lto_module_t, index: UInt): Pointer<Byte> =
+    `lto_module_get_symbol_name$mh`.invokeExact(mod, index.toInt()) as MemorySegment
+
+/**
+ *
+ * Returns the attributes of the ith symbol in the object module.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_module_get_symbol_attribute(mod: lto_module_t, index: UInt): lto_symbol_attributes =
+    lto_symbol_attributes.fromInt(`lto_module_get_symbol_attribute$mh`.invokeExact(mod, index.toInt()) as Int)
+
+/**
+ *
+ * Returns the module's linker options.
+ *
+ * The linker options may consist of multiple flags. It is the linker's
+ * responsibility to split the flags using a platform-specific mechanism.
+ *
+ * \since LTO_API_VERSION=16
+ */
+public fun lto_module_get_linkeropts(mod: lto_module_t): Pointer<Byte> =
+    `lto_module_get_linkeropts$mh`.invokeExact(mod) as MemorySegment
+
+/**
+ *
+ * If targeting mach-o on darwin, this function gets the CPU type and subtype
+ * that will end up being encoded in the mach-o header. These are the values
+ * that can be found in mach/machine.h.
+ *
+ * \p out_cputype and \p out_cpusubtype must be non-NULL.
+ *
+ * Returns true on error (check lto_get_error_message() for details).
+ *
+ * \since LTO_API_VERSION=27
+ */
+public fun lto_module_get_macho_cputype(
+    mod: lto_module_t,
+    out_cputype: Pointer<UInt>,
+    out_cpusubtype: Pointer<UInt>,
+): lto_bool_t = `lto_module_get_macho_cputype$mh`.invokeExact(mod, out_cputype, out_cpusubtype) as Boolean
+
+/**
+ *
+ * This function can be used by the linker to check if a given module has
+ * any constructor or destructor functions.
+ *
+ * Returns true if the module has either the @llvm.global_ctors or the
+ * @llvm.global_dtors symbol. Otherwise returns false.
+ *
+ * \since LTO_API_VERSION=29
+ */
+public fun lto_module_has_ctor_dtor(mod: lto_module_t): lto_bool_t =
+    `lto_module_has_ctor_dtor$mh`.invokeExact(mod) as Boolean
+
+/**
+ *
+ * Set a diagnostic handler and the related context (void *).
+ * This is more general than lto_get_error_message, as the diagnostic handler
+ * can be called at anytime within lto.
+ *
+ * \since LTO_API_VERSION=7
+ */
+public fun lto_codegen_set_diagnostic_handler(
+    `$p0`: lto_code_gen_t,
+    `$p1`: lto_diagnostic_handler_t,
+    `$p2`: Pointer<Unit>,
+): Unit = `lto_codegen_set_diagnostic_handler$mh`.invokeExact(`$p0`, `$p1`, `$p2`) as Unit
+
+/**
+ *
+ * Instantiates a code generator.
+ * Returns NULL on error (check lto_get_error_message() for details).
+ *
+ * All modules added using \a lto_codegen_add_module() must have been created
+ * in the same context as the codegen.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_codegen_create(): lto_code_gen_t = `lto_codegen_create$mh`.invokeExact() as MemorySegment
+
+/**
+ *
+ * Instantiate a code generator in its own context.
+ *
+ * Instantiates a code generator in its own context.  Modules added via \a
+ * lto_codegen_add_module() must have all been created in the same context,
+ * using \a lto_module_create_in_codegen_context().
+ *
+ * \since LTO_API_VERSION=11
+ */
+public fun lto_codegen_create_in_local_context(): lto_code_gen_t =
+    `lto_codegen_create_in_local_context$mh`.invokeExact() as MemorySegment
+
+/**
+ *
+ * Frees all code generator and all memory it internally allocated.
+ * Upon return the lto_code_gen_t is no longer valid.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_codegen_dispose(`$p0`: lto_code_gen_t): Unit = `lto_codegen_dispose$mh`.invokeExact(`$p0`) as Unit
+
+/**
+ *
+ * Add an object module to the set of modules for which code will be generated.
+ * Returns true on error (check lto_get_error_message() for details).
+ *
+ * \c cg and \c mod must both be in the same context.  See \a
+ * lto_codegen_create_in_local_context() and \a
+ * lto_module_create_in_codegen_context().
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_codegen_add_module(cg: lto_code_gen_t, mod: lto_module_t): lto_bool_t =
+    `lto_codegen_add_module$mh`.invokeExact(cg, mod) as Boolean
+
+/**
+ *
+ * Sets the object module for code generation. This will transfer the ownership
+ * of the module to the code generator.
+ *
+ * \c cg and \c mod must both be in the same context.
+ *
+ * \since LTO_API_VERSION=13
+ */
+public fun lto_codegen_set_module(cg: lto_code_gen_t, mod: lto_module_t): Unit =
+    `lto_codegen_set_module$mh`.invokeExact(cg, mod) as Unit
+
+/**
+ *
+ * Sets if debug info should be generated.
+ * Returns true on error (check lto_get_error_message() for details).
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_codegen_set_debug_model(cg: lto_code_gen_t, `$p1`: lto_debug_model): lto_bool_t =
+    `lto_codegen_set_debug_model$mh`.invokeExact(cg, `$p1`.value) as Boolean
+
+/**
+ *
+ * Sets which PIC code model to generated.
+ * Returns true on error (check lto_get_error_message() for details).
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_codegen_set_pic_model(cg: lto_code_gen_t, `$p1`: lto_codegen_model): lto_bool_t =
+    `lto_codegen_set_pic_model$mh`.invokeExact(cg, `$p1`.value) as Boolean
+
+/**
+ *
+ * Sets the cpu to generate code for.
+ *
+ * \since LTO_API_VERSION=4
+ */
+public fun lto_codegen_set_cpu(cg: lto_code_gen_t, cpu: Pointer<Byte>): Unit =
+    `lto_codegen_set_cpu$mh`.invokeExact(cg, cpu) as Unit
+
+/**
+ *
+ * Sets the location of the assembler tool to run. If not set, libLTO
+ * will use gcc to invoke the assembler.
+ *
+ * \since LTO_API_VERSION=3
+ */
+public fun lto_codegen_set_assembler_path(cg: lto_code_gen_t, path: Pointer<Byte>): Unit =
+    `lto_codegen_set_assembler_path$mh`.invokeExact(cg, path) as Unit
+
+/**
+ *
+ * Sets extra arguments that libLTO should pass to the assembler.
+ *
+ * \since LTO_API_VERSION=4
+ */
+public fun lto_codegen_set_assembler_args(
+    cg: lto_code_gen_t,
+    args: Pointer<Pointer<Byte>>,
+    nargs: Int,
+): Unit = `lto_codegen_set_assembler_args$mh`.invokeExact(cg, args, nargs) as Unit
+
+/**
+ *
+ * Adds to a list of all global symbols that must exist in the final generated
+ * code. If a function is not listed there, it might be inlined into every usage
+ * and optimized away.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_codegen_add_must_preserve_symbol(cg: lto_code_gen_t, symbol: Pointer<Byte>): Unit =
+    `lto_codegen_add_must_preserve_symbol$mh`.invokeExact(cg, symbol) as Unit
+
+/**
+ *
+ * Writes a new object file at the specified path that contains the
+ * merged contents of all modules added so far.
+ * Returns true on error (check lto_get_error_message() for details).
+ *
+ * \since LTO_API_VERSION=5
+ */
+public fun lto_codegen_write_merged_modules(cg: lto_code_gen_t, path: Pointer<Byte>): lto_bool_t =
+    `lto_codegen_write_merged_modules$mh`.invokeExact(cg, path) as Boolean
+
+/**
+ *
+ * Generates code for all added modules into one native object file.
+ * This calls lto_codegen_optimize then lto_codegen_compile_optimized.
+ *
+ * On success returns a pointer to a generated mach-o/ELF buffer and
+ * length set to the buffer size.  The buffer is owned by the
+ * lto_code_gen_t and will be freed when lto_codegen_dispose()
+ * is called, or lto_codegen_compile() is called again.
+ * On failure, returns NULL (check lto_get_error_message() for details).
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_codegen_compile(cg: lto_code_gen_t, length: Pointer<ULong>): Pointer<Unit> =
+    `lto_codegen_compile$mh`.invokeExact(cg, length) as MemorySegment
+
+/**
+ *
+ * Generates code for all added modules into one native object file.
+ * This calls lto_codegen_optimize then lto_codegen_compile_optimized (instead
+ * of returning a generated mach-o/ELF buffer, it writes to a file).
+ *
+ * The name of the file is written to name. Returns true on error.
+ *
+ * \since LTO_API_VERSION=5
+ */
+public fun lto_codegen_compile_to_file(cg: lto_code_gen_t, name: Pointer<Pointer<Byte>>): lto_bool_t =
+    `lto_codegen_compile_to_file$mh`.invokeExact(cg, name) as Boolean
+
+/**
+ *
+ * Runs optimization for the merged module. Returns true on error.
+ *
+ * \since LTO_API_VERSION=12
+ */
+public fun lto_codegen_optimize(cg: lto_code_gen_t): lto_bool_t = `lto_codegen_optimize$mh`.invokeExact(cg) as Boolean
+
+/**
+ *
+ * Generates code for the optimized merged module into one native object file.
+ * It will not run any IR optimizations on the merged module.
+ *
+ * On success returns a pointer to a generated mach-o/ELF buffer and length set
+ * to the buffer size.  The buffer is owned by the lto_code_gen_t and will be
+ * freed when lto_codegen_dispose() is called, or
+ * lto_codegen_compile_optimized() is called again. On failure, returns NULL
+ * (check lto_get_error_message() for details).
+ *
+ * \since LTO_API_VERSION=12
+ */
+public fun lto_codegen_compile_optimized(cg: lto_code_gen_t, length: Pointer<ULong>): Pointer<Unit> =
+    `lto_codegen_compile_optimized$mh`.invokeExact(cg, length) as MemorySegment
+
+/**
+ *
+ * Returns the runtime API version.
+ *
+ * \since LTO_API_VERSION=12
+ */
+public fun lto_api_version(): UInt = (`lto_api_version$mh`.invokeExact() as Int).toUInt()
+
+/**
+ *
+ * Parses options immediately, making them available as early as possible. For
+ * example during executing codegen::InitTargetOptionsFromCodeGenFlags. Since
+ * parsing shud only happen once, only one of lto_codegen_debug_options or
+ * lto_set_debug_options should be called.
+ *
+ * This function takes one or more options separated by spaces.
+ * Warning: passing file paths through this function may confuse the argument
+ * parser if the paths contain spaces.
+ *
+ * \since LTO_API_VERSION=28
+ */
+public fun lto_set_debug_options(options: Pointer<Pointer<Byte>>, number: Int): Unit =
+    `lto_set_debug_options$mh`.invokeExact(options, number) as Unit
+
+/**
+ *
+ * Sets options to help debug codegen bugs. Since parsing shud only happen once,
+ * only one of lto_codegen_debug_options or lto_set_debug_options
+ * should be called.
+ *
+ * This function takes one or more options separated by spaces.
+ * Warning: passing file paths through this function may confuse the argument
+ * parser if the paths contain spaces.
+ *
+ * \since prior to LTO_API_VERSION=3
+ */
+public fun lto_codegen_debug_options(cg: lto_code_gen_t, `$p1`: Pointer<Byte>): Unit =
+    `lto_codegen_debug_options$mh`.invokeExact(cg, `$p1`) as Unit
+
+/**
+ *
+ * Same as the previous function, but takes every option separately through an
+ * array.
+ *
+ * \since prior to LTO_API_VERSION=26
+ */
+public fun lto_codegen_debug_options_array(
+    cg: lto_code_gen_t,
+    `$p1`: Pointer<Byte>,
+    number: Int,
+): Unit = `lto_codegen_debug_options_array$mh`.invokeExact(cg, `$p1`, number) as Unit
+
+/**
+ *
+ * Initializes LLVM disassemblers.
+ * FIXME: This doesn't really belong here.
+ *
+ * \since LTO_API_VERSION=5
+ */
+public fun lto_initialize_disassembler(): Unit = `lto_initialize_disassembler$mh`.invokeExact() as Unit
+
+/**
+ *
+ * Sets if we should run internalize pass during optimization and code
+ * generation.
+ *
+ * \since LTO_API_VERSION=14
+ */
+public fun lto_codegen_set_should_internalize(cg: lto_code_gen_t, ShouldInternalize: lto_bool_t): Unit =
+    `lto_codegen_set_should_internalize$mh`.invokeExact(cg, ShouldInternalize) as Unit
+
+/**
+ *
+ * Set whether to embed uselists in bitcode.
+ *
+ * Sets whether \a lto_codegen_write_merged_modules() should embed uselists in
+ * output bitcode.  This should be turned on for all -save-temps output.
+ *
+ * \since LTO_API_VERSION=15
+ */
+public fun lto_codegen_set_should_embed_uselists(cg: lto_code_gen_t, ShouldEmbedUselists: lto_bool_t): Unit =
+    `lto_codegen_set_should_embed_uselists$mh`.invokeExact(cg, ShouldEmbedUselists) as Unit
+
+/**
+ *
+ * Creates an LTO input file from a buffer. The path
+ * argument is used for diagnotics as this function
+ * otherwise does not know which file the given buffer
+ * is associated with.
+ *
+ * \since LTO_API_VERSION=24
+ */
+public fun lto_input_create(
+    buffer: Pointer<Unit>,
+    buffer_size: ULong,
+    path: Pointer<Byte>,
+): lto_input_t = `lto_input_create$mh`.invokeExact(buffer, buffer_size.toLong(), path) as MemorySegment
+
+/**
+ *
+ * Frees all memory internally allocated by the LTO input file.
+ * Upon return the lto_module_t is no longer valid.
+ *
+ * \since LTO_API_VERSION=24
+ */
+public fun lto_input_dispose(input: lto_input_t): Unit = `lto_input_dispose$mh`.invokeExact(input) as Unit
+
+/**
+ *
+ * Returns the number of dependent library specifiers
+ * for the given LTO input file.
+ *
+ * \since LTO_API_VERSION=24
+ */
+public fun lto_input_get_num_dependent_libraries(input: lto_input_t): UInt =
+    (`lto_input_get_num_dependent_libraries$mh`.invokeExact(input) as Int).toUInt()
+
+/**
+ *
+ * Returns the ith dependent library specifier
+ * for the given LTO input file. The returned
+ * string is not null-terminated.
+ *
+ * \since LTO_API_VERSION=24
+ */
+public fun lto_input_get_dependent_library(
+    input: lto_input_t,
+    index: ULong,
+    size: Pointer<ULong>,
+): Pointer<Byte> = `lto_input_get_dependent_library$mh`.invokeExact(input, index.toLong(), size) as MemorySegment
+
+/**
+ *
+ * Returns the list of libcall symbols that can be generated by LTO
+ * that might not be visible from the symbol table of bitcode files.
+ *
+ * \since prior to LTO_API_VERSION=25
+ */
+public fun lto_runtime_lib_symbols_list(size: Pointer<ULong>): Pointer<Pointer<Byte>> =
+    `lto_runtime_lib_symbols_list$mh`.invokeExact(size) as MemorySegment
+
+/**
+ *
+ * Test if a module has support for ThinLTO linking.
+ *
+ * \since LTO_API_VERSION=18
+ */
+public fun lto_module_is_thinlto(mod: lto_module_t): lto_bool_t =
+    `lto_module_is_thinlto$mh`.invokeExact(mod) as Boolean
