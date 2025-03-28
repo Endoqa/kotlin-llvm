@@ -97,20 +97,12 @@ class Module(
         return context.getStructType(name)
     }
 
-    /**
-     * Assigns a TargetTriple to this Module.
-     */
-    fun setTriple(triple: String) {
-        confined { temp -> LLVMSetTarget(M, temp.allocateFrom(triple)) }
-    }
 
-    /**
-     * Gets the TargetTriple assigned to this Module.
-     */
-    fun getTriple(): String {
-        val triple = LLVMGetTarget(M)
-        return triple.getString(0)
-    }
+    var triple: String
+        get() = LLVMGetTarget(M).getString(0)
+        set(value) {
+            confined { temp -> LLVMSetTarget(M, temp.allocateFrom(value)) }
+        }
 
     /**
      * Creates an ExecutionEngine from this Module.
@@ -127,6 +119,11 @@ class Module(
                 M,
                 outErr
             )
+
+            require(rst == 0) {
+                "Failed to create ExecutionEngine: ${outErr.getString(0)}"
+            }
+
             ExecutionEngine(out.getAtIndex(ValueLayout.ADDRESS, 0))
         }
 
@@ -148,7 +145,9 @@ class Module(
                 M,
                 outErr
             )
-
+            require(rst == 0) {
+                "Failed to create interpreter: ${outErr.getString(0)}"
+            }
             ExecutionEngine(out.getAtIndex(ValueLayout.ADDRESS, 0))
         }
 
@@ -171,6 +170,9 @@ class Module(
                 optLvl.value.toUInt(),
                 outErr
             )
+            require(rst == 0) {
+                "Failed to create JIT compiler: ${outErr.getString(0)}"
+            }
             ExecutionEngine(out.getAtIndex(ValueLayout.ADDRESS, 0))
         }
 

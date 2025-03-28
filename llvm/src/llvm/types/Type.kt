@@ -3,11 +3,7 @@ package llvm.types
 import lib.llvm.*
 import llvm.values.IntValue
 import llvm.values.Value
-import java.lang.foreign.ValueLayout
-import llvm.types.VoidType
-import llvm.types.IntType
-import llvm.types.FloatType
-import llvm.types.FunctionType
+import java.lang.foreign.MemorySegment
 
 sealed class Type(
     val T: LLVMTypeRef
@@ -30,29 +26,32 @@ sealed class Type(
     fun asAnyTypeEnum(): Type = this
 
     companion object {
-        fun from(T: LLVMTypeRef): Type = when (LLVMGetTypeKind(T)) {
-            LLVMTypeKind.VoidTypeKind -> VoidType(T)
-            LLVMTypeKind.HalfTypeKind -> TODO()
+        fun from(T: LLVMTypeRef): Type {
+            require(T != MemorySegment.NULL) { "Cannot create type from NULL pointer" }
+            return when (LLVMGetTypeKind(T)) {
+                LLVMTypeKind.VoidTypeKind -> VoidType(T)
+                LLVMTypeKind.HalfTypeKind -> TODO()
 
-            LLVMTypeKind.FloatTypeKind,
-            LLVMTypeKind.DoubleTypeKind -> FloatType(T)
+                LLVMTypeKind.FloatTypeKind,
+                LLVMTypeKind.DoubleTypeKind -> FloatType(T)
 
-            LLVMTypeKind.X86_FP80TypeKind -> TODO()
-            LLVMTypeKind.FP128TypeKind -> TODO()
-            LLVMTypeKind.PPC_FP128TypeKind -> TODO()
-            LLVMTypeKind.LabelTypeKind -> TODO()
-            LLVMTypeKind.IntegerTypeKind -> IntType(T)
-            LLVMTypeKind.FunctionTypeKind -> FunctionType.from(T)
-            LLVMTypeKind.StructTypeKind -> TODO()
-            LLVMTypeKind.ArrayTypeKind -> TODO()
-            LLVMTypeKind.PointerTypeKind -> TODO()
-            LLVMTypeKind.VectorTypeKind -> TODO()
-            LLVMTypeKind.MetadataTypeKind -> TODO()
-            LLVMTypeKind.TokenTypeKind -> TODO()
-            LLVMTypeKind.ScalableVectorTypeKind -> TODO()
-            LLVMTypeKind.BFloatTypeKind -> TODO()
-            LLVMTypeKind.X86_AMXTypeKind -> TODO()
-            LLVMTypeKind.TargetExtTypeKind -> TODO()
+                LLVMTypeKind.X86_FP80TypeKind -> TODO()
+                LLVMTypeKind.FP128TypeKind -> TODO()
+                LLVMTypeKind.PPC_FP128TypeKind -> TODO()
+                LLVMTypeKind.LabelTypeKind -> TODO()
+                LLVMTypeKind.IntegerTypeKind -> IntType(T)
+                LLVMTypeKind.FunctionTypeKind -> FunctionType.from(T)
+                LLVMTypeKind.StructTypeKind -> TODO()
+                LLVMTypeKind.ArrayTypeKind -> TODO()
+                LLVMTypeKind.PointerTypeKind -> TODO()
+                LLVMTypeKind.VectorTypeKind -> VectorType(T)
+                LLVMTypeKind.MetadataTypeKind -> TODO()
+                LLVMTypeKind.TokenTypeKind -> TODO()
+                LLVMTypeKind.ScalableVectorTypeKind -> TODO()
+                LLVMTypeKind.BFloatTypeKind -> TODO()
+                LLVMTypeKind.X86_AMXTypeKind -> TODO()
+                LLVMTypeKind.TargetExtTypeKind -> TODO()
+            }
         }
     }
 }

@@ -48,7 +48,7 @@ fun CodeGen.compileSum(): MemorySegment {
         returns(sum2)
     }
 
-    return ee.getFunction("sum")
+    return ee.getFunctionAddress("sum")
 }
 
 fun main() {

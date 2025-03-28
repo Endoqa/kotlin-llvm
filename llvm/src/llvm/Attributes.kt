@@ -34,10 +34,7 @@ class Attribute(
     }
 
     val isEnum: Boolean get() = LLVMIsEnumAttribute(attribute) == 1
-
     val isString: Boolean get() = LLVMIsStringAttribute(attribute) == 1
-
-
     val isType: Boolean get() = LLVMIsTypeAttribute(attribute) == 1
 
 
