@@ -9,16 +9,6 @@ import java.lang.foreign.*
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 
-/**
- *
- * Diagnostic handler type.
- * \p severity defines the severity.
- * \p diag is the actual diagnostic.
- * The diagnostic is not prefixed by any of severity keyword, e.g., 'error: '.
- * \p ctxt is used to pass the context set with the diagnostic handler.
- *
- * \since LTO_API_VERSION=7
- */
 public fun interface lto_diagnostic_handler_t {
     @CFunctionInvoke
     public fun invoke(

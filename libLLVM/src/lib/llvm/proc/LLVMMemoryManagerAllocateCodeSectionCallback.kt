@@ -9,9 +9,6 @@ import java.lang.foreign.*
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 
-/**
- * ===-- Operations on memory managers -------------------------------------===
- */
 public fun interface LLVMMemoryManagerAllocateCodeSectionCallback {
     @CFunctionInvoke
     public fun invoke(

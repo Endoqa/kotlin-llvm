@@ -4,12 +4,6 @@ package lib.llvm
 import java.lang.foreign.*
 import java.lang.invoke.VarHandle
 
-/**
- *
- * Type to wrap a single object returned by ThinLTO.
- *
- * \since LTO_API_VERSION=18
- */
 @JvmInline
 public value class LTOObjectBuffer(
     public val `$mem`: MemorySegment,

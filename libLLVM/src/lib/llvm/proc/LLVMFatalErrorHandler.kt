@@ -11,12 +11,6 @@ import java.lang.foreign.MemorySegment
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 
-/**
- *
- * @addtogroup LLVMCError
- *
- * @{
- */
 public fun interface LLVMFatalErrorHandler {
     @CFunctionInvoke
     public fun invoke(Reason: Pointer<Byte>)

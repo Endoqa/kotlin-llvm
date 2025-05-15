@@ -4,14 +4,7 @@ package lib.llvm
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
-import kotlin.Int
 
-/**
- *
- * @addtogroup LLVMCTarget
- *
- * @{
- */
 public enum class LLVMCodeGenOptLevel(
     public val `value`: Int,
 ) {

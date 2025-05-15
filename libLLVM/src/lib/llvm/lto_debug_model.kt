@@ -4,17 +4,12 @@ package lib.llvm
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
-import kotlin.Int
 
-/**
- *
- * \since prior to LTO_API_VERSION=3
- */
 public enum class lto_debug_model(
     public val `value`: Int,
 ) {
-    DEBUGMODELNONE(0),
-    DEBUGMODELDWARF(1),
+    NONE(0),
+    DWARF(1),
     ;
 
     public companion object {
@@ -34,8 +29,8 @@ public enum class lto_debug_model(
 
         @JvmStatic
         public fun fromInt(`value`: Int): lto_debug_model = when (value) {
-            DEBUGMODELNONE.value -> DEBUGMODELNONE
-            DEBUGMODELDWARF.value -> DEBUGMODELDWARF
+            NONE.value -> NONE
+            DWARF.value -> DWARF
             else -> error("enum not found")
         }
     }

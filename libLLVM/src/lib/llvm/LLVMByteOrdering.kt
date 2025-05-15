@@ -4,15 +4,7 @@ package lib.llvm
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
-import kotlin.Int
 
-/**
- *
- * @defgroup LLVMCTarget Target information
- * @ingroup LLVMC
- *
- * @{
- */
 public enum class LLVMByteOrdering(
     public val `value`: Int,
 ) {

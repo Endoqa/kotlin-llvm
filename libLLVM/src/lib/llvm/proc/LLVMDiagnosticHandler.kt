@@ -12,18 +12,6 @@ import java.lang.foreign.MemorySegment
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 
-/**
- *
- * @defgroup LLVMCCoreContext Contexts
- *
- * Contexts are execution states for the core LLVM IR system.
- *
- * Most types are tied to a context instance. Multiple contexts can
- * exist simultaneously. A single context is not thread safe. However,
- * different contexts can execute on different threads simultaneously.
- *
- * @{
- */
 public fun interface LLVMDiagnosticHandler {
     @CFunctionInvoke
     public fun invoke(`$p0`: LLVMDiagnosticInfoRef, `$p1`: Pointer<Unit>)

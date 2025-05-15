@@ -4,19 +4,14 @@ package lib.llvm
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
-import kotlin.Int
 
-/**
- *
- * \since prior to LTO_API_VERSION=3
- */
 public enum class lto_codegen_model(
     public val `value`: Int,
 ) {
-    CODEGENPICMODELSTATIC(0),
-    CODEGENPICMODELDYNAMIC(1),
-    CODEGENPICMODELDYNAMICNOPIC(2),
-    CODEGENPICMODELDEFAULT(3),
+    STATIC(0),
+    DYNAMIC(1),
+    DYNAMIC_NO_PIC(2),
+    DEFAULT(3),
     ;
 
     public companion object {
@@ -36,10 +31,10 @@ public enum class lto_codegen_model(
 
         @JvmStatic
         public fun fromInt(`value`: Int): lto_codegen_model = when (value) {
-            CODEGENPICMODELSTATIC.value -> CODEGENPICMODELSTATIC
-            CODEGENPICMODELDYNAMIC.value -> CODEGENPICMODELDYNAMIC
-            CODEGENPICMODELDYNAMICNOPIC.value -> CODEGENPICMODELDYNAMICNOPIC
-            CODEGENPICMODELDEFAULT.value -> CODEGENPICMODELDEFAULT
+            STATIC.value -> STATIC
+            DYNAMIC.value -> DYNAMIC
+            DYNAMIC_NO_PIC.value -> DYNAMIC_NO_PIC
+            DEFAULT.value -> DEFAULT
             else -> error("enum not found")
         }
     }

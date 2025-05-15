@@ -4,21 +4,18 @@ package lib.llvm
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
-import kotlin.Int
 
-/**
- *
- * Diagnostic severity.
- *
- * \since LTO_API_VERSION=7
- */
 public enum class lto_codegen_diagnostic_severity_t(
     public val `value`: Int,
 ) {
-    DSERROR(0),
-    DSWARNING(1),
-    DSREMARK(3),
-    DSNOTE(2),
+    ERROR(0),
+    WARNING(1),
+    REMARK(3),
+
+    /**
+     * Added in LTO_API_VERSION=10.
+     */
+    NOTE(2),
     ;
 
     public companion object {
@@ -38,10 +35,10 @@ public enum class lto_codegen_diagnostic_severity_t(
 
         @JvmStatic
         public fun fromInt(`value`: Int): lto_codegen_diagnostic_severity_t = when (value) {
-            DSERROR.value -> DSERROR
-            DSWARNING.value -> DSWARNING
-            DSREMARK.value -> DSREMARK
-            DSNOTE.value -> DSNOTE
+            ERROR.value -> ERROR
+            WARNING.value -> WARNING
+            REMARK.value -> REMARK
+            NOTE.value -> NOTE
             else -> error("enum not found")
         }
     }

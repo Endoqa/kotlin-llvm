@@ -4,11 +4,7 @@ package lib.llvm
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
-import kotlin.Int
 
-/**
- * This enum is provided for backwards-compatibility only. It has no effect.
- */
 public enum class LLVMLinkerMode(
     public val `value`: Int,
 ) {

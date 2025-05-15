@@ -3,157 +3,59 @@ package lib.llvm
 
 import java.lang.foreign.MemorySegment
 
-/**
- *
- * Install a fatal error handler. By default, if LLVM detects a fatal error, it
- * will call exit(1). This may not be appropriate in many contexts. For example,
- * doing exit(1) will bypass many crash reporting/tracing system tools. This
- * function allows you to install a callback that will be invoked prior to the
- * call to exit(1).
- */
 public fun LLVMInstallFatalErrorHandler(Handler: LLVMFatalErrorHandler): Unit =
     `LLVMInstallFatalErrorHandler$mh`.invokeExact(Handler) as Unit
 
-/**
- *
- * Reset the fatal error handler. This resets LLVM's fatal error handling
- * behavior to the default.
- */
 public fun LLVMResetFatalErrorHandler(): Unit = `LLVMResetFatalErrorHandler$mh`.invokeExact() as Unit
 
-/**
- *
- * Enable LLVM's built-in stack trace code. This intercepts the OS's crash
- * signals and prints which component of LLVM you were in at the time if the
- * crash.
- */
 public fun LLVMEnablePrettyStackTrace(): Unit = `LLVMEnablePrettyStackTrace$mh`.invokeExact() as Unit
 
-/**
- * Deallocate and destroy all ManagedStatic variables.
- * @see llvm::llvm_shutdown
- * @see ManagedStatic
- */
 public fun LLVMShutdown(): Unit = `LLVMShutdown$mh`.invokeExact() as Unit
 
-/**
- *
- * Return the major, minor, and patch version of LLVM
- *
- * The version components are returned via the function's three output
- * parameters or skipped if a NULL pointer was supplied.
- */
 public fun LLVMGetVersion(
     Major: Pointer<UInt>,
     Minor: Pointer<UInt>,
     Patch: Pointer<UInt>,
 ): Unit = `LLVMGetVersion$mh`.invokeExact(Major, Minor, Patch) as Unit
 
-/**
- * ===-- Error handling ----------------------------------------------------===
- */
 public fun LLVMCreateMessage(Message: Pointer<Byte>): Pointer<Byte> =
     `LLVMCreateMessage$mh`.invokeExact(Message) as MemorySegment
 
 public fun LLVMDisposeMessage(Message: Pointer<Byte>): Unit = `LLVMDisposeMessage$mh`.invokeExact(Message) as Unit
 
-/**
- *
- * Create a new context.
- *
- * Every call to this function should be paired with a call to
- * LLVMContextDispose() or the context will leak memory.
- */
 public fun LLVMContextCreate(): LLVMContextRef = `LLVMContextCreate$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Obtain the global context instance.
- */
 public fun LLVMGetGlobalContext(): LLVMContextRef = `LLVMGetGlobalContext$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Set the diagnostic handler for this context.
- */
 public fun LLVMContextSetDiagnosticHandler(
     C: LLVMContextRef,
     Handler: LLVMDiagnosticHandler,
     DiagnosticContext: Pointer<Unit>,
 ): Unit = `LLVMContextSetDiagnosticHandler$mh`.invokeExact(C, Handler, DiagnosticContext) as Unit
 
-/**
- *
- * Get the diagnostic handler of this context.
- */
 public fun LLVMContextGetDiagnosticHandler(C: LLVMContextRef): LLVMDiagnosticHandler =
     `LLVMContextGetDiagnosticHandler$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Get the diagnostic context of this context.
- */
 public fun LLVMContextGetDiagnosticContext(C: LLVMContextRef): Pointer<Unit> =
     `LLVMContextGetDiagnosticContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Set the yield callback function for this context.
- *
- * @see LLVMContext::setYieldCallback()
- */
 public fun LLVMContextSetYieldCallback(
     C: LLVMContextRef,
     Callback: LLVMYieldCallback,
     OpaqueHandle: Pointer<Unit>,
 ): Unit = `LLVMContextSetYieldCallback$mh`.invokeExact(C, Callback, OpaqueHandle) as Unit
 
-/**
- *
- * Retrieve whether the given context is set to discard all value names.
- *
- * @see LLVMContext::shouldDiscardValueNames()
- */
 public fun LLVMContextShouldDiscardValueNames(C: LLVMContextRef): LLVMBool =
     `LLVMContextShouldDiscardValueNames$mh`.invokeExact(C) as Int
 
-/**
- *
- * Set whether the given context discards all value names.
- *
- * If true, only the names of GlobalValue objects will be available in the IR.
- * This can be used to save memory and runtime, especially in release mode.
- *
- * @see LLVMContext::setDiscardValueNames()
- */
 public fun LLVMContextSetDiscardValueNames(C: LLVMContextRef, Discard: LLVMBool): Unit =
     `LLVMContextSetDiscardValueNames$mh`.invokeExact(C, Discard) as Unit
 
-/**
- *
- * Destroy a context instance.
- *
- * This should be called for every call to LLVMContextCreate() or memory
- * will be leaked.
- */
 public fun LLVMContextDispose(C: LLVMContextRef): Unit = `LLVMContextDispose$mh`.invokeExact(C) as Unit
 
-/**
- *
- * Return a string representation of the DiagnosticInfo. Use
- * LLVMDisposeMessage to free the string.
- *
- * @see DiagnosticInfo::print()
- */
 public fun LLVMGetDiagInfoDescription(DI: LLVMDiagnosticInfoRef): Pointer<Byte> =
     `LLVMGetDiagInfoDescription$mh`.invokeExact(DI) as MemorySegment
 
-/**
- *
- * Return an enum LLVMDiagnosticSeverity.
- *
- * @see DiagnosticInfo::getSeverity()
- */
 public fun LLVMGetDiagInfoSeverity(DI: LLVMDiagnosticInfoRef): LLVMDiagnosticSeverity =
     LLVMDiagnosticSeverity.fromInt(`LLVMGetDiagInfoSeverity$mh`.invokeExact(DI) as Int)
 
@@ -166,82 +68,38 @@ public fun LLVMGetMDKindIDInContext(
 public fun LLVMGetMDKindID(Name: Pointer<Byte>, SLen: UInt): UInt =
     (`LLVMGetMDKindID$mh`.invokeExact(Name, SLen.toInt()) as Int).toUInt()
 
-/**
- *
- * Maps a synchronization scope name to a ID unique within this context.
- */
 public fun LLVMGetSyncScopeID(
     C: LLVMContextRef,
     Name: Pointer<Byte>,
     SLen: ULong,
 ): UInt = (`LLVMGetSyncScopeID$mh`.invokeExact(C, Name, SLen.toLong()) as Int).toUInt()
 
-/**
- *
- * Return an unique id given the name of a enum attribute,
- * or 0 if no attribute by that name exists.
- *
- * See http://llvm.org/docs/LangRef.html#parameter-attributes
- * and http://llvm.org/docs/LangRef.html#function-attributes
- * for the list of available attributes.
- *
- * NB: Attribute names and/or id are subject to change without
- * going through the C API deprecation cycle.
- */
 public fun LLVMGetEnumAttributeKindForName(Name: Pointer<Byte>, SLen: ULong): UInt =
     (`LLVMGetEnumAttributeKindForName$mh`.invokeExact(Name, SLen.toLong()) as Int).toUInt()
 
 public fun LLVMGetLastEnumAttributeKind(): UInt = (`LLVMGetLastEnumAttributeKind$mh`.invokeExact() as Int).toUInt()
 
-/**
- *
- * Create an enum attribute.
- */
 public fun LLVMCreateEnumAttribute(
     C: LLVMContextRef,
     KindID: UInt,
     Val: ULong,
 ): LLVMAttributeRef = `LLVMCreateEnumAttribute$mh`.invokeExact(C, KindID.toInt(), Val.toLong()) as MemorySegment
 
-/**
- *
- * Get the unique id corresponding to the enum attribute
- * passed as argument.
- */
 public fun LLVMGetEnumAttributeKind(A: LLVMAttributeRef): UInt =
     (`LLVMGetEnumAttributeKind$mh`.invokeExact(A) as Int).toUInt()
 
-/**
- *
- * Get the enum attribute's value. 0 is returned if none exists.
- */
 public fun LLVMGetEnumAttributeValue(A: LLVMAttributeRef): ULong =
     (`LLVMGetEnumAttributeValue$mh`.invokeExact(A) as Long).toULong()
 
-/**
- *
- * Create a type attribute
- */
 public fun LLVMCreateTypeAttribute(
     C: LLVMContextRef,
     KindID: UInt,
     type_ref: LLVMTypeRef,
 ): LLVMAttributeRef = `LLVMCreateTypeAttribute$mh`.invokeExact(C, KindID.toInt(), type_ref) as MemorySegment
 
-/**
- *
- * Get the type attribute's value.
- */
 public fun LLVMGetTypeAttributeValue(A: LLVMAttributeRef): LLVMTypeRef =
     `LLVMGetTypeAttributeValue$mh`.invokeExact(A) as MemorySegment
 
-/**
- *
- * Create a ConstantRange attribute.
- *
- * LowerWords and UpperWords need to be NumBits divided by 64 rounded up
- * elements long.
- */
 public fun LLVMCreateConstantRangeAttribute(
     C: LLVMContextRef,
     KindID: UInt,
@@ -256,10 +114,6 @@ public fun LLVMCreateConstantRangeAttribute(
     UpperWords,
 ) as MemorySegment
 
-/**
- *
- * Create a string attribute.
- */
 public fun LLVMCreateStringAttribute(
     C: LLVMContextRef,
     K: Pointer<Byte>,
@@ -269,216 +123,73 @@ public fun LLVMCreateStringAttribute(
 ): LLVMAttributeRef =
     `LLVMCreateStringAttribute$mh`.invokeExact(C, K, KLength.toInt(), V, VLength.toInt()) as MemorySegment
 
-/**
- *
- * Get the string attribute's kind.
- */
 public fun LLVMGetStringAttributeKind(A: LLVMAttributeRef, Length: Pointer<UInt>): Pointer<Byte> =
     `LLVMGetStringAttributeKind$mh`.invokeExact(A, Length) as MemorySegment
 
-/**
- *
- * Get the string attribute's value.
- */
 public fun LLVMGetStringAttributeValue(A: LLVMAttributeRef, Length: Pointer<UInt>): Pointer<Byte> =
     `LLVMGetStringAttributeValue$mh`.invokeExact(A, Length) as MemorySegment
 
-/**
- *
- * Check for the different types of attributes.
- */
 public fun LLVMIsEnumAttribute(A: LLVMAttributeRef): LLVMBool = `LLVMIsEnumAttribute$mh`.invokeExact(A) as Int
 
 public fun LLVMIsStringAttribute(A: LLVMAttributeRef): LLVMBool = `LLVMIsStringAttribute$mh`.invokeExact(A) as Int
 
 public fun LLVMIsTypeAttribute(A: LLVMAttributeRef): LLVMBool = `LLVMIsTypeAttribute$mh`.invokeExact(A) as Int
 
-/**
- *
- * Obtain a Type from a context by its registered name.
- */
 public fun LLVMGetTypeByName2(C: LLVMContextRef, Name: Pointer<Byte>): LLVMTypeRef =
     `LLVMGetTypeByName2$mh`.invokeExact(C, Name) as MemorySegment
 
-/**
- *
- * Create a new, empty module in the global context.
- *
- * This is equivalent to calling LLVMModuleCreateWithNameInContext with
- * LLVMGetGlobalContext() as the context parameter.
- *
- * Every invocation should be paired with LLVMDisposeModule() or memory
- * will be leaked.
- */
 public fun LLVMModuleCreateWithName(ModuleID: Pointer<Byte>): LLVMModuleRef =
     `LLVMModuleCreateWithName$mh`.invokeExact(ModuleID) as MemorySegment
 
-/**
- *
- * Create a new, empty module in a specific context.
- *
- * Every invocation should be paired with LLVMDisposeModule() or memory
- * will be leaked.
- */
 public fun LLVMModuleCreateWithNameInContext(ModuleID: Pointer<Byte>, C: LLVMContextRef): LLVMModuleRef =
     `LLVMModuleCreateWithNameInContext$mh`.invokeExact(ModuleID, C) as MemorySegment
 
-/**
- *
- * Return an exact copy of the specified module.
- */
 public fun LLVMCloneModule(M: LLVMModuleRef): LLVMModuleRef = `LLVMCloneModule$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Destroy a module instance.
- *
- * This must be called for every created module or memory will be
- * leaked.
- */
 public fun LLVMDisposeModule(M: LLVMModuleRef): Unit = `LLVMDisposeModule$mh`.invokeExact(M) as Unit
 
-/**
- *
- * Soon to be deprecated.
- * See https://llvm.org/docs/RemoveDIsDebugInfo.html#c-api-changes
- *
- * Returns true if the module is in the new debug info mode which uses
- * non-instruction debug records instead of debug intrinsics for variable
- * location tracking.
- */
 public fun LLVMIsNewDbgInfoFormat(M: LLVMModuleRef): LLVMBool = `LLVMIsNewDbgInfoFormat$mh`.invokeExact(M) as Int
 
-/**
- *
- * Soon to be deprecated.
- * See https://llvm.org/docs/RemoveDIsDebugInfo.html#c-api-changes
- *
- * Convert module into desired debug info format.
- */
 public fun LLVMSetIsNewDbgInfoFormat(M: LLVMModuleRef, UseNewFormat: LLVMBool): Unit =
     `LLVMSetIsNewDbgInfoFormat$mh`.invokeExact(M, UseNewFormat) as Unit
 
-/**
- *
- * Obtain the identifier of a module.
- *
- * @param M Module to obtain identifier of
- * @param Len Out parameter which holds the length of the returned string.
- * @return The identifier of M.
- * @see Module::getModuleIdentifier()
- */
 public fun LLVMGetModuleIdentifier(M: LLVMModuleRef, Len: Pointer<ULong>): Pointer<Byte> =
     `LLVMGetModuleIdentifier$mh`.invokeExact(M, Len) as MemorySegment
 
-/**
- *
- * Set the identifier of a module to a string Ident with length Len.
- *
- * @param M The module to set identifier
- * @param Ident The string to set M's identifier to
- * @param Len Length of Ident
- * @see Module::setModuleIdentifier()
- */
 public fun LLVMSetModuleIdentifier(
     M: LLVMModuleRef,
     Ident: Pointer<Byte>,
     Len: ULong,
 ): Unit = `LLVMSetModuleIdentifier$mh`.invokeExact(M, Ident, Len.toLong()) as Unit
 
-/**
- *
- * Obtain the module's original source file name.
- *
- * @param M Module to obtain the name of
- * @param Len Out parameter which holds the length of the returned string
- * @return The original source file name of M
- * @see Module::getSourceFileName()
- */
 public fun LLVMGetSourceFileName(M: LLVMModuleRef, Len: Pointer<ULong>): Pointer<Byte> =
     `LLVMGetSourceFileName$mh`.invokeExact(M, Len) as MemorySegment
 
-/**
- *
- * Set the original source file name of a module to a string Name with length
- * Len.
- *
- * @param M The module to set the source file name of
- * @param Name The string to set M's source file name to
- * @param Len Length of Name
- * @see Module::setSourceFileName()
- */
 public fun LLVMSetSourceFileName(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
     Len: ULong,
 ): Unit = `LLVMSetSourceFileName$mh`.invokeExact(M, Name, Len.toLong()) as Unit
 
-/**
- *
- * Obtain the data layout for a module.
- *
- * @see Module::getDataLayoutStr()
- *
- * LLVMGetDataLayout is DEPRECATED, as the name is not only incorrect,
- * but match the name of another method on the module. Prefer the use
- * of LLVMGetDataLayoutStr, which is not ambiguous.
- */
 public fun LLVMGetDataLayoutStr(M: LLVMModuleRef): Pointer<Byte> =
     `LLVMGetDataLayoutStr$mh`.invokeExact(M) as MemorySegment
 
 public fun LLVMGetDataLayout(M: LLVMModuleRef): Pointer<Byte> = `LLVMGetDataLayout$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Set the data layout for a module.
- *
- * @see Module::setDataLayout()
- */
 public fun LLVMSetDataLayout(M: LLVMModuleRef, DataLayoutStr: Pointer<Byte>): Unit =
     `LLVMSetDataLayout$mh`.invokeExact(M, DataLayoutStr) as Unit
 
-/**
- *
- * Obtain the target triple for a module.
- *
- * @see Module::getTargetTriple()
- */
 public fun LLVMGetTarget(M: LLVMModuleRef): Pointer<Byte> = `LLVMGetTarget$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Set the target triple for a module.
- *
- * @see Module::setTargetTriple()
- */
 public fun LLVMSetTarget(M: LLVMModuleRef, Triple: Pointer<Byte>): Unit =
     `LLVMSetTarget$mh`.invokeExact(M, Triple) as Unit
 
-/**
- *
- * Returns the module flags as an array of flag-key-value triples.  The caller
- * is responsible for freeing this array by calling
- * \c LLVMDisposeModuleFlagsMetadata.
- *
- * @see Module::getModuleFlagsMetadata()
- */
 public fun LLVMCopyModuleFlagsMetadata(M: LLVMModuleRef, Len: Pointer<ULong>): Pointer<LLVMModuleFlagEntry> =
     `LLVMCopyModuleFlagsMetadata$mh`.invokeExact(M, Len) as MemorySegment
 
-/**
- *
- * Destroys module flags metadata entries.
- */
 public fun LLVMDisposeModuleFlagsMetadata(Entries: Pointer<LLVMModuleFlagEntry>): Unit =
     `LLVMDisposeModuleFlagsMetadata$mh`.invokeExact(Entries) as Unit
 
-/**
- *
- * Returns the flag behavior for a module flag entry at a specific index.
- *
- * @see Module::ModuleFlagEntry::Behavior
- */
 public fun LLVMModuleFlagEntriesGetFlagBehavior(
     Entries: Pointer<LLVMModuleFlagEntry>,
     Index: UInt
@@ -489,47 +200,21 @@ public fun LLVMModuleFlagEntriesGetFlagBehavior(
     ) as Int
 )
 
-/**
- *
- * Returns the key for a module flag entry at a specific index.
- *
- * @see Module::ModuleFlagEntry::Key
- */
 public fun LLVMModuleFlagEntriesGetKey(
     Entries: Pointer<LLVMModuleFlagEntry>,
     Index: UInt,
     Len: Pointer<ULong>,
 ): Pointer<Byte> = `LLVMModuleFlagEntriesGetKey$mh`.invokeExact(Entries, Index.toInt(), Len) as MemorySegment
 
-/**
- *
- * Returns the metadata for a module flag entry at a specific index.
- *
- * @see Module::ModuleFlagEntry::Val
- */
 public fun LLVMModuleFlagEntriesGetMetadata(Entries: Pointer<LLVMModuleFlagEntry>, Index: UInt): LLVMMetadataRef =
     `LLVMModuleFlagEntriesGetMetadata$mh`.invokeExact(Entries, Index.toInt()) as MemorySegment
 
-/**
- *
- * Add a module-level flag to the module-level flags metadata if it doesn't
- * already exist.
- *
- * @see Module::getModuleFlag()
- */
 public fun LLVMGetModuleFlag(
     M: LLVMModuleRef,
     Key: Pointer<Byte>,
     KeyLen: ULong,
 ): LLVMMetadataRef = `LLVMGetModuleFlag$mh`.invokeExact(M, Key, KeyLen.toLong()) as MemorySegment
 
-/**
- *
- * Add a module-level flag to the module-level flags metadata if it doesn't
- * already exist.
- *
- * @see Module::addModuleFlag()
- */
 public fun LLVMAddModuleFlag(
     M: LLVMModuleRef,
     Behavior: LLVMModuleFlagBehavior,
@@ -538,76 +223,32 @@ public fun LLVMAddModuleFlag(
     Val: LLVMMetadataRef,
 ): Unit = `LLVMAddModuleFlag$mh`.invokeExact(M, Behavior.value, Key, KeyLen.toLong(), Val) as Unit
 
-/**
- *
- * Dump a representation of a module to stderr.
- *
- * @see Module::dump()
- */
 public fun LLVMDumpModule(M: LLVMModuleRef): Unit = `LLVMDumpModule$mh`.invokeExact(M) as Unit
 
-/**
- *
- * Print a representation of a module to a file. The ErrorMessage needs to be
- * disposed with LLVMDisposeMessage. Returns 0 on success, 1 otherwise.
- *
- * @see Module::print()
- */
 public fun LLVMPrintModuleToFile(
     M: LLVMModuleRef,
     Filename: Pointer<Byte>,
     ErrorMessage: Pointer<Pointer<Byte>>,
 ): LLVMBool = `LLVMPrintModuleToFile$mh`.invokeExact(M, Filename, ErrorMessage) as Int
 
-/**
- *
- * Return a string representation of the module. Use
- * LLVMDisposeMessage to free the string.
- *
- * @see Module::print()
- */
 public fun LLVMPrintModuleToString(M: LLVMModuleRef): Pointer<Byte> =
     `LLVMPrintModuleToString$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Get inline assembly for a module.
- *
- * @see Module::getModuleInlineAsm()
- */
 public fun LLVMGetModuleInlineAsm(M: LLVMModuleRef, Len: Pointer<ULong>): Pointer<Byte> =
     `LLVMGetModuleInlineAsm$mh`.invokeExact(M, Len) as MemorySegment
 
-/**
- *
- * Set inline assembly for a module.
- *
- * @see Module::setModuleInlineAsm()
- */
 public fun LLVMSetModuleInlineAsm2(
     M: LLVMModuleRef,
     Asm: Pointer<Byte>,
     Len: ULong,
 ): Unit = `LLVMSetModuleInlineAsm2$mh`.invokeExact(M, Asm, Len.toLong()) as Unit
 
-/**
- *
- * Append inline assembly to a module.
- *
- * @see Module::appendModuleInlineAsm()
- */
 public fun LLVMAppendModuleInlineAsm(
     M: LLVMModuleRef,
     Asm: Pointer<Byte>,
     Len: ULong,
 ): Unit = `LLVMAppendModuleInlineAsm$mh`.invokeExact(M, Asm, Len.toLong()) as Unit
 
-/**
- *
- * Create the specified uniqued inline asm string.
- *
- * @see InlineAsm::get()
- */
 public fun LLVMGetInlineAsm(
     Ty: LLVMTypeRef,
     AsmString: Pointer<Byte>,
@@ -630,362 +271,129 @@ public fun LLVMGetInlineAsm(
     CanThrow,
 ) as MemorySegment
 
-/**
- *
- * Get the template string used for an inline assembly snippet
- */
 public fun LLVMGetInlineAsmAsmString(InlineAsmVal: LLVMValueRef, Len: Pointer<ULong>): Pointer<Byte> =
     `LLVMGetInlineAsmAsmString$mh`.invokeExact(InlineAsmVal, Len) as MemorySegment
 
-/**
- *
- * Get the raw constraint string for an inline assembly snippet
- */
 public fun LLVMGetInlineAsmConstraintString(InlineAsmVal: LLVMValueRef, Len: Pointer<ULong>): Pointer<Byte> =
     `LLVMGetInlineAsmConstraintString$mh`.invokeExact(InlineAsmVal, Len) as MemorySegment
 
-/**
- *
- * Get the dialect used by the inline asm snippet
- */
 public fun LLVMGetInlineAsmDialect(InlineAsmVal: LLVMValueRef): LLVMInlineAsmDialect =
     LLVMInlineAsmDialect.fromInt(`LLVMGetInlineAsmDialect$mh`.invokeExact(InlineAsmVal) as Int)
 
-/**
- *
- * Get the function type of the inline assembly snippet. The same type that
- * was passed into LLVMGetInlineAsm originally
- *
- * @see LLVMGetInlineAsm
- */
 public fun LLVMGetInlineAsmFunctionType(InlineAsmVal: LLVMValueRef): LLVMTypeRef =
     `LLVMGetInlineAsmFunctionType$mh`.invokeExact(InlineAsmVal) as MemorySegment
 
-/**
- *
- * Get if the inline asm snippet has side effects
- */
 public fun LLVMGetInlineAsmHasSideEffects(InlineAsmVal: LLVMValueRef): LLVMBool =
     `LLVMGetInlineAsmHasSideEffects$mh`.invokeExact(InlineAsmVal) as Int
 
-/**
- *
- * Get if the inline asm snippet needs an aligned stack
- */
 public fun LLVMGetInlineAsmNeedsAlignedStack(InlineAsmVal: LLVMValueRef): LLVMBool =
     `LLVMGetInlineAsmNeedsAlignedStack$mh`.invokeExact(InlineAsmVal) as Int
 
-/**
- *
- * Get if the inline asm snippet may unwind the stack
- */
 public fun LLVMGetInlineAsmCanUnwind(InlineAsmVal: LLVMValueRef): LLVMBool =
     `LLVMGetInlineAsmCanUnwind$mh`.invokeExact(InlineAsmVal) as Int
 
-/**
- *
- * Obtain the context to which this module is associated.
- *
- * @see Module::getContext()
- */
 public fun LLVMGetModuleContext(M: LLVMModuleRef): LLVMContextRef =
     `LLVMGetModuleContext$mh`.invokeExact(M) as MemorySegment
 
-/**
- * Deprecated: Use LLVMGetTypeByName2 instead.
- */
 public fun LLVMGetTypeByName(M: LLVMModuleRef, Name: Pointer<Byte>): LLVMTypeRef =
     `LLVMGetTypeByName$mh`.invokeExact(M, Name) as MemorySegment
 
-/**
- *
- * Obtain an iterator to the first NamedMDNode in a Module.
- *
- * @see llvm::Module::named_metadata_begin()
- */
 public fun LLVMGetFirstNamedMetadata(M: LLVMModuleRef): LLVMNamedMDNodeRef =
     `LLVMGetFirstNamedMetadata$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Obtain an iterator to the last NamedMDNode in a Module.
- *
- * @see llvm::Module::named_metadata_end()
- */
 public fun LLVMGetLastNamedMetadata(M: LLVMModuleRef): LLVMNamedMDNodeRef =
     `LLVMGetLastNamedMetadata$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Advance a NamedMDNode iterator to the next NamedMDNode.
- *
- * Returns NULL if the iterator was already at the end and there are no more
- * named metadata nodes.
- */
 public fun LLVMGetNextNamedMetadata(NamedMDNode: LLVMNamedMDNodeRef): LLVMNamedMDNodeRef =
     `LLVMGetNextNamedMetadata$mh`.invokeExact(NamedMDNode) as MemorySegment
 
-/**
- *
- * Decrement a NamedMDNode iterator to the previous NamedMDNode.
- *
- * Returns NULL if the iterator was already at the beginning and there are
- * no previous named metadata nodes.
- */
 public fun LLVMGetPreviousNamedMetadata(NamedMDNode: LLVMNamedMDNodeRef): LLVMNamedMDNodeRef =
     `LLVMGetPreviousNamedMetadata$mh`.invokeExact(NamedMDNode) as MemorySegment
 
-/**
- *
- * Retrieve a NamedMDNode with the given name, returning NULL if no such
- * node exists.
- *
- * @see llvm::Module::getNamedMetadata()
- */
 public fun LLVMGetNamedMetadata(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
     NameLen: ULong,
 ): LLVMNamedMDNodeRef = `LLVMGetNamedMetadata$mh`.invokeExact(M, Name, NameLen.toLong()) as MemorySegment
 
-/**
- *
- * Retrieve a NamedMDNode with the given name, creating a new node if no such
- * node exists.
- *
- * @see llvm::Module::getOrInsertNamedMetadata()
- */
 public fun LLVMGetOrInsertNamedMetadata(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
     NameLen: ULong,
 ): LLVMNamedMDNodeRef = `LLVMGetOrInsertNamedMetadata$mh`.invokeExact(M, Name, NameLen.toLong()) as MemorySegment
 
-/**
- *
- * Retrieve the name of a NamedMDNode.
- *
- * @see llvm::NamedMDNode::getName()
- */
 public fun LLVMGetNamedMetadataName(NamedMD: LLVMNamedMDNodeRef, NameLen: Pointer<ULong>): Pointer<Byte> =
     `LLVMGetNamedMetadataName$mh`.invokeExact(NamedMD, NameLen) as MemorySegment
 
-/**
- *
- * Obtain the number of operands for named metadata in a module.
- *
- * @see llvm::Module::getNamedMetadata()
- */
 public fun LLVMGetNamedMetadataNumOperands(M: LLVMModuleRef, Name: Pointer<Byte>): UInt =
     (`LLVMGetNamedMetadataNumOperands$mh`.invokeExact(M, Name) as Int).toUInt()
 
-/**
- *
- * Obtain the named metadata operands for a module.
- *
- * The passed LLVMValueRef pointer should refer to an array of
- * LLVMValueRef at least LLVMGetNamedMetadataNumOperands long. This
- * array will be populated with the LLVMValueRef instances. Each
- * instance corresponds to a llvm::MDNode.
- *
- * @see llvm::Module::getNamedMetadata()
- * @see llvm::MDNode::getOperand()
- */
 public fun LLVMGetNamedMetadataOperands(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
     Dest: Pointer<LLVMValueRef>,
 ): Unit = `LLVMGetNamedMetadataOperands$mh`.invokeExact(M, Name, Dest) as Unit
 
-/**
- *
- * Add an operand to named metadata.
- *
- * @see llvm::Module::getNamedMetadata()
- * @see llvm::MDNode::addOperand()
- */
 public fun LLVMAddNamedMetadataOperand(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
     Val: LLVMValueRef,
 ): Unit = `LLVMAddNamedMetadataOperand$mh`.invokeExact(M, Name, Val) as Unit
 
-/**
- *
- * Return the directory of the debug location for this value, which must be
- * an llvm::Instruction, llvm::GlobalVariable, or llvm::Function.
- *
- * @see llvm::Instruction::getDebugLoc()
- * @see llvm::GlobalVariable::getDebugInfo()
- * @see llvm::Function::getSubprogram()
- */
 public fun LLVMGetDebugLocDirectory(Val: LLVMValueRef, Length: Pointer<UInt>): Pointer<Byte> =
     `LLVMGetDebugLocDirectory$mh`.invokeExact(Val, Length) as MemorySegment
 
-/**
- *
- * Return the filename of the debug location for this value, which must be
- * an llvm::Instruction, llvm::GlobalVariable, or llvm::Function.
- *
- * @see llvm::Instruction::getDebugLoc()
- * @see llvm::GlobalVariable::getDebugInfo()
- * @see llvm::Function::getSubprogram()
- */
 public fun LLVMGetDebugLocFilename(Val: LLVMValueRef, Length: Pointer<UInt>): Pointer<Byte> =
     `LLVMGetDebugLocFilename$mh`.invokeExact(Val, Length) as MemorySegment
 
-/**
- *
- * Return the line number of the debug location for this value, which must be
- * an llvm::Instruction, llvm::GlobalVariable, or llvm::Function.
- *
- * @see llvm::Instruction::getDebugLoc()
- * @see llvm::GlobalVariable::getDebugInfo()
- * @see llvm::Function::getSubprogram()
- */
 public fun LLVMGetDebugLocLine(Val: LLVMValueRef): UInt = (`LLVMGetDebugLocLine$mh`.invokeExact(Val) as Int).toUInt()
 
-/**
- *
- * Return the column number of the debug location for this value, which must be
- * an llvm::Instruction.
- *
- * @see llvm::Instruction::getDebugLoc()
- */
 public fun LLVMGetDebugLocColumn(Val: LLVMValueRef): UInt =
     (`LLVMGetDebugLocColumn$mh`.invokeExact(Val) as Int).toUInt()
 
-/**
- *
- * Add a function to a module under a specified name.
- *
- * @see llvm::Function::Create()
- */
 public fun LLVMAddFunction(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
     FunctionTy: LLVMTypeRef,
 ): LLVMValueRef = `LLVMAddFunction$mh`.invokeExact(M, Name, FunctionTy) as MemorySegment
 
-/**
- *
- * Obtain a Function value from a Module by its name.
- *
- * The returned value corresponds to a llvm::Function value.
- *
- * @see llvm::Module::getFunction()
- */
 public fun LLVMGetNamedFunction(M: LLVMModuleRef, Name: Pointer<Byte>): LLVMValueRef =
     `LLVMGetNamedFunction$mh`.invokeExact(M, Name) as MemorySegment
 
-/**
- *
- * Obtain a Function value from a Module by its name.
- *
- * The returned value corresponds to a llvm::Function value.
- *
- * @see llvm::Module::getFunction()
- */
 public fun LLVMGetNamedFunctionWithLength(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
     Length: ULong,
 ): LLVMValueRef = `LLVMGetNamedFunctionWithLength$mh`.invokeExact(M, Name, Length.toLong()) as MemorySegment
 
-/**
- *
- * Obtain an iterator to the first Function in a Module.
- *
- * @see llvm::Module::begin()
- */
 public fun LLVMGetFirstFunction(M: LLVMModuleRef): LLVMValueRef =
     `LLVMGetFirstFunction$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Obtain an iterator to the last Function in a Module.
- *
- * @see llvm::Module::end()
- */
 public fun LLVMGetLastFunction(M: LLVMModuleRef): LLVMValueRef =
     `LLVMGetLastFunction$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Advance a Function iterator to the next Function.
- *
- * Returns NULL if the iterator was already at the end and there are no more
- * functions.
- */
 public fun LLVMGetNextFunction(Fn: LLVMValueRef): LLVMValueRef =
     `LLVMGetNextFunction$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Decrement a Function iterator to the previous Function.
- *
- * Returns NULL if the iterator was already at the beginning and there are
- * no previous functions.
- */
 public fun LLVMGetPreviousFunction(Fn: LLVMValueRef): LLVMValueRef =
     `LLVMGetPreviousFunction$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- * Deprecated: Use LLVMSetModuleInlineAsm2 instead.
- */
 public fun LLVMSetModuleInlineAsm(M: LLVMModuleRef, Asm: Pointer<Byte>): Unit =
     `LLVMSetModuleInlineAsm$mh`.invokeExact(M, Asm) as Unit
 
-/**
- *
- * Obtain the enumerated type of a Type instance.
- *
- * @see llvm::Type:getTypeID()
- */
 public fun LLVMGetTypeKind(Ty: LLVMTypeRef): LLVMTypeKind =
     LLVMTypeKind.fromInt(`LLVMGetTypeKind$mh`.invokeExact(Ty) as Int)
 
-/**
- *
- * Whether the type has a known size.
- *
- * Things that don't have a size are abstract types, labels, and void.a
- *
- * @see llvm::Type::isSized()
- */
 public fun LLVMTypeIsSized(Ty: LLVMTypeRef): LLVMBool = `LLVMTypeIsSized$mh`.invokeExact(Ty) as Int
 
-/**
- *
- * Obtain the context to which this type instance is associated.
- *
- * @see llvm::Type::getContext()
- */
 public fun LLVMGetTypeContext(Ty: LLVMTypeRef): LLVMContextRef =
     `LLVMGetTypeContext$mh`.invokeExact(Ty) as MemorySegment
 
-/**
- *
- * Dump a representation of a type to stderr.
- *
- * @see llvm::Type::dump()
- */
 public fun LLVMDumpType(Val: LLVMTypeRef): Unit = `LLVMDumpType$mh`.invokeExact(Val) as Unit
 
-/**
- *
- * Return a string representation of the type. Use
- * LLVMDisposeMessage to free the string.
- *
- * @see llvm::Type::print()
- */
 public fun LLVMPrintTypeToString(Val: LLVMTypeRef): Pointer<Byte> =
     `LLVMPrintTypeToString$mh`.invokeExact(Val) as MemorySegment
 
-/**
- *
- * Obtain an integer type from a context with specified bit width.
- */
 public fun LLVMInt1TypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMInt1TypeInContext$mh`.invokeExact(C) as MemorySegment
 
@@ -1007,11 +415,6 @@ public fun LLVMInt128TypeInContext(C: LLVMContextRef): LLVMTypeRef =
 public fun LLVMIntTypeInContext(C: LLVMContextRef, NumBits: UInt): LLVMTypeRef =
     `LLVMIntTypeInContext$mh`.invokeExact(C, NumBits.toInt()) as MemorySegment
 
-/**
- *
- * Obtain an integer type from the global context with a specified bit
- * width.
- */
 public fun LLVMInt1Type(): LLVMTypeRef = `LLVMInt1Type$mh`.invokeExact() as MemorySegment
 
 public fun LLVMInt8Type(): LLVMTypeRef = `LLVMInt8Type$mh`.invokeExact() as MemorySegment
@@ -1029,62 +432,27 @@ public fun LLVMIntType(NumBits: UInt): LLVMTypeRef = `LLVMIntType$mh`.invokeExac
 public fun LLVMGetIntTypeWidth(IntegerTy: LLVMTypeRef): UInt =
     (`LLVMGetIntTypeWidth$mh`.invokeExact(IntegerTy) as Int).toUInt()
 
-/**
- *
- * Obtain a 16-bit floating point type from a context.
- */
 public fun LLVMHalfTypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMHalfTypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Obtain a 16-bit brain floating point type from a context.
- */
 public fun LLVMBFloatTypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMBFloatTypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Obtain a 32-bit floating point type from a context.
- */
 public fun LLVMFloatTypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMFloatTypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Obtain a 64-bit floating point type from a context.
- */
 public fun LLVMDoubleTypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMDoubleTypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Obtain a 80-bit floating point type (X87) from a context.
- */
 public fun LLVMX86FP80TypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMX86FP80TypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Obtain a 128-bit floating point type (112-bit mantissa) from a
- * context.
- */
 public fun LLVMFP128TypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMFP128TypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Obtain a 128-bit floating point type (two 64-bits) from a context.
- */
 public fun LLVMPPCFP128TypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMPPCFP128TypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Obtain a floating point type from the global context.
- *
- * These map to the functions in this group of the same name.
- */
 public fun LLVMHalfType(): LLVMTypeRef = `LLVMHalfType$mh`.invokeExact() as MemorySegment
 
 public fun LLVMBFloatType(): LLVMTypeRef = `LLVMBFloatType$mh`.invokeExact() as MemorySegment
@@ -1099,13 +467,6 @@ public fun LLVMFP128Type(): LLVMTypeRef = `LLVMFP128Type$mh`.invokeExact() as Me
 
 public fun LLVMPPCFP128Type(): LLVMTypeRef = `LLVMPPCFP128Type$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Obtain a function type consisting of a specified signature.
- *
- * The function is defined as a tuple of a return Type, a list of
- * parameter types, and whether the function is variadic.
- */
 public fun LLVMFunctionType(
     ReturnType: LLVMTypeRef,
     ParamTypes: Pointer<LLVMTypeRef>,
@@ -1114,51 +475,18 @@ public fun LLVMFunctionType(
 ): LLVMTypeRef =
     `LLVMFunctionType$mh`.invokeExact(ReturnType, ParamTypes, ParamCount.toInt(), IsVarArg) as MemorySegment
 
-/**
- *
- * Returns whether a function type is variadic.
- */
 public fun LLVMIsFunctionVarArg(FunctionTy: LLVMTypeRef): LLVMBool =
     `LLVMIsFunctionVarArg$mh`.invokeExact(FunctionTy) as Int
 
-/**
- *
- * Obtain the Type this function Type returns.
- */
 public fun LLVMGetReturnType(FunctionTy: LLVMTypeRef): LLVMTypeRef =
     `LLVMGetReturnType$mh`.invokeExact(FunctionTy) as MemorySegment
 
-/**
- *
- * Obtain the number of parameters this function accepts.
- */
 public fun LLVMCountParamTypes(FunctionTy: LLVMTypeRef): UInt =
     (`LLVMCountParamTypes$mh`.invokeExact(FunctionTy) as Int).toUInt()
 
-/**
- *
- * Obtain the types of a function's parameters.
- *
- * The Dest parameter should point to a pre-allocated array of
- * LLVMTypeRef at least LLVMCountParamTypes() large. On return, the
- * first LLVMCountParamTypes() entries in the array will be populated
- * with LLVMTypeRef instances.
- *
- * @param FunctionTy The function type to operate on.
- * @param Dest Memory address of an array to be filled with result.
- */
 public fun LLVMGetParamTypes(FunctionTy: LLVMTypeRef, Dest: Pointer<LLVMTypeRef>): Unit =
     `LLVMGetParamTypes$mh`.invokeExact(FunctionTy, Dest) as Unit
 
-/**
- *
- * Create a new structure type in a context.
- *
- * A structure is specified by a list of inner elements/types and
- * whether these can be packed together.
- *
- * @see llvm::StructType::create()
- */
 public fun LLVMStructTypeInContext(
     C: LLVMContextRef,
     ElementTypes: Pointer<LLVMTypeRef>,
@@ -1167,41 +495,17 @@ public fun LLVMStructTypeInContext(
 ): LLVMTypeRef =
     `LLVMStructTypeInContext$mh`.invokeExact(C, ElementTypes, ElementCount.toInt(), Packed) as MemorySegment
 
-/**
- *
- * Create a new structure type in the global context.
- *
- * @see llvm::StructType::create()
- */
 public fun LLVMStructType(
     ElementTypes: Pointer<LLVMTypeRef>,
     ElementCount: UInt,
     Packed: LLVMBool,
 ): LLVMTypeRef = `LLVMStructType$mh`.invokeExact(ElementTypes, ElementCount.toInt(), Packed) as MemorySegment
 
-/**
- *
- * Create an empty structure in a context having a specified name.
- *
- * @see llvm::StructType::create()
- */
 public fun LLVMStructCreateNamed(C: LLVMContextRef, Name: Pointer<Byte>): LLVMTypeRef =
     `LLVMStructCreateNamed$mh`.invokeExact(C, Name) as MemorySegment
 
-/**
- *
- * Obtain the name of a structure.
- *
- * @see llvm::StructType::getName()
- */
 public fun LLVMGetStructName(Ty: LLVMTypeRef): Pointer<Byte> = `LLVMGetStructName$mh`.invokeExact(Ty) as MemorySegment
 
-/**
- *
- * Set the contents of a structure type.
- *
- * @see llvm::StructType::setBody()
- */
 public fun LLVMStructSetBody(
     StructTy: LLVMTypeRef,
     ElementTypes: Pointer<LLVMTypeRef>,
@@ -1209,304 +513,94 @@ public fun LLVMStructSetBody(
     Packed: LLVMBool,
 ): Unit = `LLVMStructSetBody$mh`.invokeExact(StructTy, ElementTypes, ElementCount.toInt(), Packed) as Unit
 
-/**
- *
- * Get the number of elements defined inside the structure.
- *
- * @see llvm::StructType::getNumElements()
- */
 public fun LLVMCountStructElementTypes(StructTy: LLVMTypeRef): UInt =
     (`LLVMCountStructElementTypes$mh`.invokeExact(StructTy) as Int).toUInt()
 
-/**
- *
- * Get the elements within a structure.
- *
- * The function is passed the address of a pre-allocated array of
- * LLVMTypeRef at least LLVMCountStructElementTypes() long. After
- * invocation, this array will be populated with the structure's
- * elements. The objects in the destination array will have a lifetime
- * of the structure type itself, which is the lifetime of the context it
- * is contained in.
- */
 public fun LLVMGetStructElementTypes(StructTy: LLVMTypeRef, Dest: Pointer<LLVMTypeRef>): Unit =
     `LLVMGetStructElementTypes$mh`.invokeExact(StructTy, Dest) as Unit
 
-/**
- *
- * Get the type of the element at a given index in the structure.
- *
- * @see llvm::StructType::getTypeAtIndex()
- */
 public fun LLVMStructGetTypeAtIndex(StructTy: LLVMTypeRef, i: UInt): LLVMTypeRef =
     `LLVMStructGetTypeAtIndex$mh`.invokeExact(StructTy, i.toInt()) as MemorySegment
 
-/**
- *
- * Determine whether a structure is packed.
- *
- * @see llvm::StructType::isPacked()
- */
 public fun LLVMIsPackedStruct(StructTy: LLVMTypeRef): LLVMBool = `LLVMIsPackedStruct$mh`.invokeExact(StructTy) as Int
 
-/**
- *
- * Determine whether a structure is opaque.
- *
- * @see llvm::StructType::isOpaque()
- */
 public fun LLVMIsOpaqueStruct(StructTy: LLVMTypeRef): LLVMBool = `LLVMIsOpaqueStruct$mh`.invokeExact(StructTy) as Int
 
-/**
- *
- * Determine whether a structure is literal.
- *
- * @see llvm::StructType::isLiteral()
- */
 public fun LLVMIsLiteralStruct(StructTy: LLVMTypeRef): LLVMBool = `LLVMIsLiteralStruct$mh`.invokeExact(StructTy) as Int
 
-/**
- *
- * Obtain the element type of an array or vector type.
- *
- * @see llvm::SequentialType::getElementType()
- */
 public fun LLVMGetElementType(Ty: LLVMTypeRef): LLVMTypeRef = `LLVMGetElementType$mh`.invokeExact(Ty) as MemorySegment
 
-/**
- *
- * Returns type's subtypes
- *
- * @see llvm::Type::subtypes()
- */
 public fun LLVMGetSubtypes(Tp: LLVMTypeRef, Arr: Pointer<LLVMTypeRef>): Unit =
     `LLVMGetSubtypes$mh`.invokeExact(Tp, Arr) as Unit
 
-/**
- *
- * Return the number of types in the derived type.
- *
- * @see llvm::Type::getNumContainedTypes()
- */
 public fun LLVMGetNumContainedTypes(Tp: LLVMTypeRef): UInt =
     (`LLVMGetNumContainedTypes$mh`.invokeExact(Tp) as Int).toUInt()
 
-/**
- *
- * Create a fixed size array type that refers to a specific type.
- *
- * The created type will exist in the context that its element type
- * exists in.
- *
- * @deprecated LLVMArrayType is deprecated in favor of the API accurate
- * LLVMArrayType2
- * @see llvm::ArrayType::get()
- */
 public fun LLVMArrayType(ElementType: LLVMTypeRef, ElementCount: UInt): LLVMTypeRef =
     `LLVMArrayType$mh`.invokeExact(ElementType, ElementCount.toInt()) as MemorySegment
 
-/**
- *
- * Create a fixed size array type that refers to a specific type.
- *
- * The created type will exist in the context that its element type
- * exists in.
- *
- * @see llvm::ArrayType::get()
- */
 public fun LLVMArrayType2(ElementType: LLVMTypeRef, ElementCount: ULong): LLVMTypeRef =
     `LLVMArrayType2$mh`.invokeExact(ElementType, ElementCount.toLong()) as MemorySegment
 
-/**
- *
- * Obtain the length of an array type.
- *
- * This only works on types that represent arrays.
- *
- * @deprecated LLVMGetArrayLength is deprecated in favor of the API accurate
- * LLVMGetArrayLength2
- * @see llvm::ArrayType::getNumElements()
- */
 public fun LLVMGetArrayLength(ArrayTy: LLVMTypeRef): UInt =
     (`LLVMGetArrayLength$mh`.invokeExact(ArrayTy) as Int).toUInt()
 
-/**
- *
- * Obtain the length of an array type.
- *
- * This only works on types that represent arrays.
- *
- * @see llvm::ArrayType::getNumElements()
- */
 public fun LLVMGetArrayLength2(ArrayTy: LLVMTypeRef): ULong =
     (`LLVMGetArrayLength2$mh`.invokeExact(ArrayTy) as Long).toULong()
 
-/**
- *
- * Create a pointer type that points to a defined type.
- *
- * The created type will exist in the context that its pointee type
- * exists in.
- *
- * @see llvm::PointerType::get()
- */
 public fun LLVMPointerType(ElementType: LLVMTypeRef, AddressSpace: UInt): LLVMTypeRef =
     `LLVMPointerType$mh`.invokeExact(ElementType, AddressSpace.toInt()) as MemorySegment
 
-/**
- *
- * Determine whether a pointer is opaque.
- *
- * True if this is an instance of an opaque PointerType.
- *
- * @see llvm::Type::isOpaquePointerTy()
- */
 public fun LLVMPointerTypeIsOpaque(Ty: LLVMTypeRef): LLVMBool = `LLVMPointerTypeIsOpaque$mh`.invokeExact(Ty) as Int
 
-/**
- *
- * Create an opaque pointer type in a context.
- *
- * @see llvm::PointerType::get()
- */
 public fun LLVMPointerTypeInContext(C: LLVMContextRef, AddressSpace: UInt): LLVMTypeRef =
     `LLVMPointerTypeInContext$mh`.invokeExact(C, AddressSpace.toInt()) as MemorySegment
 
-/**
- *
- * Obtain the address space of a pointer type.
- *
- * This only works on types that represent pointers.
- *
- * @see llvm::PointerType::getAddressSpace()
- */
 public fun LLVMGetPointerAddressSpace(PointerTy: LLVMTypeRef): UInt =
     (`LLVMGetPointerAddressSpace$mh`.invokeExact(PointerTy) as Int).toUInt()
 
-/**
- *
- * Create a vector type that contains a defined type and has a specific
- * number of elements.
- *
- * The created type will exist in the context thats its element type
- * exists in.
- *
- * @see llvm::VectorType::get()
- */
 public fun LLVMVectorType(ElementType: LLVMTypeRef, ElementCount: UInt): LLVMTypeRef =
     `LLVMVectorType$mh`.invokeExact(ElementType, ElementCount.toInt()) as MemorySegment
 
-/**
- *
- * Create a vector type that contains a defined type and has a scalable
- * number of elements.
- *
- * The created type will exist in the context thats its element type
- * exists in.
- *
- * @see llvm::ScalableVectorType::get()
- */
 public fun LLVMScalableVectorType(ElementType: LLVMTypeRef, ElementCount: UInt): LLVMTypeRef =
     `LLVMScalableVectorType$mh`.invokeExact(ElementType, ElementCount.toInt()) as MemorySegment
 
-/**
- *
- * Obtain the (possibly scalable) number of elements in a vector type.
- *
- * This only works on types that represent vectors (fixed or scalable).
- *
- * @see llvm::VectorType::getNumElements()
- */
 public fun LLVMGetVectorSize(VectorTy: LLVMTypeRef): UInt =
     (`LLVMGetVectorSize$mh`.invokeExact(VectorTy) as Int).toUInt()
 
-/**
- *
- * Get the pointer value for the associated ConstantPtrAuth constant.
- *
- * @see llvm::ConstantPtrAuth::getPointer
- */
 public fun LLVMGetConstantPtrAuthPointer(PtrAuth: LLVMValueRef): LLVMValueRef =
     `LLVMGetConstantPtrAuthPointer$mh`.invokeExact(PtrAuth) as MemorySegment
 
-/**
- *
- * Get the key value for the associated ConstantPtrAuth constant.
- *
- * @see llvm::ConstantPtrAuth::getKey
- */
 public fun LLVMGetConstantPtrAuthKey(PtrAuth: LLVMValueRef): LLVMValueRef =
     `LLVMGetConstantPtrAuthKey$mh`.invokeExact(PtrAuth) as MemorySegment
 
-/**
- *
- * Get the discriminator value for the associated ConstantPtrAuth constant.
- *
- * @see llvm::ConstantPtrAuth::getDiscriminator
- */
 public fun LLVMGetConstantPtrAuthDiscriminator(PtrAuth: LLVMValueRef): LLVMValueRef =
     `LLVMGetConstantPtrAuthDiscriminator$mh`.invokeExact(PtrAuth) as MemorySegment
 
-/**
- *
- * Get the address discriminator value for the associated ConstantPtrAuth
- * constant.
- *
- * @see llvm::ConstantPtrAuth::getAddrDiscriminator
- */
 public fun LLVMGetConstantPtrAuthAddrDiscriminator(PtrAuth: LLVMValueRef): LLVMValueRef =
     `LLVMGetConstantPtrAuthAddrDiscriminator$mh`.invokeExact(PtrAuth) as MemorySegment
 
-/**
- *
- * Create a void type in a context.
- */
 public fun LLVMVoidTypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMVoidTypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Create a label type in a context.
- */
 public fun LLVMLabelTypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMLabelTypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Create a X86 AMX type in a context.
- */
 public fun LLVMX86AMXTypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMX86AMXTypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Create a token type in a context.
- */
 public fun LLVMTokenTypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMTokenTypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Create a metadata type in a context.
- */
 public fun LLVMMetadataTypeInContext(C: LLVMContextRef): LLVMTypeRef =
     `LLVMMetadataTypeInContext$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * These are similar to the above functions except they operate on the
- * global context.
- */
 public fun LLVMVoidType(): LLVMTypeRef = `LLVMVoidType$mh`.invokeExact() as MemorySegment
 
 public fun LLVMLabelType(): LLVMTypeRef = `LLVMLabelType$mh`.invokeExact() as MemorySegment
 
 public fun LLVMX86AMXType(): LLVMTypeRef = `LLVMX86AMXType$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Create a target extension type in LLVM context.
- */
 public fun LLVMTargetExtTypeInContext(
     C: LLVMContextRef,
     Name: Pointer<Byte>,
@@ -1523,165 +617,55 @@ public fun LLVMTargetExtTypeInContext(
     IntParamCount.toInt(),
 ) as MemorySegment
 
-/**
- *
- * Obtain the name for this target extension type.
- *
- * @see llvm::TargetExtType::getName()
- */
 public fun LLVMGetTargetExtTypeName(TargetExtTy: LLVMTypeRef): Pointer<Byte> =
     `LLVMGetTargetExtTypeName$mh`.invokeExact(TargetExtTy) as MemorySegment
 
-/**
- *
- * Obtain the number of type parameters for this target extension type.
- *
- * @see llvm::TargetExtType::getNumTypeParameters()
- */
 public fun LLVMGetTargetExtTypeNumTypeParams(TargetExtTy: LLVMTypeRef): UInt =
     (`LLVMGetTargetExtTypeNumTypeParams$mh`.invokeExact(TargetExtTy) as Int).toUInt()
 
-/**
- *
- * Get the type parameter at the given index for the target extension type.
- *
- * @see llvm::TargetExtType::getTypeParameter()
- */
 public fun LLVMGetTargetExtTypeTypeParam(TargetExtTy: LLVMTypeRef, Idx: UInt): LLVMTypeRef =
     `LLVMGetTargetExtTypeTypeParam$mh`.invokeExact(TargetExtTy, Idx.toInt()) as MemorySegment
 
-/**
- *
- * Obtain the number of int parameters for this target extension type.
- *
- * @see llvm::TargetExtType::getNumIntParameters()
- */
 public fun LLVMGetTargetExtTypeNumIntParams(TargetExtTy: LLVMTypeRef): UInt =
     (`LLVMGetTargetExtTypeNumIntParams$mh`.invokeExact(TargetExtTy) as Int).toUInt()
 
-/**
- *
- * Get the int parameter at the given index for the target extension type.
- *
- * @see llvm::TargetExtType::getIntParameter()
- */
 public fun LLVMGetTargetExtTypeIntParam(TargetExtTy: LLVMTypeRef, Idx: UInt): UInt =
     (`LLVMGetTargetExtTypeIntParam$mh`.invokeExact(TargetExtTy, Idx.toInt()) as Int).toUInt()
 
-/**
- *
- * Obtain the type of a value.
- *
- * @see llvm::Value::getType()
- */
 public fun LLVMTypeOf(Val: LLVMValueRef): LLVMTypeRef = `LLVMTypeOf$mh`.invokeExact(Val) as MemorySegment
 
-/**
- *
- * Obtain the enumerated type of a Value instance.
- *
- * @see llvm::Value::getValueID()
- */
 public fun LLVMGetValueKind(Val: LLVMValueRef): LLVMValueKind =
     LLVMValueKind.fromInt(`LLVMGetValueKind$mh`.invokeExact(Val) as Int)
 
-/**
- *
- * Obtain the string name of a value.
- *
- * @see llvm::Value::getName()
- */
 public fun LLVMGetValueName2(Val: LLVMValueRef, Length: Pointer<ULong>): Pointer<Byte> =
     `LLVMGetValueName2$mh`.invokeExact(Val, Length) as MemorySegment
 
-/**
- *
- * Set the string name of a value.
- *
- * @see llvm::Value::setName()
- */
 public fun LLVMSetValueName2(
     Val: LLVMValueRef,
     Name: Pointer<Byte>,
     NameLen: ULong,
 ): Unit = `LLVMSetValueName2$mh`.invokeExact(Val, Name, NameLen.toLong()) as Unit
 
-/**
- *
- * Dump a representation of a value to stderr.
- *
- * @see llvm::Value::dump()
- */
 public fun LLVMDumpValue(Val: LLVMValueRef): Unit = `LLVMDumpValue$mh`.invokeExact(Val) as Unit
 
-/**
- *
- * Return a string representation of the value. Use
- * LLVMDisposeMessage to free the string.
- *
- * @see llvm::Value::print()
- */
 public fun LLVMPrintValueToString(Val: LLVMValueRef): Pointer<Byte> =
     `LLVMPrintValueToString$mh`.invokeExact(Val) as MemorySegment
 
-/**
- *
- * Obtain the context to which this value is associated.
- *
- * @see llvm::Value::getContext()
- */
 public fun LLVMGetValueContext(Val: LLVMValueRef): LLVMContextRef =
     `LLVMGetValueContext$mh`.invokeExact(Val) as MemorySegment
 
-/**
- *
- * Return a string representation of the DbgRecord. Use
- * LLVMDisposeMessage to free the string.
- *
- * @see llvm::DbgRecord::print()
- */
 public fun LLVMPrintDbgRecordToString(Record: LLVMDbgRecordRef): Pointer<Byte> =
     `LLVMPrintDbgRecordToString$mh`.invokeExact(Record) as MemorySegment
 
-/**
- *
- * Replace all uses of a value with another one.
- *
- * @see llvm::Value::replaceAllUsesWith()
- */
 public fun LLVMReplaceAllUsesWith(OldVal: LLVMValueRef, NewVal: LLVMValueRef): Unit =
     `LLVMReplaceAllUsesWith$mh`.invokeExact(OldVal, NewVal) as Unit
 
-/**
- *
- * Determine whether the specified value instance is constant.
- */
 public fun LLVMIsConstant(Val: LLVMValueRef): LLVMBool = `LLVMIsConstant$mh`.invokeExact(Val) as Int
 
-/**
- *
- * Determine whether a value instance is undefined.
- */
 public fun LLVMIsUndef(Val: LLVMValueRef): LLVMBool = `LLVMIsUndef$mh`.invokeExact(Val) as Int
 
-/**
- *
- * Determine whether a value instance is poisonous.
- */
 public fun LLVMIsPoison(Val: LLVMValueRef): LLVMBool = `LLVMIsPoison$mh`.invokeExact(Val) as Int
 
-/**
- *
- * Convert value instances between types.
- *
- * Internally, an LLVMValueRef is "pinned" to a specific type. This
- * series of functions allows you to cast an instance to a specific
- * type.
- *
- * If the cast is not valid for the specified type, NULL is returned.
- *
- * @see llvm::dyn_cast_or_null<>
- */
 public fun LLVMIsAArgument(Val: LLVMValueRef): LLVMValueRef = `LLVMIsAArgument$mh`.invokeExact(Val) as MemorySegment
 
 public fun LLVMIsABasicBlock(Val: LLVMValueRef): LLVMValueRef =
@@ -1937,199 +921,64 @@ public fun LLVMIsAValueAsMetadata(Val: LLVMValueRef): LLVMValueRef =
 
 public fun LLVMIsAMDString(Val: LLVMValueRef): LLVMValueRef = `LLVMIsAMDString$mh`.invokeExact(Val) as MemorySegment
 
-/**
- * Deprecated: Use LLVMGetValueName2 instead.
- */
 public fun LLVMGetValueName(Val: LLVMValueRef): Pointer<Byte> = `LLVMGetValueName$mh`.invokeExact(Val) as MemorySegment
 
-/**
- * Deprecated: Use LLVMSetValueName2 instead.
- */
 public fun LLVMSetValueName(Val: LLVMValueRef, Name: Pointer<Byte>): Unit =
     `LLVMSetValueName$mh`.invokeExact(Val, Name) as Unit
 
-/**
- *
- * Obtain the first use of a value.
- *
- * Uses are obtained in an iterator fashion. First, call this function
- * to obtain a reference to the first use. Then, call LLVMGetNextUse()
- * on that instance and all subsequently obtained instances until
- * LLVMGetNextUse() returns NULL.
- *
- * @see llvm::Value::use_begin()
- */
 public fun LLVMGetFirstUse(Val: LLVMValueRef): LLVMUseRef = `LLVMGetFirstUse$mh`.invokeExact(Val) as MemorySegment
 
-/**
- *
- * Obtain the next use of a value.
- *
- * This effectively advances the iterator. It returns NULL if you are on
- * the final use and no more are available.
- */
 public fun LLVMGetNextUse(U: LLVMUseRef): LLVMUseRef = `LLVMGetNextUse$mh`.invokeExact(U) as MemorySegment
 
-/**
- *
- * Obtain the user value for a user.
- *
- * The returned value corresponds to a llvm::User type.
- *
- * @see llvm::Use::getUser()
- */
 public fun LLVMGetUser(U: LLVMUseRef): LLVMValueRef = `LLVMGetUser$mh`.invokeExact(U) as MemorySegment
 
-/**
- *
- * Obtain the value this use corresponds to.
- *
- * @see llvm::Use::get().
- */
 public fun LLVMGetUsedValue(U: LLVMUseRef): LLVMValueRef = `LLVMGetUsedValue$mh`.invokeExact(U) as MemorySegment
 
-/**
- *
- * Obtain an operand at a specific index in a llvm::User value.
- *
- * @see llvm::User::getOperand()
- */
 public fun LLVMGetOperand(Val: LLVMValueRef, Index: UInt): LLVMValueRef =
     `LLVMGetOperand$mh`.invokeExact(Val, Index.toInt()) as MemorySegment
 
-/**
- *
- * Obtain the use of an operand at a specific index in a llvm::User value.
- *
- * @see llvm::User::getOperandUse()
- */
 public fun LLVMGetOperandUse(Val: LLVMValueRef, Index: UInt): LLVMUseRef =
     `LLVMGetOperandUse$mh`.invokeExact(Val, Index.toInt()) as MemorySegment
 
-/**
- *
- * Set an operand at a specific index in a llvm::User value.
- *
- * @see llvm::User::setOperand()
- */
 public fun LLVMSetOperand(
     User: LLVMValueRef,
     Index: UInt,
     Val: LLVMValueRef,
 ): Unit = `LLVMSetOperand$mh`.invokeExact(User, Index.toInt(), Val) as Unit
 
-/**
- *
- * Obtain the number of operands in a llvm::User value.
- *
- * @see llvm::User::getNumOperands()
- */
 public fun LLVMGetNumOperands(Val: LLVMValueRef): Int = `LLVMGetNumOperands$mh`.invokeExact(Val) as Int
 
-/**
- *
- * Obtain a constant value referring to the null instance of a type.
- *
- * @see llvm::Constant::getNullValue()
- */
 public fun LLVMConstNull(Ty: LLVMTypeRef): LLVMValueRef = `LLVMConstNull$mh`.invokeExact(Ty) as MemorySegment
 
-/**
- *
- * Obtain a constant value referring to the instance of a type
- * consisting of all ones.
- *
- * This is only valid for integer types.
- *
- * @see llvm::Constant::getAllOnesValue()
- */
 public fun LLVMConstAllOnes(Ty: LLVMTypeRef): LLVMValueRef = `LLVMConstAllOnes$mh`.invokeExact(Ty) as MemorySegment
 
-/**
- *
- * Obtain a constant value referring to an undefined value of a type.
- *
- * @see llvm::UndefValue::get()
- */
 public fun LLVMGetUndef(Ty: LLVMTypeRef): LLVMValueRef = `LLVMGetUndef$mh`.invokeExact(Ty) as MemorySegment
 
-/**
- *
- * Obtain a constant value referring to a poison value of a type.
- *
- * @see llvm::PoisonValue::get()
- */
 public fun LLVMGetPoison(Ty: LLVMTypeRef): LLVMValueRef = `LLVMGetPoison$mh`.invokeExact(Ty) as MemorySegment
 
-/**
- *
- * Determine whether a value instance is null.
- *
- * @see llvm::Constant::isNullValue()
- */
 public fun LLVMIsNull(Val: LLVMValueRef): LLVMBool = `LLVMIsNull$mh`.invokeExact(Val) as Int
 
-/**
- *
- * Obtain a constant that is a constant pointer pointing to NULL for a
- * specified type.
- */
 public fun LLVMConstPointerNull(Ty: LLVMTypeRef): LLVMValueRef =
     `LLVMConstPointerNull$mh`.invokeExact(Ty) as MemorySegment
 
-/**
- *
- * Obtain a constant value for an integer type.
- *
- * The returned value corresponds to a llvm::ConstantInt.
- *
- * @see llvm::ConstantInt::get()
- *
- * @param IntTy Integer type to obtain value of.
- * @param N The value the returned instance should refer to.
- * @param SignExtend Whether to sign extend the produced value.
- */
 public fun LLVMConstInt(
     IntTy: LLVMTypeRef,
     N: ULong,
     SignExtend: LLVMBool,
 ): LLVMValueRef = `LLVMConstInt$mh`.invokeExact(IntTy, N.toLong(), SignExtend) as MemorySegment
 
-/**
- *
- * Obtain a constant value for an integer of arbitrary precision.
- *
- * @see llvm::ConstantInt::get()
- */
 public fun LLVMConstIntOfArbitraryPrecision(
     IntTy: LLVMTypeRef,
     NumWords: UInt,
     Words: NativeArray<ULong>,
 ): LLVMValueRef = `LLVMConstIntOfArbitraryPrecision$mh`.invokeExact(IntTy, NumWords.toInt(), Words) as MemorySegment
 
-/**
- *
- * Obtain a constant value for an integer parsed from a string.
- *
- * A similar API, LLVMConstIntOfStringAndSize is also available. If the
- * string's length is available, it is preferred to call that function
- * instead.
- *
- * @see llvm::ConstantInt::get()
- */
 public fun LLVMConstIntOfString(
     IntTy: LLVMTypeRef,
     Text: Pointer<Byte>,
     Radix: UByte,
 ): LLVMValueRef = `LLVMConstIntOfString$mh`.invokeExact(IntTy, Text, Radix.toByte()) as MemorySegment
 
-/**
- *
- * Obtain a constant value for an integer parsed from a string with
- * specified length.
- *
- * @see llvm::ConstantInt::get()
- */
 public fun LLVMConstIntOfStringAndSize(
     IntTy: LLVMTypeRef,
     Text: Pointer<Byte>,
@@ -2138,69 +987,27 @@ public fun LLVMConstIntOfStringAndSize(
 ): LLVMValueRef =
     `LLVMConstIntOfStringAndSize$mh`.invokeExact(IntTy, Text, SLen.toInt(), Radix.toByte()) as MemorySegment
 
-/**
- *
- * Obtain a constant value referring to a double floating point value.
- */
 public fun LLVMConstReal(RealTy: LLVMTypeRef, N: Double): LLVMValueRef =
     `LLVMConstReal$mh`.invokeExact(RealTy, N) as MemorySegment
 
-/**
- *
- * Obtain a constant for a floating point value parsed from a string.
- *
- * A similar API, LLVMConstRealOfStringAndSize is also available. It
- * should be used if the input string's length is known.
- */
 public fun LLVMConstRealOfString(RealTy: LLVMTypeRef, Text: Pointer<Byte>): LLVMValueRef =
     `LLVMConstRealOfString$mh`.invokeExact(RealTy, Text) as MemorySegment
 
-/**
- *
- * Obtain a constant for a floating point value parsed from a string.
- */
 public fun LLVMConstRealOfStringAndSize(
     RealTy: LLVMTypeRef,
     Text: Pointer<Byte>,
     SLen: UInt,
 ): LLVMValueRef = `LLVMConstRealOfStringAndSize$mh`.invokeExact(RealTy, Text, SLen.toInt()) as MemorySegment
 
-/**
- *
- * Obtain the zero extended value for an integer constant value.
- *
- * @see llvm::ConstantInt::getZExtValue()
- */
 public fun LLVMConstIntGetZExtValue(ConstantVal: LLVMValueRef): ULong =
     (`LLVMConstIntGetZExtValue$mh`.invokeExact(ConstantVal) as Long).toULong()
 
-/**
- *
- * Obtain the sign extended value for an integer constant value.
- *
- * @see llvm::ConstantInt::getSExtValue()
- */
 public fun LLVMConstIntGetSExtValue(ConstantVal: LLVMValueRef): Long =
     `LLVMConstIntGetSExtValue$mh`.invokeExact(ConstantVal) as Long
 
-/**
- *
- * Obtain the double value for an floating point constant value.
- * losesInfo indicates if some precision was lost in the conversion.
- *
- * @see llvm::ConstantFP::getDoubleValue
- */
 public fun LLVMConstRealGetDouble(ConstantVal: LLVMValueRef, losesInfo: Pointer<LLVMBool>): Double =
     `LLVMConstRealGetDouble$mh`.invokeExact(ConstantVal, losesInfo) as Double
 
-/**
- *
- * Create a ConstantDataSequential and initialize it with a string.
- *
- * @deprecated LLVMConstStringInContext is deprecated in favor of the API
- * accurate LLVMConstStringInContext2
- * @see llvm::ConstantDataArray::getString()
- */
 public fun LLVMConstStringInContext(
     C: LLVMContextRef,
     Str: Pointer<Byte>,
@@ -2208,12 +1015,6 @@ public fun LLVMConstStringInContext(
     DontNullTerminate: LLVMBool,
 ): LLVMValueRef = `LLVMConstStringInContext$mh`.invokeExact(C, Str, Length.toInt(), DontNullTerminate) as MemorySegment
 
-/**
- *
- * Create a ConstantDataSequential and initialize it with a string.
- *
- * @see llvm::ConstantDataArray::getString()
- */
 public fun LLVMConstStringInContext2(
     C: LLVMContextRef,
     Str: Pointer<Byte>,
@@ -2222,45 +1023,17 @@ public fun LLVMConstStringInContext2(
 ): LLVMValueRef =
     `LLVMConstStringInContext2$mh`.invokeExact(C, Str, Length.toLong(), DontNullTerminate) as MemorySegment
 
-/**
- *
- * Create a ConstantDataSequential with string content in the global context.
- *
- * This is the same as LLVMConstStringInContext except it operates on the
- * global context.
- *
- * @see LLVMConstStringInContext()
- * @see llvm::ConstantDataArray::getString()
- */
 public fun LLVMConstString(
     Str: Pointer<Byte>,
     Length: UInt,
     DontNullTerminate: LLVMBool,
 ): LLVMValueRef = `LLVMConstString$mh`.invokeExact(Str, Length.toInt(), DontNullTerminate) as MemorySegment
 
-/**
- *
- * Returns true if the specified constant is an array of i8.
- *
- * @see ConstantDataSequential::getAsString()
- */
 public fun LLVMIsConstantString(c: LLVMValueRef): LLVMBool = `LLVMIsConstantString$mh`.invokeExact(c) as Int
 
-/**
- *
- * Get the given constant data sequential as a string.
- *
- * @see ConstantDataSequential::getAsString()
- */
 public fun LLVMGetAsString(c: LLVMValueRef, Length: Pointer<ULong>): Pointer<Byte> =
     `LLVMGetAsString$mh`.invokeExact(c, Length) as MemorySegment
 
-/**
- *
- * Create an anonymous ConstantStruct with the specified values.
- *
- * @see llvm::ConstantStruct::getAnon()
- */
 public fun LLVMConstStructInContext(
     C: LLVMContextRef,
     ConstantVals: Pointer<LLVMValueRef>,
@@ -2268,95 +1041,39 @@ public fun LLVMConstStructInContext(
     Packed: LLVMBool,
 ): LLVMValueRef = `LLVMConstStructInContext$mh`.invokeExact(C, ConstantVals, Count.toInt(), Packed) as MemorySegment
 
-/**
- *
- * Create a ConstantStruct in the global Context.
- *
- * This is the same as LLVMConstStructInContext except it operates on the
- * global Context.
- *
- * @see LLVMConstStructInContext()
- */
 public fun LLVMConstStruct(
     ConstantVals: Pointer<LLVMValueRef>,
     Count: UInt,
     Packed: LLVMBool,
 ): LLVMValueRef = `LLVMConstStruct$mh`.invokeExact(ConstantVals, Count.toInt(), Packed) as MemorySegment
 
-/**
- *
- * Create a ConstantArray from values.
- *
- * @deprecated LLVMConstArray is deprecated in favor of the API accurate
- * LLVMConstArray2
- * @see llvm::ConstantArray::get()
- */
 public fun LLVMConstArray(
     ElementTy: LLVMTypeRef,
     ConstantVals: Pointer<LLVMValueRef>,
     Length: UInt,
 ): LLVMValueRef = `LLVMConstArray$mh`.invokeExact(ElementTy, ConstantVals, Length.toInt()) as MemorySegment
 
-/**
- *
- * Create a ConstantArray from values.
- *
- * @see llvm::ConstantArray::get()
- */
 public fun LLVMConstArray2(
     ElementTy: LLVMTypeRef,
     ConstantVals: Pointer<LLVMValueRef>,
     Length: ULong,
 ): LLVMValueRef = `LLVMConstArray2$mh`.invokeExact(ElementTy, ConstantVals, Length.toLong()) as MemorySegment
 
-/**
- *
- * Create a non-anonymous ConstantStruct from values.
- *
- * @see llvm::ConstantStruct::get()
- */
 public fun LLVMConstNamedStruct(
     StructTy: LLVMTypeRef,
     ConstantVals: Pointer<LLVMValueRef>,
     Count: UInt,
 ): LLVMValueRef = `LLVMConstNamedStruct$mh`.invokeExact(StructTy, ConstantVals, Count.toInt()) as MemorySegment
 
-/**
- *
- * Get element of a constant aggregate (struct, array or vector) at the
- * specified index. Returns null if the index is out of range, or it's not
- * possible to determine the element (e.g., because the constant is a
- * constant expression.)
- *
- * @see llvm::Constant::getAggregateElement()
- */
 public fun LLVMGetAggregateElement(C: LLVMValueRef, Idx: UInt): LLVMValueRef =
     `LLVMGetAggregateElement$mh`.invokeExact(C, Idx.toInt()) as MemorySegment
 
-/**
- *
- * Get an element at specified index as a constant.
- *
- * @see ConstantDataSequential::getElementAsConstant()
- */
 public fun LLVMGetElementAsConstant(C: LLVMValueRef, idx: UInt): LLVMValueRef =
     `LLVMGetElementAsConstant$mh`.invokeExact(C, idx.toInt()) as MemorySegment
 
-/**
- *
- * Create a ConstantVector from values.
- *
- * @see llvm::ConstantVector::get()
- */
 public fun LLVMConstVector(ScalarConstantVals: Pointer<LLVMValueRef>, Size: UInt): LLVMValueRef =
     `LLVMConstVector$mh`.invokeExact(ScalarConstantVals, Size.toInt()) as MemorySegment
 
-/**
- *
- * Create a ConstantPtrAuth constant with the given values.
- *
- * @see llvm::ConstantPtrAuth::get()
- */
 public fun LLVMConstantPtrAuth(
     Ptr: LLVMValueRef,
     Key: LLVMValueRef,
@@ -2364,16 +1081,6 @@ public fun LLVMConstantPtrAuth(
     AddrDisc: LLVMValueRef,
 ): LLVMValueRef = `LLVMConstantPtrAuth$mh`.invokeExact(Ptr, Key, Disc, AddrDisc) as MemorySegment
 
-/**
- *
- * @defgroup LLVMCCoreValueConstantExpressions Constant Expressions
- *
- * Functions in this group correspond to APIs on llvm::ConstantExpr.
- *
- * @see llvm::ConstantExpr.
- *
- * @{
- */
 public fun LLVMGetConstOpcode(ConstantVal: LLVMValueRef): LLVMOpcode =
     LLVMOpcode.fromInt(`LLVMGetConstOpcode$mh`.invokeExact(ConstantVal) as Int)
 
@@ -2438,13 +1145,6 @@ public fun LLVMConstInBoundsGEP2(
 ): LLVMValueRef =
     `LLVMConstInBoundsGEP2$mh`.invokeExact(Ty, ConstantVal, ConstantIndices, NumIndices.toInt()) as MemorySegment
 
-/**
- *
- * Creates a constant GetElementPtr expression. Similar to LLVMConstGEP2, but
- * allows specifying the no-wrap flags.
- *
- * @see llvm::ConstantExpr::getGetElementPtr()
- */
 public fun LLVMConstGEPWithNoWrapFlags(
     Ty: LLVMTypeRef,
     ConstantVal: LLVMValueRef,
@@ -2500,23 +1200,12 @@ public fun LLVMConstShuffleVector(
 public fun LLVMBlockAddress(F: LLVMValueRef, BB: LLVMBasicBlockRef): LLVMValueRef =
     `LLVMBlockAddress$mh`.invokeExact(F, BB) as MemorySegment
 
-/**
- *
- * Gets the function associated with a given BlockAddress constant value.
- */
 public fun LLVMGetBlockAddressFunction(BlockAddr: LLVMValueRef): LLVMValueRef =
     `LLVMGetBlockAddressFunction$mh`.invokeExact(BlockAddr) as MemorySegment
 
-/**
- *
- * Gets the basic block associated with a given BlockAddress constant value.
- */
 public fun LLVMGetBlockAddressBasicBlock(BlockAddr: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMGetBlockAddressBasicBlock$mh`.invokeExact(BlockAddr) as MemorySegment
 
-/**
- * Deprecated: Use LLVMGetInlineAsm instead.
- */
 public fun LLVMConstInlineAsm(
     Ty: LLVMTypeRef,
     AsmString: Pointer<Byte>,
@@ -2526,17 +1215,6 @@ public fun LLVMConstInlineAsm(
 ): LLVMValueRef =
     `LLVMConstInlineAsm$mh`.invokeExact(Ty, AsmString, Constraints, HasSideEffects, IsAlignStack) as MemorySegment
 
-/**
- *
- * @defgroup LLVMCCoreValueConstantGlobals Global Values
- *
- * This group contains functions that operate on global values. Functions in
- * this group relate to functions in the llvm::GlobalValue class tree.
- *
- * @see llvm::GlobalValue
- *
- * @{
- */
 public fun LLVMGetGlobalParent(Global: LLVMValueRef): LLVMModuleRef =
     `LLVMGetGlobalParent$mh`.invokeExact(Global) as MemorySegment
 
@@ -2572,126 +1250,43 @@ public fun LLVMGetUnnamedAddress(Global: LLVMValueRef): LLVMUnnamedAddr =
 public fun LLVMSetUnnamedAddress(Global: LLVMValueRef, UnnamedAddr: LLVMUnnamedAddr): Unit =
     `LLVMSetUnnamedAddress$mh`.invokeExact(Global, UnnamedAddr.value) as Unit
 
-/**
- *
- * Returns the "value type" of a global value.  This differs from the formal
- * type of a global value which is always a pointer type.
- *
- * @see llvm::GlobalValue::getValueType()
- */
 public fun LLVMGlobalGetValueType(Global: LLVMValueRef): LLVMTypeRef =
     `LLVMGlobalGetValueType$mh`.invokeExact(Global) as MemorySegment
 
-/**
- * Deprecated: Use LLVMGetUnnamedAddress instead.
- */
 public fun LLVMHasUnnamedAddr(Global: LLVMValueRef): LLVMBool = `LLVMHasUnnamedAddr$mh`.invokeExact(Global) as Int
 
-/**
- * Deprecated: Use LLVMSetUnnamedAddress instead.
- */
 public fun LLVMSetUnnamedAddr(Global: LLVMValueRef, HasUnnamedAddr: LLVMBool): Unit =
     `LLVMSetUnnamedAddr$mh`.invokeExact(Global, HasUnnamedAddr) as Unit
 
-/**
- *
- * Obtain the preferred alignment of the value.
- * @see llvm::AllocaInst::getAlignment()
- * @see llvm::LoadInst::getAlignment()
- * @see llvm::StoreInst::getAlignment()
- * @see llvm::AtomicRMWInst::setAlignment()
- * @see llvm::AtomicCmpXchgInst::setAlignment()
- * @see llvm::GlobalValue::getAlignment()
- */
 public fun LLVMGetAlignment(V: LLVMValueRef): UInt = (`LLVMGetAlignment$mh`.invokeExact(V) as Int).toUInt()
 
-/**
- *
- * Set the preferred alignment of the value.
- * @see llvm::AllocaInst::setAlignment()
- * @see llvm::LoadInst::setAlignment()
- * @see llvm::StoreInst::setAlignment()
- * @see llvm::AtomicRMWInst::setAlignment()
- * @see llvm::AtomicCmpXchgInst::setAlignment()
- * @see llvm::GlobalValue::setAlignment()
- */
 public fun LLVMSetAlignment(V: LLVMValueRef, Bytes: UInt): Unit =
     `LLVMSetAlignment$mh`.invokeExact(V, Bytes.toInt()) as Unit
 
-/**
- *
- * Sets a metadata attachment, erasing the existing metadata attachment if
- * it already exists for the given kind.
- *
- * @see llvm::GlobalObject::setMetadata()
- */
 public fun LLVMGlobalSetMetadata(
     Global: LLVMValueRef,
     Kind: UInt,
     MD: LLVMMetadataRef,
 ): Unit = `LLVMGlobalSetMetadata$mh`.invokeExact(Global, Kind.toInt(), MD) as Unit
 
-/**
- *
- * Erases a metadata attachment of the given kind if it exists.
- *
- * @see llvm::GlobalObject::eraseMetadata()
- */
 public fun LLVMGlobalEraseMetadata(Global: LLVMValueRef, Kind: UInt): Unit =
     `LLVMGlobalEraseMetadata$mh`.invokeExact(Global, Kind.toInt()) as Unit
 
-/**
- *
- * Removes all metadata attachments from this value.
- *
- * @see llvm::GlobalObject::clearMetadata()
- */
 public fun LLVMGlobalClearMetadata(Global: LLVMValueRef): Unit =
     `LLVMGlobalClearMetadata$mh`.invokeExact(Global) as Unit
 
-/**
- *
- * Retrieves an array of metadata entries representing the metadata attached to
- * this value. The caller is responsible for freeing this array by calling
- * \c LLVMDisposeValueMetadataEntries.
- *
- * @see llvm::GlobalObject::getAllMetadata()
- */
 public fun LLVMGlobalCopyAllMetadata(Value: LLVMValueRef, NumEntries: Pointer<ULong>): Pointer<LLVMValueMetadataEntry> =
     `LLVMGlobalCopyAllMetadata$mh`.invokeExact(Value, NumEntries) as MemorySegment
 
-/**
- *
- * Destroys value metadata entries.
- */
 public fun LLVMDisposeValueMetadataEntries(Entries: Pointer<LLVMValueMetadataEntry>): Unit =
     `LLVMDisposeValueMetadataEntries$mh`.invokeExact(Entries) as Unit
 
-/**
- *
- * Returns the kind of a value metadata entry at a specific index.
- */
 public fun LLVMValueMetadataEntriesGetKind(Entries: Pointer<LLVMValueMetadataEntry>, Index: UInt): UInt =
     (`LLVMValueMetadataEntriesGetKind$mh`.invokeExact(Entries, Index.toInt()) as Int).toUInt()
 
-/**
- *
- * Returns the underlying metadata node of a value metadata entry at a
- * specific index.
- */
 public fun LLVMValueMetadataEntriesGetMetadata(Entries: Pointer<LLVMValueMetadataEntry>, Index: UInt): LLVMMetadataRef =
     `LLVMValueMetadataEntriesGetMetadata$mh`.invokeExact(Entries, Index.toInt()) as MemorySegment
 
-/**
- *
- * @defgroup LLVMCoreValueConstantGlobalVariable Global Variables
- *
- * This group contains functions that operate on global variable values.
- *
- * @see llvm::GlobalVariable
- *
- * @{
- */
 public fun LLVMAddGlobal(
     M: LLVMModuleRef,
     Ty: LLVMTypeRef,
@@ -2755,12 +1350,6 @@ public fun LLVMIsExternallyInitialized(GlobalVar: LLVMValueRef): LLVMBool =
 public fun LLVMSetExternallyInitialized(GlobalVar: LLVMValueRef, IsExtInit: LLVMBool): Unit =
     `LLVMSetExternallyInitialized$mh`.invokeExact(GlobalVar, IsExtInit) as Unit
 
-/**
- *
- * Add a GlobalAlias with the given value type, address space and aliasee.
- *
- * @see llvm::GlobalAlias::create()
- */
 public fun LLVMAddAlias2(
     M: LLVMModuleRef,
     ValueTy: LLVMTypeRef,
@@ -2769,130 +1358,45 @@ public fun LLVMAddAlias2(
     Name: Pointer<Byte>,
 ): LLVMValueRef = `LLVMAddAlias2$mh`.invokeExact(M, ValueTy, AddrSpace.toInt(), Aliasee, Name) as MemorySegment
 
-/**
- *
- * Obtain a GlobalAlias value from a Module by its name.
- *
- * The returned value corresponds to a llvm::GlobalAlias value.
- *
- * @see llvm::Module::getNamedAlias()
- */
 public fun LLVMGetNamedGlobalAlias(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
     NameLen: ULong,
 ): LLVMValueRef = `LLVMGetNamedGlobalAlias$mh`.invokeExact(M, Name, NameLen.toLong()) as MemorySegment
 
-/**
- *
- * Obtain an iterator to the first GlobalAlias in a Module.
- *
- * @see llvm::Module::alias_begin()
- */
 public fun LLVMGetFirstGlobalAlias(M: LLVMModuleRef): LLVMValueRef =
     `LLVMGetFirstGlobalAlias$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Obtain an iterator to the last GlobalAlias in a Module.
- *
- * @see llvm::Module::alias_end()
- */
 public fun LLVMGetLastGlobalAlias(M: LLVMModuleRef): LLVMValueRef =
     `LLVMGetLastGlobalAlias$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Advance a GlobalAlias iterator to the next GlobalAlias.
- *
- * Returns NULL if the iterator was already at the end and there are no more
- * global aliases.
- */
 public fun LLVMGetNextGlobalAlias(GA: LLVMValueRef): LLVMValueRef =
     `LLVMGetNextGlobalAlias$mh`.invokeExact(GA) as MemorySegment
 
-/**
- *
- * Decrement a GlobalAlias iterator to the previous GlobalAlias.
- *
- * Returns NULL if the iterator was already at the beginning and there are
- * no previous global aliases.
- */
 public fun LLVMGetPreviousGlobalAlias(GA: LLVMValueRef): LLVMValueRef =
     `LLVMGetPreviousGlobalAlias$mh`.invokeExact(GA) as MemorySegment
 
-/**
- *
- * Retrieve the target value of an alias.
- */
 public fun LLVMAliasGetAliasee(Alias: LLVMValueRef): LLVMValueRef =
     `LLVMAliasGetAliasee$mh`.invokeExact(Alias) as MemorySegment
 
-/**
- *
- * Set the target value of an alias.
- */
 public fun LLVMAliasSetAliasee(Alias: LLVMValueRef, Aliasee: LLVMValueRef): Unit =
     `LLVMAliasSetAliasee$mh`.invokeExact(Alias, Aliasee) as Unit
 
-/**
- *
- * Remove a function from its containing module and deletes it.
- *
- * @see llvm::Function::eraseFromParent()
- */
 public fun LLVMDeleteFunction(Fn: LLVMValueRef): Unit = `LLVMDeleteFunction$mh`.invokeExact(Fn) as Unit
 
-/**
- *
- * Check whether the given function has a personality function.
- *
- * @see llvm::Function::hasPersonalityFn()
- */
 public fun LLVMHasPersonalityFn(Fn: LLVMValueRef): LLVMBool = `LLVMHasPersonalityFn$mh`.invokeExact(Fn) as Int
 
-/**
- *
- * Obtain the personality function attached to the function.
- *
- * @see llvm::Function::getPersonalityFn()
- */
 public fun LLVMGetPersonalityFn(Fn: LLVMValueRef): LLVMValueRef =
     `LLVMGetPersonalityFn$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Set the personality function attached to the function.
- *
- * @see llvm::Function::setPersonalityFn()
- */
 public fun LLVMSetPersonalityFn(Fn: LLVMValueRef, PersonalityFn: LLVMValueRef): Unit =
     `LLVMSetPersonalityFn$mh`.invokeExact(Fn, PersonalityFn) as Unit
 
-/**
- *
- * Obtain the intrinsic ID number which matches the given function name.
- *
- * @see llvm::Intrinsic::lookupIntrinsicID()
- */
 public fun LLVMLookupIntrinsicID(Name: Pointer<Byte>, NameLen: ULong): UInt =
     (`LLVMLookupIntrinsicID$mh`.invokeExact(Name, NameLen.toLong()) as Int).toUInt()
 
-/**
- *
- * Obtain the ID number from a function instance.
- *
- * @see llvm::Function::getIntrinsicID()
- */
 public fun LLVMGetIntrinsicID(Fn: LLVMValueRef): UInt = (`LLVMGetIntrinsicID$mh`.invokeExact(Fn) as Int).toUInt()
 
-/**
- *
- * Get or insert the declaration of an intrinsic.  For overloaded intrinsics,
- * parameter types must be provided to uniquely identify an overload.
- *
- * @see llvm::Intrinsic::getOrInsertDeclaration()
- */
 public fun LLVMGetIntrinsicDeclaration(
     Mod: LLVMModuleRef,
     ID: UInt,
@@ -2901,13 +1405,6 @@ public fun LLVMGetIntrinsicDeclaration(
 ): LLVMValueRef =
     `LLVMGetIntrinsicDeclaration$mh`.invokeExact(Mod, ID.toInt(), ParamTypes, ParamCount.toLong()) as MemorySegment
 
-/**
- *
- * Retrieves the type of an intrinsic.  For overloaded intrinsics, parameter
- * types must be provided to uniquely identify an overload.
- *
- * @see llvm::Intrinsic::getType()
- */
 public fun LLVMIntrinsicGetType(
     Ctx: LLVMContextRef,
     ID: UInt,
@@ -2916,18 +1413,9 @@ public fun LLVMIntrinsicGetType(
 ): LLVMTypeRef =
     `LLVMIntrinsicGetType$mh`.invokeExact(Ctx, ID.toInt(), ParamTypes, ParamCount.toLong()) as MemorySegment
 
-/**
- *
- * Retrieves the name of an intrinsic.
- *
- * @see llvm::Intrinsic::getName()
- */
 public fun LLVMIntrinsicGetName(ID: UInt, NameLength: Pointer<ULong>): Pointer<Byte> =
     `LLVMIntrinsicGetName$mh`.invokeExact(ID.toInt(), NameLength) as MemorySegment
 
-/**
- * Deprecated: Use LLVMIntrinsicCopyOverloadedName2 instead.
- */
 public fun LLVMIntrinsicCopyOverloadedName(
     ID: UInt,
     ParamTypes: Pointer<LLVMTypeRef>,
@@ -2940,18 +1428,6 @@ public fun LLVMIntrinsicCopyOverloadedName(
     NameLength,
 ) as MemorySegment
 
-/**
- *
- * Copies the name of an overloaded intrinsic identified by a given list of
- * parameter types.
- *
- * Unlike LLVMIntrinsicGetName, the caller is responsible for freeing the
- * returned string.
- *
- * This version also supports unnamed types.
- *
- * @see llvm::Intrinsic::getName()
- */
 public fun LLVMIntrinsicCopyOverloadedName2(
     Mod: LLVMModuleRef,
     ID: UInt,
@@ -2966,108 +1442,34 @@ public fun LLVMIntrinsicCopyOverloadedName2(
     NameLength,
 ) as MemorySegment
 
-/**
- *
- * Obtain if the intrinsic identified by the given ID is overloaded.
- *
- * @see llvm::Intrinsic::isOverloaded()
- */
 public fun LLVMIntrinsicIsOverloaded(ID: UInt): LLVMBool =
     `LLVMIntrinsicIsOverloaded$mh`.invokeExact(ID.toInt()) as Int
 
-/**
- *
- * Obtain the calling function of a function.
- *
- * The returned value corresponds to the LLVMCallConv enumeration.
- *
- * @see llvm::Function::getCallingConv()
- */
 public fun LLVMGetFunctionCallConv(Fn: LLVMValueRef): UInt =
     (`LLVMGetFunctionCallConv$mh`.invokeExact(Fn) as Int).toUInt()
 
-/**
- *
- * Set the calling convention of a function.
- *
- * @see llvm::Function::setCallingConv()
- *
- * @param Fn Function to operate on
- * @param CC LLVMCallConv to set calling convention to
- */
 public fun LLVMSetFunctionCallConv(Fn: LLVMValueRef, CC: UInt): Unit =
     `LLVMSetFunctionCallConv$mh`.invokeExact(Fn, CC.toInt()) as Unit
 
-/**
- *
- * Obtain the name of the garbage collector to use during code
- * generation.
- *
- * @see llvm::Function::getGC()
- */
 public fun LLVMGetGC(Fn: LLVMValueRef): Pointer<Byte> = `LLVMGetGC$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Define the garbage collector to use during code generation.
- *
- * @see llvm::Function::setGC()
- */
 public fun LLVMSetGC(Fn: LLVMValueRef, Name: Pointer<Byte>): Unit = `LLVMSetGC$mh`.invokeExact(Fn, Name) as Unit
 
-/**
- *
- * Gets the prefix data associated with a function. Only valid on functions, and
- * only if LLVMHasPrefixData returns true.
- * See https://llvm.org/docs/LangRef.html#prefix-data
- */
 public fun LLVMGetPrefixData(Fn: LLVMValueRef): LLVMValueRef = `LLVMGetPrefixData$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Check if a given function has prefix data. Only valid on functions.
- * See https://llvm.org/docs/LangRef.html#prefix-data
- */
 public fun LLVMHasPrefixData(Fn: LLVMValueRef): LLVMBool = `LLVMHasPrefixData$mh`.invokeExact(Fn) as Int
 
-/**
- *
- * Sets the prefix data for the function. Only valid on functions.
- * See https://llvm.org/docs/LangRef.html#prefix-data
- */
 public fun LLVMSetPrefixData(Fn: LLVMValueRef, prefixData: LLVMValueRef): Unit =
     `LLVMSetPrefixData$mh`.invokeExact(Fn, prefixData) as Unit
 
-/**
- *
- * Gets the prologue data associated with a function. Only valid on functions,
- * and only if LLVMHasPrologueData returns true.
- * See https://llvm.org/docs/LangRef.html#prologue-data
- */
 public fun LLVMGetPrologueData(Fn: LLVMValueRef): LLVMValueRef =
     `LLVMGetPrologueData$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Check if a given function has prologue data. Only valid on functions.
- * See https://llvm.org/docs/LangRef.html#prologue-data
- */
 public fun LLVMHasPrologueData(Fn: LLVMValueRef): LLVMBool = `LLVMHasPrologueData$mh`.invokeExact(Fn) as Int
 
-/**
- *
- * Sets the prologue data for the function. Only valid on functions.
- * See https://llvm.org/docs/LangRef.html#prologue-data
- */
 public fun LLVMSetPrologueData(Fn: LLVMValueRef, prologueData: LLVMValueRef): Unit =
     `LLVMSetPrologueData$mh`.invokeExact(Fn, prologueData) as Unit
 
-/**
- *
- * Add an attribute to a function.
- *
- * @see llvm::Function::addAttribute()
- */
 public fun LLVMAddAttributeAtIndex(
     F: LLVMValueRef,
     Idx: LLVMAttributeIndex,
@@ -3109,115 +1511,35 @@ public fun LLVMRemoveStringAttributeAtIndex(
     KLen: UInt,
 ): Unit = `LLVMRemoveStringAttributeAtIndex$mh`.invokeExact(F, Idx.toInt(), K, KLen.toInt()) as Unit
 
-/**
- *
- * Add a target-dependent attribute to a function
- * @see llvm::AttrBuilder::addAttribute()
- */
 public fun LLVMAddTargetDependentFunctionAttr(
     Fn: LLVMValueRef,
     A: Pointer<Byte>,
     V: Pointer<Byte>,
 ): Unit = `LLVMAddTargetDependentFunctionAttr$mh`.invokeExact(Fn, A, V) as Unit
 
-/**
- *
- * Obtain the number of parameters in a function.
- *
- * @see llvm::Function::arg_size()
- */
 public fun LLVMCountParams(Fn: LLVMValueRef): UInt = (`LLVMCountParams$mh`.invokeExact(Fn) as Int).toUInt()
 
-/**
- *
- * Obtain the parameters in a function.
- *
- * The takes a pointer to a pre-allocated array of LLVMValueRef that is
- * at least LLVMCountParams() long. This array will be filled with
- * LLVMValueRef instances which correspond to the parameters the
- * function receives. Each LLVMValueRef corresponds to a llvm::Argument
- * instance.
- *
- * @see llvm::Function::arg_begin()
- */
 public fun LLVMGetParams(Fn: LLVMValueRef, Params: Pointer<LLVMValueRef>): Unit =
     `LLVMGetParams$mh`.invokeExact(Fn, Params) as Unit
 
-/**
- *
- * Obtain the parameter at the specified index.
- *
- * Parameters are indexed from 0.
- *
- * @see llvm::Function::arg_begin()
- */
 public fun LLVMGetParam(Fn: LLVMValueRef, Index: UInt): LLVMValueRef =
     `LLVMGetParam$mh`.invokeExact(Fn, Index.toInt()) as MemorySegment
 
-/**
- *
- * Obtain the function to which this argument belongs.
- *
- * Unlike other functions in this group, this one takes an LLVMValueRef
- * that corresponds to a llvm::Attribute.
- *
- * The returned LLVMValueRef is the llvm::Function to which this
- * argument belongs.
- */
 public fun LLVMGetParamParent(Inst: LLVMValueRef): LLVMValueRef =
     `LLVMGetParamParent$mh`.invokeExact(Inst) as MemorySegment
 
-/**
- *
- * Obtain the first parameter to a function.
- *
- * @see llvm::Function::arg_begin()
- */
 public fun LLVMGetFirstParam(Fn: LLVMValueRef): LLVMValueRef = `LLVMGetFirstParam$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Obtain the last parameter to a function.
- *
- * @see llvm::Function::arg_end()
- */
 public fun LLVMGetLastParam(Fn: LLVMValueRef): LLVMValueRef = `LLVMGetLastParam$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Obtain the next parameter to a function.
- *
- * This takes an LLVMValueRef obtained from LLVMGetFirstParam() (which is
- * actually a wrapped iterator) and obtains the next parameter from the
- * underlying iterator.
- */
 public fun LLVMGetNextParam(Arg: LLVMValueRef): LLVMValueRef = `LLVMGetNextParam$mh`.invokeExact(Arg) as MemorySegment
 
-/**
- *
- * Obtain the previous parameter to a function.
- *
- * This is the opposite of LLVMGetNextParam().
- */
 public fun LLVMGetPreviousParam(Arg: LLVMValueRef): LLVMValueRef =
     `LLVMGetPreviousParam$mh`.invokeExact(Arg) as MemorySegment
 
-/**
- *
- * Set the alignment for a function parameter.
- *
- * @see llvm::Argument::addAttr()
- * @see llvm::AttrBuilder::addAlignmentAttr()
- */
 public fun LLVMSetParamAlignment(Arg: LLVMValueRef, Align: UInt): Unit =
     `LLVMSetParamAlignment$mh`.invokeExact(Arg, Align.toInt()) as Unit
 
-/**
- *
- * Add a global indirect function to a module under a specified name.
- *
- * @see llvm::GlobalIFunc::create()
- */
 public fun LLVMAddGlobalIFunc(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
@@ -3228,227 +1550,85 @@ public fun LLVMAddGlobalIFunc(
 ): LLVMValueRef =
     `LLVMAddGlobalIFunc$mh`.invokeExact(M, Name, NameLen.toLong(), Ty, AddrSpace.toInt(), Resolver) as MemorySegment
 
-/**
- *
- * Obtain a GlobalIFunc value from a Module by its name.
- *
- * The returned value corresponds to a llvm::GlobalIFunc value.
- *
- * @see llvm::Module::getNamedIFunc()
- */
 public fun LLVMGetNamedGlobalIFunc(
     M: LLVMModuleRef,
     Name: Pointer<Byte>,
     NameLen: ULong,
 ): LLVMValueRef = `LLVMGetNamedGlobalIFunc$mh`.invokeExact(M, Name, NameLen.toLong()) as MemorySegment
 
-/**
- *
- * Obtain an iterator to the first GlobalIFunc in a Module.
- *
- * @see llvm::Module::ifunc_begin()
- */
 public fun LLVMGetFirstGlobalIFunc(M: LLVMModuleRef): LLVMValueRef =
     `LLVMGetFirstGlobalIFunc$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Obtain an iterator to the last GlobalIFunc in a Module.
- *
- * @see llvm::Module::ifunc_end()
- */
 public fun LLVMGetLastGlobalIFunc(M: LLVMModuleRef): LLVMValueRef =
     `LLVMGetLastGlobalIFunc$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Advance a GlobalIFunc iterator to the next GlobalIFunc.
- *
- * Returns NULL if the iterator was already at the end and there are no more
- * global aliases.
- */
 public fun LLVMGetNextGlobalIFunc(IFunc: LLVMValueRef): LLVMValueRef =
     `LLVMGetNextGlobalIFunc$mh`.invokeExact(IFunc) as MemorySegment
 
-/**
- *
- * Decrement a GlobalIFunc iterator to the previous GlobalIFunc.
- *
- * Returns NULL if the iterator was already at the beginning and there are
- * no previous global aliases.
- */
 public fun LLVMGetPreviousGlobalIFunc(IFunc: LLVMValueRef): LLVMValueRef =
     `LLVMGetPreviousGlobalIFunc$mh`.invokeExact(IFunc) as MemorySegment
 
-/**
- *
- * Retrieves the resolver function associated with this indirect function, or
- * NULL if it doesn't not exist.
- *
- * @see llvm::GlobalIFunc::getResolver()
- */
 public fun LLVMGetGlobalIFuncResolver(IFunc: LLVMValueRef): LLVMValueRef =
     `LLVMGetGlobalIFuncResolver$mh`.invokeExact(IFunc) as MemorySegment
 
-/**
- *
- * Sets the resolver function associated with this indirect function.
- *
- * @see llvm::GlobalIFunc::setResolver()
- */
 public fun LLVMSetGlobalIFuncResolver(IFunc: LLVMValueRef, Resolver: LLVMValueRef): Unit =
     `LLVMSetGlobalIFuncResolver$mh`.invokeExact(IFunc, Resolver) as Unit
 
-/**
- *
- * Remove a global indirect function from its parent module and delete it.
- *
- * @see llvm::GlobalIFunc::eraseFromParent()
- */
 public fun LLVMEraseGlobalIFunc(IFunc: LLVMValueRef): Unit = `LLVMEraseGlobalIFunc$mh`.invokeExact(IFunc) as Unit
 
-/**
- *
- * Remove a global indirect function from its parent module.
- *
- * This unlinks the global indirect function from its containing module but
- * keeps it alive.
- *
- * @see llvm::GlobalIFunc::removeFromParent()
- */
 public fun LLVMRemoveGlobalIFunc(IFunc: LLVMValueRef): Unit = `LLVMRemoveGlobalIFunc$mh`.invokeExact(IFunc) as Unit
 
-/**
- *
- * Create an MDString value from a given string value.
- *
- * The MDString value does not take ownership of the given string, it remains
- * the responsibility of the caller to free it.
- *
- * @see llvm::MDString::get()
- */
 public fun LLVMMDStringInContext2(
     C: LLVMContextRef,
     Str: Pointer<Byte>,
     SLen: ULong,
 ): LLVMMetadataRef = `LLVMMDStringInContext2$mh`.invokeExact(C, Str, SLen.toLong()) as MemorySegment
 
-/**
- *
- * Create an MDNode value with the given array of operands.
- *
- * @see llvm::MDNode::get()
- */
 public fun LLVMMDNodeInContext2(
     C: LLVMContextRef,
     MDs: Pointer<LLVMMetadataRef>,
     Count: ULong,
 ): LLVMMetadataRef = `LLVMMDNodeInContext2$mh`.invokeExact(C, MDs, Count.toLong()) as MemorySegment
 
-/**
- *
- * Obtain a Metadata as a Value.
- */
 public fun LLVMMetadataAsValue(C: LLVMContextRef, MD: LLVMMetadataRef): LLVMValueRef =
     `LLVMMetadataAsValue$mh`.invokeExact(C, MD) as MemorySegment
 
-/**
- *
- * Obtain a Value as a Metadata.
- */
 public fun LLVMValueAsMetadata(Val: LLVMValueRef): LLVMMetadataRef =
     `LLVMValueAsMetadata$mh`.invokeExact(Val) as MemorySegment
 
-/**
- *
- * Obtain the underlying string from a MDString value.
- *
- * @param V Instance to obtain string from.
- * @param Length Memory address which will hold length of returned string.
- * @return String data in MDString.
- */
 public fun LLVMGetMDString(V: LLVMValueRef, Length: Pointer<UInt>): Pointer<Byte> =
     `LLVMGetMDString$mh`.invokeExact(V, Length) as MemorySegment
 
-/**
- *
- * Obtain the number of operands from an MDNode value.
- *
- * @param V MDNode to get number of operands from.
- * @return Number of operands of the MDNode.
- */
 public fun LLVMGetMDNodeNumOperands(V: LLVMValueRef): UInt =
     (`LLVMGetMDNodeNumOperands$mh`.invokeExact(V) as Int).toUInt()
 
-/**
- *
- * Obtain the given MDNode's operands.
- *
- * The passed LLVMValueRef pointer should point to enough memory to hold all of
- * the operands of the given MDNode (see LLVMGetMDNodeNumOperands) as
- * LLVMValueRefs. This memory will be populated with the LLVMValueRefs of the
- * MDNode's operands.
- *
- * @param V MDNode to get the operands from.
- * @param Dest Destination array for operands.
- */
 public fun LLVMGetMDNodeOperands(V: LLVMValueRef, Dest: Pointer<LLVMValueRef>): Unit =
     `LLVMGetMDNodeOperands$mh`.invokeExact(V, Dest) as Unit
 
-/**
- *
- * Replace an operand at a specific index in a llvm::MDNode value.
- *
- * @see llvm::MDNode::replaceOperandWith()
- */
 public fun LLVMReplaceMDNodeOperandWith(
     V: LLVMValueRef,
     Index: UInt,
     Replacement: LLVMMetadataRef,
 ): Unit = `LLVMReplaceMDNodeOperandWith$mh`.invokeExact(V, Index.toInt(), Replacement) as Unit
 
-/**
- * Deprecated: Use LLVMMDStringInContext2 instead.
- */
 public fun LLVMMDStringInContext(
     C: LLVMContextRef,
     Str: Pointer<Byte>,
     SLen: UInt,
 ): LLVMValueRef = `LLVMMDStringInContext$mh`.invokeExact(C, Str, SLen.toInt()) as MemorySegment
 
-/**
- * Deprecated: Use LLVMMDStringInContext2 instead.
- */
 public fun LLVMMDString(Str: Pointer<Byte>, SLen: UInt): LLVMValueRef =
     `LLVMMDString$mh`.invokeExact(Str, SLen.toInt()) as MemorySegment
 
-/**
- * Deprecated: Use LLVMMDNodeInContext2 instead.
- */
 public fun LLVMMDNodeInContext(
     C: LLVMContextRef,
     Vals: Pointer<LLVMValueRef>,
     Count: UInt,
 ): LLVMValueRef = `LLVMMDNodeInContext$mh`.invokeExact(C, Vals, Count.toInt()) as MemorySegment
 
-/**
- * Deprecated: Use LLVMMDNodeInContext2 instead.
- */
 public fun LLVMMDNode(Vals: Pointer<LLVMValueRef>, Count: UInt): LLVMValueRef =
     `LLVMMDNode$mh`.invokeExact(Vals, Count.toInt()) as MemorySegment
 
-/**
- *
- * Create a new operand bundle.
- *
- * Every invocation should be paired with LLVMDisposeOperandBundle() or memory
- * will be leaked.
- *
- * @param Tag Tag name of the operand bundle
- * @param TagLen Length of Tag
- * @param Args Memory address of an array of bundle operands
- * @param NumArgs Length of Args
- */
 public fun LLVMCreateOperandBundle(
     Tag: Pointer<Byte>,
     TagLen: ULong,
@@ -3457,536 +1637,166 @@ public fun LLVMCreateOperandBundle(
 ): LLVMOperandBundleRef =
     `LLVMCreateOperandBundle$mh`.invokeExact(Tag, TagLen.toLong(), Args, NumArgs.toInt()) as MemorySegment
 
-/**
- *
- * Destroy an operand bundle.
- *
- * This must be called for every created operand bundle or memory will be
- * leaked.
- */
 public fun LLVMDisposeOperandBundle(Bundle: LLVMOperandBundleRef): Unit =
     `LLVMDisposeOperandBundle$mh`.invokeExact(Bundle) as Unit
 
-/**
- *
- * Obtain the tag of an operand bundle as a string.
- *
- * @param Bundle Operand bundle to obtain tag of.
- * @param Len Out parameter which holds the length of the returned string.
- * @return The tag name of Bundle.
- * @see OperandBundleDef::getTag()
- */
 public fun LLVMGetOperandBundleTag(Bundle: LLVMOperandBundleRef, Len: Pointer<ULong>): Pointer<Byte> =
     `LLVMGetOperandBundleTag$mh`.invokeExact(Bundle, Len) as MemorySegment
 
-/**
- *
- * Obtain the number of operands for an operand bundle.
- *
- * @param Bundle Operand bundle to obtain operand count of.
- * @return The number of operands.
- * @see OperandBundleDef::input_size()
- */
 public fun LLVMGetNumOperandBundleArgs(Bundle: LLVMOperandBundleRef): UInt =
     (`LLVMGetNumOperandBundleArgs$mh`.invokeExact(Bundle) as Int).toUInt()
 
-/**
- *
- * Obtain the operand for an operand bundle at the given index.
- *
- * @param Bundle Operand bundle to obtain operand of.
- * @param Index An operand index, must be less than
- * LLVMGetNumOperandBundleArgs().
- * @return The operand.
- */
 public fun LLVMGetOperandBundleArgAtIndex(Bundle: LLVMOperandBundleRef, Index: UInt): LLVMValueRef =
     `LLVMGetOperandBundleArgAtIndex$mh`.invokeExact(Bundle, Index.toInt()) as MemorySegment
 
-/**
- *
- * Convert a basic block instance to a value type.
- */
 public fun LLVMBasicBlockAsValue(BB: LLVMBasicBlockRef): LLVMValueRef =
     `LLVMBasicBlockAsValue$mh`.invokeExact(BB) as MemorySegment
 
-/**
- *
- * Determine whether an LLVMValueRef is itself a basic block.
- */
 public fun LLVMValueIsBasicBlock(Val: LLVMValueRef): LLVMBool = `LLVMValueIsBasicBlock$mh`.invokeExact(Val) as Int
 
-/**
- *
- * Convert an LLVMValueRef to an LLVMBasicBlockRef instance.
- */
 public fun LLVMValueAsBasicBlock(Val: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMValueAsBasicBlock$mh`.invokeExact(Val) as MemorySegment
 
-/**
- *
- * Obtain the string name of a basic block.
- */
 public fun LLVMGetBasicBlockName(BB: LLVMBasicBlockRef): Pointer<Byte> =
     `LLVMGetBasicBlockName$mh`.invokeExact(BB) as MemorySegment
 
-/**
- *
- * Obtain the function to which a basic block belongs.
- *
- * @see llvm::BasicBlock::getParent()
- */
 public fun LLVMGetBasicBlockParent(BB: LLVMBasicBlockRef): LLVMValueRef =
     `LLVMGetBasicBlockParent$mh`.invokeExact(BB) as MemorySegment
 
-/**
- *
- * Obtain the terminator instruction for a basic block.
- *
- * If the basic block does not have a terminator (it is not well-formed
- * if it doesn't), then NULL is returned.
- *
- * The returned LLVMValueRef corresponds to an llvm::Instruction.
- *
- * @see llvm::BasicBlock::getTerminator()
- */
 public fun LLVMGetBasicBlockTerminator(BB: LLVMBasicBlockRef): LLVMValueRef =
     `LLVMGetBasicBlockTerminator$mh`.invokeExact(BB) as MemorySegment
 
-/**
- *
- * Obtain the number of basic blocks in a function.
- *
- * @param Fn Function value to operate on.
- */
 public fun LLVMCountBasicBlocks(Fn: LLVMValueRef): UInt = (`LLVMCountBasicBlocks$mh`.invokeExact(Fn) as Int).toUInt()
 
-/**
- *
- * Obtain all of the basic blocks in a function.
- *
- * This operates on a function value. The BasicBlocks parameter is a
- * pointer to a pre-allocated array of LLVMBasicBlockRef of at least
- * LLVMCountBasicBlocks() in length. This array is populated with
- * LLVMBasicBlockRef instances.
- */
 public fun LLVMGetBasicBlocks(Fn: LLVMValueRef, BasicBlocks: Pointer<LLVMBasicBlockRef>): Unit =
     `LLVMGetBasicBlocks$mh`.invokeExact(Fn, BasicBlocks) as Unit
 
-/**
- *
- * Obtain the first basic block in a function.
- *
- * The returned basic block can be used as an iterator. You will likely
- * eventually call into LLVMGetNextBasicBlock() with it.
- *
- * @see llvm::Function::begin()
- */
 public fun LLVMGetFirstBasicBlock(Fn: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMGetFirstBasicBlock$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Obtain the last basic block in a function.
- *
- * @see llvm::Function::end()
- */
 public fun LLVMGetLastBasicBlock(Fn: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMGetLastBasicBlock$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Advance a basic block iterator.
- */
 public fun LLVMGetNextBasicBlock(BB: LLVMBasicBlockRef): LLVMBasicBlockRef =
     `LLVMGetNextBasicBlock$mh`.invokeExact(BB) as MemorySegment
 
-/**
- *
- * Go backwards in a basic block iterator.
- */
 public fun LLVMGetPreviousBasicBlock(BB: LLVMBasicBlockRef): LLVMBasicBlockRef =
     `LLVMGetPreviousBasicBlock$mh`.invokeExact(BB) as MemorySegment
 
-/**
- *
- * Obtain the basic block that corresponds to the entry point of a
- * function.
- *
- * @see llvm::Function::getEntryBlock()
- */
 public fun LLVMGetEntryBasicBlock(Fn: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMGetEntryBasicBlock$mh`.invokeExact(Fn) as MemorySegment
 
-/**
- *
- * Insert the given basic block after the insertion point of the given builder.
- *
- * The insertion point must be valid.
- *
- * @see llvm::Function::BasicBlockListType::insertAfter()
- */
 public fun LLVMInsertExistingBasicBlockAfterInsertBlock(Builder: LLVMBuilderRef, BB: LLVMBasicBlockRef): Unit =
     `LLVMInsertExistingBasicBlockAfterInsertBlock$mh`.invokeExact(Builder, BB) as Unit
 
-/**
- *
- * Append the given basic block to the basic block list of the given function.
- *
- * @see llvm::Function::BasicBlockListType::push_back()
- */
 public fun LLVMAppendExistingBasicBlock(Fn: LLVMValueRef, BB: LLVMBasicBlockRef): Unit =
     `LLVMAppendExistingBasicBlock$mh`.invokeExact(Fn, BB) as Unit
 
-/**
- *
- * Create a new basic block without inserting it into a function.
- *
- * @see llvm::BasicBlock::Create()
- */
 public fun LLVMCreateBasicBlockInContext(C: LLVMContextRef, Name: Pointer<Byte>): LLVMBasicBlockRef =
     `LLVMCreateBasicBlockInContext$mh`.invokeExact(C, Name) as MemorySegment
 
-/**
- *
- * Append a basic block to the end of a function.
- *
- * @see llvm::BasicBlock::Create()
- */
 public fun LLVMAppendBasicBlockInContext(
     C: LLVMContextRef,
     Fn: LLVMValueRef,
     Name: Pointer<Byte>,
 ): LLVMBasicBlockRef = `LLVMAppendBasicBlockInContext$mh`.invokeExact(C, Fn, Name) as MemorySegment
 
-/**
- *
- * Append a basic block to the end of a function using the global
- * context.
- *
- * @see llvm::BasicBlock::Create()
- */
 public fun LLVMAppendBasicBlock(Fn: LLVMValueRef, Name: Pointer<Byte>): LLVMBasicBlockRef =
     `LLVMAppendBasicBlock$mh`.invokeExact(Fn, Name) as MemorySegment
 
-/**
- *
- * Insert a basic block in a function before another basic block.
- *
- * The function to add to is determined by the function of the
- * passed basic block.
- *
- * @see llvm::BasicBlock::Create()
- */
 public fun LLVMInsertBasicBlockInContext(
     C: LLVMContextRef,
     BB: LLVMBasicBlockRef,
     Name: Pointer<Byte>,
 ): LLVMBasicBlockRef = `LLVMInsertBasicBlockInContext$mh`.invokeExact(C, BB, Name) as MemorySegment
 
-/**
- *
- * Insert a basic block in a function using the global context.
- *
- * @see llvm::BasicBlock::Create()
- */
 public fun LLVMInsertBasicBlock(InsertBeforeBB: LLVMBasicBlockRef, Name: Pointer<Byte>): LLVMBasicBlockRef =
     `LLVMInsertBasicBlock$mh`.invokeExact(InsertBeforeBB, Name) as MemorySegment
 
-/**
- *
- * Remove a basic block from a function and delete it.
- *
- * This deletes the basic block from its containing function and deletes
- * the basic block itself.
- *
- * @see llvm::BasicBlock::eraseFromParent()
- */
 public fun LLVMDeleteBasicBlock(BB: LLVMBasicBlockRef): Unit = `LLVMDeleteBasicBlock$mh`.invokeExact(BB) as Unit
 
-/**
- *
- * Remove a basic block from a function.
- *
- * This deletes the basic block from its containing function but keep
- * the basic block alive.
- *
- * @see llvm::BasicBlock::removeFromParent()
- */
 public fun LLVMRemoveBasicBlockFromParent(BB: LLVMBasicBlockRef): Unit =
     `LLVMRemoveBasicBlockFromParent$mh`.invokeExact(BB) as Unit
 
-/**
- *
- * Move a basic block to before another one.
- *
- * @see llvm::BasicBlock::moveBefore()
- */
 public fun LLVMMoveBasicBlockBefore(BB: LLVMBasicBlockRef, MovePos: LLVMBasicBlockRef): Unit =
     `LLVMMoveBasicBlockBefore$mh`.invokeExact(BB, MovePos) as Unit
 
-/**
- *
- * Move a basic block to after another one.
- *
- * @see llvm::BasicBlock::moveAfter()
- */
 public fun LLVMMoveBasicBlockAfter(BB: LLVMBasicBlockRef, MovePos: LLVMBasicBlockRef): Unit =
     `LLVMMoveBasicBlockAfter$mh`.invokeExact(BB, MovePos) as Unit
 
-/**
- *
- * Obtain the first instruction in a basic block.
- *
- * The returned LLVMValueRef corresponds to a llvm::Instruction
- * instance.
- */
 public fun LLVMGetFirstInstruction(BB: LLVMBasicBlockRef): LLVMValueRef =
     `LLVMGetFirstInstruction$mh`.invokeExact(BB) as MemorySegment
 
-/**
- *
- * Obtain the last instruction in a basic block.
- *
- * The returned LLVMValueRef corresponds to an LLVM:Instruction.
- */
 public fun LLVMGetLastInstruction(BB: LLVMBasicBlockRef): LLVMValueRef =
     `LLVMGetLastInstruction$mh`.invokeExact(BB) as MemorySegment
 
-/**
- *
- * Determine whether an instruction has any metadata attached.
- */
 public fun LLVMHasMetadata(Val: LLVMValueRef): Int = `LLVMHasMetadata$mh`.invokeExact(Val) as Int
 
-/**
- *
- * Return metadata associated with an instruction value.
- */
 public fun LLVMGetMetadata(Val: LLVMValueRef, KindID: UInt): LLVMValueRef =
     `LLVMGetMetadata$mh`.invokeExact(Val, KindID.toInt()) as MemorySegment
 
-/**
- *
- * Set metadata associated with an instruction value.
- */
 public fun LLVMSetMetadata(
     Val: LLVMValueRef,
     KindID: UInt,
     Node: LLVMValueRef,
 ): Unit = `LLVMSetMetadata$mh`.invokeExact(Val, KindID.toInt(), Node) as Unit
 
-/**
- *
- * Returns the metadata associated with an instruction value, but filters out
- * all the debug locations.
- *
- * @see llvm::Instruction::getAllMetadataOtherThanDebugLoc()
- */
 public fun LLVMInstructionGetAllMetadataOtherThanDebugLoc(
     Instr: LLVMValueRef,
     NumEntries: Pointer<ULong>
 ): Pointer<LLVMValueMetadataEntry> =
     `LLVMInstructionGetAllMetadataOtherThanDebugLoc$mh`.invokeExact(Instr, NumEntries) as MemorySegment
 
-/**
- *
- * Obtain the basic block to which an instruction belongs.
- *
- * @see llvm::Instruction::getParent()
- */
 public fun LLVMGetInstructionParent(Inst: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMGetInstructionParent$mh`.invokeExact(Inst) as MemorySegment
 
-/**
- *
- * Obtain the instruction that occurs after the one specified.
- *
- * The next instruction will be from the same basic block.
- *
- * If this is the last instruction in a basic block, NULL will be
- * returned.
- */
 public fun LLVMGetNextInstruction(Inst: LLVMValueRef): LLVMValueRef =
     `LLVMGetNextInstruction$mh`.invokeExact(Inst) as MemorySegment
 
-/**
- *
- * Obtain the instruction that occurred before this one.
- *
- * If the instruction is the first instruction in a basic block, NULL
- * will be returned.
- */
 public fun LLVMGetPreviousInstruction(Inst: LLVMValueRef): LLVMValueRef =
     `LLVMGetPreviousInstruction$mh`.invokeExact(Inst) as MemorySegment
 
-/**
- *
- * Remove an instruction.
- *
- * The instruction specified is removed from its containing building
- * block but is kept alive.
- *
- * @see llvm::Instruction::removeFromParent()
- */
 public fun LLVMInstructionRemoveFromParent(Inst: LLVMValueRef): Unit =
     `LLVMInstructionRemoveFromParent$mh`.invokeExact(Inst) as Unit
 
-/**
- *
- * Remove and delete an instruction.
- *
- * The instruction specified is removed from its containing building
- * block and then deleted.
- *
- * @see llvm::Instruction::eraseFromParent()
- */
 public fun LLVMInstructionEraseFromParent(Inst: LLVMValueRef): Unit =
     `LLVMInstructionEraseFromParent$mh`.invokeExact(Inst) as Unit
 
-/**
- *
- * Delete an instruction.
- *
- * The instruction specified is deleted. It must have previously been
- * removed from its containing building block.
- *
- * @see llvm::Value::deleteValue()
- */
 public fun LLVMDeleteInstruction(Inst: LLVMValueRef): Unit = `LLVMDeleteInstruction$mh`.invokeExact(Inst) as Unit
 
-/**
- *
- * Obtain the code opcode for an individual instruction.
- *
- * @see llvm::Instruction::getOpCode()
- */
 public fun LLVMGetInstructionOpcode(Inst: LLVMValueRef): LLVMOpcode =
     LLVMOpcode.fromInt(`LLVMGetInstructionOpcode$mh`.invokeExact(Inst) as Int)
 
-/**
- *
- * Obtain the predicate of an instruction.
- *
- * This is only valid for instructions that correspond to llvm::ICmpInst.
- *
- * @see llvm::ICmpInst::getPredicate()
- */
 public fun LLVMGetICmpPredicate(Inst: LLVMValueRef): LLVMIntPredicate =
     LLVMIntPredicate.fromInt(`LLVMGetICmpPredicate$mh`.invokeExact(Inst) as Int)
 
-/**
- *
- * Obtain the float predicate of an instruction.
- *
- * This is only valid for instructions that correspond to llvm::FCmpInst.
- *
- * @see llvm::FCmpInst::getPredicate()
- */
 public fun LLVMGetFCmpPredicate(Inst: LLVMValueRef): LLVMRealPredicate =
     LLVMRealPredicate.fromInt(`LLVMGetFCmpPredicate$mh`.invokeExact(Inst) as Int)
 
-/**
- *
- * Create a copy of 'this' instruction that is identical in all ways
- * except the following:
- * * The instruction has no parent
- * * The instruction has no name
- *
- * @see llvm::Instruction::clone()
- */
 public fun LLVMInstructionClone(Inst: LLVMValueRef): LLVMValueRef =
     `LLVMInstructionClone$mh`.invokeExact(Inst) as MemorySegment
 
-/**
- *
- * Determine whether an instruction is a terminator. This routine is named to
- * be compatible with historical functions that did this by querying the
- * underlying C++ type.
- *
- * @see llvm::Instruction::isTerminator()
- */
 public fun LLVMIsATerminatorInst(Inst: LLVMValueRef): LLVMValueRef =
     `LLVMIsATerminatorInst$mh`.invokeExact(Inst) as MemorySegment
 
-/**
- *
- * Obtain the first debug record attached to an instruction.
- *
- * Use LLVMGetNextDbgRecord() and LLVMGetPreviousDbgRecord() to traverse the
- * sequence of DbgRecords.
- *
- * Return the first DbgRecord attached to Inst or NULL if there are none.
- *
- * @see llvm::Instruction::getDbgRecordRange()
- */
 public fun LLVMGetFirstDbgRecord(Inst: LLVMValueRef): LLVMDbgRecordRef =
     `LLVMGetFirstDbgRecord$mh`.invokeExact(Inst) as MemorySegment
 
-/**
- *
- * Obtain the last debug record attached to an instruction.
- *
- * Return the last DbgRecord attached to Inst or NULL if there are none.
- *
- * @see llvm::Instruction::getDbgRecordRange()
- */
 public fun LLVMGetLastDbgRecord(Inst: LLVMValueRef): LLVMDbgRecordRef =
     `LLVMGetLastDbgRecord$mh`.invokeExact(Inst) as MemorySegment
 
-/**
- *
- * Obtain the next DbgRecord in the sequence or NULL if there are no more.
- *
- * @see llvm::Instruction::getDbgRecordRange()
- */
 public fun LLVMGetNextDbgRecord(DbgRecord: LLVMDbgRecordRef): LLVMDbgRecordRef =
     `LLVMGetNextDbgRecord$mh`.invokeExact(DbgRecord) as MemorySegment
 
-/**
- *
- * Obtain the previous DbgRecord in the sequence or NULL if there are no more.
- *
- * @see llvm::Instruction::getDbgRecordRange()
- */
 public fun LLVMGetPreviousDbgRecord(DbgRecord: LLVMDbgRecordRef): LLVMDbgRecordRef =
     `LLVMGetPreviousDbgRecord$mh`.invokeExact(DbgRecord) as MemorySegment
 
-/**
- *
- * Obtain the argument count for a call instruction.
- *
- * This expects an LLVMValueRef that corresponds to a llvm::CallInst,
- * llvm::InvokeInst, or llvm:FuncletPadInst.
- *
- * @see llvm::CallInst::getNumArgOperands()
- * @see llvm::InvokeInst::getNumArgOperands()
- * @see llvm::FuncletPadInst::getNumArgOperands()
- */
 public fun LLVMGetNumArgOperands(Instr: LLVMValueRef): UInt =
     (`LLVMGetNumArgOperands$mh`.invokeExact(Instr) as Int).toUInt()
 
-/**
- *
- * Set the calling convention for a call instruction.
- *
- * This expects an LLVMValueRef that corresponds to a llvm::CallInst or
- * llvm::InvokeInst.
- *
- * @see llvm::CallInst::setCallingConv()
- * @see llvm::InvokeInst::setCallingConv()
- */
 public fun LLVMSetInstructionCallConv(Instr: LLVMValueRef, CC: UInt): Unit =
     `LLVMSetInstructionCallConv$mh`.invokeExact(Instr, CC.toInt()) as Unit
 
-/**
- *
- * Obtain the calling convention for a call instruction.
- *
- * This is the opposite of LLVMSetInstructionCallConv(). Reads its
- * usage.
- *
- * @see LLVMSetInstructionCallConv()
- */
 public fun LLVMGetInstructionCallConv(Instr: LLVMValueRef): UInt =
     (`LLVMGetInstructionCallConv$mh`.invokeExact(Instr) as Int).toUInt()
 
@@ -4037,287 +1847,90 @@ public fun LLVMRemoveCallSiteStringAttribute(
     KLen: UInt,
 ): Unit = `LLVMRemoveCallSiteStringAttribute$mh`.invokeExact(C, Idx.toInt(), K, KLen.toInt()) as Unit
 
-/**
- *
- * Obtain the function type called by this instruction.
- *
- * @see llvm::CallBase::getFunctionType()
- */
 public fun LLVMGetCalledFunctionType(C: LLVMValueRef): LLVMTypeRef =
     `LLVMGetCalledFunctionType$mh`.invokeExact(C) as MemorySegment
 
-/**
- *
- * Obtain the pointer to the function invoked by this instruction.
- *
- * This expects an LLVMValueRef that corresponds to a llvm::CallInst or
- * llvm::InvokeInst.
- *
- * @see llvm::CallInst::getCalledOperand()
- * @see llvm::InvokeInst::getCalledOperand()
- */
 public fun LLVMGetCalledValue(Instr: LLVMValueRef): LLVMValueRef =
     `LLVMGetCalledValue$mh`.invokeExact(Instr) as MemorySegment
 
-/**
- *
- * Obtain the number of operand bundles attached to this instruction.
- *
- * This only works on llvm::CallInst and llvm::InvokeInst instructions.
- *
- * @see llvm::CallBase::getNumOperandBundles()
- */
 public fun LLVMGetNumOperandBundles(C: LLVMValueRef): UInt =
     (`LLVMGetNumOperandBundles$mh`.invokeExact(C) as Int).toUInt()
 
-/**
- *
- * Obtain the operand bundle attached to this instruction at the given index.
- * Use LLVMDisposeOperandBundle to free the operand bundle.
- *
- * This only works on llvm::CallInst and llvm::InvokeInst instructions.
- */
 public fun LLVMGetOperandBundleAtIndex(C: LLVMValueRef, Index: UInt): LLVMOperandBundleRef =
     `LLVMGetOperandBundleAtIndex$mh`.invokeExact(C, Index.toInt()) as MemorySegment
 
-/**
- *
- * Obtain whether a call instruction is a tail call.
- *
- * This only works on llvm::CallInst instructions.
- *
- * @see llvm::CallInst::isTailCall()
- */
 public fun LLVMIsTailCall(CallInst: LLVMValueRef): LLVMBool = `LLVMIsTailCall$mh`.invokeExact(CallInst) as Int
 
-/**
- *
- * Set whether a call instruction is a tail call.
- *
- * This only works on llvm::CallInst instructions.
- *
- * @see llvm::CallInst::setTailCall()
- */
 public fun LLVMSetTailCall(CallInst: LLVMValueRef, IsTailCall: LLVMBool): Unit =
     `LLVMSetTailCall$mh`.invokeExact(CallInst, IsTailCall) as Unit
 
-/**
- *
- * Obtain a tail call kind of the call instruction.
- *
- * @see llvm::CallInst::setTailCallKind()
- */
 public fun LLVMGetTailCallKind(CallInst: LLVMValueRef): LLVMTailCallKind =
     LLVMTailCallKind.fromInt(`LLVMGetTailCallKind$mh`.invokeExact(CallInst) as Int)
 
-/**
- *
- * Set the call kind of the call instruction.
- *
- * @see llvm::CallInst::getTailCallKind()
- */
 public fun LLVMSetTailCallKind(CallInst: LLVMValueRef, kind: LLVMTailCallKind): Unit =
     `LLVMSetTailCallKind$mh`.invokeExact(CallInst, kind.value) as Unit
 
-/**
- *
- * Return the normal destination basic block.
- *
- * This only works on llvm::InvokeInst instructions.
- *
- * @see llvm::InvokeInst::getNormalDest()
- */
 public fun LLVMGetNormalDest(InvokeInst: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMGetNormalDest$mh`.invokeExact(InvokeInst) as MemorySegment
 
-/**
- *
- * Return the unwind destination basic block.
- *
- * Works on llvm::InvokeInst, llvm::CleanupReturnInst, and
- * llvm::CatchSwitchInst instructions.
- *
- * @see llvm::InvokeInst::getUnwindDest()
- * @see llvm::CleanupReturnInst::getUnwindDest()
- * @see llvm::CatchSwitchInst::getUnwindDest()
- */
 public fun LLVMGetUnwindDest(InvokeInst: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMGetUnwindDest$mh`.invokeExact(InvokeInst) as MemorySegment
 
-/**
- *
- * Set the normal destination basic block.
- *
- * This only works on llvm::InvokeInst instructions.
- *
- * @see llvm::InvokeInst::setNormalDest()
- */
 public fun LLVMSetNormalDest(InvokeInst: LLVMValueRef, B: LLVMBasicBlockRef): Unit =
     `LLVMSetNormalDest$mh`.invokeExact(InvokeInst, B) as Unit
 
-/**
- *
- * Set the unwind destination basic block.
- *
- * Works on llvm::InvokeInst, llvm::CleanupReturnInst, and
- * llvm::CatchSwitchInst instructions.
- *
- * @see llvm::InvokeInst::setUnwindDest()
- * @see llvm::CleanupReturnInst::setUnwindDest()
- * @see llvm::CatchSwitchInst::setUnwindDest()
- */
 public fun LLVMSetUnwindDest(InvokeInst: LLVMValueRef, B: LLVMBasicBlockRef): Unit =
     `LLVMSetUnwindDest$mh`.invokeExact(InvokeInst, B) as Unit
 
-/**
- *
- * Get the default destination of a CallBr instruction.
- *
- * @see llvm::CallBrInst::getDefaultDest()
- */
 public fun LLVMGetCallBrDefaultDest(CallBr: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMGetCallBrDefaultDest$mh`.invokeExact(CallBr) as MemorySegment
 
-/**
- *
- * Get the number of indirect destinations of a CallBr instruction.
- *
- * @see llvm::CallBrInst::getNumIndirectDests()
- */
 public fun LLVMGetCallBrNumIndirectDests(CallBr: LLVMValueRef): UInt =
     (`LLVMGetCallBrNumIndirectDests$mh`.invokeExact(CallBr) as Int).toUInt()
 
-/**
- *
- * Get the indirect destination of a CallBr instruction at the given index.
- *
- * @see llvm::CallBrInst::getIndirectDest()
- */
 public fun LLVMGetCallBrIndirectDest(CallBr: LLVMValueRef, Idx: UInt): LLVMBasicBlockRef =
     `LLVMGetCallBrIndirectDest$mh`.invokeExact(CallBr, Idx.toInt()) as MemorySegment
 
-/**
- *
- * Return the number of successors that this terminator has.
- *
- * @see llvm::Instruction::getNumSuccessors
- */
 public fun LLVMGetNumSuccessors(Term: LLVMValueRef): UInt =
     (`LLVMGetNumSuccessors$mh`.invokeExact(Term) as Int).toUInt()
 
-/**
- *
- * Return the specified successor.
- *
- * @see llvm::Instruction::getSuccessor
- */
 public fun LLVMGetSuccessor(Term: LLVMValueRef, i: UInt): LLVMBasicBlockRef =
     `LLVMGetSuccessor$mh`.invokeExact(Term, i.toInt()) as MemorySegment
 
-/**
- *
- * Update the specified successor to point at the provided block.
- *
- * @see llvm::Instruction::setSuccessor
- */
 public fun LLVMSetSuccessor(
     Term: LLVMValueRef,
     i: UInt,
     block: LLVMBasicBlockRef,
 ): Unit = `LLVMSetSuccessor$mh`.invokeExact(Term, i.toInt(), block) as Unit
 
-/**
- *
- * Return if a branch is conditional.
- *
- * This only works on llvm::BranchInst instructions.
- *
- * @see llvm::BranchInst::isConditional
- */
 public fun LLVMIsConditional(Branch: LLVMValueRef): LLVMBool = `LLVMIsConditional$mh`.invokeExact(Branch) as Int
 
-/**
- *
- * Return the condition of a branch instruction.
- *
- * This only works on llvm::BranchInst instructions.
- *
- * @see llvm::BranchInst::getCondition
- */
 public fun LLVMGetCondition(Branch: LLVMValueRef): LLVMValueRef =
     `LLVMGetCondition$mh`.invokeExact(Branch) as MemorySegment
 
-/**
- *
- * Set the condition of a branch instruction.
- *
- * This only works on llvm::BranchInst instructions.
- *
- * @see llvm::BranchInst::setCondition
- */
 public fun LLVMSetCondition(Branch: LLVMValueRef, Cond: LLVMValueRef): Unit =
     `LLVMSetCondition$mh`.invokeExact(Branch, Cond) as Unit
 
-/**
- *
- * Obtain the default destination basic block of a switch instruction.
- *
- * This only works on llvm::SwitchInst instructions.
- *
- * @see llvm::SwitchInst::getDefaultDest()
- */
 public fun LLVMGetSwitchDefaultDest(SwitchInstr: LLVMValueRef): LLVMBasicBlockRef =
     `LLVMGetSwitchDefaultDest$mh`.invokeExact(SwitchInstr) as MemorySegment
 
-/**
- *
- * Obtain the type that is being allocated by the alloca instruction.
- */
 public fun LLVMGetAllocatedType(Alloca: LLVMValueRef): LLVMTypeRef =
     `LLVMGetAllocatedType$mh`.invokeExact(Alloca) as MemorySegment
 
-/**
- *
- * Check whether the given GEP operator is inbounds.
- */
 public fun LLVMIsInBounds(GEP: LLVMValueRef): LLVMBool = `LLVMIsInBounds$mh`.invokeExact(GEP) as Int
 
-/**
- *
- * Set the given GEP instruction to be inbounds or not.
- */
 public fun LLVMSetIsInBounds(GEP: LLVMValueRef, InBounds: LLVMBool): Unit =
     `LLVMSetIsInBounds$mh`.invokeExact(GEP, InBounds) as Unit
 
-/**
- *
- * Get the source element type of the given GEP operator.
- */
 public fun LLVMGetGEPSourceElementType(GEP: LLVMValueRef): LLVMTypeRef =
     `LLVMGetGEPSourceElementType$mh`.invokeExact(GEP) as MemorySegment
 
-/**
- *
- * Get the no-wrap related flags for the given GEP instruction.
- *
- * @see llvm::GetElementPtrInst::getNoWrapFlags
- */
 public fun LLVMGEPGetNoWrapFlags(GEP: LLVMValueRef): LLVMGEPNoWrapFlags =
     (`LLVMGEPGetNoWrapFlags$mh`.invokeExact(GEP) as Int).toUInt()
 
-/**
- *
- * Set the no-wrap related flags for the given GEP instruction.
- *
- * @see llvm::GetElementPtrInst::setNoWrapFlags
- */
 public fun LLVMGEPSetNoWrapFlags(GEP: LLVMValueRef, NoWrapFlags: LLVMGEPNoWrapFlags): Unit =
     `LLVMGEPSetNoWrapFlags$mh`.invokeExact(GEP, NoWrapFlags.toInt()) as Unit
 
-/**
- *
- * Add an incoming value to the end of a PHI list.
- */
 public fun LLVMAddIncoming(
     PhiNode: LLVMValueRef,
     IncomingValues: Pointer<LLVMValueRef>,
@@ -4325,87 +1938,39 @@ public fun LLVMAddIncoming(
     Count: UInt,
 ): Unit = `LLVMAddIncoming$mh`.invokeExact(PhiNode, IncomingValues, IncomingBlocks, Count.toInt()) as Unit
 
-/**
- *
- * Obtain the number of incoming basic blocks to a PHI node.
- */
 public fun LLVMCountIncoming(PhiNode: LLVMValueRef): UInt =
     (`LLVMCountIncoming$mh`.invokeExact(PhiNode) as Int).toUInt()
 
-/**
- *
- * Obtain an incoming value to a PHI node as an LLVMValueRef.
- */
 public fun LLVMGetIncomingValue(PhiNode: LLVMValueRef, Index: UInt): LLVMValueRef =
     `LLVMGetIncomingValue$mh`.invokeExact(PhiNode, Index.toInt()) as MemorySegment
 
-/**
- *
- * Obtain an incoming value to a PHI node as an LLVMBasicBlockRef.
- */
 public fun LLVMGetIncomingBlock(PhiNode: LLVMValueRef, Index: UInt): LLVMBasicBlockRef =
     `LLVMGetIncomingBlock$mh`.invokeExact(PhiNode, Index.toInt()) as MemorySegment
 
-/**
- *
- * Obtain the number of indices.
- * NB: This also works on GEP operators.
- */
 public fun LLVMGetNumIndices(Inst: LLVMValueRef): UInt = (`LLVMGetNumIndices$mh`.invokeExact(Inst) as Int).toUInt()
 
-/**
- *
- * Obtain the indices as an array.
- */
 public fun LLVMGetIndices(Inst: LLVMValueRef): Pointer<UInt> = `LLVMGetIndices$mh`.invokeExact(Inst) as MemorySegment
 
-/**
- *
- * @defgroup LLVMCCoreInstructionBuilder Instruction Builders
- *
- * An instruction builder represents a point within a basic block and is
- * the exclusive means of building instructions using the C interface.
- *
- * @{
- */
 public fun LLVMCreateBuilderInContext(C: LLVMContextRef): LLVMBuilderRef =
     `LLVMCreateBuilderInContext$mh`.invokeExact(C) as MemorySegment
 
 public fun LLVMCreateBuilder(): LLVMBuilderRef = `LLVMCreateBuilder$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Set the builder position before Instr but after any attached debug records,
- * or if Instr is null set the position to the end of Block.
- */
 public fun LLVMPositionBuilder(
     Builder: LLVMBuilderRef,
     Block: LLVMBasicBlockRef,
     Instr: LLVMValueRef,
 ): Unit = `LLVMPositionBuilder$mh`.invokeExact(Builder, Block, Instr) as Unit
 
-/**
- *
- * Set the builder position before Instr and any attached debug records,
- * or if Instr is null set the position to the end of Block.
- */
 public fun LLVMPositionBuilderBeforeDbgRecords(
     Builder: LLVMBuilderRef,
     Block: LLVMBasicBlockRef,
     Inst: LLVMValueRef,
 ): Unit = `LLVMPositionBuilderBeforeDbgRecords$mh`.invokeExact(Builder, Block, Inst) as Unit
 
-/**
- *
- * Set the builder position before Instr but after any attached debug records.
- */
 public fun LLVMPositionBuilderBefore(Builder: LLVMBuilderRef, Instr: LLVMValueRef): Unit =
     `LLVMPositionBuilderBefore$mh`.invokeExact(Builder, Instr) as Unit
 
-/**
- *
- * Set the builder position before Instr and any attached debug records.
- */
 public fun LLVMPositionBuilderBeforeInstrAndDbgRecords(Builder: LLVMBuilderRef, Instr: LLVMValueRef): Unit =
     `LLVMPositionBuilderBeforeInstrAndDbgRecords$mh`.invokeExact(Builder, Instr) as Unit
 
@@ -4429,97 +1994,33 @@ public fun LLVMInsertIntoBuilderWithName(
 
 public fun LLVMDisposeBuilder(Builder: LLVMBuilderRef): Unit = `LLVMDisposeBuilder$mh`.invokeExact(Builder) as Unit
 
-/**
- *
- * Get location information used by debugging information.
- *
- * @see llvm::IRBuilder::getCurrentDebugLocation()
- */
 public fun LLVMGetCurrentDebugLocation2(Builder: LLVMBuilderRef): LLVMMetadataRef =
     `LLVMGetCurrentDebugLocation2$mh`.invokeExact(Builder) as MemorySegment
 
-/**
- *
- * Set location information used by debugging information.
- *
- * To clear the location metadata of the given instruction, pass NULL to \p Loc.
- *
- * @see llvm::IRBuilder::SetCurrentDebugLocation()
- */
 public fun LLVMSetCurrentDebugLocation2(Builder: LLVMBuilderRef, Loc: LLVMMetadataRef): Unit =
     `LLVMSetCurrentDebugLocation2$mh`.invokeExact(Builder, Loc) as Unit
 
-/**
- *
- * Attempts to set the debug location for the given instruction using the
- * current debug location for the given builder.  If the builder has no current
- * debug location, this function is a no-op.
- *
- * @deprecated LLVMSetInstDebugLocation is deprecated in favor of the more general
- * LLVMAddMetadataToInst.
- *
- * @see llvm::IRBuilder::SetInstDebugLocation()
- */
 public fun LLVMSetInstDebugLocation(Builder: LLVMBuilderRef, Inst: LLVMValueRef): Unit =
     `LLVMSetInstDebugLocation$mh`.invokeExact(Builder, Inst) as Unit
 
-/**
- *
- * Adds the metadata registered with the given builder to the given instruction.
- *
- * @see llvm::IRBuilder::AddMetadataToInst()
- */
 public fun LLVMAddMetadataToInst(Builder: LLVMBuilderRef, Inst: LLVMValueRef): Unit =
     `LLVMAddMetadataToInst$mh`.invokeExact(Builder, Inst) as Unit
 
-/**
- *
- * Get the dafult floating-point math metadata for a given builder.
- *
- * @see llvm::IRBuilder::getDefaultFPMathTag()
- */
 public fun LLVMBuilderGetDefaultFPMathTag(Builder: LLVMBuilderRef): LLVMMetadataRef =
     `LLVMBuilderGetDefaultFPMathTag$mh`.invokeExact(Builder) as MemorySegment
 
-/**
- *
- * Set the default floating-point math metadata for the given builder.
- *
- * To clear the metadata, pass NULL to \p FPMathTag.
- *
- * @see llvm::IRBuilder::setDefaultFPMathTag()
- */
 public fun LLVMBuilderSetDefaultFPMathTag(Builder: LLVMBuilderRef, FPMathTag: LLVMMetadataRef): Unit =
     `LLVMBuilderSetDefaultFPMathTag$mh`.invokeExact(Builder, FPMathTag) as Unit
 
-/**
- *
- * Obtain the context to which this builder is associated.
- *
- * @see llvm::IRBuilder::getContext()
- */
 public fun LLVMGetBuilderContext(Builder: LLVMBuilderRef): LLVMContextRef =
     `LLVMGetBuilderContext$mh`.invokeExact(Builder) as MemorySegment
 
-/**
- *
- * Deprecated: Passing the NULL location will crash.
- * Use LLVMGetCurrentDebugLocation2 instead.
- */
 public fun LLVMSetCurrentDebugLocation(Builder: LLVMBuilderRef, L: LLVMValueRef): Unit =
     `LLVMSetCurrentDebugLocation$mh`.invokeExact(Builder, L) as Unit
 
-/**
- *
- * Deprecated: Returning the NULL location will crash.
- * Use LLVMGetCurrentDebugLocation2 instead.
- */
 public fun LLVMGetCurrentDebugLocation(Builder: LLVMBuilderRef): LLVMValueRef =
     `LLVMGetCurrentDebugLocation$mh`.invokeExact(Builder) as MemorySegment
 
-/**
- * Terminators
- */
 public fun LLVMBuildRetVoid(`$p0`: LLVMBuilderRef): LLVMValueRef =
     `LLVMBuildRetVoid$mh`.invokeExact(`$p0`) as MemorySegment
 
@@ -4620,9 +2121,6 @@ public fun LLVMBuildInvokeWithOperandBundles(
 public fun LLVMBuildUnreachable(`$p0`: LLVMBuilderRef): LLVMValueRef =
     `LLVMBuildUnreachable$mh`.invokeExact(`$p0`) as MemorySegment
 
-/**
- * Exception Handling
- */
 public fun LLVMBuildResume(B: LLVMBuilderRef, Exn: LLVMValueRef): LLVMValueRef =
     `LLVMBuildResume$mh`.invokeExact(B, Exn) as MemorySegment
 
@@ -4671,117 +2169,53 @@ public fun LLVMBuildCatchSwitch(
 ): LLVMValueRef =
     `LLVMBuildCatchSwitch$mh`.invokeExact(B, ParentPad, UnwindBB, NumHandlers.toInt(), Name) as MemorySegment
 
-/**
- * Add a case to the switch instruction
- */
 public fun LLVMAddCase(
     Switch: LLVMValueRef,
     OnVal: LLVMValueRef,
     Dest: LLVMBasicBlockRef,
 ): Unit = `LLVMAddCase$mh`.invokeExact(Switch, OnVal, Dest) as Unit
 
-/**
- * Add a destination to the indirectbr instruction
- */
 public fun LLVMAddDestination(IndirectBr: LLVMValueRef, Dest: LLVMBasicBlockRef): Unit =
     `LLVMAddDestination$mh`.invokeExact(IndirectBr, Dest) as Unit
 
-/**
- * Get the number of clauses on the landingpad instruction
- */
 public fun LLVMGetNumClauses(LandingPad: LLVMValueRef): UInt =
     (`LLVMGetNumClauses$mh`.invokeExact(LandingPad) as Int).toUInt()
 
-/**
- * Get the value of the clause at index Idx on the landingpad instruction
- */
 public fun LLVMGetClause(LandingPad: LLVMValueRef, Idx: UInt): LLVMValueRef =
     `LLVMGetClause$mh`.invokeExact(LandingPad, Idx.toInt()) as MemorySegment
 
-/**
- * Add a catch or filter clause to the landingpad instruction
- */
 public fun LLVMAddClause(LandingPad: LLVMValueRef, ClauseVal: LLVMValueRef): Unit =
     `LLVMAddClause$mh`.invokeExact(LandingPad, ClauseVal) as Unit
 
-/**
- * Get the 'cleanup' flag in the landingpad instruction
- */
 public fun LLVMIsCleanup(LandingPad: LLVMValueRef): LLVMBool = `LLVMIsCleanup$mh`.invokeExact(LandingPad) as Int
 
-/**
- * Set the 'cleanup' flag in the landingpad instruction
- */
 public fun LLVMSetCleanup(LandingPad: LLVMValueRef, Val: LLVMBool): Unit =
     `LLVMSetCleanup$mh`.invokeExact(LandingPad, Val) as Unit
 
-/**
- * Add a destination to the catchswitch instruction
- */
 public fun LLVMAddHandler(CatchSwitch: LLVMValueRef, Dest: LLVMBasicBlockRef): Unit =
     `LLVMAddHandler$mh`.invokeExact(CatchSwitch, Dest) as Unit
 
-/**
- * Get the number of handlers on the catchswitch instruction
- */
 public fun LLVMGetNumHandlers(CatchSwitch: LLVMValueRef): UInt =
     (`LLVMGetNumHandlers$mh`.invokeExact(CatchSwitch) as Int).toUInt()
 
-/**
- *
- * Obtain the basic blocks acting as handlers for a catchswitch instruction.
- *
- * The Handlers parameter should point to a pre-allocated array of
- * LLVMBasicBlockRefs at least LLVMGetNumHandlers() large. On return, the
- * first LLVMGetNumHandlers() entries in the array will be populated
- * with LLVMBasicBlockRef instances.
- *
- * @param CatchSwitch The catchswitch instruction to operate on.
- * @param Handlers Memory address of an array to be filled with basic blocks.
- */
 public fun LLVMGetHandlers(CatchSwitch: LLVMValueRef, Handlers: Pointer<LLVMBasicBlockRef>): Unit =
     `LLVMGetHandlers$mh`.invokeExact(CatchSwitch, Handlers) as Unit
 
-/**
- * Get the number of funcletpad arguments.
- */
 public fun LLVMGetArgOperand(Funclet: LLVMValueRef, i: UInt): LLVMValueRef =
     `LLVMGetArgOperand$mh`.invokeExact(Funclet, i.toInt()) as MemorySegment
 
-/**
- * Set a funcletpad argument at the given index.
- */
 public fun LLVMSetArgOperand(
     Funclet: LLVMValueRef,
     i: UInt,
     `value`: LLVMValueRef,
 ): Unit = `LLVMSetArgOperand$mh`.invokeExact(Funclet, i.toInt(), `value`) as Unit
 
-/**
- *
- * Get the parent catchswitch instruction of a catchpad instruction.
- *
- * This only works on llvm::CatchPadInst instructions.
- *
- * @see llvm::CatchPadInst::getCatchSwitch()
- */
 public fun LLVMGetParentCatchSwitch(CatchPad: LLVMValueRef): LLVMValueRef =
     `LLVMGetParentCatchSwitch$mh`.invokeExact(CatchPad) as MemorySegment
 
-/**
- *
- * Set the parent catchswitch instruction of a catchpad instruction.
- *
- * This only works on llvm::CatchPadInst instructions.
- *
- * @see llvm::CatchPadInst::setCatchSwitch()
- */
 public fun LLVMSetParentCatchSwitch(CatchPad: LLVMValueRef, CatchSwitch: LLVMValueRef): Unit =
     `LLVMSetParentCatchSwitch$mh`.invokeExact(CatchPad, CatchSwitch) as Unit
 
-/**
- * Arithmetic
- */
 public fun LLVMBuildAdd(
     `$p0`: LLVMBuilderRef,
     LHS: LLVMValueRef,
@@ -5017,72 +2451,25 @@ public fun LLVMGetExact(DivOrShrInst: LLVMValueRef): LLVMBool = `LLVMGetExact$mh
 public fun LLVMSetExact(DivOrShrInst: LLVMValueRef, IsExact: LLVMBool): Unit =
     `LLVMSetExact$mh`.invokeExact(DivOrShrInst, IsExact) as Unit
 
-/**
- *
- * Gets if the instruction has the non-negative flag set.
- * Only valid for zext instructions.
- */
 public fun LLVMGetNNeg(NonNegInst: LLVMValueRef): LLVMBool = `LLVMGetNNeg$mh`.invokeExact(NonNegInst) as Int
 
-/**
- *
- * Sets the non-negative flag for the instruction.
- * Only valid for zext instructions.
- */
 public fun LLVMSetNNeg(NonNegInst: LLVMValueRef, IsNonNeg: LLVMBool): Unit =
     `LLVMSetNNeg$mh`.invokeExact(NonNegInst, IsNonNeg) as Unit
 
-/**
- *
- * Get the flags for which fast-math-style optimizations are allowed for this
- * value.
- *
- * Only valid on floating point instructions.
- * @see LLVMCanValueUseFastMathFlags
- */
 public fun LLVMGetFastMathFlags(FPMathInst: LLVMValueRef): LLVMFastMathFlags =
     (`LLVMGetFastMathFlags$mh`.invokeExact(FPMathInst) as Int).toUInt()
 
-/**
- *
- * Sets the flags for which fast-math-style optimizations are allowed for this
- * value.
- *
- * Only valid on floating point instructions.
- * @see LLVMCanValueUseFastMathFlags
- */
 public fun LLVMSetFastMathFlags(FPMathInst: LLVMValueRef, FMF: LLVMFastMathFlags): Unit =
     `LLVMSetFastMathFlags$mh`.invokeExact(FPMathInst, FMF.toInt()) as Unit
 
-/**
- *
- * Check if a given value can potentially have fast math flags.
- *
- * Will return true for floating point arithmetic instructions, and for select,
- * phi, and call instructions whose type is a floating point type, or a vector
- * or array thereof. See https://llvm.org/docs/LangRef.html#fast-math-flags
- */
 public fun LLVMCanValueUseFastMathFlags(Inst: LLVMValueRef): LLVMBool =
     `LLVMCanValueUseFastMathFlags$mh`.invokeExact(Inst) as Int
 
-/**
- *
- * Gets whether the instruction has the disjoint flag set.
- * Only valid for or instructions.
- */
 public fun LLVMGetIsDisjoint(Inst: LLVMValueRef): LLVMBool = `LLVMGetIsDisjoint$mh`.invokeExact(Inst) as Int
 
-/**
- *
- * Sets the disjoint flag for the instruction.
- * Only valid for or instructions.
- */
 public fun LLVMSetIsDisjoint(Inst: LLVMValueRef, IsDisjoint: LLVMBool): Unit =
     `LLVMSetIsDisjoint$mh`.invokeExact(Inst, IsDisjoint) as Unit
 
-/**
- * Memory
- */
 public fun LLVMBuildMalloc(
     `$p0`: LLVMBuilderRef,
     Ty: LLVMTypeRef,
@@ -5096,13 +2483,6 @@ public fun LLVMBuildArrayMalloc(
     Name: Pointer<Byte>,
 ): LLVMValueRef = `LLVMBuildArrayMalloc$mh`.invokeExact(`$p0`, Ty, Val, Name) as MemorySegment
 
-/**
- *
- * Creates and inserts a memset to the specified pointer and the
- * specified value.
- *
- * @see llvm::IRRBuilder::CreateMemSet()
- */
 public fun LLVMBuildMemSet(
     B: LLVMBuilderRef,
     Ptr: LLVMValueRef,
@@ -5111,12 +2491,6 @@ public fun LLVMBuildMemSet(
     Align: UInt,
 ): LLVMValueRef = `LLVMBuildMemSet$mh`.invokeExact(B, Ptr, Val, Len, Align.toInt()) as MemorySegment
 
-/**
- *
- * Creates and inserts a memcpy between the specified pointers.
- *
- * @see llvm::IRRBuilder::CreateMemCpy()
- */
 public fun LLVMBuildMemCpy(
     B: LLVMBuilderRef,
     Dst: LLVMValueRef,
@@ -5127,12 +2501,6 @@ public fun LLVMBuildMemCpy(
 ): LLVMValueRef =
     `LLVMBuildMemCpy$mh`.invokeExact(B, Dst, DstAlign.toInt(), Src, SrcAlign.toInt(), Size) as MemorySegment
 
-/**
- *
- * Creates and inserts a memmove between the specified pointers.
- *
- * @see llvm::IRRBuilder::CreateMemMove()
- */
 public fun LLVMBuildMemMove(
     B: LLVMBuilderRef,
     Dst: LLVMValueRef,
@@ -5191,13 +2559,6 @@ public fun LLVMBuildInBoundsGEP2(
 ): LLVMValueRef =
     `LLVMBuildInBoundsGEP2$mh`.invokeExact(B, Ty, Pointer, Indices, NumIndices.toInt(), Name) as MemorySegment
 
-/**
- *
- * Creates a GetElementPtr instruction. Similar to LLVMBuildGEP2, but allows
- * specifying the no-wrap flags.
- *
- * @see llvm::IRBuilder::CreateGEP()
- */
 public fun LLVMBuildGEPWithNoWrapFlags(
     B: LLVMBuilderRef,
     Ty: LLVMTypeRef,
@@ -5230,10 +2591,6 @@ public fun LLVMBuildGlobalString(
     Name: Pointer<Byte>,
 ): LLVMValueRef = `LLVMBuildGlobalString$mh`.invokeExact(B, Str, Name) as MemorySegment
 
-/**
- *
- * Deprecated: Use LLVMBuildGlobalString instead, which has identical behavior.
- */
 public fun LLVMBuildGlobalStringPtr(
     B: LLVMBuilderRef,
     Str: Pointer<Byte>,
@@ -5263,9 +2620,6 @@ public fun LLVMGetAtomicRMWBinOp(AtomicRMWInst: LLVMValueRef): LLVMAtomicRMWBinO
 public fun LLVMSetAtomicRMWBinOp(AtomicRMWInst: LLVMValueRef, BinOp: LLVMAtomicRMWBinOp): Unit =
     `LLVMSetAtomicRMWBinOp$mh`.invokeExact(AtomicRMWInst, BinOp.value) as Unit
 
-/**
- * Casts
- */
 public fun LLVMBuildTrunc(
     `$p0`: LLVMBuilderRef,
     Val: LLVMValueRef,
@@ -5408,9 +2762,6 @@ public fun LLVMBuildFPCast(
     Name: Pointer<Byte>,
 ): LLVMValueRef = `LLVMBuildFPCast$mh`.invokeExact(`$p0`, Val, DestTy, Name) as MemorySegment
 
-/**
- * Deprecated: This cast is always signed. Use LLVMBuildIntCast2 instead.
- */
 public fun LLVMBuildIntCast(
     `$p0`: LLVMBuilderRef,
     Val: LLVMValueRef,
@@ -5425,9 +2776,6 @@ public fun LLVMGetCastOpcode(
     DestIsSigned: LLVMBool,
 ): LLVMOpcode = LLVMOpcode.fromInt(`LLVMGetCastOpcode$mh`.invokeExact(Src, SrcIsSigned, DestTy, DestIsSigned) as Int)
 
-/**
- * Comparisons
- */
 public fun LLVMBuildICmp(
     `$p0`: LLVMBuilderRef,
     Op: LLVMIntPredicate,
@@ -5444,9 +2792,6 @@ public fun LLVMBuildFCmp(
     Name: Pointer<Byte>,
 ): LLVMValueRef = `LLVMBuildFCmp$mh`.invokeExact(`$p0`, Op.value, LHS, RHS, Name) as MemorySegment
 
-/**
- * Miscellaneous instructions
- */
 public fun LLVMBuildPhi(
     `$p0`: LLVMBuilderRef,
     Ty: LLVMTypeRef,
@@ -5631,28 +2976,11 @@ public fun LLVMBuildAtomicCmpXchgSyncScope(
     SSID.toInt(),
 ) as MemorySegment
 
-/**
- *
- * Get the number of elements in the mask of a ShuffleVector instruction.
- */
 public fun LLVMGetNumMaskElements(ShuffleVectorInst: LLVMValueRef): UInt =
     (`LLVMGetNumMaskElements$mh`.invokeExact(ShuffleVectorInst) as Int).toUInt()
 
-/**
- *
- * \returns a constant that specifies that the result of a \c ShuffleVectorInst
- * is undefined.
- */
 public fun LLVMGetUndefMaskElem(): Int = `LLVMGetUndefMaskElem$mh`.invokeExact() as Int
 
-/**
- *
- * Get the mask value at position Elt in the mask of a ShuffleVector
- * instruction.
- *
- * \Returns the result of \c LLVMGetUndefMaskElem() if the mask value is
- * poison at that position.
- */
 public fun LLVMGetMaskValue(ShuffleVectorInst: LLVMValueRef, Elt: UInt): Int =
     `LLVMGetMaskValue$mh`.invokeExact(ShuffleVectorInst, Elt.toInt()) as Int
 
@@ -5662,24 +2990,11 @@ public fun LLVMIsAtomicSingleThread(AtomicInst: LLVMValueRef): LLVMBool =
 public fun LLVMSetAtomicSingleThread(AtomicInst: LLVMValueRef, SingleThread: LLVMBool): Unit =
     `LLVMSetAtomicSingleThread$mh`.invokeExact(AtomicInst, SingleThread) as Unit
 
-/**
- *
- * Returns whether an instruction is an atomic instruction, e.g., atomicrmw,
- * cmpxchg, fence, or loads and stores with atomic ordering.
- */
 public fun LLVMIsAtomic(Inst: LLVMValueRef): LLVMBool = `LLVMIsAtomic$mh`.invokeExact(Inst) as Int
 
-/**
- *
- * Returns the synchronization scope ID of an atomic instruction.
- */
 public fun LLVMGetAtomicSyncScopeID(AtomicInst: LLVMValueRef): UInt =
     (`LLVMGetAtomicSyncScopeID$mh`.invokeExact(AtomicInst) as Int).toUInt()
 
-/**
- *
- * Sets the synchronization scope ID of an atomic instruction.
- */
 public fun LLVMSetAtomicSyncScopeID(AtomicInst: LLVMValueRef, SSID: UInt): Unit =
     `LLVMSetAtomicSyncScopeID$mh`.invokeExact(AtomicInst, SSID.toInt()) as Unit
 
@@ -5695,27 +3010,12 @@ public fun LLVMGetCmpXchgFailureOrdering(CmpXchgInst: LLVMValueRef): LLVMAtomicO
 public fun LLVMSetCmpXchgFailureOrdering(CmpXchgInst: LLVMValueRef, Ordering: LLVMAtomicOrdering): Unit =
     `LLVMSetCmpXchgFailureOrdering$mh`.invokeExact(CmpXchgInst, Ordering.value) as Unit
 
-/**
- *
- * Changes the type of M so it can be passed to FunctionPassManagers and the
- * JIT.  They take ModuleProviders for historical reasons.
- */
 public fun LLVMCreateModuleProviderForExistingModule(M: LLVMModuleRef): LLVMModuleProviderRef =
     `LLVMCreateModuleProviderForExistingModule$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Destroys the module M.
- */
 public fun LLVMDisposeModuleProvider(M: LLVMModuleProviderRef): Unit =
     `LLVMDisposeModuleProvider$mh`.invokeExact(M) as Unit
 
-/**
- *
- * @defgroup LLVMCCoreMemoryBuffers Memory Buffers
- *
- * @{
- */
 public fun LLVMCreateMemoryBufferWithContentsOfFile(
     Path: Pointer<Byte>,
     OutMemBuf: Pointer<LLVMMemoryBufferRef>,
@@ -5758,110 +3058,34 @@ public fun LLVMGetBufferSize(MemBuf: LLVMMemoryBufferRef): ULong =
 public fun LLVMDisposeMemoryBuffer(MemBuf: LLVMMemoryBufferRef): Unit =
     `LLVMDisposeMemoryBuffer$mh`.invokeExact(MemBuf) as Unit
 
-/**
- * Constructs a new whole-module pass pipeline. This type of pipeline is
- * suitable for link-time optimization and whole-module transformations.
- * @see llvm::PassManager::PassManager
- */
 public fun LLVMCreatePassManager(): LLVMPassManagerRef = `LLVMCreatePassManager$mh`.invokeExact() as MemorySegment
 
-/**
- * Constructs a new function-by-function pass pipeline over the module
- * provider. It does not take ownership of the module provider. This type of
- * pipeline is suitable for code generation and JIT compilation tasks.
- * @see llvm::FunctionPassManager::FunctionPassManager
- */
 public fun LLVMCreateFunctionPassManagerForModule(M: LLVMModuleRef): LLVMPassManagerRef =
     `LLVMCreateFunctionPassManagerForModule$mh`.invokeExact(M) as MemorySegment
 
-/**
- * Deprecated: Use LLVMCreateFunctionPassManagerForModule instead.
- */
 public fun LLVMCreateFunctionPassManager(MP: LLVMModuleProviderRef): LLVMPassManagerRef =
     `LLVMCreateFunctionPassManager$mh`.invokeExact(MP) as MemorySegment
 
-/**
- * Initializes, executes on the provided module, and finalizes all of the
- * passes scheduled in the pass manager. Returns 1 if any of the passes
- * modified the module, 0 otherwise.
- * @see llvm::PassManager::run(Module&)
- */
 public fun LLVMRunPassManager(PM: LLVMPassManagerRef, M: LLVMModuleRef): LLVMBool =
     `LLVMRunPassManager$mh`.invokeExact(PM, M) as Int
 
-/**
- * Initializes all of the function passes scheduled in the function pass
- * manager. Returns 1 if any of the passes modified the module, 0 otherwise.
- * @see llvm::FunctionPassManager::doInitialization
- */
 public fun LLVMInitializeFunctionPassManager(FPM: LLVMPassManagerRef): LLVMBool =
     `LLVMInitializeFunctionPassManager$mh`.invokeExact(FPM) as Int
 
-/**
- * Executes all of the function passes scheduled in the function pass manager
- * on the provided function. Returns 1 if any of the passes modified the
- * function, false otherwise.
- * @see llvm::FunctionPassManager::run(Function&)
- */
 public fun LLVMRunFunctionPassManager(FPM: LLVMPassManagerRef, F: LLVMValueRef): LLVMBool =
     `LLVMRunFunctionPassManager$mh`.invokeExact(FPM, F) as Int
 
-/**
- * Finalizes all of the function passes scheduled in the function pass
- * manager. Returns 1 if any of the passes modified the module, 0 otherwise.
- * @see llvm::FunctionPassManager::doFinalization
- */
 public fun LLVMFinalizeFunctionPassManager(FPM: LLVMPassManagerRef): LLVMBool =
     `LLVMFinalizeFunctionPassManager$mh`.invokeExact(FPM) as Int
 
-/**
- * Frees the memory of a pass pipeline. For function pipelines, does not free
- * the module provider.
- * @see llvm::PassManagerBase::~PassManagerBase.
- */
 public fun LLVMDisposePassManager(PM: LLVMPassManagerRef): Unit = `LLVMDisposePassManager$mh`.invokeExact(PM) as Unit
 
-/**
- * Deprecated: Multi-threading can only be enabled/disabled with the compile
- * time define LLVM_ENABLE_THREADS.  This function always returns
- * LLVMIsMultithreaded().
- */
 public fun LLVMStartMultithreaded(): LLVMBool = `LLVMStartMultithreaded$mh`.invokeExact() as Int
 
-/**
- * Deprecated: Multi-threading can only be enabled/disabled with the compile
- * time define LLVM_ENABLE_THREADS.
- */
 public fun LLVMStopMultithreaded(): Unit = `LLVMStopMultithreaded$mh`.invokeExact() as Unit
 
-/**
- * Check whether LLVM is executing in thread-safe mode or not.
- * @see llvm::llvm_is_multithreaded
- */
 public fun LLVMIsMultithreaded(): LLVMBool = `LLVMIsMultithreaded$mh`.invokeExact() as Int
 
-/**
- * ===- llvm/Config/Targets.def - LLVM Target Architectures ------*- C++ -*-===*\
- * |*                                                                            *|
- * |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
- * |* Exceptions.                                                                *|
- * |* See https://llvm.org/LICENSE.txt for license information.                  *|
- * |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
- * |*                                                                            *|
- * |*===----------------------------------------------------------------------===*|
- * |*                                                                            *|
- * |* This file enumerates all of the target architectures supported by          *|
- * |* this build of LLVM. Clients of this file should define the                 *|
- * |* LLVM_TARGET macro to be a function-like macro with a single                *|
- * |* parameter (the name of the target); including this file will then          *|
- * |* enumerate all of the targets.                                              *|
- * |*                                                                            *|
- * |* The set of targets supported by LLVM is generated at configuration         *|
- * |* time, at which point this header is generated. Do not modify this          *|
- * |* header directly.                                                           *|
- * |*                                                                            *|
- * \*===----------------------------------------------------------------------===
- */
 public fun LLVMInitializeAArch64TargetInfo(): Unit = `LLVMInitializeAArch64TargetInfo$mh`.invokeExact() as Unit
 
 public fun LLVMInitializeAMDGPUTargetInfo(): Unit = `LLVMInitializeAMDGPUTargetInfo$mh`.invokeExact() as Unit
@@ -5902,28 +3126,6 @@ public fun LLVMInitializeX86TargetInfo(): Unit = `LLVMInitializeX86TargetInfo$mh
 
 public fun LLVMInitializeXCoreTargetInfo(): Unit = `LLVMInitializeXCoreTargetInfo$mh`.invokeExact() as Unit
 
-/**
- * ===- llvm/Config/Targets.def - LLVM Target Architectures ------*- C++ -*-===*\
- * |*                                                                            *|
- * |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
- * |* Exceptions.                                                                *|
- * |* See https://llvm.org/LICENSE.txt for license information.                  *|
- * |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
- * |*                                                                            *|
- * |*===----------------------------------------------------------------------===*|
- * |*                                                                            *|
- * |* This file enumerates all of the target architectures supported by          *|
- * |* this build of LLVM. Clients of this file should define the                 *|
- * |* LLVM_TARGET macro to be a function-like macro with a single                *|
- * |* parameter (the name of the target); including this file will then          *|
- * |* enumerate all of the targets.                                              *|
- * |*                                                                            *|
- * |* The set of targets supported by LLVM is generated at configuration         *|
- * |* time, at which point this header is generated. Do not modify this          *|
- * |* header directly.                                                           *|
- * |*                                                                            *|
- * \*===----------------------------------------------------------------------===
- */
 public fun LLVMInitializeAArch64Target(): Unit = `LLVMInitializeAArch64Target$mh`.invokeExact() as Unit
 
 public fun LLVMInitializeAMDGPUTarget(): Unit = `LLVMInitializeAMDGPUTarget$mh`.invokeExact() as Unit
@@ -5964,28 +3166,6 @@ public fun LLVMInitializeX86Target(): Unit = `LLVMInitializeX86Target$mh`.invoke
 
 public fun LLVMInitializeXCoreTarget(): Unit = `LLVMInitializeXCoreTarget$mh`.invokeExact() as Unit
 
-/**
- * ===- llvm/Config/Targets.def - LLVM Target Architectures ------*- C++ -*-===*\
- * |*                                                                            *|
- * |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
- * |* Exceptions.                                                                *|
- * |* See https://llvm.org/LICENSE.txt for license information.                  *|
- * |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
- * |*                                                                            *|
- * |*===----------------------------------------------------------------------===*|
- * |*                                                                            *|
- * |* This file enumerates all of the target architectures supported by          *|
- * |* this build of LLVM. Clients of this file should define the                 *|
- * |* LLVM_TARGET macro to be a function-like macro with a single                *|
- * |* parameter (the name of the target); including this file will then          *|
- * |* enumerate all of the targets.                                              *|
- * |*                                                                            *|
- * |* The set of targets supported by LLVM is generated at configuration         *|
- * |* time, at which point this header is generated. Do not modify this          *|
- * |* header directly.                                                           *|
- * |*                                                                            *|
- * \*===----------------------------------------------------------------------===
- */
 public fun LLVMInitializeAArch64TargetMC(): Unit = `LLVMInitializeAArch64TargetMC$mh`.invokeExact() as Unit
 
 public fun LLVMInitializeAMDGPUTargetMC(): Unit = `LLVMInitializeAMDGPUTargetMC$mh`.invokeExact() as Unit
@@ -6026,29 +3206,6 @@ public fun LLVMInitializeX86TargetMC(): Unit = `LLVMInitializeX86TargetMC$mh`.in
 
 public fun LLVMInitializeXCoreTargetMC(): Unit = `LLVMInitializeXCoreTargetMC$mh`.invokeExact() as Unit
 
-/**
- * ===- llvm/Config/AsmPrinters.def - LLVM Assembly Printers -----*- C++ -*-===*\
- * |*                                                                            *|
- * |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
- * |* Exceptions.                                                                *|
- * |* See https://llvm.org/LICENSE.txt for license information.                  *|
- * |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
- * |*                                                                            *|
- * |*===----------------------------------------------------------------------===*|
- * |*                                                                            *|
- * |* This file enumerates all of the assembly-language printers                 *|
- * |* supported by this build of LLVM. Clients of this file should define        *|
- * |* the LLVM_ASM_PRINTER macro to be a function-like macro with a              *|
- * |* single parameter (the name of the target whose assembly can be             *|
- * |* generated); including this file will then enumerate all of the             *|
- * |* targets with assembly printers.                                            *|
- * |*                                                                            *|
- * |* The set of targets supported by LLVM is generated at configuration         *|
- * |* time, at which point this header is generated. Do not modify this          *|
- * |* header directly.                                                           *|
- * |*                                                                            *|
- * \*===----------------------------------------------------------------------===
- */
 public fun LLVMInitializeAArch64AsmPrinter(): Unit = `LLVMInitializeAArch64AsmPrinter$mh`.invokeExact() as Unit
 
 public fun LLVMInitializeAMDGPUAsmPrinter(): Unit = `LLVMInitializeAMDGPUAsmPrinter$mh`.invokeExact() as Unit
@@ -6089,29 +3246,6 @@ public fun LLVMInitializeX86AsmPrinter(): Unit = `LLVMInitializeX86AsmPrinter$mh
 
 public fun LLVMInitializeXCoreAsmPrinter(): Unit = `LLVMInitializeXCoreAsmPrinter$mh`.invokeExact() as Unit
 
-/**
- * ===- llvm/Config/AsmParsers.def - LLVM Assembly Parsers -------*- C++ -*-===*\
- * |*                                                                            *|
- * |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
- * |* Exceptions.                                                                *|
- * |* See https://llvm.org/LICENSE.txt for license information.                  *|
- * |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
- * |*                                                                            *|
- * |*===----------------------------------------------------------------------===*|
- * |*                                                                            *|
- * |* This file enumerates all of the assembly-language parsers                  *|
- * |* supported by this build of LLVM. Clients of this file should define        *|
- * |* the LLVM_ASM_PARSER macro to be a function-like macro with a               *|
- * |* single parameter (the name of the target whose assembly can be             *|
- * |* generated); including this file will then enumerate all of the             *|
- * |* targets with assembly parsers.                                             *|
- * |*                                                                            *|
- * |* The set of targets supported by LLVM is generated at configuration         *|
- * |* time, at which point this header is generated. Do not modify this          *|
- * |* header directly.                                                           *|
- * |*                                                                            *|
- * \*===----------------------------------------------------------------------===
- */
 public fun LLVMInitializeAArch64AsmParser(): Unit = `LLVMInitializeAArch64AsmParser$mh`.invokeExact() as Unit
 
 public fun LLVMInitializeAMDGPUAsmParser(): Unit = `LLVMInitializeAMDGPUAsmParser$mh`.invokeExact() as Unit
@@ -6146,29 +3280,6 @@ public fun LLVMInitializeWebAssemblyAsmParser(): Unit = `LLVMInitializeWebAssemb
 
 public fun LLVMInitializeX86AsmParser(): Unit = `LLVMInitializeX86AsmParser$mh`.invokeExact() as Unit
 
-/**
- * ===- llvm/Config/Disassemblers.def - LLVM Assembly Parsers ----*- C++ -*-===*\
- * |*                                                                            *|
- * |* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
- * |* Exceptions.                                                                *|
- * |* See https://llvm.org/LICENSE.txt for license information.                  *|
- * |* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
- * |*                                                                            *|
- * |*===----------------------------------------------------------------------===*|
- * |*                                                                            *|
- * |* This file enumerates all of the assembly-language parsers                  *|
- * |* supported by this build of LLVM. Clients of this file should define        *|
- * |* the LLVM_DISASSEMBLER macro to be a function-like macro with a             *|
- * |* single parameter (the name of the target whose assembly can be             *|
- * |* generated); including this file will then enumerate all of the             *|
- * |* targets with assembly parsers.                                             *|
- * |*                                                                            *|
- * |* The set of targets supported by LLVM is generated at configuration         *|
- * |* time, at which point this header is generated. Do not modify this          *|
- * |* header directly.                                                           *|
- * |*                                                                            *|
- * \*===----------------------------------------------------------------------===
- */
 public fun LLVMInitializeAArch64Disassembler(): Unit = `LLVMInitializeAArch64Disassembler$mh`.invokeExact() as Unit
 
 public fun LLVMInitializeAMDGPUDisassembler(): Unit = `LLVMInitializeAMDGPUDisassembler$mh`.invokeExact() as Unit
@@ -6206,328 +3317,132 @@ public fun LLVMInitializeX86Disassembler(): Unit = `LLVMInitializeX86Disassemble
 
 public fun LLVMInitializeXCoreDisassembler(): Unit = `LLVMInitializeXCoreDisassembler$mh`.invokeExact() as Unit
 
-/**
- * LLVMInitializeAllTargetInfos - The main program should call this function if
- * it wants access to all available targets that LLVM is configured to
- * support.
- */
 public fun LLVMInitializeAllTargetInfos(): Unit = `LLVMInitializeAllTargetInfos$mh`.invokeExact() as Unit
 
-/**
- * LLVMInitializeAllTargets - The main program should call this function if it
- * wants to link in all available targets that LLVM is configured to
- * support.
- */
 public fun LLVMInitializeAllTargets(): Unit = `LLVMInitializeAllTargets$mh`.invokeExact() as Unit
 
-/**
- * LLVMInitializeAllTargetMCs - The main program should call this function if
- * it wants access to all available target MC that LLVM is configured to
- * support.
- */
 public fun LLVMInitializeAllTargetMCs(): Unit = `LLVMInitializeAllTargetMCs$mh`.invokeExact() as Unit
 
-/**
- * LLVMInitializeAllAsmPrinters - The main program should call this function if
- * it wants all asm printers that LLVM is configured to support, to make them
- * available via the TargetRegistry.
- */
 public fun LLVMInitializeAllAsmPrinters(): Unit = `LLVMInitializeAllAsmPrinters$mh`.invokeExact() as Unit
 
-/**
- * LLVMInitializeAllAsmParsers - The main program should call this function if
- * it wants all asm parsers that LLVM is configured to support, to make them
- * available via the TargetRegistry.
- */
 public fun LLVMInitializeAllAsmParsers(): Unit = `LLVMInitializeAllAsmParsers$mh`.invokeExact() as Unit
 
-/**
- * LLVMInitializeAllDisassemblers - The main program should call this function
- * if it wants all disassemblers that LLVM is configured to support, to make
- * them available via the TargetRegistry.
- */
 public fun LLVMInitializeAllDisassemblers(): Unit = `LLVMInitializeAllDisassemblers$mh`.invokeExact() as Unit
 
-/**
- * LLVMInitializeNativeTarget - The main program should call this function to
- * initialize the native target corresponding to the host.  This is useful
- * for JIT applications to ensure that the target gets linked in correctly.
- */
 public fun LLVMInitializeNativeTarget(): LLVMBool = `LLVMInitializeNativeTarget$mh`.invokeExact() as Int
 
-/**
- * LLVMInitializeNativeTargetAsmParser - The main program should call this
- * function to initialize the parser for the native target corresponding to the
- * host.
- */
 public fun LLVMInitializeNativeAsmParser(): LLVMBool = `LLVMInitializeNativeAsmParser$mh`.invokeExact() as Int
 
-/**
- * LLVMInitializeNativeTargetAsmPrinter - The main program should call this
- * function to initialize the printer for the native target corresponding to
- * the host.
- */
 public fun LLVMInitializeNativeAsmPrinter(): LLVMBool = `LLVMInitializeNativeAsmPrinter$mh`.invokeExact() as Int
 
-/**
- * LLVMInitializeNativeTargetDisassembler - The main program should call this
- * function to initialize the disassembler for the native target corresponding
- * to the host.
- */
 public fun LLVMInitializeNativeDisassembler(): LLVMBool = `LLVMInitializeNativeDisassembler$mh`.invokeExact() as Int
 
-/**
- *
- * Obtain the data layout for a module.
- *
- * @see Module::getDataLayout()
- */
 public fun LLVMGetModuleDataLayout(M: LLVMModuleRef): LLVMTargetDataRef =
     `LLVMGetModuleDataLayout$mh`.invokeExact(M) as MemorySegment
 
-/**
- *
- * Set the data layout for a module.
- *
- * @see Module::setDataLayout()
- */
 public fun LLVMSetModuleDataLayout(M: LLVMModuleRef, DL: LLVMTargetDataRef): Unit =
     `LLVMSetModuleDataLayout$mh`.invokeExact(M, DL) as Unit
 
-/**
- * Creates target data from a target layout string.
- * See the constructor llvm::DataLayout::DataLayout.
- */
 public fun LLVMCreateTargetData(StringRep: Pointer<Byte>): LLVMTargetDataRef =
     `LLVMCreateTargetData$mh`.invokeExact(StringRep) as MemorySegment
 
-/**
- * Deallocates a TargetData.
- * See the destructor llvm::DataLayout::~DataLayout.
- */
 public fun LLVMDisposeTargetData(TD: LLVMTargetDataRef): Unit = `LLVMDisposeTargetData$mh`.invokeExact(TD) as Unit
 
-/**
- * Adds target library information to a pass manager. This does not take
- * ownership of the target library info.
- * See the method llvm::PassManagerBase::add.
- */
 public fun LLVMAddTargetLibraryInfo(TLI: LLVMTargetLibraryInfoRef, PM: LLVMPassManagerRef): Unit =
     `LLVMAddTargetLibraryInfo$mh`.invokeExact(TLI, PM) as Unit
 
-/**
- * Converts target data to a target layout string. The string must be disposed
- * with LLVMDisposeMessage.
- * See the constructor llvm::DataLayout::DataLayout.
- */
 public fun LLVMCopyStringRepOfTargetData(TD: LLVMTargetDataRef): Pointer<Byte> =
     `LLVMCopyStringRepOfTargetData$mh`.invokeExact(TD) as MemorySegment
 
-/**
- * Returns the byte order of a target, either LLVMBigEndian or
- * LLVMLittleEndian.
- * See the method llvm::DataLayout::isLittleEndian.
- */
 public fun LLVMByteOrder(TD: LLVMTargetDataRef): LLVMByteOrdering =
     LLVMByteOrdering.fromInt(`LLVMByteOrder$mh`.invokeExact(TD) as Int)
 
-/**
- * Returns the pointer size in bytes for a target.
- * See the method llvm::DataLayout::getPointerSize.
- */
 public fun LLVMPointerSize(TD: LLVMTargetDataRef): UInt = (`LLVMPointerSize$mh`.invokeExact(TD) as Int).toUInt()
 
-/**
- * Returns the pointer size in bytes for a target for a specified
- * address space.
- * See the method llvm::DataLayout::getPointerSize.
- */
 public fun LLVMPointerSizeForAS(TD: LLVMTargetDataRef, AS: UInt): UInt =
     (`LLVMPointerSizeForAS$mh`.invokeExact(TD, AS.toInt()) as Int).toUInt()
 
-/**
- * Returns the integer type that is the same size as a pointer on a target.
- * See the method llvm::DataLayout::getIntPtrType.
- */
 public fun LLVMIntPtrType(TD: LLVMTargetDataRef): LLVMTypeRef = `LLVMIntPtrType$mh`.invokeExact(TD) as MemorySegment
 
-/**
- * Returns the integer type that is the same size as a pointer on a target.
- * This version allows the address space to be specified.
- * See the method llvm::DataLayout::getIntPtrType.
- */
 public fun LLVMIntPtrTypeForAS(TD: LLVMTargetDataRef, AS: UInt): LLVMTypeRef =
     `LLVMIntPtrTypeForAS$mh`.invokeExact(TD, AS.toInt()) as MemorySegment
 
-/**
- * Returns the integer type that is the same size as a pointer on a target.
- * See the method llvm::DataLayout::getIntPtrType.
- */
 public fun LLVMIntPtrTypeInContext(C: LLVMContextRef, TD: LLVMTargetDataRef): LLVMTypeRef =
     `LLVMIntPtrTypeInContext$mh`.invokeExact(C, TD) as MemorySegment
 
-/**
- * Returns the integer type that is the same size as a pointer on a target.
- * This version allows the address space to be specified.
- * See the method llvm::DataLayout::getIntPtrType.
- */
 public fun LLVMIntPtrTypeForASInContext(
     C: LLVMContextRef,
     TD: LLVMTargetDataRef,
     AS: UInt,
 ): LLVMTypeRef = `LLVMIntPtrTypeForASInContext$mh`.invokeExact(C, TD, AS.toInt()) as MemorySegment
 
-/**
- * Computes the size of a type in bits for a target.
- * See the method llvm::DataLayout::getTypeSizeInBits.
- */
 public fun LLVMSizeOfTypeInBits(TD: LLVMTargetDataRef, Ty: LLVMTypeRef): ULong =
     (`LLVMSizeOfTypeInBits$mh`.invokeExact(TD, Ty) as Long).toULong()
 
-/**
- * Computes the storage size of a type in bytes for a target.
- * See the method llvm::DataLayout::getTypeStoreSize.
- */
 public fun LLVMStoreSizeOfType(TD: LLVMTargetDataRef, Ty: LLVMTypeRef): ULong =
     (`LLVMStoreSizeOfType$mh`.invokeExact(TD, Ty) as Long).toULong()
 
-/**
- * Computes the ABI size of a type in bytes for a target.
- * See the method llvm::DataLayout::getTypeAllocSize.
- */
 public fun LLVMABISizeOfType(TD: LLVMTargetDataRef, Ty: LLVMTypeRef): ULong =
     (`LLVMABISizeOfType$mh`.invokeExact(TD, Ty) as Long).toULong()
 
-/**
- * Computes the ABI alignment of a type in bytes for a target.
- * See the method llvm::DataLayout::getTypeABISize.
- */
 public fun LLVMABIAlignmentOfType(TD: LLVMTargetDataRef, Ty: LLVMTypeRef): UInt =
     (`LLVMABIAlignmentOfType$mh`.invokeExact(TD, Ty) as Int).toUInt()
 
-/**
- * Computes the call frame alignment of a type in bytes for a target.
- * See the method llvm::DataLayout::getTypeABISize.
- */
 public fun LLVMCallFrameAlignmentOfType(TD: LLVMTargetDataRef, Ty: LLVMTypeRef): UInt =
     (`LLVMCallFrameAlignmentOfType$mh`.invokeExact(TD, Ty) as Int).toUInt()
 
-/**
- * Computes the preferred alignment of a type in bytes for a target.
- * See the method llvm::DataLayout::getTypeABISize.
- */
 public fun LLVMPreferredAlignmentOfType(TD: LLVMTargetDataRef, Ty: LLVMTypeRef): UInt =
     (`LLVMPreferredAlignmentOfType$mh`.invokeExact(TD, Ty) as Int).toUInt()
 
-/**
- * Computes the preferred alignment of a global variable in bytes for a target.
- * See the method llvm::DataLayout::getPreferredAlignment.
- */
 public fun LLVMPreferredAlignmentOfGlobal(TD: LLVMTargetDataRef, GlobalVar: LLVMValueRef): UInt =
     (`LLVMPreferredAlignmentOfGlobal$mh`.invokeExact(TD, GlobalVar) as Int).toUInt()
 
-/**
- * Computes the structure element that contains the byte offset for a target.
- * See the method llvm::StructLayout::getElementContainingOffset.
- */
 public fun LLVMElementAtOffset(
     TD: LLVMTargetDataRef,
     StructTy: LLVMTypeRef,
     Offset: ULong,
 ): UInt = (`LLVMElementAtOffset$mh`.invokeExact(TD, StructTy, Offset.toLong()) as Int).toUInt()
 
-/**
- * Computes the byte offset of the indexed struct element for a target.
- * See the method llvm::StructLayout::getElementContainingOffset.
- */
 public fun LLVMOffsetOfElement(
     TD: LLVMTargetDataRef,
     StructTy: LLVMTypeRef,
     Element: UInt,
 ): ULong = (`LLVMOffsetOfElement$mh`.invokeExact(TD, StructTy, Element.toInt()) as Long).toULong()
 
-/**
- * Returns the first llvm::Target in the registered targets list.
- */
 public fun LLVMGetFirstTarget(): LLVMTargetRef = `LLVMGetFirstTarget$mh`.invokeExact() as MemorySegment
 
-/**
- * Returns the next llvm::Target given a previous one (or null if there's none)
- */
 public fun LLVMGetNextTarget(T: LLVMTargetRef): LLVMTargetRef = `LLVMGetNextTarget$mh`.invokeExact(T) as MemorySegment
 
-/**
- * Finds the target corresponding to the given name and stores it in \p T.
- * Returns 0 on success.
- */
 public fun LLVMGetTargetFromName(Name: Pointer<Byte>): LLVMTargetRef =
     `LLVMGetTargetFromName$mh`.invokeExact(Name) as MemorySegment
 
-/**
- * Finds the target corresponding to the given triple and stores it in \p T.
- * Returns 0 on success. Optionally returns any error in ErrorMessage.
- * Use LLVMDisposeMessage to dispose the message.
- */
 public fun LLVMGetTargetFromTriple(
     Triple: Pointer<Byte>,
     T: Pointer<LLVMTargetRef>,
     ErrorMessage: Pointer<Pointer<Byte>>,
 ): LLVMBool = `LLVMGetTargetFromTriple$mh`.invokeExact(Triple, T, ErrorMessage) as Int
 
-/**
- * Returns the name of a target. See llvm::Target::getName
- */
 public fun LLVMGetTargetName(T: LLVMTargetRef): Pointer<Byte> = `LLVMGetTargetName$mh`.invokeExact(T) as MemorySegment
 
-/**
- * Returns the description  of a target. See llvm::Target::getDescription
- */
 public fun LLVMGetTargetDescription(T: LLVMTargetRef): Pointer<Byte> =
     `LLVMGetTargetDescription$mh`.invokeExact(T) as MemorySegment
 
-/**
- * Returns if the target has a JIT
- */
 public fun LLVMTargetHasJIT(T: LLVMTargetRef): LLVMBool = `LLVMTargetHasJIT$mh`.invokeExact(T) as Int
 
-/**
- * Returns if the target has a TargetMachine associated
- */
 public fun LLVMTargetHasTargetMachine(T: LLVMTargetRef): LLVMBool =
     `LLVMTargetHasTargetMachine$mh`.invokeExact(T) as Int
 
-/**
- * Returns if the target as an ASM backend (required for emitting output)
- */
 public fun LLVMTargetHasAsmBackend(T: LLVMTargetRef): LLVMBool = `LLVMTargetHasAsmBackend$mh`.invokeExact(T) as Int
 
-/**
- *
- * Create a new set of options for an llvm::TargetMachine.
- *
- * The returned option structure must be released with
- * LLVMDisposeTargetMachineOptions() after the call to
- * LLVMCreateTargetMachineWithOptions().
- */
 public fun LLVMCreateTargetMachineOptions(): LLVMTargetMachineOptionsRef =
     `LLVMCreateTargetMachineOptions$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Dispose of an LLVMTargetMachineOptionsRef instance.
- */
 public fun LLVMDisposeTargetMachineOptions(Options: LLVMTargetMachineOptionsRef): Unit =
     `LLVMDisposeTargetMachineOptions$mh`.invokeExact(Options) as Unit
 
 public fun LLVMTargetMachineOptionsSetCPU(Options: LLVMTargetMachineOptionsRef, CPU: Pointer<Byte>): Unit =
     `LLVMTargetMachineOptionsSetCPU$mh`.invokeExact(Options, CPU) as Unit
 
-/**
- *
- * Set the list of features for the target machine.
- *
- * \param Features a comma-separated list of features.
- */
 public fun LLVMTargetMachineOptionsSetFeatures(Options: LLVMTargetMachineOptionsRef, Features: Pointer<Byte>): Unit =
     `LLVMTargetMachineOptionsSetFeatures$mh`.invokeExact(Options, Features) as Unit
 
@@ -6545,24 +3460,12 @@ public fun LLVMTargetMachineOptionsSetRelocMode(Options: LLVMTargetMachineOption
 public fun LLVMTargetMachineOptionsSetCodeModel(Options: LLVMTargetMachineOptionsRef, CodeModel: LLVMCodeModel): Unit =
     `LLVMTargetMachineOptionsSetCodeModel$mh`.invokeExact(Options, CodeModel.value) as Unit
 
-/**
- *
- * Create a new llvm::TargetMachine.
- *
- * \param T the target to create a machine for.
- * \param Triple a triple describing the target machine.
- * \param Options additional configuration (see
- * LLVMCreateTargetMachineOptions()).
- */
 public fun LLVMCreateTargetMachineWithOptions(
     T: LLVMTargetRef,
     Triple: Pointer<Byte>,
     Options: LLVMTargetMachineOptionsRef,
 ): LLVMTargetMachineRef = `LLVMCreateTargetMachineWithOptions$mh`.invokeExact(T, Triple, Options) as MemorySegment
 
-/**
- * Creates a new llvm::TargetMachine. See llvm::Target::createTargetMachine
- */
 public fun LLVMCreateTargetMachine(
     T: LLVMTargetRef,
     Triple: Pointer<Byte>,
@@ -6581,85 +3484,39 @@ public fun LLVMCreateTargetMachine(
     CodeModel.value,
 ) as MemorySegment
 
-/**
- * Dispose the LLVMTargetMachineRef instance generated by
- * LLVMCreateTargetMachine.
- */
 public fun LLVMDisposeTargetMachine(T: LLVMTargetMachineRef): Unit =
     `LLVMDisposeTargetMachine$mh`.invokeExact(T) as Unit
 
-/**
- * Returns the Target used in a TargetMachine
- */
 public fun LLVMGetTargetMachineTarget(T: LLVMTargetMachineRef): LLVMTargetRef =
     `LLVMGetTargetMachineTarget$mh`.invokeExact(T) as MemorySegment
 
-/**
- * Returns the triple used creating this target machine. See
- * llvm::TargetMachine::getTriple. The result needs to be disposed with
- * LLVMDisposeMessage.
- */
 public fun LLVMGetTargetMachineTriple(T: LLVMTargetMachineRef): Pointer<Byte> =
     `LLVMGetTargetMachineTriple$mh`.invokeExact(T) as MemorySegment
 
-/**
- * Returns the cpu used creating this target machine. See
- * llvm::TargetMachine::getCPU. The result needs to be disposed with
- * LLVMDisposeMessage.
- */
 public fun LLVMGetTargetMachineCPU(T: LLVMTargetMachineRef): Pointer<Byte> =
     `LLVMGetTargetMachineCPU$mh`.invokeExact(T) as MemorySegment
 
-/**
- * Returns the feature string used creating this target machine. See
- * llvm::TargetMachine::getFeatureString. The result needs to be disposed with
- * LLVMDisposeMessage.
- */
 public fun LLVMGetTargetMachineFeatureString(T: LLVMTargetMachineRef): Pointer<Byte> =
     `LLVMGetTargetMachineFeatureString$mh`.invokeExact(T) as MemorySegment
 
-/**
- * Create a DataLayout based on the targetMachine.
- */
 public fun LLVMCreateTargetDataLayout(T: LLVMTargetMachineRef): LLVMTargetDataRef =
     `LLVMCreateTargetDataLayout$mh`.invokeExact(T) as MemorySegment
 
-/**
- * Set the target machine's ASM verbosity.
- */
 public fun LLVMSetTargetMachineAsmVerbosity(T: LLVMTargetMachineRef, VerboseAsm: LLVMBool): Unit =
     `LLVMSetTargetMachineAsmVerbosity$mh`.invokeExact(T, VerboseAsm) as Unit
 
-/**
- * Enable fast-path instruction selection.
- */
 public fun LLVMSetTargetMachineFastISel(T: LLVMTargetMachineRef, Enable: LLVMBool): Unit =
     `LLVMSetTargetMachineFastISel$mh`.invokeExact(T, Enable) as Unit
 
-/**
- * Enable global instruction selection.
- */
 public fun LLVMSetTargetMachineGlobalISel(T: LLVMTargetMachineRef, Enable: LLVMBool): Unit =
     `LLVMSetTargetMachineGlobalISel$mh`.invokeExact(T, Enable) as Unit
 
-/**
- * Set abort behaviour when global instruction selection fails to lower/select
- * an instruction.
- */
 public fun LLVMSetTargetMachineGlobalISelAbort(T: LLVMTargetMachineRef, Mode: LLVMGlobalISelAbortMode): Unit =
     `LLVMSetTargetMachineGlobalISelAbort$mh`.invokeExact(T, Mode.value) as Unit
 
-/**
- * Enable the MachineOutliner pass.
- */
 public fun LLVMSetTargetMachineMachineOutliner(T: LLVMTargetMachineRef, Enable: LLVMBool): Unit =
     `LLVMSetTargetMachineMachineOutliner$mh`.invokeExact(T, Enable) as Unit
 
-/**
- * Emits an asm or object file for the given module to the filename. This
- * wraps several c++ only classes (among them a file stream). Returns any
- * error in ErrorMessage. Use LLVMDisposeMessage to dispose the message.
- */
 public fun LLVMTargetMachineEmitToFile(
     T: LLVMTargetMachineRef,
     M: LLVMModuleRef,
@@ -6668,9 +3525,6 @@ public fun LLVMTargetMachineEmitToFile(
     ErrorMessage: Pointer<Pointer<Byte>>,
 ): LLVMBool = `LLVMTargetMachineEmitToFile$mh`.invokeExact(T, M, Filename, codegen.value, ErrorMessage) as Int
 
-/**
- * Compile the LLVM IR stored in \p M and store the result in \p OutMemBuf.
- */
 public fun LLVMTargetMachineEmitToMemoryBuffer(
     T: LLVMTargetMachineRef,
     M: LLVMModuleRef,
@@ -6679,51 +3533,22 @@ public fun LLVMTargetMachineEmitToMemoryBuffer(
     OutMemBuf: Pointer<LLVMMemoryBufferRef>,
 ): LLVMBool = `LLVMTargetMachineEmitToMemoryBuffer$mh`.invokeExact(T, M, codegen.value, ErrorMessage, OutMemBuf) as Int
 
-/**
- * Get a triple for the host machine as a string. The result needs to be
- * disposed with LLVMDisposeMessage.
- */
 public fun LLVMGetDefaultTargetTriple(): Pointer<Byte> = `LLVMGetDefaultTargetTriple$mh`.invokeExact() as MemorySegment
 
-/**
- * Normalize a target triple. The result needs to be disposed with
- * LLVMDisposeMessage.
- */
 public fun LLVMNormalizeTargetTriple(triple: Pointer<Byte>): Pointer<Byte> =
     `LLVMNormalizeTargetTriple$mh`.invokeExact(triple) as MemorySegment
 
-/**
- * Get the host CPU as a string. The result needs to be disposed with
- * LLVMDisposeMessage.
- */
 public fun LLVMGetHostCPUName(): Pointer<Byte> = `LLVMGetHostCPUName$mh`.invokeExact() as MemorySegment
 
-/**
- * Get the host CPU's features as a string. The result needs to be disposed
- * with LLVMDisposeMessage.
- */
 public fun LLVMGetHostCPUFeatures(): Pointer<Byte> = `LLVMGetHostCPUFeatures$mh`.invokeExact() as MemorySegment
 
-/**
- * Adds the target-specific analysis passes to the pass manager.
- */
 public fun LLVMAddAnalysisPasses(T: LLVMTargetMachineRef, PM: LLVMPassManagerRef): Unit =
     `LLVMAddAnalysisPasses$mh`.invokeExact(T, PM) as Unit
 
-/**
- *
- * @defgroup LLVMCExecutionEngine Execution Engine
- * @ingroup LLVMC
- *
- * @{
- */
 public fun LLVMLinkInMCJIT(): Unit = `LLVMLinkInMCJIT$mh`.invokeExact() as Unit
 
 public fun LLVMLinkInInterpreter(): Unit = `LLVMLinkInInterpreter$mh`.invokeExact() as Unit
 
-/**
- * ===-- Operations on generic values --------------------------------------===
- */
 public fun LLVMCreateGenericValueOfInt(
     Ty: LLVMTypeRef,
     N: ULong,
@@ -6751,9 +3576,6 @@ public fun LLVMGenericValueToFloat(TyRef: LLVMTypeRef, GenVal: LLVMGenericValueR
 public fun LLVMDisposeGenericValue(GenVal: LLVMGenericValueRef): Unit =
     `LLVMDisposeGenericValue$mh`.invokeExact(GenVal) as Unit
 
-/**
- * ===-- Operations on execution engines -----------------------------------===
- */
 public fun LLVMCreateExecutionEngineForModule(
     OutEE: Pointer<LLVMExecutionEngineRef>,
     M: LLVMModuleRef,
@@ -6776,24 +3598,6 @@ public fun LLVMCreateJITCompilerForModule(
 public fun LLVMInitializeMCJITCompilerOptions(Options: Pointer<LLVMMCJITCompilerOptions>, SizeOfOptions: ULong): Unit =
     `LLVMInitializeMCJITCompilerOptions$mh`.invokeExact(Options, SizeOfOptions.toLong()) as Unit
 
-/**
- *
- * Create an MCJIT execution engine for a module, with the given options. It is
- * the responsibility of the caller to ensure that all fields in Options up to
- * the given SizeOfOptions are initialized. It is correct to pass a smaller
- * value of SizeOfOptions that omits some fields. The canonical way of using
- * this is:
- *
- * LLVMMCJITCompilerOptions options;
- * LLVMInitializeMCJITCompilerOptions(&options, sizeof(options));
- * ... fill in those options you care about
- * LLVMCreateMCJITCompilerForModule(&jit, mod, &options, sizeof(options),
- * &error);
- *
- * Note that this is also correct, though possibly suboptimal:
- *
- * LLVMCreateMCJITCompilerForModule(&jit, mod, 0, 0, &error);
- */
 public fun LLVMCreateMCJITCompilerForModule(
     OutJIT: Pointer<LLVMExecutionEngineRef>,
     M: LLVMModuleRef,
@@ -6873,18 +3677,6 @@ public fun LLVMGetFunctionAddress(EE: LLVMExecutionEngineRef, Name: Pointer<Byte
 public fun LLVMExecutionEngineGetErrMsg(EE: LLVMExecutionEngineRef, OutError: Pointer<Pointer<Byte>>): LLVMBool =
     `LLVMExecutionEngineGetErrMsg$mh`.invokeExact(EE, OutError) as Int
 
-/**
- *
- * Create a simple custom MCJIT memory manager. This memory manager can
- * intercept allocations in a module-oblivious way. This will return NULL
- * if any of the passed functions are NULL.
- *
- * @param Opaque An opaque client object to pass back to the callbacks.
- * @param AllocateCodeSection Allocate a block of memory for executable code.
- * @param AllocateDataSection Allocate a block of memory for data.
- * @param FinalizeMemory Set page permissions and flush cache. Return 0 on
- * success, 1 on error.
- */
 public fun LLVMCreateSimpleMCJITMemoryManager(
     Opaque: Pointer<Unit>,
     AllocateCodeSection: LLVMMemoryManagerAllocateCodeSectionCallback,
@@ -6902,9 +3694,6 @@ public fun LLVMCreateSimpleMCJITMemoryManager(
 public fun LLVMDisposeMCJITMemoryManager(MM: LLVMMCJITMemoryManagerRef): Unit =
     `LLVMDisposeMCJITMemoryManager$mh`.invokeExact(MM) as Unit
 
-/**
- * ===-- JIT Event Listener functions -------------------------------------===
- */
 public fun LLVMCreateGDBRegistrationListener(): LLVMJITEventListenerRef =
     `LLVMCreateGDBRegistrationListener$mh`.invokeExact() as MemorySegment
 
@@ -6917,41 +3706,22 @@ public fun LLVMCreateOProfileJITEventListener(): LLVMJITEventListenerRef =
 public fun LLVMCreatePerfJITEventListener(): LLVMJITEventListenerRef =
     `LLVMCreatePerfJITEventListener$mh`.invokeExact() as MemorySegment
 
-/**
- * Verifies that a module is valid, taking the specified action if not.
- * Optionally returns a human-readable description of any invalid constructs.
- * OutMessage must be disposed with LLVMDisposeMessage.
- */
 public fun LLVMVerifyModule(
     M: LLVMModuleRef,
     Action: LLVMVerifierFailureAction,
     OutMessage: Pointer<Pointer<Byte>>,
 ): LLVMBool = `LLVMVerifyModule$mh`.invokeExact(M, Action.value, OutMessage) as Int
 
-/**
- * Verifies that a single function is valid, taking the specified action. Useful
- * for debugging.
- */
 public fun LLVMVerifyFunction(Fn: LLVMValueRef, Action: LLVMVerifierFailureAction): LLVMBool =
     `LLVMVerifyFunction$mh`.invokeExact(Fn, Action.value) as Int
 
-/**
- * Open up a ghostview window that displays the CFG of the current function.
- * Useful for debugging.
- */
 public fun LLVMViewFunctionCFG(Fn: LLVMValueRef): Unit = `LLVMViewFunctionCFG$mh`.invokeExact(Fn) as Unit
 
 public fun LLVMViewFunctionCFGOnly(Fn: LLVMValueRef): Unit = `LLVMViewFunctionCFGOnly$mh`.invokeExact(Fn) as Unit
 
-/**
- * Writes a module to the specified path. Returns 0 on success.
- */
 public fun LLVMWriteBitcodeToFile(M: LLVMModuleRef, Path: Pointer<Byte>): Int =
     `LLVMWriteBitcodeToFile$mh`.invokeExact(M, Path) as Int
 
-/**
- * Writes a module to an open file descriptor. Returns 0 on success.
- */
 public fun LLVMWriteBitcodeToFD(
     M: LLVMModuleRef,
     FD: Int,
@@ -6959,87 +3729,31 @@ public fun LLVMWriteBitcodeToFD(
     Unbuffered: Int,
 ): Int = `LLVMWriteBitcodeToFD$mh`.invokeExact(M, FD, ShouldClose, Unbuffered) as Int
 
-/**
- * Deprecated for LLVMWriteBitcodeToFD. Writes a module to an open file
- * descriptor. Returns 0 on success. Closes the Handle.
- */
 public fun LLVMWriteBitcodeToFileHandle(M: LLVMModuleRef, Handle: Int): Int =
     `LLVMWriteBitcodeToFileHandle$mh`.invokeExact(M, Handle) as Int
 
-/**
- * Writes a module to a new memory buffer and returns it.
- */
 public fun LLVMWriteBitcodeToMemoryBuffer(M: LLVMModuleRef): LLVMMemoryBufferRef =
     `LLVMWriteBitcodeToMemoryBuffer$mh`.invokeExact(M) as MemorySegment
 
-/**
- * Links the source module into the destination module. The source module is
- * destroyed.
- * The return value is true if an error occurred, false otherwise.
- * Use the diagnostic handler to get any diagnostic message.
- */
 public fun LLVMLinkModules2(Dest: LLVMModuleRef, Src: LLVMModuleRef): LLVMBool =
     `LLVMLinkModules2$mh`.invokeExact(Dest, Src) as Int
 
-/**
- *
- * Returns a printable string.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_get_version(): Pointer<Byte> = `lto_get_version$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Returns the last error string or NULL if last operation was successful.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_get_error_message(): Pointer<Byte> = `lto_get_error_message$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Checks if a file is a loadable object file.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_is_object_file(path: Pointer<Byte>): lto_bool_t =
     `lto_module_is_object_file$mh`.invokeExact(path) as Boolean
 
-/**
- *
- * Checks if a file is a loadable object compiled for requested target.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_is_object_file_for_target(path: Pointer<Byte>, target_triple_prefix: Pointer<Byte>): lto_bool_t =
     `lto_module_is_object_file_for_target$mh`.invokeExact(path, target_triple_prefix) as Boolean
 
-/**
- *
- * Return true if \p Buffer contains a bitcode file with ObjC code (category
- * or class) in it.
- *
- * \since LTO_API_VERSION=20
- */
 public fun lto_module_has_objc_category(mem: Pointer<Unit>, length: ULong): lto_bool_t =
     `lto_module_has_objc_category$mh`.invokeExact(mem, length.toLong()) as Boolean
 
-/**
- *
- * Checks if a buffer is a loadable object file.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_is_object_file_in_memory(mem: Pointer<Unit>, length: ULong): lto_bool_t =
     `lto_module_is_object_file_in_memory$mh`.invokeExact(mem, length.toLong()) as Boolean
 
-/**
- *
- * Checks if a buffer is a loadable object compiled for requested target.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_is_object_file_in_memory_for_target(
     mem: Pointer<Unit>,
     length: ULong,
@@ -7050,68 +3764,24 @@ public fun lto_module_is_object_file_in_memory_for_target(
     target_triple_prefix,
 ) as Boolean
 
-/**
- *
- * Loads an object file from disk.
- * Returns NULL on error (check lto_get_error_message() for details).
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_create(path: Pointer<Byte>): lto_module_t =
     `lto_module_create$mh`.invokeExact(path) as MemorySegment
 
-/**
- *
- * Loads an object file from memory.
- * Returns NULL on error (check lto_get_error_message() for details).
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_create_from_memory(mem: Pointer<Unit>, length: ULong): lto_module_t =
     `lto_module_create_from_memory$mh`.invokeExact(mem, length.toLong()) as MemorySegment
 
-/**
- *
- * Loads an object file from memory with an extra path argument.
- * Returns NULL on error (check lto_get_error_message() for details).
- *
- * \since LTO_API_VERSION=9
- */
 public fun lto_module_create_from_memory_with_path(
     mem: Pointer<Unit>,
     length: ULong,
     path: Pointer<Byte>,
 ): lto_module_t = `lto_module_create_from_memory_with_path$mh`.invokeExact(mem, length.toLong(), path) as MemorySegment
 
-/**
- *
- * Loads an object file in its own context.
- *
- * Loads an object file in its own LLVMContext.  This function call is
- * thread-safe.  However, modules created this way should not be merged into an
- * lto_code_gen_t using \a lto_codegen_add_module().
- *
- * Returns NULL on error (check lto_get_error_message() for details).
- *
- * \since LTO_API_VERSION=11
- */
 public fun lto_module_create_in_local_context(
     mem: Pointer<Unit>,
     length: ULong,
     path: Pointer<Byte>,
 ): lto_module_t = `lto_module_create_in_local_context$mh`.invokeExact(mem, length.toLong(), path) as MemorySegment
 
-/**
- *
- * Loads an object file in the codegen context.
- *
- * Loads an object file into the same context as \c cg.  The module is safe to
- * add using \a lto_codegen_add_module().
- *
- * Returns NULL on error (check lto_get_error_message() for details).
- *
- * \since LTO_API_VERSION=11
- */
 public fun lto_module_create_in_codegen_context(
     mem: Pointer<Unit>,
     length: ULong,
@@ -7120,26 +3790,12 @@ public fun lto_module_create_in_codegen_context(
 ): lto_module_t =
     `lto_module_create_in_codegen_context$mh`.invokeExact(mem, length.toLong(), path, cg) as MemorySegment
 
-/**
- *
- * Loads an object file from disk. The seek point of fd is not preserved.
- * Returns NULL on error (check lto_get_error_message() for details).
- *
- * \since LTO_API_VERSION=5
- */
 public fun lto_module_create_from_fd(
     fd: Int,
     path: Pointer<Byte>,
     file_size: ULong,
 ): lto_module_t = `lto_module_create_from_fd$mh`.invokeExact(fd, path, file_size.toLong()) as MemorySegment
 
-/**
- *
- * Loads an object file from disk. The seek point of fd is not preserved.
- * Returns NULL on error (check lto_get_error_message() for details).
- *
- * \since LTO_API_VERSION=5
- */
 public fun lto_module_create_from_fd_at_offset(
     fd: Int,
     path: Pointer<Byte>,
@@ -7154,449 +3810,130 @@ public fun lto_module_create_from_fd_at_offset(
     offset,
 ) as MemorySegment
 
-/**
- *
- * Frees all memory internally allocated by the module.
- * Upon return the lto_module_t is no longer valid.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_dispose(mod: lto_module_t): Unit = `lto_module_dispose$mh`.invokeExact(mod) as Unit
 
-/**
- *
- * Returns triple string which the object module was compiled under.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_get_target_triple(mod: lto_module_t): Pointer<Byte> =
     `lto_module_get_target_triple$mh`.invokeExact(mod) as MemorySegment
 
-/**
- *
- * Sets triple string with which the object will be codegened.
- *
- * \since LTO_API_VERSION=4
- */
 public fun lto_module_set_target_triple(mod: lto_module_t, triple: Pointer<Byte>): Unit =
     `lto_module_set_target_triple$mh`.invokeExact(mod, triple) as Unit
 
-/**
- *
- * Returns the number of symbols in the object module.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_get_num_symbols(mod: lto_module_t): UInt =
     (`lto_module_get_num_symbols$mh`.invokeExact(mod) as Int).toUInt()
 
-/**
- *
- * Returns the name of the ith symbol in the object module.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_get_symbol_name(mod: lto_module_t, index: UInt): Pointer<Byte> =
     `lto_module_get_symbol_name$mh`.invokeExact(mod, index.toInt()) as MemorySegment
 
-/**
- *
- * Returns the attributes of the ith symbol in the object module.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_module_get_symbol_attribute(mod: lto_module_t, index: UInt): lto_symbol_attributes =
     lto_symbol_attributes.fromInt(`lto_module_get_symbol_attribute$mh`.invokeExact(mod, index.toInt()) as Int)
 
-/**
- *
- * Returns the module's linker options.
- *
- * The linker options may consist of multiple flags. It is the linker's
- * responsibility to split the flags using a platform-specific mechanism.
- *
- * \since LTO_API_VERSION=16
- */
 public fun lto_module_get_linkeropts(mod: lto_module_t): Pointer<Byte> =
     `lto_module_get_linkeropts$mh`.invokeExact(mod) as MemorySegment
 
-/**
- *
- * If targeting mach-o on darwin, this function gets the CPU type and subtype
- * that will end up being encoded in the mach-o header. These are the values
- * that can be found in mach/machine.h.
- *
- * \p out_cputype and \p out_cpusubtype must be non-NULL.
- *
- * Returns true on error (check lto_get_error_message() for details).
- *
- * \since LTO_API_VERSION=27
- */
 public fun lto_module_get_macho_cputype(
     mod: lto_module_t,
     out_cputype: Pointer<UInt>,
     out_cpusubtype: Pointer<UInt>,
 ): lto_bool_t = `lto_module_get_macho_cputype$mh`.invokeExact(mod, out_cputype, out_cpusubtype) as Boolean
 
-/**
- *
- * This function can be used by the linker to check if a given module has
- * any constructor or destructor functions.
- *
- * Returns true if the module has either the @llvm.global_ctors or the
- * @llvm.global_dtors symbol. Otherwise returns false.
- *
- * \since LTO_API_VERSION=29
- */
 public fun lto_module_has_ctor_dtor(mod: lto_module_t): lto_bool_t =
     `lto_module_has_ctor_dtor$mh`.invokeExact(mod) as Boolean
 
-/**
- *
- * Set a diagnostic handler and the related context (void *).
- * This is more general than lto_get_error_message, as the diagnostic handler
- * can be called at anytime within lto.
- *
- * \since LTO_API_VERSION=7
- */
 public fun lto_codegen_set_diagnostic_handler(
     `$p0`: lto_code_gen_t,
     `$p1`: lto_diagnostic_handler_t,
     `$p2`: Pointer<Unit>,
 ): Unit = `lto_codegen_set_diagnostic_handler$mh`.invokeExact(`$p0`, `$p1`, `$p2`) as Unit
 
-/**
- *
- * Instantiates a code generator.
- * Returns NULL on error (check lto_get_error_message() for details).
- *
- * All modules added using \a lto_codegen_add_module() must have been created
- * in the same context as the codegen.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_codegen_create(): lto_code_gen_t = `lto_codegen_create$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Instantiate a code generator in its own context.
- *
- * Instantiates a code generator in its own context.  Modules added via \a
- * lto_codegen_add_module() must have all been created in the same context,
- * using \a lto_module_create_in_codegen_context().
- *
- * \since LTO_API_VERSION=11
- */
 public fun lto_codegen_create_in_local_context(): lto_code_gen_t =
     `lto_codegen_create_in_local_context$mh`.invokeExact() as MemorySegment
 
-/**
- *
- * Frees all code generator and all memory it internally allocated.
- * Upon return the lto_code_gen_t is no longer valid.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_codegen_dispose(`$p0`: lto_code_gen_t): Unit = `lto_codegen_dispose$mh`.invokeExact(`$p0`) as Unit
 
-/**
- *
- * Add an object module to the set of modules for which code will be generated.
- * Returns true on error (check lto_get_error_message() for details).
- *
- * \c cg and \c mod must both be in the same context.  See \a
- * lto_codegen_create_in_local_context() and \a
- * lto_module_create_in_codegen_context().
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_codegen_add_module(cg: lto_code_gen_t, mod: lto_module_t): lto_bool_t =
     `lto_codegen_add_module$mh`.invokeExact(cg, mod) as Boolean
 
-/**
- *
- * Sets the object module for code generation. This will transfer the ownership
- * of the module to the code generator.
- *
- * \c cg and \c mod must both be in the same context.
- *
- * \since LTO_API_VERSION=13
- */
 public fun lto_codegen_set_module(cg: lto_code_gen_t, mod: lto_module_t): Unit =
     `lto_codegen_set_module$mh`.invokeExact(cg, mod) as Unit
 
-/**
- *
- * Sets if debug info should be generated.
- * Returns true on error (check lto_get_error_message() for details).
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_codegen_set_debug_model(cg: lto_code_gen_t, `$p1`: lto_debug_model): lto_bool_t =
     `lto_codegen_set_debug_model$mh`.invokeExact(cg, `$p1`.value) as Boolean
 
-/**
- *
- * Sets which PIC code model to generated.
- * Returns true on error (check lto_get_error_message() for details).
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_codegen_set_pic_model(cg: lto_code_gen_t, `$p1`: lto_codegen_model): lto_bool_t =
     `lto_codegen_set_pic_model$mh`.invokeExact(cg, `$p1`.value) as Boolean
 
-/**
- *
- * Sets the cpu to generate code for.
- *
- * \since LTO_API_VERSION=4
- */
 public fun lto_codegen_set_cpu(cg: lto_code_gen_t, cpu: Pointer<Byte>): Unit =
     `lto_codegen_set_cpu$mh`.invokeExact(cg, cpu) as Unit
 
-/**
- *
- * Sets the location of the assembler tool to run. If not set, libLTO
- * will use gcc to invoke the assembler.
- *
- * \since LTO_API_VERSION=3
- */
 public fun lto_codegen_set_assembler_path(cg: lto_code_gen_t, path: Pointer<Byte>): Unit =
     `lto_codegen_set_assembler_path$mh`.invokeExact(cg, path) as Unit
 
-/**
- *
- * Sets extra arguments that libLTO should pass to the assembler.
- *
- * \since LTO_API_VERSION=4
- */
 public fun lto_codegen_set_assembler_args(
     cg: lto_code_gen_t,
     args: Pointer<Pointer<Byte>>,
     nargs: Int,
 ): Unit = `lto_codegen_set_assembler_args$mh`.invokeExact(cg, args, nargs) as Unit
 
-/**
- *
- * Adds to a list of all global symbols that must exist in the final generated
- * code. If a function is not listed there, it might be inlined into every usage
- * and optimized away.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_codegen_add_must_preserve_symbol(cg: lto_code_gen_t, symbol: Pointer<Byte>): Unit =
     `lto_codegen_add_must_preserve_symbol$mh`.invokeExact(cg, symbol) as Unit
 
-/**
- *
- * Writes a new object file at the specified path that contains the
- * merged contents of all modules added so far.
- * Returns true on error (check lto_get_error_message() for details).
- *
- * \since LTO_API_VERSION=5
- */
 public fun lto_codegen_write_merged_modules(cg: lto_code_gen_t, path: Pointer<Byte>): lto_bool_t =
     `lto_codegen_write_merged_modules$mh`.invokeExact(cg, path) as Boolean
 
-/**
- *
- * Generates code for all added modules into one native object file.
- * This calls lto_codegen_optimize then lto_codegen_compile_optimized.
- *
- * On success returns a pointer to a generated mach-o/ELF buffer and
- * length set to the buffer size.  The buffer is owned by the
- * lto_code_gen_t and will be freed when lto_codegen_dispose()
- * is called, or lto_codegen_compile() is called again.
- * On failure, returns NULL (check lto_get_error_message() for details).
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_codegen_compile(cg: lto_code_gen_t, length: Pointer<ULong>): Pointer<Unit> =
     `lto_codegen_compile$mh`.invokeExact(cg, length) as MemorySegment
 
-/**
- *
- * Generates code for all added modules into one native object file.
- * This calls lto_codegen_optimize then lto_codegen_compile_optimized (instead
- * of returning a generated mach-o/ELF buffer, it writes to a file).
- *
- * The name of the file is written to name. Returns true on error.
- *
- * \since LTO_API_VERSION=5
- */
 public fun lto_codegen_compile_to_file(cg: lto_code_gen_t, name: Pointer<Pointer<Byte>>): lto_bool_t =
     `lto_codegen_compile_to_file$mh`.invokeExact(cg, name) as Boolean
 
-/**
- *
- * Runs optimization for the merged module. Returns true on error.
- *
- * \since LTO_API_VERSION=12
- */
 public fun lto_codegen_optimize(cg: lto_code_gen_t): lto_bool_t = `lto_codegen_optimize$mh`.invokeExact(cg) as Boolean
 
-/**
- *
- * Generates code for the optimized merged module into one native object file.
- * It will not run any IR optimizations on the merged module.
- *
- * On success returns a pointer to a generated mach-o/ELF buffer and length set
- * to the buffer size.  The buffer is owned by the lto_code_gen_t and will be
- * freed when lto_codegen_dispose() is called, or
- * lto_codegen_compile_optimized() is called again. On failure, returns NULL
- * (check lto_get_error_message() for details).
- *
- * \since LTO_API_VERSION=12
- */
 public fun lto_codegen_compile_optimized(cg: lto_code_gen_t, length: Pointer<ULong>): Pointer<Unit> =
     `lto_codegen_compile_optimized$mh`.invokeExact(cg, length) as MemorySegment
 
-/**
- *
- * Returns the runtime API version.
- *
- * \since LTO_API_VERSION=12
- */
 public fun lto_api_version(): UInt = (`lto_api_version$mh`.invokeExact() as Int).toUInt()
 
-/**
- *
- * Parses options immediately, making them available as early as possible. For
- * example during executing codegen::InitTargetOptionsFromCodeGenFlags. Since
- * parsing shud only happen once, only one of lto_codegen_debug_options or
- * lto_set_debug_options should be called.
- *
- * This function takes one or more options separated by spaces.
- * Warning: passing file paths through this function may confuse the argument
- * parser if the paths contain spaces.
- *
- * \since LTO_API_VERSION=28
- */
 public fun lto_set_debug_options(options: Pointer<Pointer<Byte>>, number: Int): Unit =
     `lto_set_debug_options$mh`.invokeExact(options, number) as Unit
 
-/**
- *
- * Sets options to help debug codegen bugs. Since parsing shud only happen once,
- * only one of lto_codegen_debug_options or lto_set_debug_options
- * should be called.
- *
- * This function takes one or more options separated by spaces.
- * Warning: passing file paths through this function may confuse the argument
- * parser if the paths contain spaces.
- *
- * \since prior to LTO_API_VERSION=3
- */
 public fun lto_codegen_debug_options(cg: lto_code_gen_t, `$p1`: Pointer<Byte>): Unit =
     `lto_codegen_debug_options$mh`.invokeExact(cg, `$p1`) as Unit
 
-/**
- *
- * Same as the previous function, but takes every option separately through an
- * array.
- *
- * \since prior to LTO_API_VERSION=26
- */
 public fun lto_codegen_debug_options_array(
     cg: lto_code_gen_t,
     `$p1`: Pointer<Byte>,
     number: Int,
 ): Unit = `lto_codegen_debug_options_array$mh`.invokeExact(cg, `$p1`, number) as Unit
 
-/**
- *
- * Initializes LLVM disassemblers.
- * FIXME: This doesn't really belong here.
- *
- * \since LTO_API_VERSION=5
- */
 public fun lto_initialize_disassembler(): Unit = `lto_initialize_disassembler$mh`.invokeExact() as Unit
 
-/**
- *
- * Sets if we should run internalize pass during optimization and code
- * generation.
- *
- * \since LTO_API_VERSION=14
- */
 public fun lto_codegen_set_should_internalize(cg: lto_code_gen_t, ShouldInternalize: lto_bool_t): Unit =
     `lto_codegen_set_should_internalize$mh`.invokeExact(cg, ShouldInternalize) as Unit
 
-/**
- *
- * Set whether to embed uselists in bitcode.
- *
- * Sets whether \a lto_codegen_write_merged_modules() should embed uselists in
- * output bitcode.  This should be turned on for all -save-temps output.
- *
- * \since LTO_API_VERSION=15
- */
 public fun lto_codegen_set_should_embed_uselists(cg: lto_code_gen_t, ShouldEmbedUselists: lto_bool_t): Unit =
     `lto_codegen_set_should_embed_uselists$mh`.invokeExact(cg, ShouldEmbedUselists) as Unit
 
-/**
- *
- * Creates an LTO input file from a buffer. The path
- * argument is used for diagnotics as this function
- * otherwise does not know which file the given buffer
- * is associated with.
- *
- * \since LTO_API_VERSION=24
- */
 public fun lto_input_create(
     buffer: Pointer<Unit>,
     buffer_size: ULong,
     path: Pointer<Byte>,
 ): lto_input_t = `lto_input_create$mh`.invokeExact(buffer, buffer_size.toLong(), path) as MemorySegment
 
-/**
- *
- * Frees all memory internally allocated by the LTO input file.
- * Upon return the lto_module_t is no longer valid.
- *
- * \since LTO_API_VERSION=24
- */
 public fun lto_input_dispose(input: lto_input_t): Unit = `lto_input_dispose$mh`.invokeExact(input) as Unit
 
-/**
- *
- * Returns the number of dependent library specifiers
- * for the given LTO input file.
- *
- * \since LTO_API_VERSION=24
- */
 public fun lto_input_get_num_dependent_libraries(input: lto_input_t): UInt =
     (`lto_input_get_num_dependent_libraries$mh`.invokeExact(input) as Int).toUInt()
 
-/**
- *
- * Returns the ith dependent library specifier
- * for the given LTO input file. The returned
- * string is not null-terminated.
- *
- * \since LTO_API_VERSION=24
- */
 public fun lto_input_get_dependent_library(
     input: lto_input_t,
     index: ULong,
     size: Pointer<ULong>,
 ): Pointer<Byte> = `lto_input_get_dependent_library$mh`.invokeExact(input, index.toLong(), size) as MemorySegment
 
-/**
- *
- * Returns the list of libcall symbols that can be generated by LTO
- * that might not be visible from the symbol table of bitcode files.
- *
- * \since prior to LTO_API_VERSION=25
- */
 public fun lto_runtime_lib_symbols_list(size: Pointer<ULong>): Pointer<Pointer<Byte>> =
     `lto_runtime_lib_symbols_list$mh`.invokeExact(size) as MemorySegment
 
-/**
- *
- * Test if a module has support for ThinLTO linking.
- *
- * \since LTO_API_VERSION=18
- */
 public fun lto_module_is_thinlto(mod: lto_module_t): lto_bool_t =
     `lto_module_is_thinlto$mh`.invokeExact(mod) as Boolean

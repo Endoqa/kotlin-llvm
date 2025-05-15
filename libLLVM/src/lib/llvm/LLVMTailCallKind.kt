@@ -4,16 +4,7 @@ package lib.llvm
 import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
-import kotlin.Int
 
-/**
- *
- * Tail call kind for LLVMSetTailCallKind and LLVMGetTailCallKind.
- *
- * Note that 'musttail' implies 'tail'.
- *
- * @see CallInst::TailCallKind
- */
 public enum class LLVMTailCallKind(
     public val `value`: Int,
 ) {
