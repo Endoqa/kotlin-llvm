@@ -8,53 +8,58 @@ import java.lang.invoke.MethodType
 public enum class LLVMAtomicRMWBinOp(
     public val `value`: Int,
 ) {
-    Xchg(0),
-
     /**
      * < Set the new value and return the one old
      */
-    Add(1),
+    Xchg(0),
 
     /**
      * < Add a value and return the old one
      */
-    Sub(2),
+    Add(1),
 
     /**
      * < Subtract a value and return the old one
      */
-    And(3),
+    Sub(2),
 
     /**
      * < And a value and return the old one
      */
-    Nand(4),
+    And(3),
 
     /**
      * < Not-And a value and return the old one
      */
-    Or(5),
+    Nand(4),
 
     /**
      * < OR a value and return the old one
      */
-    Xor(6),
+    Or(5),
 
     /**
      * < Xor a value and return the old one
      */
-    Max(7),
+    Xor(6),
 
     /**
      * < Sets the value if it's greater than the
      * original using a signed comparison and return
      * the old one
      */
-    Min(8),
+    Max(7),
 
     /**
      * < Sets the value if it's Smaller than the
      * original using a signed comparison and return
+     * the old one
+     */
+    Min(8),
+
+    /**
+     * < Sets the value if it's greater than the
+     * original using an unsigned comparison and return
      * the old one
      */
     UMax(9),
@@ -67,53 +72,51 @@ public enum class LLVMAtomicRMWBinOp(
     UMin(10),
 
     /**
-     * < Sets the value if it's greater than the
-     * original using an unsigned comparison and return
-     * the old one
-     */
-    FAdd(11),
-
-    /**
      * < Add a floating point value and return the
      * old one
      */
-    FSub(12),
+    FAdd(11),
 
     /**
      * < Subtract a floating point value and return the
      * old one
      */
-    FMax(13),
+    FSub(12),
 
     /**
      * < Sets the value if it's greater than the
      * original using an floating point comparison and
      * return the old one
      */
-    FMin(14),
+    FMax(13),
 
     /**
      * < Sets the value if it's smaller than the
      * original using an floating point comparison and
      * return the old one
      */
-    UIncWrap(15),
+    FMin(14),
 
     /**
      * < Increments the value, wrapping back to zero
      * when incremented above input value
      */
-    UDecWrap(16),
+    UIncWrap(15),
 
     /**
      * < Decrements the value, wrapping back to
      * the input value when decremented below zero
      */
-    USubCond(17),
+    UDecWrap(16),
 
     /**
      * <Subtracts the value only if no unsigned
      * overflow
+     */
+    USubCond(17),
+
+    /**
+     * <Subtracts the value, clamping to zero
      */
     USubSat(18),
     ;

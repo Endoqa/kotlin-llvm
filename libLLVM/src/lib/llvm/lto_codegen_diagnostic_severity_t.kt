@@ -10,6 +10,10 @@ public enum class lto_codegen_diagnostic_severity_t(
 ) {
     ERROR(0),
     WARNING(1),
+
+    /**
+     * Added in LTO_API_VERSION=10.
+     */
     REMARK(3),
 
     /**

@@ -8,15 +8,18 @@ import java.lang.invoke.MethodType
 public enum class LLVMVisibility(
     public val `value`: Int,
 ) {
+    /**
+     * < The GV is visible
+     */
     DefaultVisibility(0),
 
     /**
-     * < The GV is visible
+     * < The GV is hidden
      */
     HiddenVisibility(1),
 
     /**
-     * < The GV is hidden
+     * < The GV is protected
      */
     ProtectedVisibility(2),
     ;

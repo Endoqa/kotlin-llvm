@@ -8,15 +8,18 @@ import java.lang.invoke.MethodType
 public enum class LLVMUnnamedAddr(
     public val `value`: Int,
 ) {
+    /**
+     * < Address of the GV is significant.
+     */
     NoUnnamedAddr(0),
 
     /**
-     * < Address of the GV is significant.
+     * < Address of the GV is locally insignificant.
      */
     LocalUnnamedAddr(1),
 
     /**
-     * < Address of the GV is locally insignificant.
+     * < Address of the GV is globally insignificant.
      */
     GlobalUnnamedAddr(2),
     ;

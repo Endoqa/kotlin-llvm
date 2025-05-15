@@ -8,100 +8,103 @@ import java.lang.invoke.MethodType
 public enum class LLVMTypeKind(
     public val `value`: Int,
 ) {
-    VoidTypeKind(0),
-
     /**
      * < type with no size
      */
-    HalfTypeKind(1),
+    VoidTypeKind(0),
 
     /**
      * < 16 bit floating point type
      */
-    FloatTypeKind(2),
+    HalfTypeKind(1),
 
     /**
      * < 32 bit floating point type
      */
-    DoubleTypeKind(3),
+    FloatTypeKind(2),
 
     /**
      * < 64 bit floating point type
      */
-    X86_FP80TypeKind(4),
+    DoubleTypeKind(3),
 
     /**
      * < 80 bit floating point type (X87)
      */
-    FP128TypeKind(5),
+    X86_FP80TypeKind(4),
 
     /**
      * < 128 bit floating point type (112-bit mantissa)
      */
-    PPC_FP128TypeKind(6),
+    FP128TypeKind(5),
 
     /**
      * < 128 bit floating point type (two 64-bits)
      */
-    LabelTypeKind(7),
+    PPC_FP128TypeKind(6),
 
     /**
      * < Labels
      */
-    IntegerTypeKind(8),
+    LabelTypeKind(7),
 
     /**
      * < Arbitrary bit width integers
      */
-    FunctionTypeKind(9),
+    IntegerTypeKind(8),
 
     /**
      * < Functions
      */
-    StructTypeKind(10),
+    FunctionTypeKind(9),
 
     /**
      * < Structures
      */
-    ArrayTypeKind(11),
+    StructTypeKind(10),
 
     /**
      * < Arrays
      */
-    PointerTypeKind(12),
+    ArrayTypeKind(11),
 
     /**
      * < Pointers
      */
-    VectorTypeKind(13),
+    PointerTypeKind(12),
 
     /**
      * < Fixed width SIMD vector type
      */
-    MetadataTypeKind(14),
+    VectorTypeKind(13),
 
     /**
-     * 15 previously used by LLVMX86_MMXTypeKind
+     * < Metadata
      */
-    TokenTypeKind(16),
+    MetadataTypeKind(14),
 
     /**
      * < Tokens
      */
-    ScalableVectorTypeKind(17),
+    TokenTypeKind(16),
 
     /**
      * < Scalable SIMD vector type
      */
-    BFloatTypeKind(18),
+    ScalableVectorTypeKind(17),
 
     /**
      * < 16 bit brain floating point type
      */
-    X86_AMXTypeKind(19),
+    BFloatTypeKind(18),
 
     /**
      * < X86 AMX
+     */
+    X86_AMXTypeKind(19),
+
+    /**
+     * < Target extension type
      */
     TargetExtTypeKind(20),
     ;

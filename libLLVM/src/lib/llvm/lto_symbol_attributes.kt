@@ -8,6 +8,9 @@ import java.lang.invoke.MethodType
 public enum class lto_symbol_attributes(
     public val `value`: Int,
 ) {
+    /**
+     * log2 of alignment
+     */
     ALIGNMENT_MASK(0x0000001F),
 
     /**

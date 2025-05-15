@@ -8,54 +8,61 @@ import java.lang.invoke.MethodType
 public enum class LLVMLinkage(
     public val `value`: Int,
 ) {
+    /**
+     * < Externally visible function
+     */
     ExternalLinkage(0),
 
     /**
      * < Externally visible function
      */
     AvailableExternallyLinkage(1),
-    LinkOnceAnyLinkage(2),
 
     /**
      * < Keep one copy of function when linking (inline)
      */
-    LinkOnceODRLinkage(3),
+    LinkOnceAnyLinkage(2),
 
     /**
      * < Same, but only replaced by something
      * equivalent.
      */
-    LinkOnceODRAutoHideLinkage(4),
+    LinkOnceODRLinkage(3),
 
     /**
      * < Obsolete
      */
-    WeakAnyLinkage(5),
+    LinkOnceODRAutoHideLinkage(4),
 
     /**
      * < Keep one copy of function when linking (weak)
      */
-    WeakODRLinkage(6),
+    WeakAnyLinkage(5),
 
     /**
      * < Same, but only replaced by something
      * equivalent.
      */
-    AppendingLinkage(7),
+    WeakODRLinkage(6),
 
     /**
      * < Special purpose, only applies to global arrays
      */
-    InternalLinkage(8),
+    AppendingLinkage(7),
 
     /**
      * < Rename collisions when linking (static
      * functions)
      */
-    PrivateLinkage(9),
+    InternalLinkage(8),
 
     /**
      * < Like Internal, but omit from symbol table
+     */
+    PrivateLinkage(9),
+
+    /**
+     * < Obsolete
      */
     DLLImportLinkage(10),
 
@@ -65,27 +72,27 @@ public enum class LLVMLinkage(
     DLLExportLinkage(11),
 
     /**
-     * < Obsolete
+     * < ExternalWeak linkage description
      */
     ExternalWeakLinkage(12),
 
     /**
-     * < ExternalWeak linkage description
+     * < Obsolete
      */
     GhostLinkage(13),
 
     /**
-     * < Obsolete
+     * < Tentative definitions
      */
     CommonLinkage(14),
 
     /**
-     * < Tentative definitions
+     * < Like Private, but linker removes.
      */
     LinkerPrivateLinkage(15),
 
     /**
-     * < Like Private, but linker removes.
+     * < Like LinkerPrivate, but is weak.
      */
     LinkerPrivateWeakLinkage(16),
     ;

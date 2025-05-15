@@ -8,13 +8,17 @@ import java.lang.invoke.MethodType
 public enum class LLVMDLLStorageClass(
     public val `value`: Int,
 ) {
-    efaultStorageClass(0),
-    LLImportStorageClass(1),
+    DefaultStorageClass(0),
 
     /**
      * < Function to be imported from DLL.
      */
-    LLExportStorageClass(2),
+    DLLImportStorageClass(1),
+
+    /**
+     * < Function to be accessible from DLL.
+     */
+    DLLExportStorageClass(2),
     ;
 
     public companion object {
@@ -34,9 +38,9 @@ public enum class LLVMDLLStorageClass(
 
         @JvmStatic
         public fun fromInt(`value`: Int): LLVMDLLStorageClass = when (value) {
-            efaultStorageClass.value -> efaultStorageClass
-            LLImportStorageClass.value -> LLImportStorageClass
-            LLExportStorageClass.value -> LLExportStorageClass
+            DefaultStorageClass.value -> DefaultStorageClass
+            DLLImportStorageClass.value -> DLLImportStorageClass
+            DLLExportStorageClass.value -> DLLExportStorageClass
             else -> error("enum not found")
         }
     }

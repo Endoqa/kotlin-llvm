@@ -8,10 +8,13 @@ import java.lang.invoke.MethodType
 public enum class LLVMLandingPadClauseTy(
     public val `value`: Int,
 ) {
+    /**
+     * < A catch clause
+     */
     Catch(0),
 
     /**
-     * < A catch clause
+     * < A filter clause
      */
     Filter(1),
     ;

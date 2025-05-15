@@ -8,50 +8,53 @@ import java.lang.invoke.MethodType
 public enum class LLVMIntPredicate(
     public val `value`: Int,
 ) {
-    EQ(32),
-
     /**
      * < equal
      */
-    NE(33),
+    EQ(32),
 
     /**
      * < not equal
      */
-    UGT(34),
+    NE(33),
 
     /**
      * < unsigned greater than
      */
-    UGE(35),
+    UGT(34),
 
     /**
      * < unsigned greater or equal
      */
-    ULT(36),
+    UGE(35),
 
     /**
      * < unsigned less than
      */
-    ULE(37),
+    ULT(36),
 
     /**
      * < unsigned less or equal
      */
-    SGT(38),
+    ULE(37),
 
     /**
      * < signed greater than
      */
-    SGE(39),
+    SGT(38),
 
     /**
      * < signed greater or equal
      */
-    SLT(40),
+    SGE(39),
 
     /**
      * < signed less than
+     */
+    SLT(40),
+
+    /**
+     * < signed less or equal
      */
     SLE(41),
     ;

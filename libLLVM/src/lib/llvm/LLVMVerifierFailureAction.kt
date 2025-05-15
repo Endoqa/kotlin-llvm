@@ -8,15 +8,18 @@ import java.lang.invoke.MethodType
 public enum class LLVMVerifierFailureAction(
     public val `value`: Int,
 ) {
+    /**
+     * verifier will print to stderr and abort()
+     */
     AbortProcessAction(0),
 
     /**
-     * verifier will print to stderr and abort()
+     * verifier will print to stderr and return 1
      */
     PrintMessageAction(1),
 
     /**
-     * verifier will print to stderr and return 1
+     * verifier will just return 1
      */
     ReturnStatusAction(2),
     ;

@@ -8,80 +8,83 @@ import java.lang.invoke.MethodType
 public enum class LLVMRealPredicate(
     public val `value`: Int,
 ) {
-    PredicateFalse(0),
-
     /**
      * < Always false (always folded)
      */
-    OEQ(1),
+    PredicateFalse(0),
 
     /**
      * < True if ordered and equal
      */
-    OGT(2),
+    OEQ(1),
 
     /**
      * < True if ordered and greater than
      */
-    OGE(3),
+    OGT(2),
 
     /**
      * < True if ordered and greater than or equal
      */
-    OLT(4),
+    OGE(3),
 
     /**
      * < True if ordered and less than
      */
-    OLE(5),
+    OLT(4),
 
     /**
      * < True if ordered and less than or equal
      */
-    ONE(6),
+    OLE(5),
 
     /**
      * < True if ordered and operands are unequal
      */
-    ORD(7),
+    ONE(6),
 
     /**
      * < True if ordered (no nans)
      */
-    UNO(8),
+    ORD(7),
 
     /**
      * < True if unordered: isnan(X) | isnan(Y)
      */
-    UEQ(9),
+    UNO(8),
 
     /**
      * < True if unordered or equal
      */
-    UGT(10),
+    UEQ(9),
 
     /**
      * < True if unordered or greater than
      */
-    UGE(11),
+    UGT(10),
 
     /**
      * < True if unordered, greater than, or equal
      */
-    ULT(12),
+    UGE(11),
 
     /**
      * < True if unordered or less than
      */
-    ULE(13),
+    ULT(12),
 
     /**
      * < True if unordered, less than, or equal
      */
-    UNE(14),
+    ULE(13),
 
     /**
      * < True if unordered or not equal
+     */
+    UNE(14),
+
+    /**
+     * < Always true (always folded)
      */
     PredicateTrue(15),
     ;

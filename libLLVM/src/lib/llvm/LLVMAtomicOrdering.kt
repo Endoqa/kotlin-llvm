@@ -8,45 +8,55 @@ import java.lang.invoke.MethodType
 public enum class LLVMAtomicOrdering(
     public val `value`: Int,
 ) {
-    NotAtomic(0),
-
     /**
      * < A load or store which is not atomic
      */
-    Unordered(1),
+    NotAtomic(0),
 
     /**
      * < Lowest level of atomicity, guarantees
      * somewhat sane results, lock free.
      */
-    Monotonic(2),
+    Unordered(1),
 
     /**
      * < guarantees that if you take all the
      * operations affecting a specific address,
      * a consistent ordering exists
      */
-    Acquire(4),
+    Monotonic(2),
 
     /**
      * < Acquire provides a barrier of the sort
      * necessary to acquire a lock to access other
      * memory with normal loads and stores.
      */
-    Release(5),
+    Acquire(4),
 
     /**
      * < Release is similar to Acquire, but with
      * a barrier of the sort necessary to release
      * a lock.
      */
-    AcquireRelease(6),
+    Release(5),
 
     /**
      * < provides both an Acquire and a
      * Release barrier (for fences and
      * operations which both read and write
      * memory).
+     */
+    AcquireRelease(6),
+
+    /**
+     * < provides Acquire semantics
+     * for loads and Release
+     * semantics for stores.
+     * Additionally, it guarantees
+     * that a total ordering exists
+     * between all
+     * SequentiallyConsistent
+     * operations.
      */
     SequentiallyConsistent(7),
     ;

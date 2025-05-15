@@ -8,10 +8,14 @@ import java.lang.invoke.MethodType
 public enum class LLVMLinkerMode(
     public val `value`: Int,
 ) {
+    /**
+     * This is the default behavior.
+     */
     DestroySource(0),
 
     /**
-     * This is the default behavior.
+     * This option has been deprecated and
+     * should not be used.
      */
     PreserveSource_Removed(1),
     ;
